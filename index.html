@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>300x250</title>
+    <script type="text/javascript">
+        /*function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function getAdGearClickUrl(name) {
+            return getParameterByName("agclick_" + name) || getParameterByName(name);
+        }
+        var clickTag = getAdGearClickUrl("clickTAG") || getAdGearClickUrl("clickTag") || getAdGearClickUrl("clicktag");
+        var oobClickTrack = getAdGearClickUrl("oobclicktrack");
+
+        function clickThroughAdGear(name) {
+            var click_url = clickTag;
+            if (name) {
+                click_url = getAdGearClickUrl(name);
+            }
+            if (click_url !== null) {
+                window.open(click_url, "_blank");
+                if (oobClickTrack !== null) {
+                    var img = new Image();
+                    img.src = oobClickTrack;
+                }
+            }
+        }*/
+    </script>
+    <style type="text/css">
+        /* 300x250 */
+        @media (min-width: 300px) {
+            #border, #myAd {
+                width: 300px;
+                height: 250px;
+            }
+            div[id^="background"]{
+                top: 0px;
+                left: 0px;
+                width: inherit;
+                height: inherit;
+            }
+            #gradient{
+                top: 0px;
+                left: 0px;
+                width: inherit;
+                height: inherit;
+                background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
+            }
+            #cta, #logo{
+                left: 160px;
+                max-width: 190px;
+            }
+            div[id^="copy"] {
+                top: 15px;
+                left: 160px;
+                max-width: 135px;
+            }
+            #cta {
+                top: 130px;
+            }
+            #logo {
+                top: 215px;
+            }
+        }
+        /* 160x600 */
+        @media (max-width: 299px){
+            #border, #myAd {
+                width: 160px;
+                height: 600px;
+            }
+            div[id^="background"] {
+                bottom: 0px;
+                left: 0px;
+                width: inherit;
+                height: 250px;
+            }
+            #gradient{
+                bottom: 0px;
+                left: 0px;
+                width: inherit;
+                height: 250px;
+                background: -moz-linear-gradient(bottom,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+                z-index: 1;
+            }
+            #copy, #cta, #logo{
+                left: 15px;
+                max-width: 160px;
+            }
+            div[id^="copy"] {
+                top: 120px;
+                text-align: center;
+            }
+            #cta {
+                top: 300px;
+                left: 27px;
+            }
+            #logo {
+                bottom: 9px;
+                left: 20px;
+            }
+        }
+
+        #border, #myAd {
+            background-color: black;
+            position: relative;
+            top:0px;
+            left:0px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        #background1 {
+            background-image: url(background1.jpg);
+        }
+        #background2 {
+            background-image: url(background2.jpg);
+        }
+        div[id^="background"] {
+            background-repeat: no-repeat;
+        }
+        div[id^="copy"] {
+            color: white;
+            font-family: sans-serif;
+            font-weight: 700;
+        }
+        div[id^="copy"] span {
+            color: #b72732;
+        }
+        .abs {
+            position: absolute;
+        }
+        .hidden {
+            opacity:0;
+        }
+    </style>
+</head>
+
+<body>
+    <a onclick="clickThroughAdGear()" id="myAdLink" target="_blank">
+        <div id="border">
+            <div id="myAd">
+                <div id="gradient" class="abs hidden"></div>
+                <div id="background1" class="abs"></div>
+                <div id="background2" class="abs hidden"></div>
+                <div id="copy1" class="abs hidden"><span>DESIGNED</span> TO INSPIRE</div>
+                <div id="copy2" class="abs hidden"><span>CREATED</span> TO PERFORM</div>
+                <div id="copy3" class="abs hidden">GET TO KNOW THE <span>INDUSTRY'S</span> FIRST 5-DOOR FRIDGE</div>
+                <div id="cta" class="abs hidden"><img src="cta.png" /></div>
+                <div id="logo" class="abs"><img src="logo.png" /></div>
+            </div>
+        </div>
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
+    <script type="text/javascript">
+        var timeline = new TimelineLite({onComplete: onComplete});
+        
+        timeline.add('frame1').add('start')
+            .to('#gradient, #copy1', 1, {opacity:1});
+        
+        timeline.add('frame2')
+            .to('#copy1', 1, {opacity:0})
+            .to('#copy2', 1, {opacity:1});
+        
+        timeline.add('frame3')
+            .to('#copy2', 1, {opacity:0})
+            .to('#background2', 1, {opacity:1})
+            .to('#copy3, #cta', 1, {opacity:1})
+            
+        timeline.add('frame4').add('end')
+            .play();
+
+
+        function onComplete() {}
+    </script>
+</body>
+
+</html>
