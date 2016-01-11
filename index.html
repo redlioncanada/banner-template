@@ -93,6 +93,7 @@
                 background: linear-gradient(to top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
                 z-index: 1;
+                opacity: 1;
             }
             #copy, #cta, #logo{
                 left: 15px;
@@ -167,25 +168,98 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
     <script type="text/javascript">
-        var timeline = new TimelineLite({onComplete: onComplete});
-        
-        timeline.add('frame1').add('start')
+        //attaches timelines to specific screen sizes
+        var banner = (function() {
+            var obj = {
+                widths: [],
+                heights: [],
+                assocs: {},
+                add: function(name, width, height, timeline) {
+                    var self = this;
+                    if (Object.prototype.toString.call(name) === '[object Array]') {
+                        for (var i in name) {
+                            _add(name[i][0], name[i][1], name[i][2], name[i][3])
+                        }
+                    } else {
+                        _add(name, width, height, timeline)
+                    }
+                    this.onResize(undefined,this);
+
+                    function _add(n, w, h, t) {
+                        if (typeof n == 'string' && typeof w == 'number' && typeof h == 'number') {
+                            self.assocs[n] = {width: w, height: h, timeline: t};
+                        }
+                    }
+                },
+                onResize: function(e,self) {
+                    var best = false;
+                    for (var i in self.assocs) {
+                        var assoc = self.assocs[i];
+                        var hOffset = window.innerWidth - assoc.width;
+                        var wOffset = window.innerHeight - assoc.height;
+                        var curOffset = hOffset+wOffset;
+                        if ((!best && hOffset > 0 && wOffset > 0 && curOffset > 0) || (hOffset > 0 && wOffset > 0 && hOffset < best.hOffset && wOffset < best.wOffset)) {
+                            best = {
+                                name: i,
+                                hOffset: hOffset,
+                                wOffset: wOffset,
+                                tOffset: curOffset
+                            }
+                        }
+                    }
+                    if (best && best.name != self.name) {
+                        self.name = best.name;
+                        best = self.assocs[best.name];
+                        self.width = best.width;
+                        self.height = best.height;
+                        console.log('switched to '+self.name+' size ('+self.width+'x'+self.height+')');
+                        if ('timeline' in best && typeof best.timeline !== 'undefined') {
+                            if (!self.timeline || best.timeline != self.timeline) {
+                                if (self.timeline && typeof self.timeline !== 'undefined') {
+                                    self.timeline.pause(0);
+                                }
+                                self.timeline = best.timeline;
+                                self.timeline.restart();
+                            }
+                        }
+                    }
+                }
+            }
+            window.onresize = function(e) {obj.onResize(e,obj)};
+            return obj;
+        })();
+
+        var mediumRectangleTimeline = new TimelineLite({onStart: function(){console.log('started medium rectangle timeline')}});
+        mediumRectangleTimeline.add('frame1').add('start')
             .to('#gradient, #copy1', 1, {opacity:1});
-        
-        timeline.add('frame2')
+        mediumRectangleTimeline.add('frame2')
             .to('#copy1', 1, {opacity:0})
             .to('#copy2', 1, {opacity:1});
-        
-        timeline.add('frame3')
+        mediumRectangleTimeline.add('frame3')
             .to('#copy2', 1, {opacity:0})
             .to('#background2', 1, {opacity:1})
-            .to('#copy3, #cta', 1, {opacity:1})
-            
-        timeline.add('frame4').add('end')
-            .play();
+            .to('#copy3, #cta', 1, {opacity:1});
+        mediumRectangleTimeline.add('frame4').add('end')
+            .stop();
 
+        var skyscraperTimeline = new TimelineLite({onStart: function(){console.log('started skyscraper timeline')}});
+        skyscraperTimeline.add('frame1').add('start')
+            .to('#copy1', 1, {opacity:1});
+        skyscraperTimeline.add('frame2')
+            .to('#copy1', 1, {opacity:0})
+            .to('#copy2', 1, {opacity:1});
+        skyscraperTimeline.add('frame3')
+            .to('#copy2', 1, {opacity:0})
+            .to('#background2', 1, {opacity:1})
+            .to('#copy3, #cta', 1, {opacity:1});
+        skyscraperTimeline.add('frame4').add('end')
+            .stop();
 
-        function onComplete() {}
+        banner.add([
+            ['medium rectangle', 300, 250, mediumRectangleTimeline],
+            ['wide skyscraper', 160, 600, skyscraperTimeline],
+            ['bigger', 400, 600]
+        ]);
     </script>
 </body>
 
