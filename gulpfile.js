@@ -26,7 +26,10 @@ gulp.task('generateHtml', ['pre'], function() {
                     var language = k;
                     var folderName = size+'-'+clickTag;
 
-                    gulp.src('assets/**/*')
+                    gulp.src('assets/default/**/*')
+                        .pipe(gulp.dest('build/'+folderName+'/'+language));
+
+                    gulp.src('assets/'+language+'/**/*')
                         .pipe(gulp.dest('build/'+folderName+'/'+language));
 
                     //normal
