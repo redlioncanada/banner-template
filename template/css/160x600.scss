@@ -1,0 +1,39 @@
+
+    #border, #myAd {
+        width: 160px;
+        height: 600px;
+    }
+    div[id^="background"] {
+        bottom: 0px;
+        left: 0px;
+        width: inherit;
+        height: 250px;
+    }
+    #gradient{
+        bottom: 0px;
+        left: 0px;
+        width: inherit;
+        height: 250px;
+        background: -moz-linear-gradient(bottom,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+        z-index: 1;
+        opacity: 1;
+    }
+    #copy, #cta, #logo{
+        left: 15px;
+        max-width: 160px;
+    }
+    div[id^="copy"] {
+        top: 120px;
+        text-align: center;
+    }
+    #cta {
+        top: 300px;
+        left: 27px;
+    }
+    #logo {
+        bottom: 9px;
+        left: 20px;
+    }

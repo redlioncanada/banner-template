@@ -1,0 +1,18 @@
+{
+	"sizes": [
+		"160x600",
+		"300x250"
+	],
+	"text": {
+		"en": {
+			"copy1": "<span>DESIGNED</span> TO INSPIRE",
+			"copy2": "<span>CREATED</span> TO PERFORM",
+			"copy3": "GET TO KNOW THE <span>INDUSTRY'S</span> FIRST 5-DOOR FRIDGE"
+		},
+		"fr": {
+			"copy1": "<span>DESIGNED</span> TO INSPIRE(fr)",
+			"copy2": "<span>CREATED</span> TO PERFORM(fr)",
+			"copy3": "GET TO KNOW THE <span>INDUSTRY'S</span> FIRST 5-DOOR FRIDGE(fr)"
+		}
+	}
+}

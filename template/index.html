@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@html-size</title>
+    <script type="text/javascript">
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        //=include ../build/temp/js/clickTags/@js-clickTag@.js
+    </script>
+    <style type="text/css">
+        /*=include ../build/temp/css/global.css*/
+        /*=include ../build/temp/css/@js-size@.css*/
+    </style>
+</head>
+
+<body>
+    <a onclick="clickThrough()" id="myAdLink" target="_blank">
+        <div id="border">
+            <div id="myAd">
+                <div id="gradient" class="abs hidden"></div>
+                <div id="background1" class="abs"></div>
+                <div id="background2" class="abs hidden"></div>
+                <div id="copy1" class="abs hidden">@html-copy1@</div>
+                <div id="copy2" class="abs hidden">@html-copy2@</div>
+                <div id="copy3" class="abs hidden">@html-copy3@</div>
+                <div id="cta" class="abs hidden"><img src="cta.png" /></div>
+                <div id="logo" class="abs"><img src="logo.png" /></div>
+            </div>
+        </div>
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
+    <script type="text/javascript">
+        //=include ../build/temp/js/animations/@js-size@.js
+        timeline.play();
+    </script>
+</body>
+
+</html>
