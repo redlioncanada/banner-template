@@ -12,16 +12,14 @@ var minifyHtml  = require('gulp-htmlmin');
 var config      = require('./config.json');
 var fs          = require("fs");
 var del         = require('del');
-var glob        = require('glob');
 
 gulp.task('generateHtml', ['pre'], function() {
     var js = fs.readFileSync("template/js/clickTags/adgear.js", "utf8");
 
-    getFilenamesInDirectory("template/js/clickTags/*.js", function(clickTags) {
         for (var k in config.text) {
-            for (var j in clickTags) {
+            for (var j in config.clickTags) {
                 for (var i in config.sizes) {
-                    var clickTag = clickTags[j]
+                    var clickTag = config.clickTags[j]
                     var size = config.sizes[i];
                     var language = k;
                     var folderName = size+'-'+clickTag;
@@ -34,11 +32,12 @@ gulp.task('generateHtml', ['pre'], function() {
 
                     //normal
                     var index = gulp.src('template/index.html')
+                        .pipe(replace('@html-size@',size))
                         .pipe(replace('@js-clickTag@', clickTag))
                         .pipe(replace('@js-size@', size));
 
                     for (var i in config.text[k]) {
-                        index.pipe(replace('@html-'+i, config.text[k][i]));
+                        index.pipe(replace('@html-'+i+'@', config.text[k][i]));
                     }
 
                     index.pipe(include())
@@ -48,6 +47,7 @@ gulp.task('generateHtml', ['pre'], function() {
 
                     //minified
                     var index = gulp.src('template/index.html')
+                        .pipe(replace('@html-size@',size))
                         .pipe(replace('@.js', '@.min.js'))
                         .pipe(replace('@js-clickTag@', clickTag))
                         .pipe(replace('.css*/', '.min.css*/'))
@@ -63,7 +63,6 @@ gulp.task('generateHtml', ['pre'], function() {
                 }
             }
         }
-    })
 })
 
 gulp.task('pre', ['clean'], function() {
@@ -88,18 +87,6 @@ gulp.task('pre', ['clean'], function() {
         .pipe(rename({suffix:'.min'}))
         .pipe(gulp.dest('build/temp/js'));
 });
-
-function getFilenamesInDirectory(path, cb) {
-    var clickTags = []
-    glob(path, function (er, files) {
-        for (var i in files) {
-            var name = files[i].split('/');
-            name = name[name.length-1].split('.')[0];
-            clickTags.push(name)
-        }
-        cb(clickTags);
-    })
-}
 
 gulp.task('default', ['generateHtml'], function() {});
 
