@@ -7,6 +7,7 @@ var include     = require('gulp-include');
 var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
 var minifyHtml  = require('gulp-htmlmin');
+var imageMin    = require('gulp-imagemin');
 var config      = require('./config.json');
 var fs          = require("fs");
 var del         = require('del');
@@ -24,9 +25,15 @@ gulp.task('generateHtml', ['pre'], function() {
                     var folderName = size+'-'+clickTag;
 
                     gulp.src('assets/default/**/*')
+                        .pipe(imageMin({
+                            progressive: true,
+                        }))
                         .pipe(gulp.dest('build/'+folderName+'/'+language));
 
                     gulp.src('assets/'+language+'/**/*')
+                        .pipe(imageMin({
+                            progressive: true,
+                        }))
                         .pipe(gulp.dest('build/'+folderName+'/'+language));
 
                     //normal
