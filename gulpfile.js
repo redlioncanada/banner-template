@@ -100,7 +100,10 @@ gulp.task('pre', ['clean'], function() {
         .pipe(gulp.dest('build/temp/js'));
 });
 
-gulp.task('default', ['generateHtml'], function() {});
+
+gulp.task('default', ['generateHtml'], function() {
+    gulp.watch('template/**/*.*', ['generateHtml']);
+});
 
 gulp.task('clean', function() {
     return del(['build'])
