@@ -20,8 +20,8 @@ gulp.task('generateHtml', ['pre'], function() {
     var overview = gulp.src('overview/index.html');
 
     for (var i in config.sizes) {
-        for (var j in config.clickTags) {
-            for (var k in config.text) {
+        for (var k in config.text) {
+            for (var j in config.clickTags) {
                 var clickTag = config.clickTags[j]
                 var size = config.sizes[i];
                 var language = k;
@@ -75,11 +75,10 @@ gulp.task('generateHtml', ['pre'], function() {
                 index.pipe(include())
                     .pipe(minifyHtml())
                     .pipe(gulp.dest('build/'+folderName+'/'+language))
-
-
-                var x = iframe.replace('@width@',width).replace('@height@',height).replace('@src@','../'+folderName+'/'+language);
-                overview.pipe(replace('@content@', x));
             }
+
+            var x = iframe.replace('@width@',width).replace('@height@',height).replace('@src@','../'+folderName+'/'+language);
+            overview.pipe(replace('@content@', x));
         }
     }
 
