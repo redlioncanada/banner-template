@@ -47,6 +47,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('@html-size@',size))
                     .pipe(replace('@js-clickTag@', clickTag))
                     .pipe(replace('@js-size@', size))
+                    .pipe(replace('@html-size@', size))
                     .pipe(replace('@html-lang@', language));
 
                 for (var z in config.text[k]) {
@@ -66,6 +67,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('@js-clickTag@', clickTag))
                     .pipe(replace('.css*/', '.min.css*/'))
                     .pipe(replace('@js-size@', size))
+                    .pipe(replace('@html-size@', size))
                     .pipe(replace('@html-lang@', language));
 
                 for (var z in config.text[k]) {
@@ -102,6 +104,12 @@ gulp.task('pre', ['clean'], function() {
         .pipe(minifyCss())
         .pipe(rename({'suffix':'.min'}))
         .pipe(gulp.dest('build/temp/css'));
+
+    gulp.src('template/html/*.html')
+        .pipe(gulp.dest('build/temp/html'))
+        .pipe(minifyHtml())
+        .pipe(rename({'suffix':'.min'}))
+        .pipe(gulp.dest('build/temp/html'));
 
     return gulp.src('template/js/**/*.js')
         .pipe(stripDebug())
