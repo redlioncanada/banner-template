@@ -1,3 +1,8 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+
 .@css-namespace@ {
     #border, #myAd {
         background-color: black;
@@ -12,10 +17,10 @@
 
     #myAd {
         #background1 {
-            background-image: url(background1.jpg);
+            background-image: url('./background1.jpg');
         }
         #background2 {
-            background-image: url(background2.jpg);
+            background-image: url('./background2.jpg');
         }
         div[id^="background"] {
             background-repeat: no-repeat;

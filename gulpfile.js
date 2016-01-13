@@ -16,63 +16,75 @@ var uuid        = require('node-uuid');
 var id = 'a'+uuid.v4().replace(/-/g, '');
 
 gulp.task('generateHtml', ['pre'], function() {
-        for (var k in config.text) {
-            for (var j in config.clickTags) {
-                for (var i in config.sizes) {
-                    var clickTag = config.clickTags[j]
-                    var size = config.sizes[i];
-                    var language = k;
-                    var folderName = size+'-'+clickTag;
+    var iframe = '<iframe width="@width@" height="@height@" src="@src@" frameBorder="0" seamless="seamless" scrolling="no"></iframe>@content@';
+    var overview = gulp.src('overview/index.html');
 
-                    gulp.src('assets/default/**/*')
-                        .pipe(imageMin({
-                            progressive: true,
-                        }))
-                        .pipe(gulp.dest('build/'+folderName+'/'+language));
+    for (var i in config.sizes) {
+        for (var j in config.clickTags) {
+            for (var k in config.text) {
+                var clickTag = config.clickTags[j]
+                var size = config.sizes[i];
+                var language = k;
+                var folderName = size+'-'+clickTag;
+                var width = size.split('x')[0];
+                var height = size.split('x')[1];
 
-                    gulp.src('assets/'+language+'/**/*')
-                        .pipe(imageMin({
-                            progressive: true,
-                        }))
-                        .pipe(gulp.dest('build/'+folderName+'/'+language));
+                gulp.src('assets/default/**/*')
+                    .pipe(imageMin({
+                        progressive: true,
+                    }))
+                    .pipe(gulp.dest('build/'+folderName+'/'+language));
 
-                    //normal
-                    var index = gulp.src('template/index.html')
-                        .pipe(replace('@css-namespace@', id))
-                        .pipe(replace('@html-size@',size))
-                        .pipe(replace('@js-clickTag@', clickTag))
-                        .pipe(replace('@js-size@', size))
-                        .pipe(replace('@html-lang@', language));
+                gulp.src('assets/'+language+'/**/*')
+                    .pipe(imageMin({
+                        progressive: true,
+                    }))
+                    .pipe(gulp.dest('build/'+folderName+'/'+language));
 
-                    for (var i in config.text[k]) {
-                        index.pipe(replace('@html-'+i+'@', config.text[k][i]));
-                    }
+                //normal
+                var index = gulp.src('template/index.html')
+                    .pipe(replace('@css-namespace@', id))
+                    .pipe(replace('@html-size@',size))
+                    .pipe(replace('@js-clickTag@', clickTag))
+                    .pipe(replace('@js-size@', size))
+                    .pipe(replace('@html-lang@', language));
 
-                    index.pipe(include())
-                        .pipe(rename({'suffix':'.fat'}))
-                        .pipe(gulp.dest('build/'+folderName+'/'+language))
-
-
-                    //minified
-                    var index = gulp.src('template/index.html')
-                        .pipe(replace('@css-namespace@', id))
-                        .pipe(replace('@html-size@',size))
-                        .pipe(replace('@.js', '@.min.js'))
-                        .pipe(replace('@js-clickTag@', clickTag))
-                        .pipe(replace('.css*/', '.min.css*/'))
-                        .pipe(replace('@js-size@', size))
-                        .pipe(replace('@html-lang@', language));
-
-                    for (var i in config.text[k]) {
-                        index.pipe(replace('@html-'+i+'@', config.text[k][i]));
-                    }
-
-                    index.pipe(include())
-                        .pipe(minifyHtml())
-                        .pipe(gulp.dest('build/'+folderName+'/'+language))
+                for (var z in config.text[k]) {
+                    index.pipe(replace('@html-'+z+'@', config.text[k][z]));
                 }
+
+                index.pipe(include())
+                    .pipe(rename({'suffix':'.fat'}))
+                    .pipe(gulp.dest('build/'+folderName+'/'+language))
+
+
+                //minified
+                var index = gulp.src('template/index.html')
+                    .pipe(replace('@css-namespace@', id))
+                    .pipe(replace('@html-size@',size))
+                    .pipe(replace('@.js', '@.min.js'))
+                    .pipe(replace('@js-clickTag@', clickTag))
+                    .pipe(replace('.css*/', '.min.css*/'))
+                    .pipe(replace('@js-size@', size))
+                    .pipe(replace('@html-lang@', language));
+
+                for (var z in config.text[k]) {
+                    index.pipe(replace('@html-'+z+'@', config.text[k][z]));
+                }
+
+                index.pipe(include())
+                    .pipe(minifyHtml())
+                    .pipe(gulp.dest('build/'+folderName+'/'+language))
+
+
+                var x = iframe.replace('@width@',width).replace('@height@',height).replace('@src@','../'+folderName+'/'+language);
+                overview.pipe(replace('@content@', x));
             }
         }
+    }
+
+    overview.pipe(replace('@content@', ''))
+        .pipe(gulp.dest('build/overview'));
 })
 
 gulp.task('pre', ['clean'], function() {
