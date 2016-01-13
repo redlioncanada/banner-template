@@ -22,14 +22,14 @@ gulp.task('generateHtml', ['pre'], function() {
     for (var i in config.sizes) {
         for (var k in config.text) {
             for (var j in config.clickTags) {
-                var clickTag = config.clickTags[j]
+                var clickTag = config.clickTags[j];
                 var size = config.sizes[i];
                 var language = k;
                 var folderName = size+'-'+clickTag;
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
-                gulp.src('assets/default/**/*')
+                gulp.src('assets/global/**/*')
                     .pipe(imageMin({
                         progressive: true,
                     }))
@@ -55,7 +55,7 @@ gulp.task('generateHtml', ['pre'], function() {
 
                 index.pipe(include())
                     .pipe(rename({'suffix':'.fat'}))
-                    .pipe(gulp.dest('build/'+folderName+'/'+language))
+                    .pipe(gulp.dest('build/'+folderName+'/'+language));
 
 
                 //minified
@@ -74,7 +74,7 @@ gulp.task('generateHtml', ['pre'], function() {
 
                 index.pipe(include())
                     .pipe(minifyHtml())
-                    .pipe(gulp.dest('build/'+folderName+'/'+language))
+                    .pipe(gulp.dest('build/'+folderName+'/'+language));
             }
 
             var x = iframe.replace('@width@',width).replace('@height@',height).replace('@src@','../'+folderName+'/'+language);
@@ -101,7 +101,7 @@ gulp.task('pre', ['clean'], function() {
         .pipe(gulp.dest('build/temp/css'))
         .pipe(minifyCss())
         .pipe(rename({'suffix':'.min'}))
-        .pipe(gulp.dest('build/temp/css'))
+        .pipe(gulp.dest('build/temp/css'));
 
     return gulp.src('template/js/**/*.js')
         .pipe(stripDebug())
@@ -117,7 +117,7 @@ gulp.task('default', ['generateHtml'], function() {
 });
 
 gulp.task('clean', function() {
-    return del(['build'])
+    return del(['build']);
 });
 
 
