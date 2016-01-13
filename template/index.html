@@ -4,12 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>@html-size@</title>
     <script type="text/javascript">
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
         //=include ../build/temp/js/clickTags/@js-clickTag@.js
     </script>
     <style type="text/css">
@@ -19,8 +13,8 @@
 </head>
 
 <body>
-    <a onclick="clickThrough()" id="myAdLink" target="_blank">
-        <div id="border">
+    <a onclick="clickThrough()" id="clickThrough" class="@css-namespace@" target="_blank">
+        <div id="border" class="@html-lang@">
             <div id="myAd">
                 <div id="gradient" class="abs hidden"></div>
                 <div id="background1" class="abs"></div>

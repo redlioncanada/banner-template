@@ -1,33 +1,39 @@
-#border, #myAd {
-    background-color: black;
-    position: relative;
-    top:0px;
-    left:0px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    cursor: pointer;
-}
-#background1 {
-    background-image: url(background1.jpg);
-}
-#background2 {
-    background-image: url(background2.jpg);
-}
-div[id^="background"] {
-    background-repeat: no-repeat;
-}
-div[id^="copy"] {
-    color: white;
-    font-family: sans-serif;
-    font-weight: 700;
-}
-div[id^="copy"] span {
-    color: #b72732;
-}
-.abs {
-    position: absolute;
-}
-.hidden {
-    opacity:0;
+.@css-namespace@ {
+    #border, #myAd {
+        background-color: black;
+        position: relative;
+        top:0px;
+        left:0px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    #myAd {
+        #background1 {
+            background-image: url(background1.jpg);
+        }
+        #background2 {
+            background-image: url(background2.jpg);
+        }
+        div[id^="background"] {
+            background-repeat: no-repeat;
+        }
+        div[id^="copy"] {
+            color: white;
+            font-family: sans-serif;
+            font-weight: 700;
+        }
+        div[id^="copy"] span {
+            color: #b72732;
+        }
+    }
+    
+    .abs {
+        position: absolute;
+    }
+    .hidden {
+        opacity:0;
+    }
 }

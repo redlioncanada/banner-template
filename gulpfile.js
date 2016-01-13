@@ -1,5 +1,3 @@
-// Gulp configuration
-
 var gulp        = require('gulp');
 var uglify      = require('gulp-uglify');
 var sass        = require('gulp-sass');
@@ -12,10 +10,11 @@ var minifyHtml  = require('gulp-htmlmin');
 var config      = require('./config.json');
 var fs          = require("fs");
 var del         = require('del');
+var uuid        = require('node-uuid');
+
+var id = 'a'+uuid.v4().replace(/-/g, '');
 
 gulp.task('generateHtml', ['pre'], function() {
-    var js = fs.readFileSync("template/js/clickTags/adgear.js", "utf8");
-
         for (var k in config.text) {
             for (var j in config.clickTags) {
                 for (var i in config.sizes) {
@@ -32,9 +31,11 @@ gulp.task('generateHtml', ['pre'], function() {
 
                     //normal
                     var index = gulp.src('template/index.html')
+                        .pipe(replace('@css-namespace@', id))
                         .pipe(replace('@html-size@',size))
                         .pipe(replace('@js-clickTag@', clickTag))
-                        .pipe(replace('@js-size@', size));
+                        .pipe(replace('@js-size@', size))
+                        .pipe(replace('@html-lang@', language));
 
                     for (var i in config.text[k]) {
                         index.pipe(replace('@html-'+i+'@', config.text[k][i]));
@@ -47,11 +48,13 @@ gulp.task('generateHtml', ['pre'], function() {
 
                     //minified
                     var index = gulp.src('template/index.html')
+                        .pipe(replace('@css-namespace@', id))
                         .pipe(replace('@html-size@',size))
                         .pipe(replace('@.js', '@.min.js'))
                         .pipe(replace('@js-clickTag@', clickTag))
                         .pipe(replace('.css*/', '.min.css*/'))
-                        .pipe(replace('@js-size@', size));
+                        .pipe(replace('@js-size@', size))
+                        .pipe(replace('@html-lang@', language));
 
                     for (var i in config.text[k]) {
                         index.pipe(replace('@html-'+i+'@', config.text[k][i]));
@@ -67,6 +70,7 @@ gulp.task('generateHtml', ['pre'], function() {
 
 gulp.task('pre', ['clean'], function() {
     gulp.src('template/global.scss')
+        .pipe(replace('@css-namespace@', id))
         .pipe(sass())
         .pipe(gulp.dest('build/temp/css'))
         .pipe(minifyCss())
@@ -74,6 +78,7 @@ gulp.task('pre', ['clean'], function() {
         .pipe(gulp.dest('build/temp/css'));
 
     gulp.src('template/css/*.scss')
+        .pipe(replace('@css-namespace@', id))
         .pipe(sass())
         .pipe(gulp.dest('build/temp/css'))
         .pipe(minifyCss())
