@@ -1,4 +1,4 @@
-var timeline = new TimelineLite({onStart: function(){console.log('started skyscraper timeline')}});
+var timeline = new TimelineLite({onComplete: onComplete, onStart: function(){console.log('started skyscraper timeline')}});
         timeline.add('frame1').add('start')
             .to('#copy1', 1, {opacity:1});
         timeline.add('frame2')
@@ -8,5 +8,4 @@ var timeline = new TimelineLite({onStart: function(){console.log('started skyscr
             .to('#copy2', 1, {opacity:0})
             .to('#background2', 1, {opacity:1})
             .to('#copy3, #cta', 1, {opacity:1});
-        timeline.add('frame4').add('end')
-            .stop();
+        timeline.add('frame4').add('end');

@@ -5,6 +5,11 @@ html,body{
 
 .@css-namespace@ {
     #border, #myAd {
+        width: @css-width@px;
+        height: @css-height@px;
+    }
+
+    #border, #myAd {
         background-color: black;
         position: relative;
         top:0px;

@@ -41,6 +41,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     }))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
 
+
                 //normal
                 var index = gulp.src('template/index.html')
                     .pipe(replace('@css-namespace@', id))
@@ -89,13 +90,29 @@ gulp.task('generateHtml', ['pre'], function() {
 })
 
 gulp.task('pre', ['clean'], function() {
-    gulp.src('template/global.scss')
-        .pipe(replace('@css-namespace@', id))
-        .pipe(sass())
-        .pipe(gulp.dest('build/temp/css'))
-        .pipe(minifyCss())
-        .pipe(rename({'suffix':'.min'}))
-        .pipe(gulp.dest('build/temp/css'));
+    for (var i in config.sizes) {
+        for (var k in config.text) {
+            for (var j in config.clickTags) {
+                var clickTag = config.clickTags[j];
+                var size = config.sizes[i];
+                var language = k;
+                var folderName = size+'-'+clickTag;
+                var width = size.split('x')[0];
+                var height = size.split('x')[1];
+
+                gulp.src('template/global.scss')
+                    .pipe(rename({'suffix':'-'+size}))
+                    .pipe(replace('@css-width@', width))
+                    .pipe(replace('@css-height@', height))
+                    .pipe(replace('@css-namespace@', id))
+                    .pipe(sass())
+                    .pipe(gulp.dest('build/temp/css'))
+                    .pipe(minifyCss())
+                    .pipe(rename({'suffix':'.min'}))
+                    .pipe(gulp.dest('build/temp/css'));
+            }
+        }
+    }
 
     gulp.src('template/css/*.scss')
         .pipe(replace('@css-namespace@', id))
