@@ -93,10 +93,7 @@ gulp.task('pre', ['clean'], function() {
     for (var i in config.sizes) {
         for (var k in config.text) {
             for (var j in config.clickTags) {
-                var clickTag = config.clickTags[j];
                 var size = config.sizes[i];
-                var language = k;
-                var folderName = size+'-'+clickTag;
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
@@ -139,6 +136,7 @@ gulp.task('pre', ['clean'], function() {
 
 gulp.task('default', ['generateHtml'], function() {
     gulp.watch('template/**/*.*', ['generateHtml']);
+    gulp.watch('config.json', ['generateHtml']);
 });
 
 gulp.task('clean', function() {

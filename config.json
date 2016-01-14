@@ -9,14 +9,22 @@
 	],
 	"text": {
 		"en": {
-			"copy1": "<span>DESIGNED</span> TO INSPIRE",
-			"copy2": "<span>CREATED</span> TO PERFORM",
-			"copy3": "GET TO KNOW THE <span>INDUSTRY'S</span> FIRST 5-DOOR FRIDGE"
+			"copy1-highlight": "DESIGNED",
+			"copy1": "TO INSPIRE",
+			"copy2-highlight": "CREATED",
+			"copy2": "TO PERFORM",
+			"copy3-highlight": "INDUSTRY'S",
+			"copy3-prefix": "GET TO KNOW THE",
+			"copy3-suffix": "FIRST 5-DOOR FRIDGE"
 		},
 		"fr": {
-			"copy1": "<span>DESIGNED</span> TO INSPIRE(fr)",
-			"copy2": "<span>CREATED</span> TO PERFORM(fr)",
-			"copy3": "GET TO KNOW THE <span>INDUSTRY'S</span> FIRST 5-DOOR FRIDGE(fr)"
+			"copy1-highlight": "DESIGNED",
+			"copy1": "TO INSPIRE (fr)",
+			"copy2-highlight": "CREATED",
+			"copy2": "TO PERFORM (fr)",
+			"copy3-highlight": "INDUSTRY'S",
+			"copy3-prefix": "GET TO KNOW THE",
+			"copy3-suffix": "FIRST 5-DOOR FRIDGE (fr)"
 		}
 	}
 }
