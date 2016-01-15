@@ -1,3 +1,3 @@
 function clickThrough() {
-	window.open("{url}");
+	window.open(window.clickTag);
 }
