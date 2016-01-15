@@ -1,11 +1,13 @@
 {
+	"url": "http://google.ca",
 	"sizes": [
 		"160x600",
 		"300x250",
 		"728x90"
 	],
 	"clickTags": [
-		"adgear"
+		"adgear",
+		"doubleclick"
 	],
 	"text": {
 		"en": {

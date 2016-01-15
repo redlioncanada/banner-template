@@ -24,6 +24,7 @@ gulp.task('generateHtml', ['pre'], function() {
             for (var j in config.clickTags) {
                 var clickTag = config.clickTags[j];
                 var size = config.sizes[i];
+                var url = config.url;
                 var language = k;
                 var folderName = size+'-'+clickTag;
                 var width = size.split('x')[0];
@@ -47,7 +48,10 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
                     .pipe(replace('{clickTag}', clickTag))
+                    .pipe(replace('{url}',url))
                     .pipe(replace('{size}', size))
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language));
 
                 for (var z in config.text[k]) {
@@ -67,6 +71,9 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('{clickTag}', clickTag))
                     .pipe(replace('.css*/', '.min.css*/'))
                     .pipe(replace('{size}', size))
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
+                    .pipe(replace('{url}',url))
                     .pipe(replace('{language}', language));
 
                 for (var z in config.text[k]) {
@@ -125,6 +132,7 @@ gulp.task('pre', ['clean'], function() {
 
     return gulp.src('app/templates/js/**/*.js')
         .pipe(stripDebug())
+        .pipe(replace('{url}',config.url))
         .pipe(gulp.dest('build/temp/js'))
         .pipe(uglify({mangle:false}))
         .pipe(rename({suffix:'.min'}))
