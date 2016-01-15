@@ -8,7 +8,7 @@ var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
 var minifyHtml  = require('gulp-htmlmin');
 var imageMin    = require('gulp-imagemin');
-var config      = require('./config.json');
+var config      = require('./app/config.json');
 var fs          = require("fs");
 var del         = require('del');
 var uuid        = require('node-uuid');
@@ -16,8 +16,8 @@ var uuid        = require('node-uuid');
 var id = 'a'+uuid.v4().replace(/-/g, '');
 
 gulp.task('generateHtml', ['pre'], function() {
-    var iframe = '<iframe width="@width@" height="@height@" src="@src@" frameBorder="0" seamless="seamless" scrolling="no"></iframe>@content@';
-    var overview = gulp.src('overview/index.html');
+    var iframe = '<iframe width="{width}" height="{height}" src="{src}" frameBorder="0" seamless="seamless" scrolling="no"></iframe>{content}';
+    var overview = gulp.src('app/overview/index.html');
 
     for (var i in config.sizes) {
         for (var k in config.text) {
@@ -29,30 +29,29 @@ gulp.task('generateHtml', ['pre'], function() {
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
-                gulp.src('assets/global/**/*')
+                gulp.src('app/assets/global/**/*')
                     .pipe(imageMin({
-                        progressive: true,
+                        progressive: true
                     }))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
 
-                gulp.src('assets/'+language+'/**/*')
+                gulp.src('app/assets/'+language+'/**/*')
                     .pipe(imageMin({
-                        progressive: true,
+                        progressive: true
                     }))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
 
 
                 //normal
-                var index = gulp.src('template/index.html')
-                    .pipe(replace('@css-namespace@', id))
-                    .pipe(replace('@html-size@',size))
-                    .pipe(replace('@js-clickTag@', clickTag))
-                    .pipe(replace('@js-size@', size))
-                    .pipe(replace('@html-size@', size))
-                    .pipe(replace('@html-lang@', language));
+                var index = gulp.src('app/templates/index.html')
+                    .pipe(replace('{namespace}', id))
+                    .pipe(replace('{size}',size))
+                    .pipe(replace('{clickTag}', clickTag))
+                    .pipe(replace('{size}', size))
+                    .pipe(replace('{language}', language));
 
                 for (var z in config.text[k]) {
-                    index.pipe(replace('@html-'+z+'@', config.text[k][z]));
+                    index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
                 index.pipe(include())
@@ -61,18 +60,17 @@ gulp.task('generateHtml', ['pre'], function() {
 
 
                 //minified
-                var index = gulp.src('template/index.html')
-                    .pipe(replace('@css-namespace@', id))
-                    .pipe(replace('@html-size@',size))
-                    .pipe(replace('@.js', '@.min.js'))
-                    .pipe(replace('@js-clickTag@', clickTag))
+                var index = gulp.src('app/templates/index.html')
+                    .pipe(replace('{namespace}', id))
+                    .pipe(replace('{size}',size))
+                    .pipe(replace('{.js', '{.min.js'))
+                    .pipe(replace('{clickTag}', clickTag))
                     .pipe(replace('.css*/', '.min.css*/'))
-                    .pipe(replace('@js-size@', size))
-                    .pipe(replace('@html-size@', size))
-                    .pipe(replace('@html-lang@', language));
+                    .pipe(replace('{size}', size))
+                    .pipe(replace('{language}', language));
 
                 for (var z in config.text[k]) {
-                    index.pipe(replace('@html-'+z+'@', config.text[k][z]));
+                    index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
                 index.pipe(include())
@@ -80,12 +78,12 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
             }
 
-            var x = iframe.replace('@width@',width).replace('@height@',height).replace('@src@','../'+folderName+'/'+language);
-            overview.pipe(replace('@content@', x));
+            var x = iframe.replace('{width}',width).replace('{height}',height).replace('{src}','../'+folderName+'/'+language);
+            overview.pipe(replace('{content}', x));
         }
     }
 
-    overview.pipe(replace('@content@', ''))
+    overview.pipe(replace('{content}', ''))
         .pipe(gulp.dest('build/overview'));
 })
 
@@ -97,11 +95,11 @@ gulp.task('pre', ['clean'], function() {
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
-                gulp.src('template/global.scss')
+                gulp.src('app/templates/global.scss')
                     .pipe(rename({'suffix':'-'+size}))
-                    .pipe(replace('@css-width@', width))
-                    .pipe(replace('@css-height@', height))
-                    .pipe(replace('@css-namespace@', id))
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
+                    .pipe(replace('{namespace}', id))
                     .pipe(sass())
                     .pipe(gulp.dest('build/temp/css'))
                     .pipe(minifyCss())
@@ -111,21 +109,21 @@ gulp.task('pre', ['clean'], function() {
         }
     }
 
-    gulp.src('template/css/*.scss')
-        .pipe(replace('@css-namespace@', id))
+    gulp.src('app/templates/css/*.scss')
+        .pipe(replace('{namespace}', id))
         .pipe(sass())
         .pipe(gulp.dest('build/temp/css'))
         .pipe(minifyCss())
         .pipe(rename({'suffix':'.min'}))
         .pipe(gulp.dest('build/temp/css'));
 
-    gulp.src('template/html/*.html')
+    gulp.src('app/templates/html/*.html')
         .pipe(gulp.dest('build/temp/html'))
         .pipe(minifyHtml())
         .pipe(rename({'suffix':'.min'}))
         .pipe(gulp.dest('build/temp/html'));
 
-    return gulp.src('template/js/**/*.js')
+    return gulp.src('app/templates/js/**/*.js')
         .pipe(stripDebug())
         .pipe(gulp.dest('build/temp/js'))
         .pipe(uglify({mangle:false}))
@@ -135,8 +133,7 @@ gulp.task('pre', ['clean'], function() {
 
 
 gulp.task('default', ['generateHtml'], function() {
-    gulp.watch('template/**/*.*', ['generateHtml']);
-    gulp.watch('config.json', ['generateHtml']);
+    gulp.watch('app/templates/**/*.*', ['generateHtml']);
 });
 
 gulp.task('clean', function() {

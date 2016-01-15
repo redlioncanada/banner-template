@@ -1,10 +1,13 @@
-.@css-namespace@ {
+.{namespace} {
     #myAd {
-        div[id^="background"] {
+        div[id^="background"]{
             top: 0px;
             left: 0px;
             width: inherit;
             height: inherit;
+        }
+        #background1 {
+            background-position: 0;
         }
         #gradient{
             top: 0px;
@@ -17,19 +20,27 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
         }
         #cta, #logo{
-            left: 160px;
             max-width: 190px;
         }
         div[id^="copy"] {
-            top: 15px;
-            left: 160px;
-            max-width: 135px;
+            top: 37px;
+            left: 330px;
+            max-width: 260px;
+        }
+        div#copy3 {
+        	top: 26px;
         }
         #cta {
-            top: 130px;
+        	right: 10px;
+            bottom: 30px;
         }
         #logo {
-            top: 215px;
+        	right: 10px;
+            bottom: 5px;
+
+            img {
+            	width: 75px;
+            }
         }
     }
 }

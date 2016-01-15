@@ -3,10 +3,10 @@ html,body{
     padding: 0;
 }
 
-.@css-namespace@ {
+.{namespace} {
     #border, #myAd {
-        width: @css-width@px;
-        height: @css-height@px;
+        width: {width}px;
+        height: {height}px;
     }
 
     #border, #myAd {
@@ -22,10 +22,10 @@ html,body{
 
     #myAd {
         #background1 {
-            background-image: url('./background1.jpg');
+            background-image: url('background1.jpg');
         }
         #background2 {
-            background-image: url('./background2.jpg');
+            background-image: url('background2.jpg');
         }
         div[id^="background"] {
             background-repeat: no-repeat;
