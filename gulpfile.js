@@ -55,6 +55,9 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('{language}', language));
 
                 for (var z in config.text[k]) {
+                    if (z == 'namespace' || z == 'size' || z == 'clickTag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
+                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
+                    }
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
