@@ -13,7 +13,7 @@ var fs          = require("fs");
 var del         = require('del');
 var uuid        = require('node-uuid');
 
-var id = 'a'+uuid.v4().replace(/-/g, '');
+var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
 gulp.task('generateHtml', ['pre'], function() {
     var iframe = '<iframe width="{width}" height="{height}" src="{src}" frameBorder="0" seamless="seamless" scrolling="no"></iframe>{content}';
