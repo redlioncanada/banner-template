@@ -61,7 +61,10 @@ gulp.task('generateHtml', ['pre'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(include())
+                index.pipe(replace('//=include ', '//=include ../../build/temp/'))
+                    .pipe(replace('/*=include ', '/*=include ../../build/temp/'))
+                    .pipe(replace('<!--=include ', '<!--=include ../../build/temp/'))
+                    .pipe(include())
                     .pipe(rename({'suffix':'.fat'}))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
 
@@ -83,7 +86,10 @@ gulp.task('generateHtml', ['pre'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(include())
+                index.pipe(replace('//=include ', '//=include ../../build/temp/'))
+                    .pipe(replace('/*=include ', '/*=include ../../build/temp/'))
+                    .pipe(replace('<!--=include ', '<!--=include ../../build/temp/'))
+                    .pipe(include())
                     .pipe(minifyHtml())
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
             }
