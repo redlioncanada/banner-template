@@ -5,7 +5,7 @@
     <meta name="ad.size" content="width={width},height={height}">
     <title>{size}</title>
     <script type="text/javascript">
-        //=include js/clickTags/{clickTag}.js
+        //=include js/{clickTag}.js
     </script>
     <style type="text/css">
         /*=include css/global-{size}.css*/
@@ -17,13 +17,14 @@
     <a onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
         <div id="border" class="{language}">
             <div id="myAd">
-                <div id="gradient" class="abs hidden"></div>
+                <div id="gradient" class="abs"></div>
                 <div id="background1" class="abs"></div>
                 <div id="background2" class="abs hidden"></div>
+                <div id="background3" class="abs"></div>
                 <div id="copy1" class="abs hidden"><span>{copy1-highlight}</span> {copy1}</div>
                 <div id="copy2" class="abs hidden"><span>{copy2-highlight}</span> {copy2}</div>
                 <div id="copy3" class="abs hidden">{copy3-prefix} <span>{copy3-highlight}</span> {copy3-suffix}</div>
-                <div id="cta" class="abs hidden"><img src="cta.png" /></div>
+                <div id="cta" class="abs hidden scale"><img src="cta.png" /></div>
                 <div id="logo" class="abs"><img src="logo.png" /></div>
                 <!--=include html/{size}.html -->
             </div>
@@ -33,10 +34,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
     <script type="text/javascript">
-        //=include js/includes/TimelineLite.addDelay.js
+        //=include js/TimelineLite.addDelay.js
 
         function onComplete() {}
-        //=include js/animations/{size}.js
+        //=include js/{size}.js
     </script>
 </body>
 
