@@ -151,6 +151,7 @@ gulp.task('pre', ['clean'], function() {
 
 gulp.task('default', ['generateHtml'], function() {
     gulp.watch('app/templates/**/*.*', ['generateHtml']);
+    gulp.watch('app/assets/**/*.*', ['generateHtml']);
 });
 
 gulp.task('clean', function() {
