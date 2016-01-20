@@ -1,21 +1,21 @@
 {
-  "name": "responsive-banner",
+  "name": "banner-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "Build HTML5 banners quickly and easily, without the bloat.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redlioncanada/responsive-banner.git"
+    "url": "git+https://github.com/redlioncanada/banner-template.git"
   },
   "author": "redlioncanada",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/redlioncanada/responsive-banner/issues"
+    "url": "https://github.com/redlioncanada/banner-template/issues"
   },
-  "homepage": "https://github.com/redlioncanada/responsive-banner#readme",
+  "homepage": "https://github.com/redlioncanada/banner-template#readme",
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.0",
@@ -31,5 +31,17 @@
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^1.5.1",
     "node-uuid": "^1.4.7"
-  }
+  },
+  "dependencies": {},
+  "keywords": [
+    "html5",
+    "banner",
+    "banners",
+    "iab",
+    "ad",
+    "advertising",
+    "bigbox",
+    "skyscraper",
+    "greensock"
+  ]
 }
