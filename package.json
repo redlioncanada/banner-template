@@ -1,7 +1,7 @@
 {
   "name": "banner-template",
   "version": "1.0.0",
-  "description": "Build HTML5 banners quickly and easily, without the bloat.",
+  "description": "Build HTML5 banner templates quickly and easily, without the bloat",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
