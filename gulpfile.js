@@ -1,3 +1,14 @@
+/*
+    gulp
+        removes /build
+        compiles templates to /build/_temp
+        combines files to their various sizes-clickTag folders
+
+    gulp package
+        zips build/size-clickTag and puts them in /build/package
+
+*/
+
 var gulp        = require('gulp');
 var uglify      = require('gulp-uglify');
 var sass        = require('gulp-sass');
@@ -8,6 +19,7 @@ var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
 var minifyHtml  = require('gulp-htmlmin');
 var imageMin    = require('gulp-imagemin');
+var zip         = require('gulp-zip');
 var config      = require('./app/config.json');
 var fs          = require("fs");
 var del         = require('del');
@@ -59,7 +71,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
+                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/_temp/'))
                     .pipe(include())
                     .pipe(rename({'suffix':'.fat'}))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
@@ -80,7 +92,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
+                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/_temp/'))
                     .pipe(include())
                     .pipe(minifyHtml())
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
@@ -113,10 +125,10 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{language}', language))
                     .pipe(sass())
-                    .pipe(gulp.dest('build/temp/css'))
+                    .pipe(gulp.dest('build/_temp/css'))
                     .pipe(minifyCss())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/css'));
+                    .pipe(gulp.dest('build/_temp/css'));
 
                 gulp.src('app/templates/css/'+size+'.scss')
                     .pipe(replace('{namespace}', id))
@@ -124,19 +136,19 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
                     .pipe(sass())
-                    .pipe(gulp.dest('build/temp/css'))
+                    .pipe(gulp.dest('build/_temp/css'))
                     .pipe(minifyCss())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/css'));
+                    .pipe(gulp.dest('build/_temp/css'));
 
                 gulp.src('app/templates/html/'+size+'.html')
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
-                    .pipe(gulp.dest('build/temp/html'))
+                    .pipe(gulp.dest('build/_temp/html'))
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/html'));
+                    .pipe(gulp.dest('build/_temp/html'));
 
                 gulp.src('app/templates/js/animations/'+size+'.js')
                     .pipe(replace('{width}', width))
@@ -144,10 +156,10 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{language}', language))
                     .pipe(replace('{clickTag}', clickTag))
                     .pipe(stripDebug())
-                    .pipe(gulp.dest('build/temp/js'))
+                    .pipe(gulp.dest('build/_temp/js'))
                     .pipe(uglify({mangle:false}))
                     .pipe(rename({suffix:'.min'}))
-                    .pipe(gulp.dest('build/temp/js'));
+                    .pipe(gulp.dest('build/_temp/js'));
             }
         }
     }
@@ -158,10 +170,10 @@ gulp.task('pre', ['clean'], function() {
         .pipe(replace('{language}', language))
         .pipe(replace('{clickTag}', clickTag))
         .pipe(stripDebug())
-        .pipe(gulp.dest('build/temp/js'))
+        .pipe(gulp.dest('build/_temp/js'))
         .pipe(uglify({mangle:false}))
         .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('build/temp/js'));
+        .pipe(gulp.dest('build/_temp/js'));
 
     return gulp.src('app/templates/js/includes/*.js')
         .pipe(replace('{width}', width))
@@ -169,16 +181,42 @@ gulp.task('pre', ['clean'], function() {
         .pipe(replace('{language}', language))
         .pipe(replace('{clickTag}', clickTag))
         .pipe(stripDebug())
-        .pipe(gulp.dest('build/temp/js'))
+        .pipe(gulp.dest('build/_temp/js'))
         .pipe(uglify({mangle:false}))
         .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('build/temp/js'));
+        .pipe(gulp.dest('build/_temp/js'));
 });
 
 
 gulp.task('default', ['generateHtml'], function() {
     gulp.watch('app/templates/**/*.*', ['generateHtml']);
     gulp.watch('app/assets/**/*.*', ['generateHtml']);
+});
+
+gulp.task('package', function() {
+    for (var i in config.sizes) {
+        var done1 = config.sizes[i] == config.sizes[config.sizes.length-1] ? true : false;
+        for (var k in config.text) {
+            for (var j in config.clickTags) {
+                var done2 = config.clickTags[j] == config.clickTags[config.clickTags.length-1] ? true : false;
+                var clickTag = config.clickTags[j];
+                var size = config.sizes[i];
+                var language = k;
+                var name = size+'-'+clickTag+'-'+language;
+                var path = 'build/'+size+'-'+clickTag+'/'+language+'/*';
+
+                if (done1 && done2) {
+                    return gulp.src(path)
+                        .pipe(zip(name+'.zip'))
+                        .pipe(gulp.dest('build/package'));
+                } else {
+                    gulp.src(path)
+                        .pipe(zip(name+'.zip'))
+                        .pipe(gulp.dest('build/package'));
+                }
+            }
+        }
+    }
 });
 
 gulp.task('clean', function() {
