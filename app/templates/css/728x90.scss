@@ -1,5 +1,5 @@
 .{namespace} {
-    $imageSize: 210px;
+    $imageSize: 165px;
 
     #myAd {
         div[id^="background"]{
@@ -16,7 +16,7 @@
         #background2 {
             background-size: cover;
             width: 130px;
-            left: 340px;
+            left: 40px;
         }
         #background3 {
             left: $imageSize;
@@ -37,19 +37,16 @@
         }
         div[id^="copy"] {
             top: 37px;
-            left: 250px;
-            max-width: 260px;
-        }
-        div#copy3 {
-        	top: 26px;
-            left: 55px;
+            width: inherit;
+            max-width: initial;
+            text-align: center;
         }
         #cta {
-        	right: 90px;
-            bottom: 34px;
+        	right: 12px;
+            bottom: 33px;
         }
         #logo {
-        	right: 10px;
+        	right: 14px;
             bottom: 5px;
 
             img {
