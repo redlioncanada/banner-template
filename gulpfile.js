@@ -211,11 +211,11 @@ gulp.task('package', function() {
                 if (done1 && done2 && done3) {
                     return gulp.src(path)
                         .pipe(zip(name+'.zip'))
-                        .pipe(gulp.dest('build/package'));
+                        .pipe(gulp.dest('build/package/'+clickTag));
                 } else {
                     gulp.src(path)
                         .pipe(zip(name+'.zip'))
-                        .pipe(gulp.dest('build/package'));
+                        .pipe(gulp.dest('build/package/'+clickTag));
                 }
             }
         }
