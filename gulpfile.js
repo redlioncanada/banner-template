@@ -195,18 +195,20 @@ gulp.task('default', ['generateHtml'], function() {
 });
 
 gulp.task('package', function() {
+    var cnt = 0;
     for (var i in config.sizes) {
         var done1 = config.sizes[i] == config.sizes[config.sizes.length-1] ? true : false;
         for (var k in config.text) {
+            var done2 = Object.keys(config.text).length == ++cnt;
             for (var j in config.clickTags) {
-                var done2 = config.clickTags[j] == config.clickTags[config.clickTags.length-1] ? true : false;
+                var done3 = config.clickTags[j] == config.clickTags[config.clickTags.length-1] ? true : false;
                 var clickTag = config.clickTags[j];
                 var size = config.sizes[i];
                 var language = k;
                 var name = size+'-'+clickTag+'-'+language;
                 var path = 'build/'+size+'-'+clickTag+'/'+language+'/*';
 
-                if (done1 && done2) {
+                if (done1 && done2 && done3) {
                     return gulp.src(path)
                         .pipe(zip(name+'.zip'))
                         .pipe(gulp.dest('build/package'));
