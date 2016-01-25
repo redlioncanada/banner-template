@@ -6,6 +6,7 @@ var stripDebug  = require('gulp-strip-debug');
 var include     = require('gulp-include');
 var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
+var zip         = require('gulp-zip');
 var minifyHtml  = require('gulp-htmlmin');
 var imageMin    = require('gulp-imagemin');
 var config      = require('./app/config.json');
@@ -173,6 +174,32 @@ gulp.task('pre', ['clean'], function() {
         .pipe(uglify({mangle:false}))
         .pipe(rename({suffix:'.min'}))
         .pipe(gulp.dest('build/temp/js'));
+});
+
+gulp.task('package', function() {
+    for (var i in config.sizes) {
+        var done1 = config.sizes[i] == config.sizes[config.sizes.length-1] ? true : false;
+        for (var k in config.text) {
+            for (var j in config.clickTags) {
+                var done2 = config.clickTags[j] == config.clickTags[config.clickTags.length-1] ? true : false;
+                var clickTag = config.clickTags[j];
+                var size = config.sizes[i];
+                var language = k;
+                var name = size+'-'+clickTag+'-'+language;
+                var path = 'build/'+size+'-'+clickTag+'/'+language+'/*';
+
+                if (done1 && done2) {
+                    return gulp.src(path)
+                        .pipe(zip(name+'.zip'))
+                        .pipe(gulp.dest('build/package'));
+                } else {
+                    gulp.src(path)
+                        .pipe(zip(name+'.zip'))
+                        .pipe(gulp.dest('build/package'));
+                }
+            }
+        }
+    }
 });
 
 
