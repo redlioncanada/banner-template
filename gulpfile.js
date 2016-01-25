@@ -72,7 +72,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/_temp/'))
+                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
                     .pipe(include())
                     .pipe(rename({'suffix':'.fat'}))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
@@ -93,7 +93,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/_temp/'))
+                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
                     .pipe(include())
                     .pipe(minifyHtml())
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
@@ -126,10 +126,10 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{language}', language))
                     .pipe(sass())
-                    .pipe(gulp.dest('build/_temp/css'))
+                    .pipe(gulp.dest('build/temp/css'))
                     .pipe(minifyCss())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/_temp/css'));
+                    .pipe(gulp.dest('build/temp/css'));
 
                 gulp.src('app/templates/css/'+size+'.scss')
                     .pipe(replace('{namespace}', id))
@@ -137,19 +137,19 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
                     .pipe(sass())
-                    .pipe(gulp.dest('build/_temp/css'))
+                    .pipe(gulp.dest('build/temp/css'))
                     .pipe(minifyCss())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/_temp/css'));
+                    .pipe(gulp.dest('build/temp/css'));
 
                 gulp.src('app/templates/html/'+size+'.html')
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
-                    .pipe(gulp.dest('build/_temp/html'))
+                    .pipe(gulp.dest('build/temp/html'))
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/_temp/html'));
+                    .pipe(gulp.dest('build/temp/html'));
 
                 gulp.src('app/templates/js/animations/'+size+'.js')
                     .pipe(replace('{width}', width))
@@ -157,10 +157,10 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{language}', language))
                     .pipe(replace('{clickTag}', clickTag))
                     .pipe(stripDebug())
-                    .pipe(gulp.dest('build/_temp/js'))
+                    .pipe(gulp.dest('build/temp/js'))
                     .pipe(uglify({mangle:false}))
                     .pipe(rename({suffix:'.min'}))
-                    .pipe(gulp.dest('build/_temp/js'));
+                    .pipe(gulp.dest('build/temp/js'));
             }
         }
     }
@@ -171,10 +171,10 @@ gulp.task('pre', ['clean'], function() {
         .pipe(replace('{language}', language))
         .pipe(replace('{clickTag}', clickTag))
         .pipe(stripDebug())
-        .pipe(gulp.dest('build/_temp/js'))
+        .pipe(gulp.dest('build/temp/js'))
         .pipe(uglify({mangle:false}))
         .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('build/_temp/js'));
+        .pipe(gulp.dest('build/temp/js'));
 
     return gulp.src('app/templates/js/includes/*.js')
         .pipe(replace('{width}', width))
@@ -182,10 +182,10 @@ gulp.task('pre', ['clean'], function() {
         .pipe(replace('{language}', language))
         .pipe(replace('{clickTag}', clickTag))
         .pipe(stripDebug())
-        .pipe(gulp.dest('build/_temp/js'))
+        .pipe(gulp.dest('build/temp/js'))
         .pipe(uglify({mangle:false}))
         .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('build/_temp/js'));
+        .pipe(gulp.dest('build/temp/js'));
 });
 
 
