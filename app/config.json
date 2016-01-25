@@ -10,22 +10,26 @@
 	],
 	"text": {
 		"en": {
-			"copy1-highlight": "DESIGNED",
-			"copy1": "TO INSPIRE",
-			"copy2-highlight": "CREATED",
-			"copy2": "TO PERFORM",
-			"copy3-highlight": "INDUSTRY'S",
-			"copy3-prefix": "GET TO KNOW THE",
-			"copy3-suffix": "FIRST 5-DOOR FRIDGE"
+			"copy1-prefix": "CUSTOM,",
+			"copy1-highlight": "TIMELESS,",
+			"copy1-suffix": "EXCEPTIONAL",
+			"copy2-prefix": "BRING YOUR CULINARY",
+			"copy2-highlight": "DREAMS",
+			"copy2-suffix": "TO LIFE",
+			"copy3-prefix": "WITH A KITCHENAID",
+			"copy3-highlight": "BUILT-IN",
+			"copy3-suffix": "REFRIGERATOR"
 		},
 		"fr": {
-			"copy1-highlight": "DESIGNED",
-			"copy1": "TO INSPIRE (fr)",
-			"copy2-highlight": "CREATED",
-			"copy2": "TO PERFORM (fr)",
-			"copy3-highlight": "INDUSTRY'S",
-			"copy3-prefix": "GET TO KNOW THE",
-			"copy3-suffix": "FIRST 5-DOOR FRIDGE (fr)"
+			"copy1-prefix": "CUSTOM,",
+			"copy1-highlight": "TIMELESS,",
+			"copy1-suffix": "EXCEPTIONAL (fr)",
+			"copy2-prefix": "BRING YOUR CULINARY",
+			"copy2-highlight": "DREAMS",
+			"copy2-suffix": "TO LIFE (fr)",
+			"copy3-prefix": "WITH A KITCHENAID",
+			"copy3-highlight": "BUILT-IN",
+			"copy3-suffix": "REFRIGERATOR (fr)"
 		}
 	}
 }

@@ -1,4 +1,6 @@
 .{namespace} {
+    $imageSize: 165px;
+
     #myAd {
         div[id^="background"]{
             top: 0px;
@@ -8,11 +10,22 @@
         }
         #background1 {
             background-position: 0;
+            background-size: cover;
+            width: $imageSize;
+        }
+        #background2 {
+            background-size: cover;
+            background-position: -20px -40px;
+            width: 180px;
+        }
+        #background3 {
+            left: $imageSize;
+            width: $imageSize;
         }
         #gradient{
             top: 0px;
             left: 0px;
-            width: inherit;
+            width: $imageSize;
             height: inherit;
             background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
             background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -24,18 +37,16 @@
         }
         div[id^="copy"] {
             top: 37px;
-            left: 330px;
-            max-width: 260px;
-        }
-        div#copy3 {
-        	top: 26px;
+            width: inherit;
+            max-width: initial;
+            text-align: center;
         }
         #cta {
-        	right: 10px;
-            bottom: 30px;
+        	right: 12px;
+            bottom: 33px;
         }
         #logo {
-        	right: 10px;
+        	right: 14px;
             bottom: 5px;
 
             img {

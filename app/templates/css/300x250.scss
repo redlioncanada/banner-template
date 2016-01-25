@@ -6,9 +6,12 @@
             width: inherit;
             height: inherit;
         }
+        #background2 {
+            background-position: -113px -77px;
+        }
         #gradient{
             top: 0px;
-            left: 0px;
+            left: {width}px;
             width: inherit;
             height: inherit;
             background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
@@ -17,12 +20,15 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
         }
         #cta, #logo{
-            left: 160px;
+            right: 20px;
             max-width: 190px;
         }
+        #cta {
+            left: 146px;
+        }
         div[id^="copy"] {
-            top: 15px;
-            left: 160px;
+            top: 20px;
+            left: 150px;
             max-width: 135px;
         }
         #cta {
