@@ -1,3 +1,15 @@
+/*
+    gulp
+        removes /build
+        compiles templates to /build/_temp
+        combines files to their various sizes-clickTag folders
+
+    gulp package
+        zips build/size-clickTag and puts them in /build/package
+
+*/
+
+require('events').EventEmitter.prototype._maxListeners = 100;
 var gulp        = require('gulp');
 var uglify      = require('gulp-uglify');
 var sass        = require('gulp-sass');
@@ -6,13 +18,15 @@ var stripDebug  = require('gulp-strip-debug');
 var include     = require('gulp-include');
 var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
-var zip         = require('gulp-zip');
 var minifyHtml  = require('gulp-htmlmin');
 var imageMin    = require('gulp-imagemin');
+var zip         = require('gulp-zip');
 var config      = require('./app/config.json');
 var fs          = require("fs");
 var del         = require('del');
 var uuid        = require('node-uuid');
+
+var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
