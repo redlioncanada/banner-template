@@ -4,6 +4,15 @@ html,body{
 }
 
 .{namespace} {
+    font-size: 12pt;
+
+    sup {
+       display: inline-block;
+        line-height: 0px;
+        font-size: 10px;
+        font-weight: 400;
+    }
+
     #border, #myAd {
         width: {width}px;
         height: {height}px;
@@ -41,7 +50,7 @@ html,body{
         #gradient {
             z-index: 1;
         }
-        div[id^="copy"] {
+        div[id^="copy"], #cta {
             color: white;
             font-family: sans-serif;
             line-height: 20px;
@@ -51,10 +60,28 @@ html,body{
         div[id^="copy"] span {
             color: #b72732;
         }
+        #cta {
+            text-align: center;
+        }
+        #cta div {
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            font-size: 8pt;
+            letter-spacing: 1px;
+            color: #b6b8ba;
+            border: 2px solid #6f6f6f;
+            background-color: #2e2e2e;
+            padding: 4px 7px;
+            line-height: 16px;
+            display: inline-block;
+        }
+        #cta:hover div {
+            background-color: #787878;
+            border: 2px solid #787878;
+        }
         #logo, #cta {
             z-index: 3;
         }
-        
     }
 
     .abs {
