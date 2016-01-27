@@ -36,11 +36,13 @@
             max-width: 190px;
         }
         div[id^="copy"] {
-            top: 34px;
+            top: 50%;
+            transform: translateY(-50%);
             width: inherit;
             max-width: initial;
             text-align: right;
             right: 140px;
+            max-width: 450px;
         }
         #cta {
         	right: 12px;
