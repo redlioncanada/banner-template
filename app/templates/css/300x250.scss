@@ -28,10 +28,13 @@
             left: 146px;
             right: initial;
         }
-        div[id^="copy"] {
+        div[id^="copy"], #stars {
             top: 20px;
             left: 150px;
             max-width: 135px;
+        }
+        #stars {
+            top: 167px;
         }
         #cta {
             top: 84px;

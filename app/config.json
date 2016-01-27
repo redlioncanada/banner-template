@@ -10,22 +10,24 @@
 	],
 	"text": {
 		"en": {
-			"copy1-prefix": "NO MATTER THE",
-			"copy1-highlight": "SIZE",
-			"copy1-suffix": "OF YOUR KITCHEN",
-			"copy2-prefix": "THERE'S A",
-			"copy2-highlight": "FRENCH-DOOR",
-			"copy2-suffix": "FRIDGE TO FIT",
+			"copy1-prefix": "SEE WHAT OTHER PEOPLE ARE",
+			"copy1-highlight": "SAYING",
+			"copy1-suffix": "ABOUT KITCHENAID<sup>&reg;</sup> REFRIGERATORS",
+			"copy2-prefix": "“It is",
+			"copy2-highlight": "AWESOME!",
+			"copy2-suffix": "I like all the room and the drawers that keep everything fresh“",
+			"copy2-author": "Kitchenaid Consumer",
 			"learn-more": "LEARN MORE",
 			"reg": "&reg;"
 		},
 		"fr": {
-			"copy1-prefix": "NO MATTER THE",
-			"copy1-highlight": "SIZE",
-			"copy1-suffix": "OF YOUR KITCHEN (fr)",
-			"copy2-prefix": "THERE'S A",
-			"copy2-highlight": "FRENCH-DOOR",
-			"copy2-suffix": "FRIDGE TO FIT (fr)",
+			"copy1-prefix": "SEE WHAT OTHER PEOPLE ARE",
+			"copy1-highlight": "SAYING",
+			"copy1-suffix": "ABOUT KITCHENAID<sup>&reg;</sup> REFRIGERATORS (fr)",
+			"copy2-prefix": "“It is",
+			"copy2-highlight": "AWESOME!",
+			"copy2-suffix": "I like all the room and the drawers that keep everything fresh“ (fr)",
+			"copy2-author": "Kitchenaid Consumer",
 			"learn-more": "LEARN MORE",
 			"reg": "&reg;"
 		}

@@ -13,5 +13,5 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('#background3', 0.8, {left:0, ease:easeIn}, 'frame4')
             .to('#copy1', 0.8, {opacity:0, ease:easeOut}, 'frame4')
             .to('#background2', 0.8, {opacity:1, ease:easeIn})
-            .to('#copy2, #cta', 0.8, {opacity:1, ease:easeIn});
+            .to('#copy2, #stars, #copy2-author', 0.8, {opacity:1, ease:easeIn});
         timeline.add('frame5').add('end');

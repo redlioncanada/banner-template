@@ -60,6 +60,13 @@ html,body{
         div[id^="copy"] span {
             color: #b72732;
         }
+        #copy2, #copy2-author {
+            font-weight: 300;
+        }
+        #copy2-author {
+            top: 134px;
+            font-size: 10px;
+        }
         #cta {
             text-align: center;
         }
