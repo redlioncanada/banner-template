@@ -263,3 +263,30 @@ gulp.task('cleanSave', ['generateHtml'], function() {
 gulp.task('clean', function() {
     return del(['build']);
 });
+
+
+//cleanup before process exit
+var hasCleanedUp = false;
+var evts = [];
+function exitHandler(opts) {
+    process.stdin.resume();
+
+    if (!hasCleanedUp) {
+        del(['cache']).then(i => {
+            hasCleanedUp = true;
+
+            if (evts.indexOf('SIGINT') > -1) {
+                process.exit();
+            }
+        });
+    }
+    if (opts.exit && hasCleanedUp) {
+        process.exit();
+    }
+    evts.push(opts.evt);
+}
+
+process.on('exit', exitHandler.bind(null,{exit:false,evt:'exit'}));
+process.on('SIGINT', exitHandler.bind(null,{exit:true,evt:'SIGINT'}));
+process.on('uncaughtException', exitHandler.bind(null,{exit:true,evt:'uncaughtException'}));
+
