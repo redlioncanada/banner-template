@@ -14,8 +14,8 @@
             width: $imageSize;
         }
         #background2 {
-            background-size: cover;
-            background-position: -20px -40px;
+            background-size: 139%;
+            background-position: -70px -56px;
             width: 180px;
         }
         #background3 {
@@ -41,22 +41,24 @@
             width: inherit;
             max-width: initial;
             text-align: right;
-            right: 140px;
+            left: 130px;
             max-width: 450px;
+            text-align: center;
         }
         #copy3 {
             max-width: 320px;
+            left: 110px;
         }
         #cta {
-        	right: 12px;
-            bottom: 33px;
+        	right: 172px;
+            bottom: 30px;
         }
         #logo {
-        	right: 14px;
-            bottom: 5px;
+        	right: 12px;
+            bottom: 35px;
 
             img {
-            	width: 75px;
+            	width: 129px;
             }
         }
     }

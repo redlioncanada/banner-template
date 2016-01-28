@@ -9,9 +9,9 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('#copy2', 0.8, {opacity:1, ease:easeIn})
             .addDelay(1.5, 'frame3');
         timeline.add('frame3')
-            .to('#gradient', 0.8, {bottom:"-=134", ease:easeIn}, 'frame3')
-            .to('#gradient1', 0.8, {height: 134, ease:easeIn}, 'frame3')
-            .to('#background3', 0.8, {bottom: "-=134", ease:easeIn}, 'frame3')
+            .to('#gradient', 0.8, {bottom:"-=292", ease:easeIn}, 'frame3')
+            .to('#gradient1', 0.8, {height: 292, ease:easeIn}, 'frame3')
+            .to('#background3', 0.8, {bottom: "-=292", ease:easeIn}, 'frame3')
             .to('#copy2', 0.8, {opacity:0, ease:easeOut}, 'frame3')
             .to('#background1,#background3,#gradient,#gradient1', 0, {opacity:0})
             .to('#background2', 0.8, {opacity:1, ease:easeIn})
