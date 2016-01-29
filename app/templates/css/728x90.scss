@@ -9,14 +9,14 @@
             height: inherit;
         }
         #background1 {
-            background-position: 0;
-            background-size: cover;
+            background-position: 0 -14px;
+            background-size: 190px;
             width: $imageSize;
         }
         #background2 {
-            background-size: cover;
-            background-position: -10px -29px;
-            width: 163px;
+            background-size: 139%;
+            background-position: -70px -53px;
+            width: 180px;
         }
         #background3 {
             left: $imageSize;
@@ -41,19 +41,24 @@
             width: inherit;
             max-width: initial;
             text-align: right;
-            right: 140px;
+            left: 130px;
             max-width: 450px;
+            text-align: center;
+        }
+        #copy2 {
+            max-width: 320px;
+            left: 110px;
         }
         #cta {
-        	right: 12px;
-            bottom: 33px;
+            right: 172px;
+            bottom: 30px;
         }
         #logo {
-        	right: 14px;
-            bottom: 5px;
+            right: 12px;
+            bottom: 35px;
 
             img {
-            	width: 75px;
+                width: 129px;
             }
         }
     }
