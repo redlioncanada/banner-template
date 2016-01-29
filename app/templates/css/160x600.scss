@@ -1,6 +1,6 @@
 .{namespace} {
-    $bottomImageHeight: 134px;
-    $bottomImageBottom: 150px;
+    $bottomImageHeight: 287px;
+    $bottomImageBottom: 65px;
 
     $gradientHeight: 60px;
 
@@ -35,14 +35,16 @@
             height: $bottomImageHeight;
         }
         #background1 {
-            background-size: cover;
+            background-size: 670px;
+            background-position: -150px -80px;
             height: $bottomImageHeight;
             bottom: $bottomImageBottom;
         }
         #background2 {
             top: 190px;
             width: {width}+10px;
-            background-position: -116px -70px;
+            background-position: -147px -100px;
+            background-size: 464px;
         }
         #background3 {
             left: 0;
@@ -52,12 +54,9 @@
             z-index: 0;
         }
         div[id^="copy"] {
-            top: 73px;
+            top: 90px;
             padding: 0px 10px;
             text-align: center;
-        }
-        #copy1, #copy2 {
-            top: 140px;
         }
         #cta {
             bottom: 115px;
