@@ -22,7 +22,9 @@ var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
 var minifyHtml  = require('gulp-htmlmin');
 var imageMin    = require('gulp-imagemin');
-var zip         = require('gulp-zip');
+var tar         = require('gulp-tar');
+var gzip        = require('gulp-gzip');
+var ignore      = require('gulp-ignore');
 var config      = require('./app/config.json');
 var fs          = require("fs");
 var del         = require('del');
@@ -229,7 +231,9 @@ gulp.task('package', function() {
                 var path = 'build/'+size+'-'+clickTag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)
-                    .pipe(zip(name+'.zip'))
+                    .pipe(ignore(['index.fat.html']))
+                    .pipe(tar(name))
+                    .pipe(gzip({extension: 'zip'}))
                     .pipe(gulp.dest('build/package/'+clickTag)));
             }
         }
