@@ -1,5 +1,5 @@
 {
-	"name": "test",
+	"name": "012016-ka-refer-built-in",
 	"sizes": [
 		"160x600",
 		"300x250",
@@ -17,9 +17,11 @@
 			"copy2-prefix": "BRING YOUR CULINARY",
 			"copy2-highlight": "DREAMS",
 			"copy2-suffix": "TO LIFE",
-			"copy3-prefix": "WITH A KITCHENAID",
+			"copy3-prefix": "WITH A KITCHENAID<sup>&reg;</sup>",
 			"copy3-highlight": "BUILT-IN",
-			"copy3-suffix": "REFRIGERATOR"
+			"copy3-suffix": "REFRIGERATOR",
+			"learn-more": "LEARN MORE",
+			"reg": "&reg;"
 		},
 		"fr": {
 			"copy1-prefix": "CUSTOM,",
@@ -28,9 +30,11 @@
 			"copy2-prefix": "BRING YOUR CULINARY",
 			"copy2-highlight": "DREAMS",
 			"copy2-suffix": "TO LIFE (fr)",
-			"copy3-prefix": "WITH A KITCHENAID",
+			"copy3-prefix": "WITH A KITCHENAID<sup>&reg;</sup>",
 			"copy3-highlight": "BUILT-IN",
-			"copy3-suffix": "REFRIGERATOR (fr)"
+			"copy3-suffix": "REFRIGERATOR (fr)",
+			"learn-more": "LEARN MORE",
+			"reg": "&reg;"
 		}
 	}
 }

@@ -11,21 +11,28 @@
         /*=include css/global-{size}.css*/
         /*=include css/{size}.css*/
     </style>
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
 </head>
 
 <body>
     <a onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
         <div id="border" class="{language}">
             <div id="myAd">
-                <div id="gradient" class="abs"></div>
-                <div id="gradient1" class="abs"></div>
+                <div id="gradient" class="abs gradient"></div>
+                <div id="gradient1" class="abs gradient"></div>
                 <div id="background1" class="abs"></div>
                 <div id="background2" class="abs hidden"></div>
                 <div id="background3" class="abs"></div>
                 <div id="copy1" class="abs hidden">{copy1-prefix} <span>{copy1-highlight}</span> {copy1-suffix}</div>
                 <div id="copy2" class="abs hidden">{copy2-prefix} <span>{copy2-highlight}</span> {copy2-suffix}</div>
                 <div id="copy3" class="abs hidden">{copy3-prefix} <span>{copy3-highlight}</span> {copy3-suffix}</div>
-                <div id="cta" class="abs hidden scale"><img src="cta.png" /></div>
+                <span id="cta" class="abs hidden scale"><div>{learn-more}</div></span>
                 <div id="logo" class="abs"><img src="logo.png" /></div>
                 <!--=include html/{size}.html -->
             </div>

@@ -22,8 +22,9 @@ var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
 var minifyHtml  = require('gulp-htmlmin');
 var imageMin    = require('gulp-imagemin');
-var changed     = require('gulp-changed');
-var zip         = require('gulp-zip');
+var tar         = require('gulp-tar');
+var gzip        = require('gulp-gzip');
+var ignore      = require('gulp-ignore');
 var config      = require('./app/config.json');
 var fs          = require("fs");
 var del         = require('del');
@@ -50,23 +51,25 @@ gulp.task('generateHtml', ['pre'], function() {
                 var height = size.split('x')[1];
 
                 tasks.push(gulp.src('app/assets/global/**/*')
-                    .pipe(changed('app/assets/global/**/*'))
                     .pipe(imageMin({
                         progressive: true
                     }))
                     .pipe(gulp.dest('build/'+folderName+'/'+language)));
 
                 tasks.push(gulp.src('app/assets/'+language+'/**/*')
-                    .pipe(changed('cache/assets/'+language+'/**/*'))
                     .pipe(imageMin({
                         progressive: true
                     }))
                     .pipe(gulp.dest('build/'+folderName+'/'+language)));
 
+                tasks.push(gulp.src('app/assets/'+size+'/**/*')
+                    .pipe(imageMin({
+                        progressive: true
+                    }))
+                    .pipe(gulp.dest('build/'+folderName+'/'+language)));
 
                 //normal
                 var index = gulp.src('app/templates/index.html')
-                    .pipe(changed('cache/templates'))
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
                     .pipe(replace('{clickTag}', clickTag))
@@ -92,7 +95,6 @@ gulp.task('generateHtml', ['pre'], function() {
 
                 //minified
                 var indexMin = gulp.src('app/templates/index.html')
-                    .pipe(changed('cache/templates'))
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
                     .pipe(replace(/(\/\/=.*|<!--=.*|\/\*=.*)(\.js|\.html|\.css)/g, '$1.min$2'))
@@ -141,7 +143,6 @@ gulp.task('pre', ['clean'], function() {
                 var height = size.split('x')[1];
 
                 tasks.push(gulp.src('app/templates/global.scss')
-                    .pipe(changed('cache/templates'))
                     .pipe(rename({'suffix':'-'+size}))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -154,7 +155,6 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(gulp.dest('build/temp/css')));
 
                 tasks.push(gulp.src('app/templates/css/'+size+'.scss')
-                    .pipe(changed('cache/templates/css'))
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -166,7 +166,6 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(gulp.dest('build/temp/css')));
 
                 tasks.push(gulp.src('app/templates/html/'+size+'.html')
-                    .pipe(changed('cache/templates/html'))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
@@ -176,7 +175,6 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(gulp.dest('build/temp/html')));
 
                 tasks.push(gulp.src('app/templates/js/animations/'+size+'.js')
-                    .pipe(changed('cache/templates/js/animations'))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
@@ -191,7 +189,6 @@ gulp.task('pre', ['clean'], function() {
     }
 
     tasks.push(gulp.src('app/templates/js/clickTags/*.js')
-        .pipe(changed('cache/templates/js/clickTags'))
         .pipe(replace('{width}', width))
         .pipe(replace('{height}', height))
         .pipe(replace('{language}', language))
@@ -203,7 +200,6 @@ gulp.task('pre', ['clean'], function() {
         .pipe(gulp.dest('build/temp/js')));
 
     tasks.push(gulp.src('app/templates/js/includes/*.js')
-        .pipe(changed('cache/templates/js/includes'))
         .pipe(replace('{width}', width))
         .pipe(replace('{height}', height))
         .pipe(replace('{language}', language))
@@ -218,9 +214,9 @@ gulp.task('pre', ['clean'], function() {
 });
 
 
-gulp.task('default', ['cache'], function() {
-    gulp.watch('app/templates/**/*.*', ['generateHtml']);
-    gulp.watch('app/assets/**/*.*', ['generateHtml']);
+gulp.task('default', ['save'], function() {
+    gulp.watch('app/templates/**/*.*', ['save']);
+    gulp.watch('app/assets/**/*.*', ['save']);
 });
 
 gulp.task('package', function() {
@@ -235,18 +231,15 @@ gulp.task('package', function() {
                 var path = 'build/'+size+'-'+clickTag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)
-                    .pipe(zip(name+'.zip'))
+                    .pipe(ignore(['index.fat.html']))
+                    .pipe(tar(name))
+                    .pipe(gzip({extension: 'zip'}))
                     .pipe(gulp.dest('build/package/'+clickTag)));
             }
         }
     }
     return mergeStream(tasks);
 });
-
-gulp.task('cache', ['save'], function() {
-    gulp.src('app/**/*')
-        .pipe(gulp.dest('cache'))
-})
 
 gulp.task('save', ['cleanSave'], function() {
     if (argv.save && config.name) {
@@ -263,30 +256,4 @@ gulp.task('cleanSave', ['generateHtml'], function() {
 gulp.task('clean', function() {
     return del(['build']);
 });
-
-
-//cleanup before process exit
-var hasCleanedUp = false;
-var evts = [];
-function exitHandler(opts) {
-    process.stdin.resume();
-
-    if (!hasCleanedUp) {
-        del(['cache']).then(i => {
-            hasCleanedUp = true;
-
-            if (evts.indexOf('SIGINT') > -1) {
-                process.exit();
-            }
-        });
-    }
-    if (opts.exit && hasCleanedUp) {
-        process.exit();
-    }
-    evts.push(opts.evt);
-}
-
-process.on('exit', exitHandler.bind(null,{exit:false,evt:'exit'}));
-process.on('SIGINT', exitHandler.bind(null,{exit:true,evt:'SIGINT'}));
-process.on('uncaughtException', exitHandler.bind(null,{exit:true,evt:'uncaughtException'}));
 
