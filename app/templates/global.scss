@@ -4,7 +4,21 @@ html,body{
 }
 
 .{namespace} {
-    font-size: 12pt;
+    @font-face {
+      font-family: 'Avenir-Black';
+      src: url('Avenir-Black.eot');
+      src: url('Avenir-Black.eot?#iefix') format('embedded-opentype'),
+           url('Avenir-Black.woff') format('woff'),
+           url('Avenir-Black.ttf') format('truetype'),
+           url('Avenir-Black.svg#Avenir-Black') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-size: 12pt;
+    }
+
+    * {
+        font-family: 'Avenir-Black', sans-serif;
+    }
 
     sup {
        display: inline-block;
@@ -52,7 +66,6 @@ html,body{
         }
         div[id^="copy"], #cta {
             color: white;
-            font-family: sans-serif;
             line-height: 20px;
             font-weight: 700;
             z-index: 2;
