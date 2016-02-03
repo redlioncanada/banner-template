@@ -4,6 +4,11 @@
 
     $gradientHeight: 60px;
 
+    #border, #myAd {
+        width: {width}px;
+        height: {height}px;
+    }
+    
     #myAd {
         div[id^="gradient"] {
             bottom: #{$bottomImageHeight + $bottomImageBottom - $gradientHeight};

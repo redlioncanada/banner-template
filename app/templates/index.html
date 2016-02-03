@@ -5,10 +5,10 @@
     <meta name="ad.size" content="width={width},height={height}">
     <title>{size}</title>
     <script type="text/javascript">
-        //=include js/{clickTag}.js
+        //=include js/clicktags/{clicktag}.js
     </script>
     <style type="text/css">
-        /*=include css/global-{size}.css*/
+        /*=include css/global.css*/
         /*=include css/{size}.css*/
     </style>
     <!--[if gte IE 9]>
@@ -42,10 +42,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
     <script type="text/javascript">
-        //=include js/TimelineLite.addDelay.js
+        //=include js/global/TimelineLite.addDelay.js
 
         function onComplete() {}
-        //=include js/{size}.js
+        //=include js/animations/{size}.js
     </script>
 </body>
 

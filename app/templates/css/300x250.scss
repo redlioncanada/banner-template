@@ -1,4 +1,9 @@
 .{namespace} {
+    #border, #myAd {
+        width: {width}px;
+        height: {height}px;
+    }
+    
     #myAd {
         div[id^="background"] {
             top: 0px;
