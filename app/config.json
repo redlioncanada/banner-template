@@ -11,30 +11,14 @@
 	],
 	"text": {
 		"en": {
-			"copy1-prefix": "CUSTOM,",
-			"copy1-highlight": "TIMELESS,",
-			"copy1-suffix": "EXCEPTIONAL",
-			"copy2-prefix": "BRING YOUR CULINARY",
-			"copy2-highlight": "DREAMS",
-			"copy2-suffix": "TO LIFE",
-			"copy3-prefix": "WITH A KITCHENAID<sup>&reg;</sup>",
-			"copy3-highlight": "BUILT-IN",
-			"copy3-suffix": "REFRIGERATOR",
-			"learn-more": "LEARN MORE",
-			"reg": "&reg;"
-		},
-		"fr": {
-			"copy1-prefix": "CUSTOM,",
-			"copy1-highlight": "TIMELESS,",
-			"copy1-suffix": "EXCEPTIONAL (fr)",
-			"copy2-prefix": "BRING YOUR CULINARY",
-			"copy2-highlight": "DREAMS",
-			"copy2-suffix": "TO LIFE (fr)",
-			"copy3-prefix": "WITH A KITCHENAID<sup>&reg;</sup>",
-			"copy3-highlight": "BUILT-IN",
-			"copy3-suffix": "REFRIGERATOR (fr)",
-			"learn-more": "LEARN MORE",
-			"reg": "&reg;"
+			"copy1": "Care",
+			"copy2": "Care is having everything in the right place",
+			"copy3-prefix": "PerfectPlaces",
+			"copy3-suffix": "system delivers 9 dedicated storage zones for everybody’s favourite foods",
+			"copy5-suffix": "See all of the innovation inside the double drawer refrigerator",
+			"reg": "&reg;",
+			"trade": "&trade;",
+			"learn-more": "Learn More"
 		}
 	}
 }
