@@ -3,18 +3,19 @@ html,body{
     padding: 0;
 }
 
+@font-face {
+  font-family: 'Avenir-Black';
+  src: url('Avenir-Black.eot');
+  src: url('Avenir-Black.eot?#iefix') format('embedded-opentype'),
+       url('Avenir-Black.woff') format('woff'),
+       url('Avenir-Black.ttf') format('truetype'),
+       url('Avenir-Black.svg#Avenir-Black') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12pt;
+}
+    
 .{namespace} {
-    @font-face {
-      font-family: 'Avenir-Black';
-      src: url('Avenir-Black.eot');
-      src: url('Avenir-Black.eot?#iefix') format('embedded-opentype'),
-           url('Avenir-Black.woff') format('woff'),
-           url('Avenir-Black.ttf') format('truetype'),
-           url('Avenir-Black.svg#Avenir-Black') format('svg');
-      font-weight: normal;
-      font-style: normal;
-      font-size: 12pt;
-    }
 
     * {
         font-family: 'Avenir-Black', sans-serif;

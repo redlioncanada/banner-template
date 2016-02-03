@@ -214,13 +214,14 @@ gulp.task('save', ['cleanSave'], function() {
         return gulp.src('build/**/*')
             .pipe(gulp.dest(argv.save+'/'+config.name));
     }
-})
+});
 
 gulp.task('cleanSave', ['generateHtml'], function() {
     if (argv.save && config.name) {
         return del([argv.save+'/'+config.name], {force: true});
     }
-})
+});
+
 gulp.task('clean', function() {
     return del(['build']);
 });
