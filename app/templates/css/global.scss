@@ -49,7 +49,7 @@ html,body{
             background-size: contain;
             z-index: 0;
         }
-        div[id^="copy"] {
+        div[id^="copy"], #yellowbar {
             height: 60px;
             display: table;
         }
@@ -59,12 +59,10 @@ html,body{
             height: 100%;
             vertical-align: middle;
         }
-        div[id^="copy"]:before {
-            content: '';
+        #yellowbar {
             width: 4px;
-            height: 100%;
             background-color: #eeb111;
-            left: -11px;
+            left: 14px;
             position: absolute;
         }
         div[id^="copy"], #cta {
@@ -78,7 +76,7 @@ html,body{
         }
         #copy4.smaller, #copy4.smaller * {
             display: block;
-            font-size: 10pt;
+            font-size: 9pt;
             height: initial;
             line-height: 15px;
             left: 21px;
