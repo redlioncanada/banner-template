@@ -22,3 +22,5 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('#copy4,#cta,#background3', 0.8, {opacity:1, ease:easeIn}, 'frame6')
             .addDelay(1.5, 'frame6');
         timeline.add('frame7').add('end');
+
+        timeline.seek('frame7').pause()
