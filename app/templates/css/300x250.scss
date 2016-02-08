@@ -13,7 +13,7 @@
         #gradient{
             top: 0px;
             left: {width}px;
-            width: inherit;
+            width: ({width}px - 40px);
             height: inherit;
             background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
             background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 75%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
