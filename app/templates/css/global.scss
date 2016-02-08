@@ -51,12 +51,21 @@ html,body{
         }
         div[id^="copy"], #yellowbar {
             height: 60px;
+            overflow: hidden;
             display: table;
         }
-        div[id^="copy"] > * {
+
+        .copy-wrapper {
             display: table-cell;
             width: 100%;
             height: 100%;
+            vertical-align: middle;
+        }
+
+        .copy-wrapper > * {
+            display: table-cell;
+            width: inherit;
+            height: inherit;
             vertical-align: middle;
         }
         #yellowbar {

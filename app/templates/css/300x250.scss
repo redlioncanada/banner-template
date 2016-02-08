@@ -24,7 +24,12 @@
             max-width: 86%;
         }
         div[id^="copy"] {
-            left: 25px;
+            left: 18px;
+            padding-left: 7px;
+            display: block;
+        }
+        .copy-wrapper {
+            display: table;
         }
         #copy2 {
             max-width: 210px;
@@ -33,5 +38,6 @@
             top: 20px;
             right: 20px;
         }
+
     }
 }

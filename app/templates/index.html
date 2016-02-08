@@ -28,9 +28,9 @@
                 <div id="background2" class="abs hidden"></div>
                 <div id="background3" class="abs hidden"></div>
                 <div id="yellowbar" class="abs"></div>
-                <div id="copy1" class="abs hidden"><div>{copy1}</div></div>
-                <div id="copy2" class="abs hidden"><div>{copy2}</div></div>
-                <div id="copy3" class="abs hidden"><div>{copy3-prefix}<sup>{trade}</sup> {copy3-suffix}</div></div>
+                <div id="copy1" class="abs"><div class="copy-wrapper"><div>{copy1}</div></div></div>
+                <div id="copy2" class="abs hidden"><div class="copy-wrapper"><div>{copy2}</div></div></div>
+                <div id="copy3" class="abs hidden"><div class="copy-wrapper"><div>{copy3-prefix}<sup>{trade}</sup> {copy3-suffix}</div></div></div>
                 <!--=include html/copy4/{size}.html -->
                 <span id="cta" class="abs hidden scale"><div><span class="text">{learn-more}</span> <div id="arrow"><div></div></div></div></span>
                 <img id="logo" class="abs" src="logo.png" />
@@ -39,7 +39,6 @@
             </div>
         </div>
     </a>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
