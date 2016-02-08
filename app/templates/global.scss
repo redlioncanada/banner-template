@@ -110,6 +110,7 @@ html,body{
 
         &:hover {
             transform: scale(1.0) translateZ(0);
+            -webkit-transform: scale(1.0) translateZ(0);
         }
     }
 }
