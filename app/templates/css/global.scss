@@ -80,17 +80,17 @@ html,body{
             font-weight: 700;
             z-index: 2;
         }
-        #copy4.smaller {
+        .copy-wrapper.smaller {
             max-width: 53%;
         }
-        #copy4.smaller, #copy4.smaller * {
+        .copy-wrapper.smaller, .copy-wrapper.smaller * {
             display: block;
             font-size: 9pt;
             height: initial;
             line-height: 15px;
             left: 21px;
         }
-        #copy4.smaller:before {
+        .copy-wrapper.smaller:before {
             content: initial;
         }
         #cta {
