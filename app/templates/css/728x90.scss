@@ -49,6 +49,14 @@
             text-align: center;
             max-width: 220px;
         }
+        #copy1 {
+            left: 210px;
+        }
+        #copy1 > * {
+            float: left;
+            display: block;
+            margin-right: 5px;
+        }
         #cta {
         	right: 172px;
             bottom: 33px;
