@@ -5,11 +5,19 @@ var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame2')
             .to('#gradient', 1, {left:70})
             .addDelay(1.5, 'frame3');
-        timeline.add('frame3')
-            .to('#copy1', 0.8, {opacity:1, ease:easeIn})
+        timeline.add('frame3-prefix').add('start')
+            .to('#copy1-prefix', 0.8, {opacity:1, ease:easeIn})
+            .addDelay(2, 'frame3-highlight');
+        timeline.add('frame3-highlight')
+            .to('#copy1-prefix', 0.8, {opacity:0, ease:easeOut})
+            .to('#copy1-highlight', 0.8, {opacity:1, ease:easeIn})
+            .addDelay(2, 'frame3-suffix');
+        timeline.add('frame3-suffix')
+            .to('#copy1-highlight', 0.8, {opacity:0, ease:easeOut})
+            .to('#copy1-suffix', 0.8, {opacity:1, ease:easeIn})
             .addDelay(2, 'frame4');
         timeline.add('frame4')
-            .to('#copy1', 0.8, {opacity:0, ease:easeOut})
+            .to('#copy1-suffix', 0.8, {opacity:0, ease:easeOut})
             .to('#copy2', 0.8, {opacity:1, ease:easeIn})
             .addDelay(1.5, 'frame5');
         timeline.add('frame5')
