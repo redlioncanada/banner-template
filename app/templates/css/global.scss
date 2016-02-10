@@ -81,7 +81,7 @@ html,body{
             z-index: 2;
         }
         .copy-wrapper.smaller {
-            max-width: 53%;
+            max-width: 58%;
         }
         .copy-wrapper.smaller, .copy-wrapper.smaller * {
             display: block;
@@ -110,6 +110,7 @@ html,body{
             letter-spacing: 1px;
             color: #FFFFFF;
             margin-right: 9px;
+            display: block;
         }
         #arrow {
             width: 5px;
