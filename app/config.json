@@ -14,20 +14,20 @@
 			"copy1-prefix": "NO MATTER THE",
 			"copy1-highlight": "SIZE",
 			"copy1-suffix": "OF YOUR KITCHEN",
-			"copy2-prefix": "THERE'S A",
+			"copy2-prefix": "FIND THE PERFECT",
 			"copy2-highlight": "FRENCH-DOOR",
-			"copy2-suffix": "REFRIGERATOR TO FIT",
+			"copy2-suffix": "FRIDGE FOR YOU",
 			"learn-more": "LEARN MORE",
 			"reg": "&reg;"
 		},
 		"fr": {
-			"copy1-prefix": "NO MATTER THE",
-			"copy1-highlight": "SIZE",
-			"copy1-suffix": "OF YOUR KITCHEN (fr)",
-			"copy2-prefix": "THERE'S A",
+			"copy1-prefix": "QUELLE QUE SOIT",
+			"copy1-highlight": "LA TAILLE",
+			"copy1-suffix": "TAILLE DE VOTRE CUISINE",
+			"copy2-prefix": "FIND THE PERFECT",
 			"copy2-highlight": "FRENCH-DOOR",
-			"copy2-suffix": "REFRIGERATOR TO FIT (fr)",
-			"learn-more": "LEARN MORE",
+			"copy2-suffix": "FRIDGE FOR YOU (FR)",
+			"learn-more": "EN SAVOIR PLUS",
 			"reg": "&reg;"
 		}
 	}
