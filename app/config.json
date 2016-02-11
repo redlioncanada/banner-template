@@ -25,17 +25,17 @@
 			"reg": "&reg;"
 		},
 		"fr": {
-			"copy1-prefix": "MAKE YOUR",
-			"copy1-highlight": "DREAM",
-			"copy1-suffix": "KITCHEN A REALITY (fr)",
-			"copy2-prefix": "FROM A COUNTER-DEPTH",
-			"copy2-highlight": "TO",
-			"copy2-suffix": "A BUILT-IN REFRIGERATOR (fr)",
+			"copy1-prefix": "",
+			"copy1-highlight": "RÉALISEZ",
+			"copy1-suffix": "VOTRE CUISINE DE RÊVE",
+			"copy2-prefix": "QUE CE SOIT UN RÉFRIGÉRATEUR ENCASTRÉ",
+			"copy2-highlight": "OU",
+			"copy2-suffix": "À PROFONDEUR DE COMPTOIR",
 			"copy3-prefix": "",
 			"copy3-highlight": "KITCHENAID<sup>&reg;</sup>",
-			"copy3-suffix": "HAS THE RIGHT ONE FOR YOU (fr)",
+			"copy3-suffix": "A LE MODÈLE QUI VOUS CONVIENT",
 			"copy4-prefix": "",
-			"learn-more": "LEARN MORE",
+			"learn-more": "EN SAVOIR PLUS",
 			"reg": "&reg;"
 		}
 	}
