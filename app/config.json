@@ -24,16 +24,16 @@
 			"reg": "&reg;"
 		},
 		"fr": {
-			"copy1-prefix": "CUSTOM,",
-			"copy1-highlight": "TIMELESS,",
-			"copy1-suffix": "EXCEPTIONAL (fr)",
-			"copy2-prefix": "BRING YOUR CULINARY",
-			"copy2-highlight": "DREAMS",
-			"copy2-suffix": "TO LIFE (fr)",
-			"copy3-prefix": "WITH A KITCHENAID<sup>&reg;</sup>",
-			"copy3-highlight": "BUILT-IN",
-			"copy3-suffix": "REFRIGERATOR (fr)",
-			"learn-more": "LEARN MORE",
+			"copy1-prefix": "PERSONNALISÉ,",
+			"copy1-highlight": "INTEMPOREL,",
+			"copy1-suffix": "EXCEPTIONNEL",
+			"copy2-prefix": "DONNEZ VIE À",
+			"copy2-highlight": "VOS RÊVES",
+			"copy2-suffix": "CULINAIRES",
+			"copy3-prefix": "AVEC UN RÉFRIGÉRATEUR",
+			"copy3-highlight": "ENCASTRÉ",
+			"copy3-suffix": "KITCHENAID<sup>&reg;</sup>",
+			"learn-more": "EN SAVOIR PLUS",
 			"reg": "&reg;"
 		}
 	}
