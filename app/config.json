@@ -24,16 +24,16 @@
 			"reg": "&reg;"
 		},
 		"fr": {
-			"copy3-prefix": "GET TO KNOW THE INDUSTRY'S FIRST",
-			"copy3-highlight": "5-DOOR",
-			"copy3-suffix": "REFRIGERATOR (fr)",
+			"copy3-prefix": "DÉCOUVREZ LE RÉFRIGÉRATEUR À",
+			"copy3-highlight": "5 PORTES",
+			"copy3-suffix": "UNE PREMIÈRE DANS L'INDUSTRIE",
 			"copy2-prefix": "",
-			"copy2-highlight": "CREATED",
-			"copy2-suffix": "TO PERFORM (fr)",
+			"copy2-highlight": "CRÉE",
+			"copy2-suffix": "POUR EXCELLER",
 			"copy1-prefix": "",
-			"copy1-highlight": "DESIGNED",
-			"copy1-suffix": "TO INSPIRE (fr)",
-			"learn-more": "LEARN MORE",
+			"copy1-highlight": "CONÇU",
+			"copy1-suffix": "POUR INSPIRER",
+			"learn-more": "EN SAVOIR PLUS",
 			"reg": "&reg;"
 		}
 	}
