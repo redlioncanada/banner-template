@@ -86,8 +86,17 @@ gulp.task('generateHtml', ['pre'], function() {
                 }
 
                 index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
-                    .pipe(include())
-                    .pipe(rename({'suffix':'.fat'}))
+                    .pipe(include());
+
+
+                for (var z in config.text[k]) {
+                    if (z == 'namespace' || z == 'size' || z == 'clickTag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
+                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
+                    }
+                    index.pipe(replace('{'+z+'}', config.text[k][z]));
+                }
+
+                index.pipe(rename({'suffix':'.fat'}))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
 
                 tasks.push(index);
@@ -166,6 +175,15 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(gulp.dest('build/temp/css')));
 
                 tasks.push(gulp.src('app/templates/html/'+size+'.html')
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
+                    .pipe(replace('{language}', language))
+                    .pipe(gulp.dest('build/temp/html'))
+                    .pipe(minifyHtml())
+                    .pipe(rename({'suffix':'.min'}))
+                    .pipe(gulp.dest('build/temp/html')));
+
+                tasks.push(gulp.src('app/templates/html/**/*.html')
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
