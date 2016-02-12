@@ -2,10 +2,10 @@
     gulp
         removes /build
         compiles templates to /build/_temp
-        combines files to their various sizes-clickTag folders
+        combines files to their various sizes-clicktag folders
 
     gulp package
-        zips build/size-clickTag and puts them in /build/package
+        zips build/size-clicktag and puts them in /build/package
 
     --save path
         param that copies the build output to a different directory, requires the name property in config.json
@@ -18,6 +18,7 @@ var sass        = require('gulp-sass');
 var replace     = require('gulp-replace');
 var stripDebug  = require('gulp-strip-debug');
 var include     = require('gulp-include');
+var flatten     = require('gulp-flatten');
 var rename      = require('gulp-rename');
 var minifyCss   = require('gulp-cssnano');
 var minifyHtml  = require('gulp-htmlmin');
@@ -42,27 +43,18 @@ gulp.task('generateHtml', ['pre'], function() {
 
     for (var i in config.sizes) {
         for (var k in config.text) {
-            for (var j in config.clickTags) {
-                var clickTag = config.clickTags[j];
+            for (var j in config.clicktags) {
+                var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
-                var folderName = size+'-'+clickTag;
+                var folderName = size+'-'+clicktag;
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
+                var basePath = 'app/assets';
 
-                tasks.push(gulp.src('app/assets/global/**/*')
-                    .pipe(imageMin({
-                        progressive: true
-                    }))
-                    .pipe(gulp.dest('build/'+folderName+'/'+language)));
-
-                tasks.push(gulp.src('app/assets/'+language+'/**/*')
-                    .pipe(imageMin({
-                        progressive: true
-                    }))
-                    .pipe(gulp.dest('build/'+folderName+'/'+language)));
-
-                tasks.push(gulp.src('app/assets/'+size+'/**/*')
+                var src = generateSrcFolders(basePath,[language,size,clicktag]);
+                tasks.push(gulp.src(src, {base: basePath})
+                    .pipe(flatten())
                     .pipe(imageMin({
                         progressive: true
                     }))
@@ -72,14 +64,14 @@ gulp.task('generateHtml', ['pre'], function() {
                 var index = gulp.src('app/templates/index.html')
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
-                    .pipe(replace('{clickTag}', clickTag))
+                    .pipe(replace('{clicktag}', clicktag))
                     .pipe(replace('{size}', size))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language));
 
                 for (var z in config.text[k]) {
-                    if (z == 'namespace' || z == 'size' || z == 'clickTag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
+                    if (z == 'namespace' || z == 'size' || z == 'clicktag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
                         throw new Error('when binding text, '+z+' is a reserved bind keyword.');
                     }
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
@@ -98,7 +90,7 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
                     .pipe(replace(/(\/\/=.*|<!--=.*|\/\*=.*)(\.js|\.html|\.css)/g, '$1.min$2'))
-                    .pipe(replace('{clickTag}', clickTag))
+                    .pipe(replace('{clicktag}', clicktag))
                     .pipe(replace('{size}', size))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -134,19 +126,21 @@ gulp.task('pre', ['clean'], function() {
 
     for (var i in config.sizes) {
         for (var k in config.text) {
-            for (var j in config.clickTags) {
-                var clickTag = config.clickTags[j];
+            for (var j in config.clicktags) {
+                var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
-                var folderName = size+'-'+clickTag;
+                var folderName = size+'-'+clicktag;
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
-                tasks.push(gulp.src('app/templates/global.scss')
-                    .pipe(rename({'suffix':'-'+size}))
+                var basePath = 'app/templates/css/';
+                var src = generateSrcFolders(basePath, [clicktag,language,size]);
+                tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{namespace}', id))
+                    .pipe(replace('{clicktag}', clicktag))
                     .pipe(replace('{language}', language))
                     .pipe(sass())
                     .pipe(gulp.dest('build/temp/css'))
@@ -154,31 +148,34 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(rename({'suffix':'.min'}))
                     .pipe(gulp.dest('build/temp/css')));
 
-                tasks.push(gulp.src('app/templates/css/'+size+'.scss')
-                    .pipe(replace('{namespace}', id))
+                basePath = 'app/templates/html/';
+                src = generateSrcFolders(basePath, [clicktag,language,size]);
+                var html = gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
-                    .pipe(sass())
-                    .pipe(gulp.dest('build/temp/css'))
-                    .pipe(minifyCss())
-                    .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/css')));
+                    .pipe(replace('{clicktag}', clicktag))
 
-                tasks.push(gulp.src('app/templates/html/'+size+'.html')
-                    .pipe(replace('{width}', width))
-                    .pipe(replace('{height}', height))
-                    .pipe(replace('{language}', language))
-                    .pipe(gulp.dest('build/temp/html'))
+                for (var z in config.text[k]) {
+                    if (z == 'namespace' || z == 'size' || z == 'clicktag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
+                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
+                    }
+                    html.pipe(replace('{'+z+'}', config.text[k][z]));
+                }
+                html.pipe(gulp.dest('build/temp/html'))
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/html')));
+                    .pipe(gulp.dest('build/temp/html'));
+                    
+                tasks.push(html);
 
-                tasks.push(gulp.src('app/templates/js/animations/'+size+'.js')
+                basePath = 'app/templates/js/';
+                src = generateSrcFolders(basePath, [clicktag,language,size]);
+                tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
-                    .pipe(replace('{clickTag}', clickTag))
+                    .pipe(replace('{clicktag}', clicktag))
                     .pipe(stripDebug())
                     .pipe(gulp.dest('build/temp/js'))
                     .pipe(uglify({mangle:false}))
@@ -187,28 +184,6 @@ gulp.task('pre', ['clean'], function() {
             }
         }
     }
-
-    tasks.push(gulp.src('app/templates/js/clickTags/*.js')
-        .pipe(replace('{width}', width))
-        .pipe(replace('{height}', height))
-        .pipe(replace('{language}', language))
-        .pipe(replace('{clickTag}', clickTag))
-        .pipe(stripDebug())
-        .pipe(gulp.dest('build/temp/js'))
-        .pipe(uglify({mangle:false}))
-        .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('build/temp/js')));
-
-    tasks.push(gulp.src('app/templates/js/includes/*.js')
-        .pipe(replace('{width}', width))
-        .pipe(replace('{height}', height))
-        .pipe(replace('{language}', language))
-        .pipe(replace('{clickTag}', clickTag))
-        .pipe(stripDebug())
-        .pipe(gulp.dest('build/temp/js'))
-        .pipe(uglify({mangle:false}))
-        .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('build/temp/js')));
 
     return mergeStream(tasks);
 });
@@ -219,22 +194,24 @@ gulp.task('default', ['save'], function() {
     gulp.watch('app/assets/**/*.*', ['save']);
 });
 
-gulp.task('package', function() {
+gulp.task('package', ['packageTask']);
+gulp.task('publish', ['packageTask']);
+gulp.task('packageTask', function() {
     var tasks = [];
     for (var i in config.sizes) {
         for (var k in config.text) {
-            for (var j in config.clickTags) {
-                var clickTag = config.clickTags[j];
+            for (var j in config.clicktags) {
+                var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
-                var name = size+'-'+clickTag+'-'+language;
-                var path = 'build/'+size+'-'+clickTag+'/'+language+'/*';
+                var name = size+'-'+clicktag+'-'+language;
+                var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)
                     .pipe(ignore(['index.fat.html']))
                     .pipe(tar(name))
                     .pipe(gzip({extension: 'zip'}))
-                    .pipe(gulp.dest('build/package/'+clickTag)));
+                    .pipe(gulp.dest('build/package/'+clicktag)));
             }
         }
     }
@@ -246,14 +223,33 @@ gulp.task('save', ['cleanSave'], function() {
         return gulp.src('build/**/*')
             .pipe(gulp.dest(argv.save+'/'+config.name));
     }
-})
+});
 
 gulp.task('cleanSave', ['generateHtml'], function() {
     if (argv.save && config.name) {
         return del([argv.save+'/'+config.name], {force: true});
     }
-})
+});
+
 gulp.task('clean', function() {
     return del(['build']);
 });
+
+function generateSrcFolders(path,params) {
+    var src = [];
+    if (typeof params === 'string') params = [params];
+
+    for (var i in params) {
+        src.push(path+'/**/'+params[i]+'/*');
+        src.push(path+'/**/'+params[i]+'.*');
+        src.push(path+'/'+params[i]+'.*');
+        src.push(path+'/'+params[i]+'/**/*');
+        src.push(path+'/'+params[i]+'/*');
+    }
+
+    src.push(path+'/global.*');
+    src.push(path+'/global/**/*');
+
+    return src;
+}
 
