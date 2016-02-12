@@ -45,6 +45,12 @@
             left: 150px;
             max-width: 450px;
         }
+        #copy1-prefix {
+            left: 20px;
+        }
+        #copy1 {
+            left: 186px;
+        }
         #copy2 {
             max-width: 440px;
             top: 55px;
@@ -67,6 +73,12 @@
             img {
                 width: 125px;
             }
+        }
+    }
+
+    .fr #myAd {
+        #copy1 {
+            left: 130px;
         }
     }
 }
