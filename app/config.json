@@ -24,15 +24,15 @@
 			"reg": "&reg;"
 		},
 		"fr": {
-			"copy1-prefix": "GET TO KNOW THE INDUSTRY'S FIRST",
-			"copy1-highlight": "5-DOOR",
-			"copy1-suffix": "REFRIGERATOR (fr)",
-			"copy2-prefix": "THAT HAS AN IDEAL",
-			"copy2-highlight": "TEMPERATURE",
-			"copy2-suffix": "FOR NEARLY EVERY INGREDIENT (fr)",
-			"copy3-prefix": "THE",
-			"copy3-highlight": "FIRST",
-			"copy3-suffix": "REFRIGERATOR WITH A DRAWER (fr)",
+			"copy1-prefix": "",
+			"copy1-highlight": "IMAGINEZ",
+			"copy1-suffix": "UN RÉFRIGÉRATEUR",
+			"copy2-prefix": "OÙ VOS ALIMENTS",
+			"copy2-highlight": "FAVORIS",
+			"copy2-suffix": "SONT À PORTÉE DE VOTRE MAIN",
+			"copy3-prefix": "DÉCOUVREZ LE RÉFRIGÉRATEUR À 5 PORTES, UNE",
+			"copy3-highlight": "PREMIÈRE",
+			"copy3-suffix": "DANS L'INDUSTRIE",
 			"learn-more": "LEARN MORE",
 			"reg": "&reg;"
 		}
