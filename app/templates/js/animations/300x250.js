@@ -3,7 +3,7 @@ var easeOut = Power1.easeOut;
 var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1').add('start')
         timeline.add('frame2')
-            .to('#gradient', 1, {left:40})
+            .to('#gradient', 1, {left:30})
             .addDelay(1.5, 'frame3');
         timeline.add('frame3')
             .to('#copy1', 0.8, {opacity:1, ease:easeIn})
