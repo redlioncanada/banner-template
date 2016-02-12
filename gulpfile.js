@@ -76,16 +76,8 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('{size}', size))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
-                    .pipe(replace('{language}', language));
-
-                for (var z in config.text[k]) {
-                    if (z == 'namespace' || z == 'size' || z == 'clickTag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
-                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
-                    }
-                    index.pipe(replace('{'+z+'}', config.text[k][z]));
-                }
-
-                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
+                    .pipe(replace('{language}', language))
+                    .pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
                     .pipe(include());
 
 
@@ -111,15 +103,15 @@ gulp.task('generateHtml', ['pre'], function() {
                     .pipe(replace('{size}', size))
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
-                    .pipe(replace('{language}', language));
+                    .pipe(replace('{language}', language))
+                    .pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
+                    .pipe(include());
 
                 for (var z in config.text[k]) {
                     indexMin.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                indexMin.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../build/temp/'))
-                    .pipe(include())
-                    .pipe(minifyHtml())
+                indexMin.pipe(minifyHtml())
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
 
                 tasks.push(indexMin);
