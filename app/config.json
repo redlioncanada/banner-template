@@ -23,10 +23,10 @@
 		"fr": {
 			"copy1-prefix": "QUELLE QUE SOIT",
 			"copy1-highlight": "LA TAILLE",
-			"copy1-suffix": "TAILLE DE VOTRE CUISINE",
-			"copy2-prefix": "FIND THE PERFECT",
-			"copy2-highlight": "FRENCH-DOOR",
-			"copy2-suffix": "FRIDGE FOR YOU (FR)",
+			"copy1-suffix": "DE VOTRE CUISINE",
+			"copy2-prefix": "KITCHENAID<sup>&reg;</sup> AURA LE RÉFRIGÉRATEUR À",
+			"copy2-highlight": "PORTES FRANÇAISES",
+			"copy2-suffix": "QUI VOUS CONVIENT",
 			"learn-more": "EN SAVOIR PLUS",
 			"reg": "&reg;"
 		}
