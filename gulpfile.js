@@ -150,15 +150,24 @@ gulp.task('pre', ['clean'], function() {
 
                 basePath = 'app/templates/html/';
                 src = generateSrcFolders(basePath, [clicktag,language,size]);
-                tasks.push(gulp.src(src, {base: basePath})
+                var html = gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
                     .pipe(replace('{clicktag}', clicktag))
-                    .pipe(gulp.dest('build/temp/html'))
+
+                for (var z in config.text[k]) {
+                    if (z == 'namespace' || z == 'size' || z == 'clicktag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
+                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
+                    }
+                    html.pipe(replace('{'+z+'}', config.text[k][z]));
+                }
+                html.pipe(gulp.dest('build/temp/html'))
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/html')));
+                    .pipe(gulp.dest('build/temp/html'));
+                    
+                tasks.push(html);
 
                 basePath = 'app/templates/js/';
                 src = generateSrcFolders(basePath, [clicktag,language,size]);
