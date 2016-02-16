@@ -74,6 +74,9 @@ html,body{
             left: 14px;
             position: absolute;
         }
+        div[id^="copy"] .prefix, div[id^="copy"] .suffix {
+            opacity: 0;
+        }
         div[id^="copy"], #cta {
             color: white;
             line-height: 20px;

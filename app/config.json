@@ -11,8 +11,8 @@
 	],
 	"text": {
 		"en": {
-			"copy1": "Care",
-			"copy2": "Care is having everything in the right place",
+			"copy2-prefix": "Care",
+			"copy2-suffix": "is having everything in the right place",
 			"copy3-prefix": "PerfectPlaces",
 			"copy3-suffix": "system delivers 9 dedicated storage zones for everybody’s favourite foods",
 			"copy4-prefix": "See all of the innovation inside the double",
