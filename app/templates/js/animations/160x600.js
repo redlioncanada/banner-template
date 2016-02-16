@@ -7,7 +7,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame2')
             .to('#copy1', 0.8, {opacity:0, ease:easeOut})
             .to('#copy2', 0.8, {opacity:1, ease:easeIn})
-            .addDelay(2, 'frame3');
+            .addDelay(3, 'frame3');
         timeline.add('frame3')
             .to('#gradient', 0.8, {bottom:"-=292", ease:easeIn}, 'frame3')
             .to('#gradient1', 0.8, {height: 292, ease:easeIn}, 'frame3')
