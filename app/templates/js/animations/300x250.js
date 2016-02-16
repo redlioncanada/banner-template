@@ -3,18 +3,14 @@ var easeOut = Power1.easeOut;
 var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1').add('start')
         timeline.add('frame2')
-            .fromTo('#copy1', 0.8, {left:'+=100'}, {left:'-=100'}, 'frame2')
-            .to('#copy1', 0.8, {opacity: 1, ease:easeIn}, 'frame2')
+            .to('#copy2 .prefix', 0.8, {opacity: 1, ease:easeIn}, 'frame2')
             .addDelay(2, 'frame3');
         timeline.add('frame3')
-            .to('#copy1', 0.8, {opacity:0, ease:easeOut}, 'frame3')
-            .fromTo('#copy2', 0.8, {left:'+=100'}, {left:'-=100'}, 'frame3')
-            .to('#copy2', 0.8, {opacity:1, ease:easeIn}, 'frame3')
+            .to('#copy2 .suffix', 0.8, {opacity:1, ease:easeIn}, 'frame3')
             .addDelay(3, 'frame4');
         timeline.add('frame4')
             .to('#background1,#copy2', 0.8, {opacity:0, ease:easeOut},'frame4')
             .to('#copy3,#background2', 0.8, {opacity:1, ease:easeIn},'frame4')
-            .fromTo('#copy3', 0.8, {left:'+=100'}, {left:'-=100'}, 'frame4')
             .addDelay(3, 'frame5');
         timeline.add('frame5')
             .to('#copy3,#yellowbar', 0.8, {opacity:0, ease:easeOut})
