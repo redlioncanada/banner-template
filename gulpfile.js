@@ -197,6 +197,7 @@ gulp.task('default', ['save'], function() {
 gulp.task('package', ['packageTask']);
 gulp.task('publish', ['packageTask']);
 gulp.task('packageTask', function() {
+    var zip = require('gulp-zip');
     var tasks = [];
     for (var i in config.sizes) {
         for (var k in config.text) {
@@ -209,8 +210,7 @@ gulp.task('packageTask', function() {
 
                 tasks.push(gulp.src(path)
                     .pipe(ignore(['index.fat.html']))
-                    .pipe(tar(name))
-                    .pipe(gzip({extension: 'zip'}))
+                    .pipe(zip(name+'.zip'))
                     .pipe(gulp.dest('build/package/'+clicktag)));
             }
         }
