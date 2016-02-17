@@ -210,7 +210,6 @@ gulp.task('packageTask', function() {
 
                 tasks.push(gulp.src(path)
                     .pipe(ignore(['index.fat.html']))
-                    .pipe(tar(name))
                     .pipe(gzip({extension: 'zip'}))
                     .pipe(gulp.dest('build/package/'+clicktag)));
             }
