@@ -12,27 +12,28 @@
 */
 
 require('events').EventEmitter.prototype._maxListeners = 100;
-var gulp        = require('gulp');
-var uglify      = require('gulp-uglify');
-var sass        = require('gulp-sass');
-var replace     = require('gulp-replace');
-var stripDebug  = require('gulp-strip-debug');
-var include     = require('gulp-include');
-var flatten     = require('gulp-flatten');
-var rename      = require('gulp-rename');
-var minifyCss   = require('gulp-cssnano');
-var minifyHtml  = require('gulp-htmlmin');
-var imageMin    = require('gulp-imagemin');
-var tar         = require('gulp-tar');
+var gulp        = require('gulp'); 
+var uglify      = require('gulp-uglify');   //minifies js
+var sass        = require('gulp-sass');     //transpiles sass to css
+var replace     = require('gulp-replace');  //replaces arbitrary text in a file, accepts regex, using to do variable insertions
+var stripDebug  = require('gulp-strip-debug');  //strips console.log and comments
+var include     = require('gulp-include');  //appends files to other files, using in final build step to concatenate everything together
+var flatten     = require('gulp-flatten');  //flattens a directory of files/subdirectories into a flat file structure
+var rename      = require('gulp-rename');   //renames files, to rename .scss to .css for example
+var minifyCss   = require('gulp-cssnano');  //minifies css
+var minifyHtml  = require('gulp-htmlmin');  //minifies html
+var imageMin    = require('gulp-imagemin'); //compresses images to save on file size
+var tar         = require('gulp-tar');  //used in conjunction with gzip, better compression than straight .zip
 var gzip        = require('gulp-gzip');
-var ignore      = require('gulp-ignore');
+var ignore      = require('gulp-ignore');   //ignores specific filenames/directories in gulp.src
+var uuid        = require('node-uuid'); //generates a uuid, using for the app/css prefix
+var mergeStream = require('merge-stream');  //makes it a lot easier to return multiple gulp.src in a single task, makes sure the task waits until everything has completed to return
+var argv        = require('yargs').argv;    //makes querying parameters easier, used for --save
+
 var config      = require('./app/config.json');
 var fs          = require("fs");
 var del         = require('del');
 var path        = require('path');
-var uuid        = require('node-uuid');
-var mergeStream = require('merge-stream')
-var argv        = require('yargs').argv;
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
