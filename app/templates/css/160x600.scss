@@ -5,21 +5,44 @@
     }
     
     #myAd {
+        $containerWidth: 144px;
+        $textPaddingLeft: 10px;
+        
+        #copy-holder {
+            width: ($containerWidth - $textPaddingLeft);
+            right: ($textPaddingLeft - 15px);
+        }
+
+        #copy-container {
+            width: $containerWidth;
+        }
+
+        #copy-container, div#yellow-bar {
+            top: 492px;
+            height: 95px;
+            left: 10px;
+        }
+
+        #yellow-bar {
+            width: 6px;
+        }
+
         #wp-logo {
-            top: 20px;
-            right: 10px;
+            top: 24px;
+            right: 21px;
+            width: 120px;
         }
 
         #edc-logo{
-            bottom: 10px;
-            left: 55px;
-            width: 80%;
+            bottom: 20px;
+            left: 11px;
+            width: 144px;
         }
 
         #cta {
-            top: 200px;
-            left: 175px;
-            width: 33%;
+            bottom: 56px;
+            left: 26px;
+            width: 66%;
         }
 
         #cta img {
