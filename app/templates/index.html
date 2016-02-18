@@ -24,28 +24,25 @@
     <a onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
         <div id="border" class="{language}">
             <div id="myAd">
-                <div id="background1" class="abs"></div>
-                <div id="background2" class="abs hidden"></div>
-                <div id="background3" class="abs hidden"></div>
-                <div id="yellowbar" class="abs"></div>
-
-                <!--=include html/copy2/{size}.html -->
-                <!--=include html/copy3/{size}.html -->
-                <!--=include html/copy4/{size}.html -->
-                <span id="cta" class="abs hidden scale"><div><span class="text">{learn-more}</span> <div id="arrow"><div></div></div></div></span>
-                <img id="logo" class="abs" src="logo.png" />
-                <img id="everydaycare" class="abs hidden" src="everydaycare.png" />
-                <!--=include html/{size}.html -->
+                <div id="background-holder">
+                    <img id="back01" class="banner-background" src="background1.jpg" />
+                    <img id="back02" class="banner-background" src="background2.jpg" />
+                    <img id="back03" class="banner-background" src="background3.jpg" />
+                </div>
+                <div id="edc-logo"><img src="everydaycare.png"></div>
+                <div id="wp-logo"><img src="logo.png" /></div>
+                <div id="copy-container">
+                    <div id="copy-holder"><p>Care</p></div>
+                </div>
+                <div id="yellow-bar"></div>
+                <div id="cta"><img class="ctaUp" src="learn-up.png" /><img class="ctaDown" src="leran-over.png" /></div>
             </div>
         </div>
     </a>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
+    <script src="http://zeptojs.com/zepto.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
     <script type="text/javascript">
-        //=include js/global/TimelineLite.addDelay.js
-
-        function onComplete() {}
+        //=include js/{language}/copy.js
         //=include js/animations/{size}.js
     </script>
 </body>

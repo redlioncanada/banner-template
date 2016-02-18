@@ -176,8 +176,8 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(replace('{height}', height))
                     .pipe(replace('{language}', language))
                     .pipe(replace('{clicktag}', clicktag))
-                    .pipe(stripDebug())
                     .pipe(gulp.dest('build/temp/js'))
+                    .pipe(stripDebug())
                     .pipe(uglify({mangle:false}))
                     .pipe(rename({suffix:'.min'}))
                     .pipe(gulp.dest('build/temp/js')));

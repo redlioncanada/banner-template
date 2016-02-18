@@ -4,6 +4,13 @@
     width: $width;
 }
 
+@font-face {
+    font-family: 'Avenir';
+    src: url('Avenir-Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,body{
     margin: 0;
     padding: 0;
@@ -11,7 +18,8 @@ html,body{
 
 .{namespace} {
     * {
-        font-family: 'Helvetica', sans-serif;
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        color: white;
         font-size: 12pt;
     }
 
@@ -35,116 +43,73 @@ html,body{
     }
 
     #myAd {
-        #background1 {
-            background-image: url('background1.jpg');
-        }
-        #background2 {
-            background-image: url('background2.jpg');
-        }
-        #background3 {
-            background-image: url('background3.jpg');
-        }
-        div[id^="background"] {
-            background-repeat: no-repeat;
-            background-size: contain;
-            z-index: 0;
-        }
-        div[id^="copy"], #yellowbar {
-            height: 60px;
-            overflow: hidden;
-            display: table;
+        #copy-holder p {
+          display: table-cell; 
+          vertical-align: middle;
         }
 
-        .copy-wrapper {
-            display: table-cell;
-            width: 100%;
-            height: 100%;
-            vertical-align: middle;
-        }
-
-        .copy-wrapper > * {
-            display: table-cell;
-            width: inherit;
-            height: inherit;
-            vertical-align: middle;
-        }
-        #yellowbar {
-            width: 4px;
-            background-color: #eeb111;
-            left: 14px;
+        #copy-holder { 
             position: absolute;
+            width: 250px;
+            right: -10px;
         }
-        div[id^="copy"] .prefix, div[id^="copy"] .suffix {
+
+        #copy-container{
+            position: absolute;
+            top: 175px;
+            left: 25px;
+            width: 240px;
+            height: 65px;
+            overflow: hidden;
             opacity: 0;
         }
-        div[id^="copy"], #cta {
-            color: white;
-            line-height: 20px;
-            font-weight: 700;
-            z-index: 2;
-        }
-        .copy-wrapper.smaller {
-            max-width: 58%;
-        }
-        .copy-wrapper.smaller, .copy-wrapper.smaller * {
-            display: block;
-            font-size: 9pt;
-            height: initial;
-            line-height: 15px;
-            left: 21px;
-        }
-        .copy-wrapper.smaller:before {
-            content: initial;
-        }
-        #cta {
-            text-align: center;
-        }
-        #cta > div {
-            -webkit-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
-            border: 2px solid #eeb111;
-            padding: 4px 7px;
-            line-height: 16px;
-            display: inline-block;
-            border-radius: 8px;
-        }
-        #cta .text {
-            font-size: 8pt;
-            letter-spacing: 1px;
-            color: #FFFFFF;
-            margin-right: 9px;
-            display: block;
-        }
-        #arrow {
-            width: 5px;
-            overflow: hidden;
-            position: absolute;
-            right: 8px;
-            bottom: 6px;
-            height: 12px;
 
-            div {
-                width: 3px;
-                height: 3px;
-                transform: rotate(45deg);
-                border: 2px solid white;
-                top: 1px;
-                left: -4px;
-                position: absolute;
-            }
-        }
-        #cta:hover div {
+        #yellow-bar{
+            position: absolute;
+            width: 5px;
             background-color: #eeb111;
+            opacity: 0;
         }
-        #logo, #cta {
-            z-index: 3;
+
+        .banner-background{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0;
         }
-        #logo {
-            width: 95px;
+
+        #cta img {
+            position: absolute;
+            width: 100%
         }
-        #everydaycare {
-            @include horizontal-center(200px);
-            bottom: 20px;
+
+        .ctaDown{
+            opacity: 0;
+        }
+
+        #cta {
+            position: absolute;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        #wp-logo {
+            position: absolute;
+            width: 100px;
+            opacity: 0;
+        }
+
+        #wp-logo img{
+            width: inherit;
+        }
+
+        #edc-logo{
+            position: absolute;
+            opacity: 0;
+        }
+
+        #edc-logo img{
+            width: inherit;
         }
     }
 

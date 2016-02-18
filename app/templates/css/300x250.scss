@@ -5,42 +5,41 @@
     }
     
     #myAd {
-        div[id^="background"] {
-            top: 0px;
-            left: 0px;
-            width: inherit;
-            height: inherit;
-        }
-        #cta, #logo{
-            right: 15px;
-            max-width: 190px;
-        }
-        #cta {
-            bottom: 20px;
-            right: 20px;
-        }
-        div[id^="copy"], #yellowbar {
-            bottom: 15px;
-            max-width: 86%;
-        }
-        div[id^="copy"] {
-            left: 18px;
-            padding-left: 7px;
-            display: block;
-        }
-        .copy-wrapper {
-            display: table;
-        }
-        #copy2 {
-            max-width: 210px;
-        }
-        #copy4 {
-            bottom: 4px;
-        }
-        #logo {
+        #wp-logo {
             top: 20px;
-            right: 20px;
+            right: 10px;
         }
 
+        #edc-logo{
+            bottom: 10px;
+            left: 55px;
+            width: 80%;
+        }
+
+        #cta {
+            top: 200px;
+            left: 175px;
+            width: 33%;
+        }
+
+        #cta img {
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+
+        .banner-background{
+            width: 300px;
+            height: 250px;
+        }
+
+        #yellow-bar{
+            position: absolute;
+            top: 175px;
+            left: 15px;
+            height: 65px;
+            background-color: #eeb111;
+            opacity: 0;
+        }
     }
 }
