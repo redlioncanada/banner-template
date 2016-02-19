@@ -1,5 +1,5 @@
 $(function() {
-    mainBannerCopy[1] = "Care comes<br/>in all shapes<br/>and sizes";
+    // mainBannerCopy[1] = "Care comes<br/>in all shapes<br/>and sizes";
 
     var back01 = $("#back01");
     var back02 = $("#back02");
