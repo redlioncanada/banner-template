@@ -1,6 +1,6 @@
 $(function() {
-    // mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
-    // endFrameCopy = "See our fully<br/>organized French Door Refrigerators";
+    mainBannerCopy[2] = "One drawer, five<br/>unique temperatures";
+    endFrameCopy = "See all of the innovation inside the Double<br/>Drawer Refrigerator";
 
     var back01 = $("#back01");
     var back02 = $("#back02");

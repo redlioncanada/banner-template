@@ -3,4 +3,4 @@ var mainBannerCopy = [
 	"Care is versatile",
 	"One drawer, five unique temperatures"
 ];
-var endFrameCopy = "Get to know all the features on our Double Drawer Refrigerator";
+var endFrameCopy = "See all of the innovation inside the Double Drawer Refrigerator";
