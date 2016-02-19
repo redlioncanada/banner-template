@@ -1,2 +1,6 @@
-var mainBannerCopy = ["Care","Care is organized", "Our Perfect Places&trade; system delivers 9 dedicated storage zones"];
-var endFrameCopy = "See all of the innovation inside the Double Drawer Refrigerator";
+var mainBannerCopy = [
+	"Care",
+	"Care is having everything in the right place",
+	"Flexible storage, for smaller spaces"
+];
+var endFrameCopy = "Discover what's inside our Bottom Freezer Refrigerator";

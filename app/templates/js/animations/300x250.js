@@ -1,4 +1,6 @@
 $(function() {
+    mainBannerCopy[1] = "Care is having everything<br/>in the right place";
+    mainBannerCopy[2] = "Flexible storage,<br/>for smaller spaces";
     var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
