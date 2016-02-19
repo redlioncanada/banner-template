@@ -1,6 +1,6 @@
 $(function() {
-    mainBannerCopy[1] = "Care is<br/>organized";
-    mainBannerCopy[2] = "Our Perfect Places&trade; system<br/>delivers 9 dedicated storage<br/>zones";
+    mainBannerCopy[1] = "Care comes<br/>in all shapes<br/>and sizes";
+
     var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
