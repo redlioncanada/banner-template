@@ -1,7 +1,4 @@
 $(function() {
-    mainBannerCopy[2] = "One drawer, five<br/>unique temperatures";
-    endFrameCopy = "See all of the innovation inside the Double<br/>Drawer Refrigerator";
-
     var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
@@ -72,7 +69,12 @@ $(function() {
         console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
-        copyDiv.css('top', '9px');
+        if ($('#myAd').hasClass('en')) {
+            copyDiv.css('top', '9px');
+        } else if ($('#myAd').hasClass('fr')) {
+            copyDiv.css('top', '-2px');
+        }
+
         copyDiv.css('right', '-3px');
         copyDisplay.css('width', '170px');
         copyDisplay.css('font-size', '14px');

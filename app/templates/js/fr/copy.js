@@ -1,2 +1,6 @@
-var mainBannerCopy = ["Care","Care is orgasnized", "Our Perfect Places&trade; system delivers 9 dedicated storage zones"];
-var endFrameCopy = "See all of the innovation inside the Double Drawer Refrigerator";
+var mainBannerCopy = [
+	"Chaque geste",
+	"Être polyvalent, c'est un geste qui compte",
+	"Un seul tiroir, 5 températures différentes"
+];
+var endFrameCopy = "Découvrez toutes les caractéristiques de notre réfrigérateur à tiroir double";
