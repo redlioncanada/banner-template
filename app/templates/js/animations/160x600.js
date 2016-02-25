@@ -1,5 +1,5 @@
 $(function() {
-    mainBannerCopy[1] = "Care is<br/>organized";
+    mainBannerCopy[1] = "Care is having everything<br/>in the right place";
     mainBannerCopy[2] = "Our Perfect Places&trade; system<br/>delivers 9 dedicated storage<br/>zones";
     var back01 = $("#back01");
     var back02 = $("#back02");
@@ -13,7 +13,7 @@ $(function() {
     var copyContainer = $("#copy-container");
     var copyDiv = $("#copy-holder");
     var copyDisplay = $("#copy-holder > p");
-    var containerHeight = 95;
+    var containerHeight = 115;
     var copyContainerWidth = 144;
     var copyContainerLeft = 10;
 
