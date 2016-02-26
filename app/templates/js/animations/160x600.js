@@ -70,7 +70,13 @@ $(function() {
     function showEndCopy(){
         console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
-        copyContainer.css('top', 479);
+
+        if ($('#border').hasClass('en')) {
+            copyContainer.css('top', 479);
+        } else {
+            copyContainer.css('top', 459);
+        }
+        
         copyDisplay.html(endFrameCopy);
         copyDiv.css({'top': 11, 'right': 2, 'width': 144});
         copyDisplay.addClass('centered');
