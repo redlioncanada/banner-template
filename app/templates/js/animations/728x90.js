@@ -1,5 +1,12 @@
 $(function() {
-    mainBannerCopy[1] = "Care is having everything<br/>in the right place";
+    var lang = $('#border').hasClass('en') ? 'en' : 'fr';
+
+    if (lang == 'en') {
+        mainBannerCopy[1] = "Care is having everything<br/>in the right place";
+    } else {
+        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
+    }
+
     var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
@@ -70,8 +77,15 @@ $(function() {
         console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
-        copyDiv.css('top', '9px');
-        copyDiv.css('right', '-3px');
+
+        if (lang == 'en') {
+            copyDiv.css('top', '9px');
+            copyDiv.css('right', '-3px');
+        } else {
+            copyDiv.css('top', '3px');
+            copyDiv.css('right', '-11px');
+        }
+
         copyDisplay.css('width', '170px');
         copyDisplay.css('font-size', '14px');
         copyDisplay.css('font-weight', '400');
