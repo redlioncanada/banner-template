@@ -1,5 +1,12 @@
 $(function() {
-    mainBannerCopy[1] = "Care comes<br/>in all shapes<br/>and sizes";
+    var lang = $('#border').hasClass('en') ? 'en' : 'fr';
+
+    if (lang == 'en') {
+        mainBannerCopy[1] = "Care comes<br/>in all shapes<br/>and sizes";
+    } else {
+        mainBannerCopy[1] = "Petit ou grand, de toute forme ou taille, chaque geste compte";
+        mainBannerCopy[2] = "Un rangement polyvalent pour accueillir tous<br/>vos articles, petits ou grands";
+    }
 
     var back01 = $("#back01");
     var back02 = $("#back02");

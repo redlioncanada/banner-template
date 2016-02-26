@@ -1,6 +1,13 @@
 $(function() {
-    mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
-    endFrameCopy = "See our fully<br/>organized French Door Refrigerators";
+    var lang = $('#border').hasClass('en') ? 'en' : 'fr';
+
+    if (lang == 'en') {
+        mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
+        endFrameCopy = "See our fully<br/>organized French Door Refrigerators";
+    } else {
+        mainBannerCopy[1] = "Petit ou grand, de toute forme ou taille, chaque geste compte";
+        endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
+    }
 
     var back01 = $("#back01");
     var back02 = $("#back02");
