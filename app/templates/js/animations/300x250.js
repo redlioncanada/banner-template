@@ -1,6 +1,13 @@
 $(function() {
-    mainBannerCopy[1] = "Care is having everything<br/>in the right place";
-    mainBannerCopy[2] = "Our Perfect Places&trade; system<br/>delivers 9 dedicated<br/>storage zones"
+    var lang = $('#border').hasClass('en') ? 'en' : 'fr'
+    if (lang == 'en') {
+        mainBannerCopy[1] = "Care is having everything<br/>in the right place";
+        mainBannerCopy[2] = "Our Perfect Places&trade; system<br/>delivers 9 dedicated storage<br/>zones";
+    } else {
+        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
+        mainBannerCopy[2] = "Notre système PerfectPlaces<sup>TM</sup> offre 9 compartiments spécialisés";
+    }
+
     var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
@@ -71,7 +78,11 @@ $(function() {
         console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
-        copyDiv.css('top', '21px');
+        if (lang == 'en') {
+            copyDiv.css('top', '21px');
+        } else {
+            copyDiv.css('top', '4px');
+        }
         copyDiv.css('right', '-3px');
         copyDisplay.css('width', '150px');
         copyDisplay.css('font-size', '12px');

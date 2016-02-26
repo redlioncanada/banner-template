@@ -1,3 +1,5 @@
+$containerWidth: 400px;
+
 .{namespace} {
     #border, #myAd {
         width: {width}px;
@@ -9,8 +11,6 @@
     }
 
     #myAd {
-        $containerWidth: 400px;
-        
         #copy-holder {
             width: $containerWidth;
             right: -20px;
@@ -61,6 +61,16 @@
             height: 65px;
             background-color: #eeb111;
             opacity: 0;
+        }
+    }
+
+    #border.fr {
+        #copy-holder {
+            width: $containerWidth + 10;
+        }
+
+        #copy-container {
+            width: $containerWidth + 10;
         }
     }
 }

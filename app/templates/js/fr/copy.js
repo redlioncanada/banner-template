@@ -1,2 +1,2 @@
-var mainBannerCopy = ["Care","Care is having everything in the right place", "Care is having everything in the right place"];
-var endFrameCopy = "See all of the innovation inside the Double Drawer Refrigerator";
+var mainBannerCopy = ["Chaque geste","Petit ou grand, de toute forme ou taille, chaque geste compte", "Un rangement polyvalent pour accueillir tous vos articles, petits ou grands"];
+var endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
