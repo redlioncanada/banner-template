@@ -79,8 +79,14 @@ $(function() {
         console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
-        copyDiv.css('top', '9px');
-        copyDiv.css('right', '-3px');
+        if (lang == 'en') {
+            copyDiv.css('top', '9px');
+            copyDiv.css('right', '-3px');
+        } else {
+            copyDiv.css('top', '-3px');
+            copyDiv.css('right', '-11px');
+        }
+
         copyDisplay.css('width', '170px');
         copyDisplay.css('font-size', '14px');
         copyDisplay.css('font-weight', '400');
