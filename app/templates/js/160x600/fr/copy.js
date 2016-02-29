@@ -1,0 +1,1 @@
+mainBannerCopy[1] = "Être polyvalent,<br/>c'est un geste<br/>qui compte";

@@ -32,7 +32,7 @@
         }
 
         #edc-logo{
-            bottom: 7px;
+            bottom: 4px;
             left: 25px;
             width: 230px;
         }
@@ -67,10 +67,15 @@
     .fr #myAd {
         #copy-holder p {
             width: 200px;
+            line-height: 18px;
         }
 
         #cta {
             top: 31px;
+        }
+
+        #edc-logo {
+            top: 27px;
         }
     }
 }

@@ -69,10 +69,10 @@ $(function() {
         console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
-        if ($('#myAd').hasClass('en')) {
-            copyDiv.css('top', '9px');
-        } else if ($('#myAd').hasClass('fr')) {
-            copyDiv.css('top', '-2px');
+        if ($('#border').hasClass('en')) {
+            copyDiv.css('top', '1.5px');
+        } else if ($('#border').hasClass('fr')) {
+            copyDiv.css('top', '-3.5px');
         }
 
         copyDiv.css('right', '-3px');
