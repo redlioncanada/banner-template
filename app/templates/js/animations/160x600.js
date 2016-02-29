@@ -4,7 +4,7 @@ $(function() {
     if (lang == 'en') {
         mainBannerCopy[1] = "Care is having everything<br/>in the right place";
     } else {
-        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
+        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste<br/>qui compte";
     }
 
     var back01 = $("#back01");

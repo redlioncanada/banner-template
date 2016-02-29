@@ -6,7 +6,7 @@ $(function() {
         mainBannerCopy[2] = "Flexible storage,<br/>for smaller spaces";
     } else {
         mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
-        mainBannerCopy[2] = "Rangement polyvalent, pour tout accueillir";
+        mainBannerCopy[2] = "Rangement polyvalent,<br/>pour tout accueillir";
     }
 
     var back01 = $("#back01");
@@ -81,7 +81,7 @@ $(function() {
         copyDisplay.html(endFrameCopy);
 
         if (lang == 'en') {
-            copyDiv.css('top', '21px');
+            copyDiv.css('top', '16px');
         } else {
             copyDiv.css('top', '14px');
         }

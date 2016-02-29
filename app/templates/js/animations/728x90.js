@@ -79,7 +79,7 @@ $(function() {
         copyDisplay.html(endFrameCopy);
 
         if (lang == 'en') {
-            copyDiv.css('top', '9px');
+            copyDiv.css('top', '2px');
             copyDiv.css('right', '-3px');
         } else {
             copyDiv.css('top', '3px');
