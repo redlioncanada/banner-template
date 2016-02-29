@@ -20,7 +20,7 @@ $(function() {
     var copyContainer = $("#copy-container");
     var copyDiv = $("#copy-holder");
     var copyDisplay = $("#copy-holder > p");
-    var containerHeight = 95;
+    var containerHeight = 115;
     var copyContainerWidth = 144;
     var copyContainerLeft = 10;
 

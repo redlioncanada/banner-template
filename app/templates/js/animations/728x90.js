@@ -80,11 +80,12 @@ $(function() {
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
         if (lang == 'en') {
-            copyDiv.css('top', '9px');
+            copyDiv.css('top', '1px');
             copyDiv.css('right', '-3px');
         } else {
-            copyDiv.css('top', '-3px');
+            copyDiv.css('top', '0px');
             copyDiv.css('right', '-11px');
+            copyDiv.css('lineHeight', '16px');
         }
 
         copyDisplay.css('width', '170px');
