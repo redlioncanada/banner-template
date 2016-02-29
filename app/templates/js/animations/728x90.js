@@ -3,7 +3,7 @@ $(function() {
     if (lang == 'en') {
         mainBannerCopy[1] = "Care is having everything<br/>in the right place";
     } else {
-        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
+        mainBannerCopy[1] = "Mettre chaque chose à sa place,<br/>c'est un geste qui compte";
     }
 
     var back01 = $("#back01");
@@ -78,7 +78,7 @@ $(function() {
         copyDisplay.html(endFrameCopy);
 
         if (lang == 'en') {
-            copyDiv.css('top', '9px');
+            copyDiv.css('top', '2px');
         } else {
             copyDiv.css('top', '-3px');
         }

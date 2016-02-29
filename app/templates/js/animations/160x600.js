@@ -2,10 +2,10 @@ $(function() {
     var lang = $('#border').hasClass('en') ? 'en' : 'fr'
     if (lang == 'en') {
         mainBannerCopy[1] = "Care is having everything<br/>in the right place";
-        mainBannerCopy[2] = "Our Perfect Places&trade; system<br/>delivers 9 dedicated storage<br/>zones";
+        mainBannerCopy[2] = "Our Perfect Places&trade; system<br/>delivers 9 dedicated storage zones";
     } else {
-        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
-        mainBannerCopy[2] = "Notre système PerfectPlaces<sup>TM</sup> offre 9 compartiments spécialisés";
+        mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste<br/>qui compte";
+        mainBannerCopy[2] = "Notre système PerfectPlaces<sup>&trade;</sup> offre 9 compartiments spécialisés";
     }
     var back01 = $("#back01");
     var back02 = $("#back02");

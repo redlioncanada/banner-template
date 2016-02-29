@@ -32,7 +32,7 @@ $containerWidth: 400px;
         }
 
         #edc-logo{
-            bottom: 7px;
+            bottom: 3px;
             left: 25px;
             width: 230px;
         }
@@ -71,6 +71,11 @@ $containerWidth: 400px;
 
         #copy-container {
             width: $containerWidth + 10;
+            line-height: 18px;
+        }
+
+        #edc-logo {
+            bottom: 10px;
         }
     }
 }
