@@ -1,2 +1,2 @@
-var mainBannerCopy = ["Chaque geste","Petit ou grand, de toute forme ou taille, chaque geste compte", "Notre système PerfectPlaces<sup>&trade;</sup> offre 9 compartiments spécialisés"];
+var mainBannerCopy = ["Chaque geste compte","Petit ou grand, de toute forme ou taille, chaque geste compte", "Notre système PerfectPlaces<sup>&trade;</sup> offre 9 compartiments spécialisés"];
 var endFrameCopy = "Découvrez l’innovation de l'intérieur de notre réfrigérateur à double tiroir";
