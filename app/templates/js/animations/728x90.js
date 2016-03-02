@@ -5,7 +5,8 @@ $(function() {
         mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
         endFrameCopy = "See our fully<br/>organized French Door Refrigerators";
     } else {
-        mainBannerCopy[1] = "Petit ou grand, de toute forme ou taille, chaque geste compte";
+        mainBannerCopy[0] = "Chaque geste<br/>compte";
+        mainBannerCopy[1] = "De toute forme ou taille,<br/>chaque geste compte";
         endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
     }
 

@@ -6,7 +6,7 @@ $(function() {
         mainBannerCopy[2] = "Flexible storage, so you can<br/>fit everything, big or small";
         endFrameCopy = "See our fully<br/>organized French<br/>Door Refrigerators";
     } else {
-        mainBannerCopy[1] = "Petit ou grand, de toute forme ou taille, chaque geste compte";
+        mainBannerCopy[1] = "De toute forme ou taille,<br/>chaque geste compte";
         mainBannerCopy[2] = "Un rangement polyvalent pour accueillir tous vos articles,<br/>petits ou grands";
         endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
     }
