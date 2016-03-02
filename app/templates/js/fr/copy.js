@@ -1,5 +1,5 @@
 var mainBannerCopy = [
-	"Chaque geste",
+	"Chaque geste compte",
 	"Mettre chaque chose à sa place, c'est un geste qui compte",
 	"Rangement polyvalent, pour tout accueillir"
 ];

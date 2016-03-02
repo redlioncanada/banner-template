@@ -4,6 +4,7 @@ $(function() {
     if (lang == 'en') {
         mainBannerCopy[1] = "Care is having everything<br/>in the right place";
     } else {
+        mainBannerCopy[0] = "Chaque geste <br/>compte";
         mainBannerCopy[1] = "Mettre chaque chose à sa place, c'est un geste qui compte";
     }
 
