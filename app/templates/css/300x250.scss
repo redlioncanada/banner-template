@@ -10,15 +10,9 @@
             right: 10px;
         }
 
-        #edc-logo{
-            bottom: 10px;
-            left: 55px;
-            width: 80%;
-        }
-
         #cta {
             top: 200px;
-            left: 175px;
+            left: 103px;
             width: 33%;
         }
 
@@ -31,6 +25,10 @@
         .banner-background{
             width: {width}px;
             height: {height}px;
+        }
+
+        .banner-image {
+            width: 100%;
         }
 
         #yellow-bar{

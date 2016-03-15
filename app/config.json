@@ -1,5 +1,5 @@
 {
-	"name": "022016-wp-french-door",
+	"name": "032016-wp-cares-promo",
 	"sizes": [
 		"160x600",
 		"300x250",
@@ -10,7 +10,6 @@
 		"doubleclick"
 	],
 	"text": {
-		"en": {},
-		"fr": {}
+		"en": {}
 	}
 }

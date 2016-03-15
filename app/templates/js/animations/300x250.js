@@ -1,21 +1,10 @@
 $(function() {
     var lang = $('#border').hasClass('en') ? 'en' : 'fr';
 
-    if (lang == 'en') {
-        mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
-        mainBannerCopy[2] = "Flexible storage, so you can<br/>fit everything, big or small";
-        endFrameCopy = "See our fully<br/>organized French<br/>Door Refrigerators";
-    } else {
-        mainBannerCopy[1] = "De toute forme ou taille,<br/>chaque geste compte";
-        mainBannerCopy[2] = "Un rangement polyvalent pour accueillir tous vos articles,<br/>petits ou grands";
-        endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
-    }
-
     var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
 
-    var edcLogo = $("#edc-logo");
     var wpLogo = $("#wp-logo");
     var cta = $("#cta");
     var ctaOver = $("#cta > .ctaDown");
@@ -29,6 +18,13 @@ $(function() {
     var copyNum = 0;
     var delayCount = 1;
 
+    if ("{size}" in mainBannerCopy) {
+        mainBannerCopy = mainBannerCopy["{size}"];
+    } else {
+        mainBannerCopy = mainBannerCopy["global"];
+    }
+    console.log(mainBannerCopy);
+
     cta.mouseenter(function(){
         TweenMax.to(ctaOver,0.5, {opacity:1, ease:Power1.easeOut})
     });
@@ -39,15 +35,17 @@ $(function() {
 
 
     function updateCopy(){
-        console.log(copyDiv.height())
+        console.log('updateCopy');
+
         copyDisplay.html(mainBannerCopy[copyNum]);
         var newTop = (containerHeight - copyDiv.height())/2;
         copyDiv.css('top', newTop);
     }
 
     function animateBack(){
+        console.log('animateback');
         updateCopy();
-        TweenMax.to(copyContainer,.8, {left:15, width:250, ease:Power1.easeInOut, delay:.2})
+        TweenMax.to(copyContainer,.8, {left:15, width:270, ease:Power1.easeInOut, delay:.2})
         TweenMax.to(yellowBar,.8, {left:15, ease:Power1.easeInOut, delay:.2, onComplete:playText})
     }
 
@@ -57,8 +55,8 @@ $(function() {
             console.log('playtext '+copyNum);
             var aniDelay = delayCount * 1.5;
             // Animation Block 01
-            TweenMax.to(copyContainer,.6, {left:250, width:1, delay:aniDelay});
-            TweenMax.to(yellowBar,.6, {left:250, ease:Power1.easeOut, delay:aniDelay, onComplete:animateBack});
+            TweenMax.to(copyContainer,.6, {left:270, width:1, delay:aniDelay});
+            TweenMax.to(yellowBar,.6, {left:270, ease:Power1.easeOut, delay:aniDelay, onComplete:animateBack});
 
             copyNum++;
             delayCount ++;
@@ -69,6 +67,7 @@ $(function() {
     }
 
     function showBack(){
+        console.log('showback');
         updateCopy();
         TweenMax.to(back01, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(wpLogo, 1, {opacity:1, ease:Power1.easeInOut, delay:.5});
@@ -77,31 +76,23 @@ $(function() {
         TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:9});
     }
 
-    function showEndCopy(){
-        console.log('showend');
-        TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
-        copyDisplay.html(endFrameCopy);
-        if (lang == 'en') {
-            copyDiv.css('top', '14px');
-        } else {
-            copyDiv.css('top', '4px');
-        }
-        copyDiv.css('right', '-3px');
-        copyDisplay.css('width', '150px');
-        copyDisplay.css('font-size', '12px');
-        copyDisplay.css('font-weight', '400');
-        TweenMax.to(copyContainer, .8, {opacity:1, ease:Power1.easeOut, delay:1});
-        TweenMax.to(cta, .8, {opacity:1, ease:Power1.easeOut, delay:1.5});
-    }
-
     function playEndFrame(){
         console.log('playendframe');
-        TweenMax.to(yellowBar,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
-        TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3});
-        //
-        TweenMax.to(edcLogo, 1, {opacity:1, ease:Power1.easeIn, delay:4});
-        //
-        TweenMax.to(back03, 1, {opacity:1, ease:Power1.easeIn, delay:6, onComplete:showEndCopy});
+        var delay = 3;
+        TweenMax.to(yellowBar,1, {top: {height}+{height}*0.3, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+        TweenMax.to(copyContainer,1, {top: {height}+{height}*0.3, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+
+        back02.css({
+            top: -back02.height(),
+            opacity: 1
+        })
+        back03.css({
+            top: -back02.height()-back03.height(),
+            opacity: 1
+        })
+        TweenMax.to(back02, 1, {top:0, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+        TweenMax.to(back03, 1, {top:-back03.height(), ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+        TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.7});
     }
     showBack();
 });

@@ -174,6 +174,7 @@ gulp.task('pre', ['clean'], function() {
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
+                    .pipe(replace('{size}', size))
                     .pipe(replace('{language}', language))
                     .pipe(replace('{clicktag}', clicktag))
                     .pipe(gulp.dest('build/temp/js'))

@@ -1,18 +1,9 @@
 $(function() {
     var lang = $('#border').hasClass('en') ? 'en' : 'fr';
 
-    if (lang == 'en') {
-        mainBannerCopy[1] = "Care comes<br/>in all shapes<br/>and sizes";
-    } else {
-        mainBannerCopy[1] = "De toute forme ou taille, chaque geste compte";
-        mainBannerCopy[2] = "Un rangement polyvalent pour accueillir tous<br/>vos articles, petits ou grands";
-    }
-
     var back01 = $("#back01");
     var back02 = $("#back02");
-    var back03 = $("#back03");
 
-    var edcLogo = $("#edc-logo");
     var wpLogo = $("#wp-logo");
     var cta = $("#cta");
     var ctaOver = $("#cta > .ctaDown");
@@ -69,6 +60,7 @@ $(function() {
 
     function showBack(){
         updateCopy();
+        console.log('showback');
         TweenMax.to(back01, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(wpLogo, 1, {opacity:1, ease:Power1.easeInOut, delay:.5});
         TweenMax.to(copyContainer, 1, {opacity:1, ease:Power1.easeInOut});
@@ -76,29 +68,13 @@ $(function() {
         TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:9});
     }
 
-    function showEndCopy(){
-        console.log('showend');
-        TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
-        copyContainer.css('top', 479);
-        copyDisplay.html(endFrameCopy);
-        copyDiv.css({'right': 2, 'width': 144});
-        if (lang == 'en') {
-            copyDiv.css('top', '11px');
-        } else {
-            copyDiv.css('top', '-2px');
-        }
-        copyDisplay.addClass('centered');
-        copyDisplay.css({'font-size': 12, 'width': 170});
-        TweenMax.to(copyContainer, .8, {opacity:1, ease:Power1.easeOut, delay:1});
-        TweenMax.to(cta, .8, {opacity:1, ease:Power1.easeOut, delay:1.5});
-    }
-
     function playEndFrame(){
         console.log('playendframe');
         TweenMax.to(yellowBar,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
         TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3});
+        TweenMax.to(back02, .6, {opacity:1, ease:Power1.easeIn,delay:3})
         TweenMax.to(edcLogo, 1, {opacity:1, ease:Power1.easeIn, delay:4});
-        TweenMax.to(back03, 1, {opacity:1, ease:Power1.easeIn, delay:6, onComplete:showEndCopy});
+        TweenMax.to(back03, 1, {opacity:1, ease:Power1.easeIn, delay:6});
     }
     showBack();
 });
