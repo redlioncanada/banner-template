@@ -216,6 +216,13 @@ gulp.task('packageTask', function() {
             }
         }
     }
+
+    for (var j in config.clicktags) {
+        tasks.push(gulp.src('build/package/'+config.clicktags[j]+'/**/*.zip')
+            .pipe(zip(config.name+'-'+config.clicktags[j]+'.zip'))
+            .pipe(gulp.dest('build/package')));
+    }
+
     return mergeStream(tasks);
 });
 
