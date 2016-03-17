@@ -3,6 +3,7 @@ $(function() {
 
     var back01 = $("#back01");
     var back02 = $("#back02");
+    var back03 = $("#back03");
 
     var wpLogo = $("#wp-logo");
     var cta = $("#cta");
@@ -18,6 +19,12 @@ $(function() {
     var yellowBar = $("#yellow-bar");
     var copyNum = 0;
     var delayCount = 1;
+
+    if ("{size}" in mainBannerCopy) {
+        mainBannerCopy = mainBannerCopy["{size}"];
+    } else {
+        mainBannerCopy = mainBannerCopy["global"];
+    }
 
     cta.mouseenter(function(){
         TweenMax.to(ctaOver,0.5, {opacity:1, ease:Power1.easeOut})
@@ -70,11 +77,21 @@ $(function() {
 
     function playEndFrame(){
         console.log('playendframe');
-        TweenMax.to(yellowBar,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
-        TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3});
-        TweenMax.to(back02, .6, {opacity:1, ease:Power1.easeIn,delay:3})
-        TweenMax.to(edcLogo, 1, {opacity:1, ease:Power1.easeIn, delay:4});
-        TweenMax.to(back03, 1, {opacity:1, ease:Power1.easeIn, delay:6});
+        var delay = 3;
+        TweenMax.to(yellowBar,1, {top: {height}+{height}*0.3, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+        TweenMax.to(copyContainer,1, {top: {height}+{height}*0.3, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+
+        back02.css({
+            top: -back02.height(),
+            opacity: 1
+        })
+        back03.css({
+            top: -back02.height()-back03.height(),
+            opacity: 1
+        })
+        TweenMax.to(back02, 1, {top:0, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+        TweenMax.to(back03, 1, {top:-back03.height(), ease:Elastic.easeOut.config(1, 0.5), delay:delay});
+        TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.3});
     }
     showBack();
 });

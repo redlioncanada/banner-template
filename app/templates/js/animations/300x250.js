@@ -92,7 +92,7 @@ $(function() {
         })
         TweenMax.to(back02, 1, {top:0, ease:Elastic.easeOut.config(1, 0.5), delay:delay});
         TweenMax.to(back03, 1, {top:-back03.height(), ease:Elastic.easeOut.config(1, 0.5), delay:delay});
-        TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.7});
+        TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.3});
     }
     showBack();
 });

@@ -1,13 +1,9 @@
-$containerWidth: 400px;
+$containerWidth: 300px;
 
 .{namespace} {
     #border, #myAd {
         width: {width}px;
         height: {height}px;
-    }
-
-    * {
-        font-size: 15pt;
     }
 
     #myAd {
@@ -27,21 +23,20 @@ $containerWidth: 400px;
         }
 
         #wp-logo {
-            top: 25px;
+            top: 12px;
             right: 30px;
-            width: 120px;
+            width: 75px;
         }
 
-        #edc-logo{
-            bottom: 2px;
-            left: 25px;
-            width: 230px;
+        #back02,#back03 {
+            width: 210px;
+            left: 15px;
         }
 
         #cta {
-            top: 28px;
-            left: 235px;
-            width: 120px;
+            top: 51px;
+            right: 22px;
+            width: 90px;
         }
 
         #cta img {
