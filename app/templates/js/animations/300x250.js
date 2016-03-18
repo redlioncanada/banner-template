@@ -13,6 +13,8 @@ $(function() {
     var copyDiv = $("#copy-holder");
     var copyDisplay = $("#copy-holder > p");
     var containerHeight = 65;
+    var copyContainerWidth = 300;
+    var copyContainerLeft = 7;
 
     var yellowBar = $("#yellow-bar");
     var copyNum = 0;
@@ -45,8 +47,8 @@ $(function() {
     function animateBack(){
         console.log('animateback');
         updateCopy();
-        TweenMax.to(copyContainer,.8, {left:15, width:270, ease:Power1.easeInOut, delay:.2})
-        TweenMax.to(yellowBar,.8, {left:15, ease:Power1.easeInOut, delay:.2, onComplete:playText})
+        TweenMax.to(copyContainer,.8, {left:copyContainerLeft, width:copyContainerWidth, ease:Power1.easeInOut, delay:.2})
+        TweenMax.to(yellowBar,.8, {left:copyContainerLeft, ease:Power1.easeInOut, delay:.2, onComplete:playText})
     }
 
     function playText(){
@@ -55,8 +57,8 @@ $(function() {
             console.log('playtext '+copyNum);
             var aniDelay = delayCount * 1.5;
             // Animation Block 01
-            TweenMax.to(copyContainer,.6, {left:270, width:1, delay:aniDelay});
-            TweenMax.to(yellowBar,.6, {left:270, ease:Power1.easeOut, delay:aniDelay, onComplete:animateBack});
+            TweenMax.to(copyContainer,.6, {left:copyContainerWidth, width:1, delay:aniDelay});
+            TweenMax.to(yellowBar,.6, {left:copyContainerWidth, ease:Power1.easeOut, delay:aniDelay, onComplete:animateBack});
 
             copyNum++;
             delayCount ++;

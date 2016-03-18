@@ -1,6 +1,19 @@
-var mainBannerCopy = [
-	"Chaque geste compte",
-	"De toute forme ou taille, chaque geste compte",
-	"Un rangement polyvalent pour accueillir tous vos articles, petits ou grands"
-];
-var endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
+var mainBannerCopy = {
+	"global": [
+		"Chaque geste compte et vous aussi",
+		"Obtenez 20 % de rabais instantané à l’achat de réfrigerators Whirlpool&reg; admissibles<sup>*</sup>"
+	],
+	"160x600": [
+		"Chaque geste compte<br/>et vous aussi",
+		"Obtenez 20 %<br/>de rabais instantané à l’achat",
+		"de réfrigerators Whirlpool&reg; admissibles<sup>*</sup>"
+	],
+	"300x250": [
+		"Chaque geste compte<br/>et vous aussi",
+		"Obtenez 20 % de rabais instantané à l’achat de réfrigerators Whirlpool&reg; admissibles<sup>*</sup>"
+	],
+	"728x90": [
+		"Chaque geste compte<br/>et vous aussi",
+		"Obtenez 20 % de rabais instantané à l’achat de réfrigerators Whirlpool&reg; admissibles<sup>*</sup>"
+	]
+};

@@ -1,9 +1,11 @@
+$containerWidth: 300px;
+
 .{namespace} {
     #border, #myAd {
         width: {width}px;
         height: {height}px;
     }
-    
+
     #myAd {
         #wp-logo {
             top: 20px;
@@ -31,6 +33,14 @@
             width: 100%;
         }
 
+        #copy-holder { 
+            width: 300px;
+        }
+
+        #copy-container{
+            width: 300px;
+        }
+
         #yellow-bar{
             position: absolute;
             top: 175px;
@@ -38,6 +48,21 @@
             height: 65px;
             background-color: #eeb111;
             opacity: 0;
+        }
+    }
+
+    #border.fr {
+        #copy-holder {
+            width: $containerWidth;
+        }
+
+        #copy-container {
+            width: $containerWidth;
+        }
+
+        #cta {
+            width: 53%;
+            left: 70px;
         }
     }
 }
