@@ -39,8 +39,8 @@ $(function() {
     function updateCopy(){
         console.log(copyDiv.height())
         copyDisplay.html(mainBannerCopy[copyNum]);
-        var newTop = (containerHeight - copyDiv.height())/2;
-        copyDiv.css('top', newTop);
+        // var newTop = (containerHeight - copyDiv.height())/2;
+        // copyDiv.css('top', newTop);
     }
 
     function animateBack(){
@@ -70,12 +70,13 @@ $(function() {
         TweenMax.to(back01, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(wpLogo, 1, {opacity:1, ease:Power1.easeInOut, delay:.5});
         TweenMax.to(copyContainer, 1, {opacity:1, ease:Power1.easeInOut});
-        TweenMax.to(yellowBar,.6, {opacity:1, ease:Power1.easeIn, delay:.5, onComplete:playText});
+        TweenMax.to(copyDiv, 1, {opacity:1, ease:Power1.easeInOut});
+        TweenMax.to(copyDisplay, 1, {opacity:1, ease:Power1.easeInOut});
+        TweenMax.to(yellowBar,1, {opacity:1, ease:Power1.easeIn, delay:.5, onComplete:playText});
         TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:9});
     }
 
     function showEndCopy(){
-        console.log('showend');
         TweenMax.to(edcLogo, 1, {opacity:0, ease:Power1.easeIn, delay:.5});
         copyDisplay.html(endFrameCopy);
         if (lang == 'en') {

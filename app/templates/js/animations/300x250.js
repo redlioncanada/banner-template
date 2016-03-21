@@ -25,7 +25,6 @@ $(function() {
     } else {
         mainBannerCopy = mainBannerCopy["global"];
     }
-    console.log(mainBannerCopy);
 
     cta.mouseenter(function(){
         TweenMax.to(ctaOver,0.5, {opacity:1, ease:Power1.easeOut})
@@ -40,8 +39,9 @@ $(function() {
         console.log('updateCopy');
 
         copyDisplay.html(mainBannerCopy[copyNum]);
-        var newTop = (containerHeight - copyDiv.height())/2;
-        copyDiv.css('top', newTop);
+        // var newTop = (containerHeight - copyDiv.height())/2;
+        // copyDiv.css('top', newTop);
+
     }
 
     function animateBack(){
@@ -69,12 +69,14 @@ $(function() {
     }
 
     function showBack(){
-        console.log('showback');
         updateCopy();
+        console.log('showback');
         TweenMax.to(back01, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(wpLogo, 1, {opacity:1, ease:Power1.easeInOut, delay:.5});
         TweenMax.to(copyContainer, 1, {opacity:1, ease:Power1.easeInOut});
-        TweenMax.to(yellowBar,.6, {opacity:1, ease:Power1.easeIn, delay:.5, onComplete:playText});
+        TweenMax.to(copyDiv, 1, {opacity:1, ease:Power1.easeInOut});
+        TweenMax.to(copyDisplay, 1, {opacity:1, ease:Power1.easeInOut});
+        TweenMax.to(yellowBar,1, {opacity:1, ease:Power1.easeIn, delay:.5, onComplete:playText});
         TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:9});
     }
 
