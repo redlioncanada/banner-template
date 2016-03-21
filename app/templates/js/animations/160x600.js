@@ -15,6 +15,7 @@ $(function() {
     var containerHeight = 115;
     var copyContainerWidth = 144;
     var copyContainerLeft = 10;
+    var copyContainerLeft = 7;
 
     var yellowBar = $("#yellow-bar");
     var copyNum = 0;
@@ -96,4 +97,6 @@ $(function() {
         TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.3});
     }
     showBack();
+    TweenMax.to(copyContainer,.8, {left:copyContainerLeft})
+    TweenMax.to(yellowBar,.8, {left:copyContainerLeft})
 });

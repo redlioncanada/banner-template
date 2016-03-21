@@ -15,6 +15,7 @@ $(function() {
     var copyDisplay = $("#copy-holder > p");
     var containerHeight = 65;
     var copyContainerWidth = 300;
+    var copyContainerLeft = 15;
 
     var yellowBar = $("#yellow-bar");
     var copyNum = 0;
@@ -45,8 +46,8 @@ $(function() {
 
     function animateBack(){
         updateCopy();
-        TweenMax.to(copyContainer,.8, {left:15, width:copyContainerWidth, ease:Power1.easeInOut, delay:.2})
-        TweenMax.to(yellowBar,.8, {left:15, ease:Power1.easeInOut, delay:.2, onComplete:playText})
+        TweenMax.to(copyContainer,.8, {left:copyContainerLeft, width:copyContainerWidth, ease:Power1.easeInOut, delay:.2})
+        TweenMax.to(yellowBar,.8, {left:copyContainerLeft, ease:Power1.easeInOut, delay:.2, onComplete:playText})
     }
 
     function playText(){
@@ -60,6 +61,9 @@ $(function() {
             copyNum++;
             delayCount ++;
         } else {
+            if ($('#border').hasClass('fr')) {
+                 TweenMax.to(copyDiv,.3, {right:-20});
+            }
             console.log('playtext end');
             playEndFrame();
         }
@@ -81,10 +85,10 @@ $(function() {
         copyDisplay.html(endFrameCopy);
         if (lang == 'en') {
             copyDiv.css('top', '1px');
-            copyDiv.css('right', '-3px');
+            // copyDiv.css('right', '-3px');
         } else {
             copyDiv.css('top', '0px');
-            copyDiv.css('right', '-11px');
+            // copyDiv.css('right', '-11px');
             copyDiv.css('lineHeight', '16px');
         }
 
@@ -114,4 +118,6 @@ $(function() {
         TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.3});
     }
     showBack();
+    TweenMax.to(copyContainer,.8, {left:copyContainerLeft})
+    TweenMax.to(yellowBar,.8, {left:copyContainerLeft})
 });

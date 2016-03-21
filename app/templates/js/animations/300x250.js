@@ -99,4 +99,6 @@ $(function() {
         TweenMax.to(cta, 0.6, {opacity:1, ease:Power1.easeIn, delay:delay+=1.3});
     }
     showBack();
+    TweenMax.to(copyContainer,.8, {left:copyContainerLeft})
+    TweenMax.to(yellowBar,.8, {left:copyContainerLeft})
 });
