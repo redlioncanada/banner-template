@@ -1,34 +1,14 @@
 {
-	"name": "012016-ka-refer-french-door",
+	"name": "032016-mt-hgtv",
 	"sizes": [
-		"160x600",
 		"300x250",
 		"728x90"
 	],
 	"clickTags": [
-		"adgear",
-		"doubleclick"
+		"adgear"
 	],
 	"text": {
 		"en": {
-			"copy1-prefix": "NO MATTER THE",
-			"copy1-highlight": "SIZE",
-			"copy1-suffix": "OF YOUR KITCHEN",
-			"copy2-prefix": "FIND THE PERFECT",
-			"copy2-highlight": "FRENCH-DOOR",
-			"copy2-suffix": "FRIDGE FOR YOU",
-			"learn-more": "LEARN MORE",
-			"reg": "&reg;"
-		},
-		"fr": {
-			"copy1-prefix": "QUELLE QUE SOIT",
-			"copy1-highlight": "LA TAILLE",
-			"copy1-suffix": "DE VOTRE CUISINE",
-			"copy2-prefix": "KITCHENAID<sup>&reg;</sup> AURA LE RÉFRIGÉRATEUR À",
-			"copy2-highlight": "PORTES FRANÇAISES",
-			"copy2-suffix": "QUI VOUS CONVIENT",
-			"learn-more": "EN SAVOIR PLUS",
-			"reg": "&reg;"
 		}
 	}
 }

@@ -32,57 +32,7 @@ html,body{
     }
 
     #myAd {
-        #background1 {
-            background-image: url('background1.jpg');
-        }
-        #background2 {
-            background-image: url('background2.png');
-            z-index: 1;
-        }
-        div[id^="background"] {
-            background-repeat: no-repeat;
-            z-index: 0;
-        }
-        #background3 {
-            background-color: black;
-            width: {width}px;
-            height: {height}px;
-            left: {width}px;
-        }
-        #gradient {
-            z-index: 1;
-        }
-        div[id^="copy"], #cta {
-            color: white;
-            line-height: 20px;
-            font-weight: 700;
-            z-index: 2;
-        }
-        div[id^="copy"] span {
-            color: #b72732;
-        }
-        #cta {
-            text-align: center;
-        }
-        #cta div {
-            -webkit-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
-            font-size: 8pt;
-            letter-spacing: 1px;
-            color: #b6b8ba;
-            border: 2px solid #6f6f6f;
-            background-color: #2e2e2e;
-            padding: 4px 7px;
-            line-height: 16px;
-            display: inline-block;
-        }
-        #cta:hover div {
-            background-color: #cc0000;
-            border: 2px solid #787878;
-        }
-        #logo, #cta {
-            z-index: 3;
-        }
+
     }
 
     .abs {
