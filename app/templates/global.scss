@@ -15,6 +15,10 @@ html,body{
         font-weight: 400;
     }
 
+    img {
+        position: absolute;
+    }
+
     #border, #myAd {
         width: {width}px;
         height: {height}px;
@@ -35,9 +39,6 @@ html,body{
 
     }
 
-    .abs {
-        position: absolute;
-    }
     .hidden {
         opacity:0;
     }
