@@ -6,6 +6,7 @@ html,body{
 .{namespace} {
     * {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        z-index: 1;
     }
 
     sup {
@@ -36,7 +37,15 @@ html,body{
     }
 
     #myAd {
+        .copy {
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
 
+        #button {
+            z-index: 10;
+        }
     }
 
     .hidden {
