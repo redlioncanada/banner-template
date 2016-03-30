@@ -1,5 +1,38 @@
 .{namespace} {
     #myAd {
+        #copy1 {
+            left: 260px;
+            top: 24px;
+        }
 
+        #copy2, #copy3 {
+            top: 21px;
+            left: 264px;
+        }
+
+        #subtitle {
+            left: 261px;
+            top: 50px;
+        }
+
+        #legal {
+            bottom: 7px;
+            left: 260px;
+        }
+
+        #logo {
+            top: 34px;
+            right: 26px;
+        }
+
+        #washer {
+            bottom: 0px;
+            left: 70px;
+        }
+
+        #button {
+            right: 120px;
+            top: 38px;
+        }
     }
 }
