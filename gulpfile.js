@@ -171,6 +171,7 @@ gulp.task('pre', ['clean'], function() {
 
                 basePath = 'app/templates/js/';
                 src = generateSrcFolders(basePath, [clicktag,language,size]);
+                src.push(basePath+'includes/**/*.js')
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
