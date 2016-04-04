@@ -4,9 +4,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1').add('start')
             .addDelay(1, 'frame2');
         timeline.add('frame2')
-            .to('#copy1,#logo', 0.7, {opacity:1, ease:easeIn})
-            .addDelay(2, 'subtitle-frame2')
-            .to('#subtitle,#legal', 0.7, {opacity:1, ease:easeIn}).add('subtitle-frame2')
+            .to('#copy1,#logo,#subtitle,#legal', 0.7, {opacity:1, ease:easeIn})
             .addDelay(3.5, 'frame3');
         timeline.add('frame3')
             .to('#copy1,#subtitle,#legal', 0.7, {opacity:0, ease:easeOut})
