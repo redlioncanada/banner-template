@@ -5,6 +5,10 @@
 }
 
 .{namespace} {
+    img[src=""]{
+        content: "";
+    }
+
     #border, #myAd {
         background-color: white;
         position: relative;
