@@ -4,32 +4,9 @@
     width: $width;
 }
 
-html,body{
-    margin: 0;
-    padding: 0;
-}
-
 .{namespace} {
-    * {
-        font-family: Helvetica, Arial, sans-serif;
-        color: white;
-        font-size: 12pt;
-    }
-
-    sup {
-        vertical-align: baseline;
-        position: relative;
-        top: -0.4em;
-        font-size: 10px;
-        font-weight: 400;
-    }
-
-    br {
-        line-height: 0px;
-    }
-
     #border, #myAd {
-        background-color: black;
+        background-color: white;
         position: relative;
         top:0px;
         left:0px;
@@ -39,93 +16,89 @@ html,body{
         cursor: pointer;
     }
 
+    #border {border:1px solid #4b4b4b;}
+
     #myAd {
-        #copy-holder p {
-          display: table-cell; 
-          vertical-align: middle;
-        }
-
-        #copy-holder { 
+        .backgrounds {
             position: absolute;
-            width: 270px;
-            right: -10px;
-            display: table;
-            height: 100%;
+            top: 0;
+            left: 0;
         }
 
-        #copy-container{
-            position: absolute;
-            top: 175px;
-            left: 25px;
-            width: 260px;
-            height: 65px;
-            overflow: hidden;
-            opacity: 0;
+        .cta {
+            .cta_normal,.cta_hover,.cta_trigger {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .cta_normal {
+                z-index: 2;
+            }
+            .cta_hover {
+                z-index: 1;
+            }
+            .cta_trigger {
+                z-index: 3;
+            }
         }
 
-        #yellow-bar{
-            position: absolute;
-            width: 5px;
-            background-color: #eeb111;
-            opacity: 0;
-        }
-
-        .banner-background{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            opacity: 0;
-        }
-
-        .banner-image {
-            position: absolute;
-            width: 100%;
-            z-index: 3;
-        }
-
-        #cta img {
-            position: absolute;
-            width: 100%
-        }
-
-        .ctaDown{
-            opacity: 0;
-        }
-
-        #cta {
-            position: absolute;
-            cursor: pointer;
-            opacity: 0;
+        .masks > * {
             z-index: 10;
-        }
-
-        #wp-logo {
             position: absolute;
-            width: 100px;
-            opacity: 0;
-        }
-
-        #wp-logo img{
-            width: inherit;
+            background-color: white;
         }
     }
 
-    .abs {
+    .item {
         position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
     }
-    .hidden {
-        opacity:0;
-    }
-    .scale {
-        -webkit-transition: transform .2s ease-in-out;
-        transition: transform .2s ease-in-out;
-        transform: scale(0.9);
 
-        &:hover {
-            transform: scale(1.0) translateZ(0);
-        }
+    .show {
+        opacity: 1;
     }
-    .centered {
-        text-align: center;
+
+    .hide {
+        opacity: 0;
     }
 }
+
+
+/* reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+q {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }

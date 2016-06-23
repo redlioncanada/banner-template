@@ -1,16 +1,12 @@
 {
-	"name": "032016-wp-cares-promo",
+	"name": "062016-cad-liftgate",
 	"sizes": [
-		"160x600",
-		"300x250",
-		"728x90"
+		"970x250"
 	],
 	"clicktags": [
-		"adgear",
-		"doubleclick"
+		"sharp"
 	],
 	"text": {
-		"en": {},
-		"fr": {}
+		"en": {}
 	}
 }

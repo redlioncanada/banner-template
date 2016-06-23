@@ -24,24 +24,66 @@
     <a onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
         <div id="border" class="{language}">
             <div id="myAd">
-                <div id="background-holder">
-                    <img id="back01" class="banner-background" src="background1.jpg" />
-                    <img id="back02" class="banner-image hidden" src="banner.png" />
-                    <img id="back03" class="banner-image hidden" src="banner-extra.png" />
+                <div class="backgrounds">
+                    <div class="masks">
+                        <div class="top"></div>
+                        <div class="left"></div>
+                        <div class="bottom-right"></div>
+                        <div class="bottom-bottom"></div>
+                    </div>
+                    <img class="background1 item show" src="car.jpg">
+                    <img class="background2 item" src="lifestyle.jpg">
                 </div>
-                <div id="wp-logo"><img src="logo.png" /></div>
-                <div id="copy-container" class="hidden">
-                    <div id="copy-holder" class="hidden"><p class="hidden">Care is showing we care, too</p></div>
+                <div class="copy">
+                    <img class="copy1 item" src="frame1Copy.png">
+                    <img class="copy2 item" src="frame2Copy.png">
                 </div>
-                <div id="yellow-bar"></div>
-                <div id="cta"><img class="ctaUp" src="learn-up.png" /><img class="ctaDown" src="learn-over.png" /></div>
+
+                <img class="logo item" src="logo.png">
+                <div class="cta item">
+                    <div class="cta_trigger"></div>
+                    <img class="cta_normal" src="cta.png">
+                    <img class="cta_over" src="cta_over.png">
+                </div>
             </div>
         </div>
     </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
     <script type="text/javascript">
-        //=include js/includes/zepto.min.js
-        //=include js/includes/TweenMax.min.js
-        //=include js/{language}/copy.js
+        /**
+         * Add a delay at the end of the timeline (or at any label)
+         * @param {number} delay    Seconds to wait
+         * @param {string} position Label name where to start the delay
+         */
+        TimelineLite.prototype.addDelay = function (delay, position) {
+            var delayAttr;
+            if(typeof delay === 'undefined' || isNaN(delay)){
+                return this;//skip if invalid parameters
+            }
+            if (typeof position === 'undefined') {
+                delayAttr = '+=' + delay; //add delay at the end of the timeline
+            } else if (typeof position === 'string') {
+                delayAttr = position + '+=' + delay; //add delay after label
+            } else if(!isNaN(position)) {
+                delayAttr = delay + position; //if they're both numbers, assume absolute position
+            } else {
+                return this; //nothing done
+            }
+
+            return this.set({}, {}, delayAttr);
+        };
+
+        $(document).ready(function() {
+            $('.cta_trigger').mouseover(function() {
+                $('.cta_normal').stop(true).animate({'opacity':0},150)
+            })
+            $('.cta_trigger').mouseout(function() {
+                $('.cta_normal').stop(true).animate({'opacity':1},150)
+            })
+        })
+
+        function onComplete() {}
         //=include js/animations/{size}.js
     </script>
 </body>
