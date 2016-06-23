@@ -14,7 +14,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
 
 
         timeline.add('masks')
-            .to('.masks .top', 2, {width:0,left:"+=50"}, 'start')
-            .to('.masks .left', 2, {height:0,top:"+=50"}, 'start')
-            .to('.masks .bottom-right', 2, {width:0,left:"+=240"}, 'start')
+            .to('.masks .top', 2, {width:0,left:"+=51"}, 'start')
+            .to('.masks .left', 2, {height:0,top:"+=51"}, 'start')
+            .to('.masks .bottom-right', 2, {width:0,left:"+=241"}, 'start')
             .to('.masks .bottom-bottom', 2, {height:0,top:"+=56"}, 'start')
