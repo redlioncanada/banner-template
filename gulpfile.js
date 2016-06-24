@@ -4,6 +4,12 @@
         compiles templates to /build/_temp
         combines files to their various sizes-clicktag folders
 
+    gulp version
+        --bump
+            increases version number in config.json by 1
+        --reset
+            resets version number in config.json to 1
+
     gulp package
         zips build/size-clicktag and puts them in /build/package
 
@@ -31,7 +37,8 @@ var fs          = require("fs");
 var del         = require('del');
 var path        = require('path');
 var uuid        = require('node-uuid');
-var mergeStream = require('merge-stream')
+var mergeStream = require('merge-stream');
+var jeditor     = require("gulp-json-editor");
 var argv        = require('yargs').argv;
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
@@ -207,7 +214,8 @@ gulp.task('packageTask', function() {
                 var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
-                var name = size+'-'+clicktag+'-'+language;
+                var version = config.version
+                var name = config.name.replace('{size}',size).replace('{language}',language).replace('{version}',version)
                 var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)
@@ -239,6 +247,23 @@ gulp.task('cleanSave', ['generateHtml'], function() {
         return del([argv.save+'/'+config.name], {force: true});
     }
 });
+
+gulp.task('version', function() {
+    if (argv.reset) {
+        gulp.src('./app/config.json')
+            .pipe(jeditor({"version": "1"}))
+            .pipe(gulp.dest('./app'))
+    } else if (argv.bump) {
+        gulp.src('./app/config.json')
+            .pipe(jeditor(function(json) {
+                json.version = String(Number(json.version) + 1)
+                return json
+            }))
+            .pipe(gulp.dest('./app'))
+    } else {
+        console.log('No params set!')
+    }
+})
 
 gulp.task('clean', function() {
     return del(['build']);
