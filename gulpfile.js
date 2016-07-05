@@ -7,6 +7,12 @@
     gulp package
         zips build/size-clicktag and puts them in /build/package
 
+    gulp version
+        --bump
+            increases version number in config.json by 1
+        --reset
+            resets version number in config.json to 1
+
     --save path
         param that copies the build output to a different directory, requires the name property in config.json
 */
@@ -32,6 +38,8 @@ var del         = require('del');
 var path        = require('path');
 var uuid        = require('node-uuid');
 var mergeStream = require('merge-stream')
+var mergeStream = require('merge-stream');
+var jeditor     = require("gulp-json-editor");
 var argv        = require('yargs').argv;
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
@@ -166,7 +174,7 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
                     .pipe(gulp.dest('build/temp/html'));
-                    
+
                 tasks.push(html);
 
                 basePath = 'app/templates/js/';
@@ -207,7 +215,8 @@ gulp.task('packageTask', function() {
                 var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
-                var name = size+'-'+clicktag+'-'+language;
+                var version = config.version
+                var name = config.name.replace('{size}',size).replace('{language}',language).replace('{version}',version)
                 var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)
@@ -243,6 +252,23 @@ gulp.task('cleanSave', ['generateHtml'], function() {
 gulp.task('clean', function() {
     return del(['build']);
 });
+
+gulp.task('version', function() {
+    if (argv.reset) {
+        gulp.src('./app/config.json')
+            .pipe(jeditor({"version": "1"}))
+            .pipe(gulp.dest('./app'))
+    } else if (argv.bump) {
+        gulp.src('./app/config.json')
+            .pipe(jeditor(function(json) {
+                json.version = String(Number(json.version) + 1)
+                return json
+            }))
+            .pipe(gulp.dest('./app'))
+    } else {
+        console.log('No params set!')
+    }
+})
 
 function generateSrcFolders(path,params) {
     var src = [];
