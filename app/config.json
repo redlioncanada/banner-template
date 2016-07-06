@@ -1,9 +1,9 @@
 {
-	"name": "062016-cad-liftgate",
-	"packageName": "2017_XT5_PUB_LS_XT5Launch_LiftGate_H5S_CA_{language}_V{version}_{size}",
-	"version": "2",
+	"name": "072016-ja-basic-banner",
+	"packageName": "072016-ja-basic-banner_{language}_V{version}_{size}",
+	"version": "1",
 	"sizes": [
-		"970x250"
+		"600x300"
 	],
 	"clicktags": [
 		"sharp"
