@@ -6,7 +6,9 @@
 		"600x300"
 	],
 	"clicktags": [
-		"sharp"
+		"adwords",
+		"adgear",
+		"doubleclick"
 	],
 	"text": {
 		"eng": {}

@@ -216,7 +216,7 @@ gulp.task('packageTask', function() {
                 var size = config.sizes[i];
                 var language = k;
                 var version = config.version
-                var name = config.name.replace('{size}',size).replace('{language}',language).replace('{version}',version)
+                var name = config.packageName.replace('{size}',size).replace('{language}',language).replace('{version}',version)
                 var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)

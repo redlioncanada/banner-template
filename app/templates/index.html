@@ -25,14 +25,7 @@
         <div id="border" class="{language}">
             <div id="myAd">
                 <div class="backgrounds">
-                    <div class="masks">
-                        <div class="top"></div>
-                        <div class="left"></div>
-                        <div class="bottom-right"></div>
-                        <div class="bottom-bottom"></div>
-                    </div>
-                    <img class="background1 item show" src="car.jpg">
-                    <img class="background2 item" src="lifestyle.jpg">
+                    <img class="background1 item" src="lifestyle.jpg">
                 </div>
                 <div class="copy">
                     <img class="copy1 item" src="frame1Copy.png">
@@ -42,8 +35,8 @@
                 <img class="logo item" src="logo.png">
                 <div class="cta item">
                     <div class="cta_trigger"></div>
-                    <img class="cta_normal" src="cta.png">
-                    <img class="cta_over" src="cta_over.png">
+                    <img class="cta_normal" src="cta_normal.png">
+                    <img class="cta_hover" src="hover.png">
                 </div>
             </div>
         </div>
@@ -73,15 +66,6 @@
 
             return this.set({}, {}, delayAttr);
         };
-
-        $(document).ready(function() {
-            $('.cta_trigger').mouseover(function() {
-                $('.cta_normal').stop(true).animate({'opacity':0},150)
-            })
-            $('.cta_trigger').mouseout(function() {
-                $('.cta_normal').stop(true).animate({'opacity':1},150)
-            })
-        })
 
         function onComplete() {}
         //=include js/animations/{size}.js
