@@ -25,10 +25,10 @@
         <div id="border" class="{language}">
             <div id="myAd">
                 <div class="backgrounds">
-                    <img class="background1 item" src="lifestyle.jpg">
+                    <img class="background1 item show" src="lifestyle.jpg">
                 </div>
                 <div class="copy">
-                    <img class="copy1 item" src="frame1Copy.png">
+                    <img class="copy1 item show" src="frame1Copy.png">
                     <img class="copy2 item" src="frame2Copy.png">
                 </div>
 
@@ -36,12 +36,13 @@
                 <div class="cta item">
                     <div class="cta_trigger"></div>
                     <img class="cta_normal" src="cta_normal.png">
-                    <img class="cta_hover" src="hover.png">
+                    <img class="cta_hover hide" src="cta_hover.png">
                 </div>
             </div>
         </div>
     </a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/cssplugin_1.18.0_71489205621d46cbe88348eeb8fe493f_min.js"></script>
     <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
     <script type="text/javascript">
         /**
@@ -69,6 +70,15 @@
 
         function onComplete() {}
         //=include js/animations/{size}.js
+
+        $(document).ready(function() {
+            $('.cta_trigger').on('mouseover', function() {
+                $('.cta_hover').stop(true).animate({opacity:1})
+            })
+            $('.cta_trigger').on('mouseout', function() {
+                $('.cta_hover').stop(true).animate({opacity:0})
+            })
+        })
     </script>
 </body>
 

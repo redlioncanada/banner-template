@@ -45,7 +45,7 @@ var argv        = require('yargs').argv;
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
 gulp.task('generateHtml', ['pre'], function() {
-    var iframe = '<iframe width="{width}" height="{height}" src="{src}" frameBorder="0" seamless="seamless" scrolling="no"></iframe>{content}';
+    var overviewData = [];
     var overview = gulp.src('app/overview/index.html');
     var tasks = [];
 
@@ -116,12 +116,20 @@ gulp.task('generateHtml', ['pre'], function() {
                 tasks.push(indexMin);
             }
 
-            var x = iframe.replace('{width}',width).replace('{height}',height).replace('{src}','../'+folderName+'/'+language);
-            overview.pipe(replace('{content}', x));
+            overviewData.push({
+                width: width,
+                height: height,
+                src: '../'+folderName+'/'+language,
+                language: language,
+                folderName: folderName,
+                size: size,
+                clicktag: clicktag
+            })
         }
     }
 
-    overview.pipe(replace('{content}', ''))
+    overview.pipe(replace('{data}', 'var data = '+JSON.stringify(overviewData)))
+        .pipe(replace('{name}', config.name))
         .pipe(gulp.dest('build/overview'));
 
     tasks.push(overview);

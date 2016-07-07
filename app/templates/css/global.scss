@@ -4,68 +4,6 @@
     width: $width;
 }
 
-.{namespace} {
-    #border, #myAd {
-        background-color: white;
-        position: relative;
-        top:0px;
-        left:0px;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        cursor: pointer;
-    }
-
-    #border {border:1px solid #4b4b4b;}
-
-    #myAd {
-        .backgrounds {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .cta {
-            .cta_normal,.cta_hover,.cta_trigger {
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-            .cta_normal {
-                z-index: 2;
-            }
-            .cta_hover {
-                z-index: 1;
-            }
-            .cta_trigger {
-                z-index: 3;
-            }
-        }
-
-        .masks > * {
-            z-index: 10;
-            position: absolute;
-            background-color: white;
-        }
-    }
-
-    .item {
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
-    }
-
-    .show {
-        opacity: 1;
-    }
-
-    .hide {
-        opacity: 0;
-    }
-}
-
-
 /* reset.scss */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -102,3 +40,70 @@ q {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+.{namespace} {
+    #border, #myAd {
+        background-color: white;
+        position: relative;
+        top:0px;
+        left:0px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    #myAd {
+        background-color: #000;
+
+        > * {
+            width: 100%;
+            height: 100%;
+        }
+
+        > *:not(.backgrounds) {
+            z-index: 2;
+        }
+
+        .backgrounds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .cta {
+            z-index: 3;
+
+            .cta_normal,.cta_hover,.cta_trigger {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .cta_normal {
+                z-index: 1;
+            }
+            .cta_hover {
+                z-index: 2;
+            }
+            .cta_trigger {
+                z-index: 3;
+            }
+        }
+    }
+
+    .item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .show {
+        opacity: 1;
+    }
+
+    .hide {
+        opacity: 0;
+    }
+}
