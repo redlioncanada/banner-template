@@ -10,6 +10,10 @@ html, body {
     }
 
     #myAd {
+        .background1 {
+            transform: matrix(1.2, 0, 0, 1.2, 60, 0);
+        }
+
         .cta {
             .cta_trigger {
                 left: 215px;
