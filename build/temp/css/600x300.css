@@ -1,0 +1,22 @@
+html, body {
+  width: 600px;
+  height: 300px; }
+
+.redlion-002b7258 #border, .redlion-002b7258 #myAd {
+  width: 600px;
+  height: 300px; }
+
+.redlion-002b7258 #myAd .background1 {
+  transform: matrix(1.1, 0, 0, 1.1, 30, 0); }
+
+.redlion-002b7258 #myAd .logo1 {
+  top: 260px;
+  left: 5px;
+  height: 29px;
+  width: 129px; }
+
+.redlion-002b7258 #myAd .cta .cta_trigger {
+  left: 215px;
+  top: 240px;
+  width: 171px;
+  height: 35px; }

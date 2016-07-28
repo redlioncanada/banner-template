@@ -11,7 +11,13 @@ html, body {
 
     #myAd {
         .background1 {
-            transform: matrix(1.2, 0, 0, 1.2, 60, 0);
+            transform: matrix(1.1, 0, 0, 1.1, 30, 0);
+        }
+        .logo1{
+            top:260px;
+            left:5px;
+            height: 29px;
+            width: 129px;
         }
 
         .cta {
