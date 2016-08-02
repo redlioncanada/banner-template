@@ -1,9 +1,11 @@
 {
-	"name": "072016-ja-basic-banner",
-	"packageName": "072016-ja-basic-banner_{language}_V{version}_{size}",
+	"name": "072816-ka-testimonial-banner",
+	"packageName": "072816-ka-testimonial-banner_{language}_V{version}_{size}",
 	"version": "1",
 	"sizes": [
-		"600x300"
+		"160x600",
+		"300x250",
+		"728x90"
 	],
 	"clicktags": [
 		"adwords",
