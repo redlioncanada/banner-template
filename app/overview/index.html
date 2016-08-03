@@ -1,9 +1,101 @@
 <html>
 <head>
-<title>Overview</title>
+<title>{name} Overview</title>
 </head>
 <body>
-<style>iframe {overflow: hidden; margin: 10px; padding: 0;}</style>
-{content}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script>
+		{data}
+		console.log(data)
+		
+		$(document).ready(function() {
+			for (var i in data) {
+				var creative = data[i]
+				$('.creative-list').append('<li><span class="indicator">> </span><a class="change" href="#" data-index="'+i+'">'+creative['size']+'</a></li>')
+			}
+
+			$('.creative-list a').eq(0).addClass('active')
+			$('.creative-list .indicator').eq(0).css('display', 'block')
+			insertIframe(data[0])
+		})
+
+		$('body').on('click', '.creative-list a', function(e) {
+			var index = Number($(e.target).attr('data-index'))
+
+			$('.creative-list a').removeClass('active')
+			$('.creative-list .indicator').css('display', 'none')
+			$(e.target).addClass('active')
+			$(e.target).closest('li').find('.indicator').css('display', 'block')
+
+			insertIframe(data[index])
+		})
+
+		function insertIframe(creative) {
+			var iframe = generateIframe(creative)
+			$('.iframe-container').html(iframe)
+		}
+
+		function generateIframe(creative) {
+			return $('<iframe/>', {
+				width: creative.width,
+				height: creative.height,
+				src: creative.src,
+				frameBorder: "0",
+				seamless: "seamless",
+				scrolling: "no"
+			})
+		}
+	</script>
+	<style>
+		/*start reset css*/
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		  margin: 0;
+		  padding: 0;
+		  border: 0;
+		  font-size: 100%;
+		  font: inherit;
+		  vertical-align: baseline; }
+
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		  display: block; }
+
+		body {
+		  line-height: 1; }
+
+		ol, ul {
+		  list-style: none; }
+
+		blockquote, q {
+		  quotes: none; }
+
+		blockquote {
+		  &:before, &:after {
+		    content: '';
+		    content: none; } }
+
+		q {
+		  &:before, &:after {
+		    content: '';
+		    content: none; } }
+
+		table {
+		  border-collapse: collapse;
+		  border-spacing: 0; }
+		/*end reset css*/
+
+		html,body {font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+		.iframe-container {margin: 50px 0 70px 0; width: 100%;}
+		iframe {overflow: hidden; margin: 0px; padding: 0; display: block; margin:0 auto;}
+		.creative-list {list-style: none;}
+		.creative-list li {margin: 0 0 10px 50px;}
+		.creative-list li.title {font-size: 1.1em; margin-bottom: 15px;}
+		.creative-list li:not(.title) {margin-left: 70px;}
+		.creative-list .indicator {display: none; float: left; margin-right: 5px; line-height: 15px; font-size: 8pt;}
+	</style>
+
+	<div class="iframe-container"></div>
+	<ul class="creative-list">
+		<li class="title">{name}</li>
+	</ul>
 </body>
 </html>
