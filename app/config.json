@@ -1,14 +1,17 @@
 {
-	"name": "062016-cad-first-ever-CT6",
-	"packageName": "2016_CT6PUB_LSForward_CT6 White_H5S_CA_{language}_V{version}_{size}",
-	"version": "2",
+	"name": "072016-cad-XT5",
+	"packageName": "2016_XT5_CA_{language}_V{version}_{size}",
+	"version": "1",
 	"sizes": [
-		"970x250"
+		"160x600",
+		"300x250",
+		"300x600",
+		"728x90"
 	],
 	"clicktags": [
-		"sharp"
+		"doubleclick"
 	],
 	"text": {
-		"eng": {}
+		"en": {}
 	}
 }

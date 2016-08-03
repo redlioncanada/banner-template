@@ -1,0 +1,38 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #border, #myAd {
+        width: {width}px;
+        height: {height}px;
+    }
+
+    #myAd {
+        .masks {
+            .top {
+                width: 0px;
+                height: 31px;
+                top: 359px;
+                left: 0px;
+            }
+
+            .left {
+                top: 359px;
+                height: 4px;
+                width: 0px;
+                left: 86px
+            }
+        }
+
+        .cta {
+            .cta_trigger {
+                left: 23px;
+                top: 531px;
+                width: 113px;
+                height: 25px;
+            }
+        }
+    }
+}
