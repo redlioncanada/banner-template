@@ -2,30 +2,42 @@ html, body {
   width: 300px;
   height: 250px; }
 
-.redlion-abbe72c3 #border, .redlion-abbe72c3 #myAd {
+.redlion-8b74f7fb #border, .redlion-8b74f7fb #myAd {
   width: 300px;
   height: 250px; }
 
-.redlion-abbe72c3 #myAd .logo {
+.redlion-8b74f7fb #myAd .logo {
   width: 110.5px;
   height: 10.5px;
   top: 230px;
   left: 185px; }
 
-.redlion-abbe72c3 #myAd .background1 {
+.redlion-8b74f7fb #myAd .background1 {
   width: 300px;
   height: 250px;
   background-repeat: no-repeat;
   background-position: 0 0;
   background-color: transparent; }
 
-.redlion-abbe72c3 #myAd .cta .cta_trigger {
-  left: 215px;
-  top: 240px;
-  width: 171px;
-  height: 35px; }
+.redlion-8b74f7fb #myAd .cta .cta_trigger {
+  width: 83px;
+  height: 22px;
+  top: 150px;
+  left: 150px; }
 
-.redlion-abbe72c3 #myAd .grad {
+.redlion-8b74f7fb #myAd .cta .cta_normal {
+  width: 83px;
+  height: 22px;
+  top: 150px;
+  left: 150px; }
+
+.redlion-8b74f7fb #myAd .cta .cta_hover {
+  width: 83px;
+  height: 22px;
+  top: 150px;
+  left: 150px; }
+
+.redlion-8b74f7fb #myAd .grad {
   position: relative;
   background-repeat: repeat-x;
   background-position: top;
@@ -33,7 +45,7 @@ html, body {
   height: 250px;
   z-index: 2; }
 
-.redlion-abbe72c3 #myAd .test {
+.redlion-8b74f7fb #myAd .test {
   position: relative;
   background-position: top;
   height: 89px;
@@ -41,16 +53,30 @@ html, body {
   top: 25px;
   left: 80px; }
 
-.redlion-abbe72c3 #myAd .stars {
+.redlion-8b74f7fb #myAd .stars {
   width: 96px;
   height: 27.5px;
   top: 5px;
   left: 80px; }
 
-.redlion-abbe72c3 #myAd .legal {
+.redlion-8b74f7fb #myAd .legal {
   position: relative;
   background-position: top;
   width: 148px;
   height: 29px;
   top: 60px;
   left: 5px; }
+
+.redlion-8b74f7fb #myAd .bg2 {
+  width: 300px;
+  height: 206px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: transparent;
+  top: 20px; }
+
+.redlion-8b74f7fb #myAd .test2 {
+  height: 98.5px;
+  width: 137.5px;
+  left: 75px;
+  top: 20px; }

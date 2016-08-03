@@ -28,12 +28,27 @@ html, body {
 
         .cta {
             .cta_trigger {
-                left: 215px;
-                top: 240px;
-                width: 171px;
-                height: 35px;
+                width: 83px;
+                height: 22px;
+                top: 150px;
+                left: 150px;
             }
+            .cta_normal {
+                width: 83px;
+                height: 22px;
+                top: 150px;
+                left: 150px;
+            }
+            .cta_hover {
+                width: 83px;
+                height: 22px;
+                top: 150px;
+                left: 150px;
+            }
+
         }
+
+
         .grad{
             position: relative;
             background-repeat: repeat-x;
@@ -64,6 +79,21 @@ html, body {
             height: 29px;
             top: 60px;
             left: 5px;
+        }
+         .bg2{
+            width: {width}px;
+            height:206px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-color: transparent;
+            top:20px;
+        }
+
+        .test2{
+            height: 98.5px;
+            width: 137.5px;
+            left: 75px;
+            top: 20px;
         }
         
     }
