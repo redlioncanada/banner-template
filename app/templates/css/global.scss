@@ -23,13 +23,15 @@
     #border {border:1px solid #4b4b4b;}
 
     #myAd {
-        .backgrounds {
+        .backgrounds, .copy {
             position: absolute;
             top: 0;
             left: 0;
         }
 
         .cta {
+            z-index: 3;
+
             .cta_normal,.cta_hover,.cta_trigger {
                 position: absolute;
                 left: 0;
@@ -44,6 +46,14 @@
             .cta_trigger {
                 z-index: 3;
             }
+        }
+
+        .backgrounds {
+            z-index: 1;
+        }
+
+        .copy {
+            z-index: 3;
         }
 
         .masks > * {
