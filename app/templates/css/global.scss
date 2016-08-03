@@ -30,7 +30,8 @@
         }
 
         .cta {
-            z-index: 3;
+            z-index: 6;
+            cursor: pointer;
 
             .cta_normal,.cta_hover,.cta_trigger {
                 position: absolute;
@@ -54,6 +55,10 @@
 
         .copy {
             z-index: 3;
+        }
+
+        .logo {
+            z-index: 5;
         }
 
         .masks > * {
