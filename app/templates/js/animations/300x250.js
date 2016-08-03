@@ -17,3 +17,4 @@ var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame3')
             .to('.backgrounds,.copy2', 1, {top:"-=30", ease:easeOut}, 'frame3')
             .to('.logo,.cta', 2, {opacity:1, ease:easeOut}, 'frame3+=0.3')
+        timeline.add('end')

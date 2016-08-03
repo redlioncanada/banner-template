@@ -1,0 +1,52 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #border, #myAd {
+        width: {width}px;
+        height: {height}px;
+    }
+
+    #myAd {
+        .masks {
+            .top {
+                width: 47px;
+                height: 35px;
+                top: {height}px;
+                left: 0px;
+            }
+
+            .left {
+                top: 56px;
+                height: 0px;
+                width: 4px;
+                left: 43px
+            }
+
+            .bottom-right {
+                top: 0px;
+                height: 0px;
+                width: 48px;
+                left: 261px;
+            }
+
+            .bottom-bottom {
+                top: 55px;
+                height: 0px;
+                width: 4px;
+                left: 261px;
+            }
+        }
+
+        .cta {
+            .cta_trigger {
+                left: 609px;
+                top: 34px;
+                width: 98px;
+                height: 23px;
+            }
+        }
+    }
+}

@@ -11,3 +11,4 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('.copy1', 2, {opacity:1, ease:easeOut})
         timeline.add('frame4')
             .to('.cta', 2, {opacity:1, ease:easeOut})
+        timeline.add('end')
