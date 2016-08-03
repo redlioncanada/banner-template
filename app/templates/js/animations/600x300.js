@@ -2,8 +2,7 @@ var easeIn = Power1.easeIn;
 var easeOut = Power1.easeOut;
 var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1').add('start')
-            //.to('.logo1', 9)
-            .to('.background1', 7, {css:{transform: 'matrix(1.2, 0, 0, 1.2, -40, 0)'}})
+            .to('.background1', 6, {css:{transform: 'matrix(1.2, 0, 0, 1.2, -40, 0)'}})
             .to('.background1', 1, {opacity: 0, ease:easeOut}, 6)
             .to('.logo1', 1, {opacity: 0, ease:easeOut}, 6)
         timeline.add('frame2')
