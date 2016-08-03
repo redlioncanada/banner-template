@@ -4,14 +4,14 @@
         compiles templates to /build/_temp
         combines files to their various sizes-clicktag folders
 
+    gulp package
+        zips build/size-clicktag and puts them in /build/package
+
     gulp version
         --bump
             increases version number in config.json by 1
         --reset
             resets version number in config.json to 1
-
-    gulp package
-        zips build/size-clicktag and puts them in /build/package
 
     --save path
         param that copies the build output to a different directory, requires the name property in config.json
@@ -37,6 +37,7 @@ var fs          = require("fs");
 var del         = require('del');
 var path        = require('path');
 var uuid        = require('node-uuid');
+var mergeStream = require('merge-stream')
 var mergeStream = require('merge-stream');
 var jeditor     = require("gulp-json-editor");
 var argv        = require('yargs').argv;
@@ -44,7 +45,7 @@ var argv        = require('yargs').argv;
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
 gulp.task('generateHtml', ['pre'], function() {
-    var iframe = '<iframe width="{width}" height="{height}" src="{src}" frameBorder="0" seamless="seamless" scrolling="no"></iframe>{content}';
+    var overviewData = [];
     var overview = gulp.src('app/overview/index.html');
     var tasks = [];
 
@@ -115,12 +116,20 @@ gulp.task('generateHtml', ['pre'], function() {
                 tasks.push(indexMin);
             }
 
-            var x = iframe.replace('{width}',width).replace('{height}',height).replace('{src}','../'+folderName+'/'+language);
-            overview.pipe(replace('{content}', x));
+            overviewData.push({
+                width: width,
+                height: height,
+                src: '../'+folderName+'/'+language,
+                language: language,
+                folderName: folderName,
+                size: size,
+                clicktag: clicktag
+            })
         }
     }
 
-    overview.pipe(replace('{content}', ''))
+    overview.pipe(replace('{data}', 'var data = '+JSON.stringify(overviewData)))
+        .pipe(replace('{name}', config.name))
         .pipe(gulp.dest('build/overview'));
 
     tasks.push(overview);
@@ -173,7 +182,7 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
                     .pipe(gulp.dest('build/temp/html'));
-                    
+
                 tasks.push(html);
 
                 basePath = 'app/templates/js/';
@@ -215,7 +224,7 @@ gulp.task('packageTask', function() {
                 var size = config.sizes[i];
                 var language = k;
                 var version = config.version
-                var name = config.name.replace('{size}',size).replace('{language}',language).replace('{version}',version)
+                var name = config.packageName.replace('{size}',size).replace('{language}',language).replace('{version}',version)
                 var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
                 tasks.push(gulp.src(path)
@@ -248,6 +257,10 @@ gulp.task('cleanSave', ['generateHtml'], function() {
     }
 });
 
+gulp.task('clean', function() {
+    return del(['build']);
+});
+
 gulp.task('version', function() {
     if (argv.reset) {
         gulp.src('./app/config.json')
@@ -264,10 +277,6 @@ gulp.task('version', function() {
         console.log('No params set!')
     }
 })
-
-gulp.task('clean', function() {
-    return del(['build']);
-});
 
 function generateSrcFolders(path,params) {
     var src = [];
