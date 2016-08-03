@@ -11,7 +11,7 @@
 		$(document).ready(function() {
 			for (var i in data) {
 				var creative = data[i]
-				$('.creative-list').append('<li><span class="indicator">> </span><a class="change" href="#" data-index="'+i+'">'+creative['size']+'</a></li>')
+				$('.creative-list').append('<li><span class="indicator">> </span><a class="change" href="#" data-index="'+i+'">'+creative['size']+'</a><a href="'+creative['src']+'" target="_blank" class="open">^</a></li>')
 			}
 
 			$('.creative-list a').eq(0).addClass('active')
@@ -89,6 +89,7 @@
 		.creative-list {list-style: none;}
 		.creative-list li {margin: 0 0 10px 50px;}
 		.creative-list li.title {font-size: 1.1em; margin-bottom: 15px;}
+		.creative-list li .open {margin-left: 10px; font-size: 0.8em;}
 		.creative-list li:not(.title) {margin-left: 70px;}
 		.creative-list .indicator {display: none; float: left; margin-right: 5px; line-height: 15px; font-size: 8pt;}
 	</style>
