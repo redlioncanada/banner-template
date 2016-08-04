@@ -11,22 +11,163 @@ html, body {
 
     #myAd {
         .background1 {
-            transform: matrix(1.1, 0, 0, 1.1, 30, 0);
+            width: {width}px;
+            height:{height}px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-color: transparent;
         }
-        .logo1{
-            top:260px;
-            left:5px;
-            height: 29px;
-            width: 129px;
+         .test{
+            position: relative;
+            background-position: top;
+            height: 50px;
+            width: 389px;
+            top: 7px;
+            left: 78px;
+        }
+        .logo{
+            width: 126px;
+            height: 13px;
+            top: 41px;
+            left: 585px;
         }
 
         .cta {
             .cta_trigger {
-                left: 215px;
-                top: 240px;
+                left: 584px;
+                top: 40px;
                 width: 171px;
                 height: 35px;
             }
+             .cta_normal {
+                width: 122px;
+                height: 30px;
+                top: 0px;
+                left: 0px;
+                background-color: rgb(68, 68, 68);
+                background-size: 100% 100%;
+                border-width: 1px;
+                border-color: rgb(170, 170, 170);
+                border-style: solid;
+
+            }
+            .cta_normal:hover{
+                width: 122px;
+                height: 30px;
+                transform: translate(0px, 0px) rotate(0deg) scale(1.2, 1.2);
+                position: absolute;
+                margin: 0px;
+                left: 0px;
+                top: 0px;
+                right: auto;
+                bottom: auto;
+                background-color: rgb(168, 37, 37);
+                background-size: 100% 100%;
+                border-width: 1px;
+                border-color: rgb(170, 170, 170);
+                border-style: solid;
+            
+    
+            }
+            .cta_text{
+                position: absolute;
+                margin: 0px;
+                left: 7px;
+                top: 2px;
+                width: auto;
+                height: auto;
+                right: auto;
+                bottom: auto;
+                font-family: Avenir-Black,Helvetica,Arial;
+                font-size: 12px;
+                font-weight: 900;
+                letter-spacing: 2px;
+                text-transform: none;
+                color: rgb(221, 221, 221);
+                text-decoration: none;
+                font-style: normal;
+                word-wrap: break-word;
+                text-align: center;
+                white-space: nowrap;
+                transform: translate(5px, 7px) rotate(0deg) scale(1, 1);
+                }
+
+
         }
-    }
+         .star_txt{
+                color: #fff;
+                font-size: 10px;
+                text-align: center;
+                font-family: Avenir-Medium,Helvetica,Arial;
+                letter-spacing: 1px;
+                position: absolute;
+                margin: 0;
+                left: 0;
+                top: 0;
+                width: 300px;
+                height: auto;
+                right: auto;
+                bottom: auto;
+                font-weight: 100;
+                padding-left: 101px;
+                padding-top: 0px;
+        }
+        .legal{
+                width: 429px;
+                left: 165px;
+                top: 74px;
 }
+        }
+        .legal_txt{
+            color: white;
+            font-family: Avenir-Medium,Helvetica,Arial;
+            font-size: 8px;
+            letter-spacing: .5px;
+            text-align: left;
+            position: absolute;
+            margin: 0px;
+            left: 0px;
+            top: 0px;
+            width: auto;
+            height: auto;
+            right: auto;
+            bottom: auto;
+            font-weight: 100;
+            line-height: 10px;
+            display:inline;
+        }
+
+        p.txt_1{
+            width:160px;
+            display: inline;
+        }
+        p.txt_2{
+            display:inline;
+        }
+        p.txt_3{
+            width:114px;
+            display:inline;
+        }
+        p.a_txt{
+            padding-bottom: 46px;
+
+        }
+        .stars{
+            left: 152px;
+            top: 14px;
+            width: 195px;
+            height: 35px;  
+        }
+
+        .bg2{
+            width: 204px;
+            top: 4px;
+            left: 15px;
+        }
+        .test2{
+            left: 80px;
+            top: 15px;
+        }
+
+
+    }

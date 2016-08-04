@@ -2,30 +2,30 @@ html, body {
   width: 300px;
   height: 250px; }
 
-.redlion-14c77d9a #border, .redlion-14c77d9a #myAd {
+.redlion-f6225890 #border, .redlion-f6225890 #myAd {
   width: 300px;
   height: 250px; }
 
-.redlion-14c77d9a #myAd .logo {
+.redlion-f6225890 #myAd .logo {
   width: 110.5px;
   height: 10.5px;
   top: 230px;
   left: 185px; }
 
-.redlion-14c77d9a #myAd .background1 {
+.redlion-f6225890 #myAd .background1 {
   width: 300px;
   height: 250px;
   background-repeat: no-repeat;
   background-position: 0 0;
   background-color: transparent; }
 
-.redlion-14c77d9a #myAd .cta .cta_trigger {
+.redlion-f6225890 #myAd .cta .cta_trigger {
   width: 85px;
   height: 22px;
   top: 150px;
   left: 130px; }
 
-.redlion-14c77d9a #myAd .cta .cta_normal {
+.redlion-f6225890 #myAd .cta .cta_normal {
   width: 85px;
   height: 22px;
   top: 0px;
@@ -36,7 +36,7 @@ html, body {
   border-color: #aaaaaa;
   border-style: solid; }
 
-.redlion-14c77d9a #myAd .cta .cta_normal:hover {
+.redlion-f6225890 #myAd .cta .cta_normal:hover {
   width: 85px;
   height: 22px;
   transform: translate(0px, 0px) rotate(0deg) scale(1.2, 1.2);
@@ -52,7 +52,7 @@ html, body {
   border-color: #aaaaaa;
   border-style: solid; }
 
-.redlion-14c77d9a #myAd .cta .cta_text {
+.redlion-f6225890 #myAd .cta .cta_text {
   position: absolute;
   margin: 0px;
   left: 0px;
@@ -74,7 +74,7 @@ html, body {
   white-space: nowrap;
   transform: translate(5px, 7px) rotate(0deg) scale(1, 1); }
 
-.redlion-14c77d9a #myAd .grad {
+.redlion-f6225890 #myAd .grad {
   position: relative;
   background-repeat: repeat-x;
   background-position: top;
@@ -82,7 +82,7 @@ html, body {
   height: 250px;
   z-index: 2; }
 
-.redlion-14c77d9a #myAd .test {
+.redlion-f6225890 #myAd .test {
   position: relative;
   background-position: top;
   height: 123px;
@@ -90,13 +90,13 @@ html, body {
   top: 27px;
   left: 65px; }
 
-.redlion-14c77d9a #myAd .stars {
+.redlion-f6225890 #myAd .stars {
   width: 100px;
   height: 17.5px;
   top: 5px;
   left: 66px; }
 
-.redlion-14c77d9a #myAd .legal {
+.redlion-f6225890 #myAd .legal {
   position: relative;
   background-position: top;
   width: 148px;
@@ -104,7 +104,7 @@ html, body {
   top: 45px;
   left: 5px; }
 
-.redlion-14c77d9a #myAd .bg2 {
+.redlion-f6225890 #myAd .bg2 {
   width: 150px;
   height: 103px;
   background-repeat: no-repeat;
@@ -114,13 +114,13 @@ html, body {
   left: 20px;
   transform: translate(0px, 0px) rotate(0deg) scale(1, 1); }
 
-.redlion-14c77d9a #myAd .test2 {
+.redlion-f6225890 #myAd .test2 {
   height: 98.5px;
   width: 137.5px;
   left: 65px;
   top: 20px; }
 
-.redlion-14c77d9a #myAd .legal_txt {
+.redlion-f6225890 #myAd .legal_txt {
   color: white;
   font-family: Avenir-Medium,Helvetica,Arial;
   font-size: 8px;
@@ -137,13 +137,16 @@ html, body {
   font-weight: 100;
   line-height: 10px; }
 
-.redlion-14c77d9a #myAd p.txt_1 {
+.redlion-f6225890 #myAd p.txt_1 {
   width: 160px; }
 
-.redlion-14c77d9a #myAd p.txt_3 {
+.redlion-f6225890 #myAd p.txt_3 {
   width: 170px; }
 
-.redlion-14c77d9a #myAd .star_txt {
+.redlion-f6225890 #myAd p.a_txt {
+  display: none; }
+
+.redlion-f6225890 #myAd .star_txt {
   color: #fff;
   font-family: Avenir-Medium,Helvetica,Arial;
   font-size: 8px;
