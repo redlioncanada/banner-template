@@ -4,12 +4,10 @@ html, body {
 }
 
 .{namespace} {
-    #border, #myAd {
+    #ad {
         width: {width}px;
         height: {height}px;
-    }
 
-    #myAd {
         .masks {
             .top {
                 width: 47px;
@@ -28,25 +26,28 @@ html, body {
             .bottom-right {
                 top: 0px;
                 height: 0px;
-                width: 48px;
+                width: 49px;
                 left: 261px;
             }
 
             .bottom-bottom {
-                top: 55px;
+                top: 54px;
                 height: 0px;
                 width: 4px;
                 left: 261px;
             }
         }
 
-        .cta {
-            .cta_trigger {
-                left: 609px;
-                top: 34px;
-                width: 98px;
-                height: 23px;
-            }
+        #cta_trigger {
+            left: 609px;
+            top: 34px;
+            width: 98px;
+            height: 23px;
+        }
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
         }
     }
 }

@@ -4,23 +4,21 @@ html, body {
 }
 
 .{namespace} {
-    #border, #myAd {
+    #ad {
         width: {width}px;
         height: {height}px;
-    }
 
-    #myAd {
         .masks {
             .top {
                 width: 36px;
                 height: 0px;
-                top: 222px;
+                top: 221px;
                 left: 0px;
             }
 
             .left {
                 top: 415px;
-                height: 39px;
+                height: 40px;
                 width: 0px;
                 left: 0px
             }
@@ -33,13 +31,16 @@ html, body {
             }
         }
 
-        .cta {
-            .cta_trigger {
-                left: 36px;
-                top: 533px;
-                width: 129px;
-                height: 29px;
-            }
+        #cta_trigger {
+            left: 36px;
+            top: 533px;
+            width: 129px;
+            height: 29px;
+        }
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
         }
     }
 }
