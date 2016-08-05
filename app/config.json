@@ -1,12 +1,10 @@
 {
-	"name": "072016-cad-XT5",
-	"packageName": "2016_XT5_CA_{language}_V{version}_{size}",
+	"name": "072016-cad-CTS",
+	"packageName": "2016_CTS_CA_{language}_V{version}_{size}",
 	"version": "1",
 	"sizes": [
 		"160x600",
-		"300x250",
-		"300x600",
-		"728x90"
+		"300x600"
 	],
 	"clicktags": [
 		"doubleclick"
