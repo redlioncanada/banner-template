@@ -48,7 +48,6 @@ html, body {
             .cta_normal:hover{
                 width: 85px;
                 height: 22px;
-                transform: translate(0px, 0px) rotate(0deg) scale(1.2, 1.2);
                 position: absolute;
                 margin: 0px;
                 left: 0px;
@@ -65,9 +64,9 @@ html, body {
             }
             .cta_text{
                 position: absolute;
-                margin: 0px;
-                left: 0px;
-                top: 0px;
+                margin: 0;
+                left: 4px;
+                top: 6px;
                 width: auto;
                 height: auto;
                 right: auto;
@@ -77,13 +76,12 @@ html, body {
                 font-weight: 400;
                 letter-spacing: 1px;
                 text-transform: none;
-                color: rgb(221, 221, 221);
+                color: #ddd;
                 text-decoration: none;
                 font-style: normal;
                 word-wrap: break-word;
                 text-align: center;
                 white-space: nowrap;
-                transform: translate(5px, 7px) rotate(0deg) scale(1, 1);
                 }
 
             }
@@ -179,7 +177,7 @@ html, body {
                 position: absolute;
                 left: 66px;
                 top: 25px;
-                width: 63px;
+                width: 65px;
                 height: auto;
                 right: auto;
                 bottom: auto;

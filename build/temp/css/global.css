@@ -32,7 +32,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.redlion-966e5ad3 #border, .redlion-966e5ad3 #myAd {
+.redlion-364b04ee #border, .redlion-364b04ee #myAd {
   background-color: white;
   position: relative;
   top: 0px;
@@ -42,39 +42,39 @@ table {
   overflow: hidden;
   cursor: pointer; }
 
-.redlion-966e5ad3 #myAd {
+.redlion-364b04ee #myAd {
   background-color: #000; }
-  .redlion-966e5ad3 #myAd > * {
+  .redlion-364b04ee #myAd > * {
     width: 100%;
     height: 100%; }
-  .redlion-966e5ad3 #myAd > *:not(.backgrounds) {
+  .redlion-364b04ee #myAd > *:not(.backgrounds) {
     z-index: 2; }
-  .redlion-966e5ad3 #myAd .backgrounds {
+  .redlion-364b04ee #myAd .backgrounds {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1; }
-  .redlion-966e5ad3 #myAd .cta {
+  .redlion-364b04ee #myAd .cta {
     z-index: 3; }
-    .redlion-966e5ad3 #myAd .cta .cta_normal, .redlion-966e5ad3 #myAd .cta .cta_hover, .redlion-966e5ad3 #myAd .cta .cta_trigger {
+    .redlion-364b04ee #myAd .cta .cta_normal, .redlion-364b04ee #myAd .cta .cta_hover, .redlion-364b04ee #myAd .cta .cta_trigger {
       position: absolute;
       left: 0;
       top: 0; }
-    .redlion-966e5ad3 #myAd .cta .cta_normal {
+    .redlion-364b04ee #myAd .cta .cta_normal {
       z-index: 1; }
-    .redlion-966e5ad3 #myAd .cta .cta_hover {
+    .redlion-364b04ee #myAd .cta .cta_hover {
       z-index: 2; }
-    .redlion-966e5ad3 #myAd .cta .cta_trigger {
+    .redlion-364b04ee #myAd .cta .cta_trigger {
       z-index: 3; }
 
-.redlion-966e5ad3 .item {
+.redlion-364b04ee .item {
   position: absolute;
   left: 0;
   top: 0;
   opacity: 0; }
 
-.redlion-966e5ad3 .show {
+.redlion-364b04ee .show {
   opacity: 1; }
 
-.redlion-966e5ad3 .hide {
+.redlion-364b04ee .hide {
   opacity: 0; }

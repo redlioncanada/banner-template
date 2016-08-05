@@ -12,10 +12,10 @@ html, body {
     #myAd {
 
         .logo{
-        width: 146px;
-        height: 15px;
-        top: 565px;
-        left: 9px;
+             width: 138px;
+            height: 15px;
+            top: 565px;
+            left: 12px;
         }
 
         .background1{
@@ -45,21 +45,20 @@ html, body {
             font-weight: 100;
         }
         .legal_txt{
-            color: white;
-            font-family: Avenir-Medium,Helvetica,Arial;
-            font-size: 8px;
-            letter-spacing: 1px;
-            text-align: left;
-            position: absolute;
-            margin: 0px;
-            left: 0px;
-            top: 0px;
-            width: auto;
-            height: auto;
-            right: auto;
-            bottom: auto;
-            font-weight: 100;
-            line-height: 10px;
+                font-size: 9px;
+                text-align: left;
+                line-height: 10px;
+                color: #fff;
+                font-family: Avenir-Medium,Helvetica,Arial;
+                position: absolute;
+                margin: 0;
+                left: 0;
+                top: 0;
+                width: auto;
+                height: auto;
+                right: auto;
+                bottom: auto;
+                font-weight: 100;
         }
 
         p.txt_1{
@@ -86,7 +85,8 @@ html, body {
                 width: 100px;
                 height: 30px;
                 top: 477px;
-                left: 27px;            }
+                left: 27px;           
+                 }
             .cta_normal {
                 width: 100px;
                 height: 30px;
@@ -100,7 +100,6 @@ html, body {
             .cta_normal:hover{
                 width: 100px;
                 height: 30px;
-                transform: translate(0) rotate(0deg) scale(1.2);
                 position: absolute;
                 margin: 0;
                 left: 0;
@@ -115,55 +114,41 @@ html, body {
             }
             .cta_text{
                 position: absolute;
-                margin: 0px;
+                margin: 0;
                 left: 7px;
-                top: 3px;
+                top: 11px;
                 width: auto;
                 height: auto;
                 right: auto;
                 bottom: auto;
                 font-family: Avenir-Black,Helvetica,Arial;
                 font-size: 10px;
-                font-weight: 500;
-                letter-spacing: 1px;
+                font-weight: 900;
+                letter-spacing: 2px;
                 text-transform: none;
-                color: rgb(221, 221, 221);
+                color: #ddd;
                 text-decoration: none;
                 font-style: normal;
                 word-wrap: break-word;
                 text-align: center;
                 white-space: nowrap;
-                transform: translate(5px, 8px) rotate(0deg) scale(1, 1);
-                font-style: bold;
                 }
 
             }
 
-
-    
-
-
-        // .grad{
-        //     position: relative;
-        //     background-repeat: repeat-x;
-        //     background-position: top;
-        //     width: 300px;
-        //     height: 250px;
-        //     z-index: 2;
-        // }
         .test{
             position: relative;
             background-position: top;
-            height: 119px;
-            width: 149.5px;
+            height: 108px;
+            width: 137.5px;
             top: 28px;
-            left: 3px;
+            left: 6px;
         }
         .stars{
             width: 130px;
             height: 25px;
             top: 56px;
-            left: 10px;        
+            left: 8px;   
         }
         
         .legal{
@@ -171,8 +156,8 @@ html, body {
             background-position: top;
             width: 156px;
             height: 29px;
-            top: 390px;
-            left: 6px;
+            top: 404px;
+            left: 13px;
         }
 
          .bg2{
