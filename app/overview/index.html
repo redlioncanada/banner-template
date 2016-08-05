@@ -111,6 +111,10 @@
 						currentFrame++
 						movePlayerIndicator(currentFrame)
 					}
+
+					if (iframe.timeline._time == iframe.timeline._duration && !$('.player .play').hasClass('paused')) {
+						pausePlayer()
+					}
 				}
 			},100)
 			//end play controls
@@ -138,10 +142,12 @@
 			zoomIframe(zoom)
 		}
 
-		function movePlayerIndicator(index) {
+		function movePlayerIndicator(index, animate) {
+			if (typeof animate === 'undefined') animate = true
 			var label = $('.player .labels .label').eq(index)
 			var left = label.position().left + label.width() / 2
-			$('.player .indicator').stop(true).animate({'left': left}, 500)
+			if (animate) $('.player .indicator').stop(true).animate({'left': left}, 500)
+			else $('.player .indicator').css('left', left)
 		}
 
 		function insertPlayControls() {
@@ -175,6 +181,8 @@
 				var button = generatePlayerButton(Number(i)+1)
 				$('.player .labels').append(button)
 			}
+
+			$('.player .indicator').css('opacity',1)
 		}
 
 		function resize() {
@@ -225,10 +233,13 @@
 			labels = []
 			currentFrame = 0
 
+			$('.player .indicator').css('opacity', 0)
+			movePlayerIndicator(0, false)
 			$('.labels .label').remove()
 			$('.player .play').find('i:last-child').stop(true).animate({opacity:1},300)
 			$('.player .play').find('i:first-child').stop(true).animate({opacity:0},300)
 			$('.player .play').removeClass('paused')
+
 		}
 	</script>
 	<style>
@@ -287,8 +298,7 @@
 		.creative-list li a:first-child div {width: 199px; border-right: 1px solid white;}
 		.creative-list li a:last-child div{width: 100px;}
 		.creative-list li a:last-child div i {margin-top: 12px; transition: 0.2s; -webkit-transition: 0.2s;}
-		.creative-list li a:last-child div:hover i {transform: scale(1.2);}
-		.logo {position: absolute; right: 28px; top: 30px; width: 110px;}
+		.logo {position: absolute; right: 28px; top: 32px; width: 110px;}
 
 		.zoom  {left: 9px;}
 		.zoom div {position: relative; width: 60px; height: 60px; background: white;}
@@ -310,9 +320,6 @@
 		.hide {opacity: 0;}
 		.active {background-color: #ffcdd2;}
 		.noselect {-webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none;   /* Chrome/Safari/Opera */ -khtml-user-select: none;    /* Konqueror */ -moz-user-select: none;      /* Firefox */ -ms-user-select: none;       /* Internet Explorer/Edge */ user-select: none;           /* Non-prefixed version, currently*/}
-
-	/*	.creative-list li .open {margin-left: 10px; font-size: 0.8em;}*/
-		/*.creative-list .indicator {display: none; float: left; margin-right: 5px; line-height: 15px; font-size: 8pt;}*/
 	</style>
 
 	<div class="title">
@@ -336,7 +343,7 @@
 			</div>
 			<div class="player ui">
 				<div class="labels">
-					<div class="indicator"><i class="material-icons">navigation</i></div>
+					<div class="indicator hide"><i class="material-icons">navigation</i></div>
 				</div>
 				<div class="play">
 					<i class="material-icons noselect hide">play_arrow</i>
