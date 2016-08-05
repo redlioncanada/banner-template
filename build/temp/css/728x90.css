@@ -2,18 +2,18 @@ html, body {
   width: 728px;
   height: 90px; }
 
-.redlion-e3da9c96 #border, .redlion-e3da9c96 #myAd {
+.redlion-966e5ad3 #border, .redlion-966e5ad3 #myAd {
   width: 728px;
   height: 90px; }
 
-.redlion-e3da9c96 #myAd .background1 {
+.redlion-966e5ad3 #myAd .background1 {
   width: 728px;
   height: 90px;
   background-repeat: no-repeat;
   background-position: 0 0;
   background-color: transparent; }
 
-.redlion-e3da9c96 #myAd .test {
+.redlion-966e5ad3 #myAd .test {
   position: relative;
   background-position: top;
   height: 50px;
@@ -21,19 +21,19 @@ html, body {
   top: 7px;
   left: 78px; }
 
-.redlion-e3da9c96 #myAd .logo {
+.redlion-966e5ad3 #myAd .logo {
   width: 126px;
   height: 13px;
   top: 41px;
   left: 585px; }
 
-.redlion-e3da9c96 #myAd .cta .cta_trigger {
+.redlion-966e5ad3 #myAd .cta .cta_trigger {
   left: 584px;
   top: 40px;
   width: 171px;
   height: 35px; }
 
-.redlion-e3da9c96 #myAd .cta .cta_normal {
+.redlion-966e5ad3 #myAd .cta .cta_normal {
   width: 122px;
   height: 30px;
   top: 0px;
@@ -44,7 +44,7 @@ html, body {
   border-color: #aaaaaa;
   border-style: solid; }
 
-.redlion-e3da9c96 #myAd .cta .cta_normal:hover {
+.redlion-966e5ad3 #myAd .cta .cta_normal:hover {
   width: 122px;
   height: 30px;
   transform: translate(0px, 0px) rotate(0deg) scale(1.2, 1.2);
@@ -60,7 +60,7 @@ html, body {
   border-color: #aaaaaa;
   border-style: solid; }
 
-.redlion-e3da9c96 #myAd .cta .cta_text {
+.redlion-966e5ad3 #myAd .cta .cta_text {
   position: absolute;
   margin: 0px;
   left: 7px;
@@ -82,7 +82,7 @@ html, body {
   white-space: nowrap;
   transform: translate(5px, 7px) rotate(0deg) scale(1, 1); }
 
-.redlion-e3da9c96 #myAd .star_txt {
+.redlion-966e5ad3 #myAd .star_txt {
   color: #fff;
   font-size: 10px;
   text-align: center;
@@ -100,12 +100,12 @@ html, body {
   padding-left: 101px;
   padding-top: 0px; }
 
-.redlion-e3da9c96 #myAd .legal {
+.redlion-966e5ad3 #myAd .legal {
   width: 429px;
   left: 165px;
   top: 74px; }
 
-.redlion-e3da9c96 .legal_txt {
+.redlion-966e5ad3 .legal_txt {
   color: white;
   font-family: Avenir-Medium,Helvetica,Arial;
   font-size: 8px;
@@ -123,31 +123,31 @@ html, body {
   line-height: 10px;
   display: inline; }
 
-.redlion-e3da9c96 p.txt_1 {
+.redlion-966e5ad3 p.txt_1 {
   width: 160px;
   display: inline; }
 
-.redlion-e3da9c96 p.txt_2 {
+.redlion-966e5ad3 p.txt_2 {
   display: inline; }
 
-.redlion-e3da9c96 p.txt_3 {
+.redlion-966e5ad3 p.txt_3 {
   width: 114px;
   display: inline; }
 
-.redlion-e3da9c96 p.a_txt {
+.redlion-966e5ad3 p.a_txt {
   padding-bottom: 46px; }
 
-.redlion-e3da9c96 .stars {
+.redlion-966e5ad3 .stars {
   left: 152px;
   top: 14px;
   width: 195px;
   height: 35px; }
 
-.redlion-e3da9c96 .bg2 {
+.redlion-966e5ad3 .bg2 {
   width: 204px;
   top: 4px;
   left: 15px; }
 
-.redlion-e3da9c96 .test2 {
+.redlion-966e5ad3 .test2 {
   left: 80px;
   top: 15px; }
