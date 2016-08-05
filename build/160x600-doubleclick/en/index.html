@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="ad.size" content="width=160,height=600">
+    <meta name="ad.language" content="en">
+    <meta name="ad.network" content="doubleclick">
+    <title>160x600</title>
+    <script type="text/javascript">
+        function clickThrough(){window.open(window.clickTag)}
+    </script>
+    <style type="text/css">
+        .redlion-f2bf5d82 img[src=""]{content:""}.redlion-f2bf5d82 #ad{background-color:#fff;position:relative;top:0;left:0;margin:0;padding:0;overflow:hidden;cursor:pointer}.redlion-f2bf5d82 #ad .backgrounds,.redlion-f2bf5d82 #ad .copy{position:absolute;top:0;left:0}.redlion-f2bf5d82 #ad .cta{z-index:4;cursor:pointer}.redlion-f2bf5d82 #ad .cta .cta_hover,.redlion-f2bf5d82 #ad .cta .cta_normal{position:absolute;left:0;top:0}.redlion-f2bf5d82 #ad .cta .cta_normal{z-index:2}.redlion-f2bf5d82 #ad .backgrounds,.redlion-f2bf5d82 #ad .cta .cta_hover{z-index:1}.redlion-f2bf5d82 #ad .copy{z-index:3}.redlion-f2bf5d82 #ad .logo{z-index:4}.redlion-f2bf5d82 #ad .masks>*{z-index:6;position:absolute;background-color:#fff}.redlion-f2bf5d82 #ad #border{z-index:5;position:absolute;top:0;left:0;border:1px solid #b9b9b9}.redlion-f2bf5d82 #ad #cta_trigger{position:absolute;left:0;top:0;z-index:6}.redlion-f2bf5d82 .item{position:absolute;left:0;top:0;opacity:0}.redlion-f2bf5d82 .show{opacity:1}.redlion-f2bf5d82 .hide{opacity:0}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+        .redlion-f2bf5d82 #ad,body,html{width:160px;height:600px}.redlion-f2bf5d82 #ad .masks .top{width:0;height:32px;top:389px;left:0}.redlion-f2bf5d82 #ad .masks .left{top:389px;height:4px;width:0;left:78px}.redlion-f2bf5d82 #ad #cta_trigger{left:23px;top:531px;width:113px;height:25px}.redlion-f2bf5d82 #ad #border{width:158px;height:598px}
+    </style>
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+</head>
+
+<body>
+    <a onclick="clickThrough()" id="clickThrough" class="redlion-f2bf5d82" target="_blank" href="#">
+        <div id="ad" class="en">
+            <div class="backgrounds">
+                <div class="masks">
+                    <div class="top"></div>
+                    <div class="left"></div>
+                    <div class="bottom-right"></div>
+                    <div class="bottom-bottom"></div>
+                </div>
+                <img class="background1 item show" src="background1.jpg">
+            </div>
+            <div class="copy">
+                <img class="copy1 item" src="copy1.png">
+                <img class="copy2 item" src="copy2.png">
+            </div>
+
+            <img class="logo item" src="logo.png">
+            <div class="cta item">
+                <img class="cta_normal" src="cta_normal.png">
+                <img class="cta_hover" src="cta_hover.png">
+            </div>
+            <div id="border"></div>
+            <div id="cta_trigger"></div>
+        </div>
+    </a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
+    <script type="text/javascript">
+        /**
+         * Add a delay at the end of the timeline (or at any label)
+         * @param {number} delay    Seconds to wait
+         * @param {string} position Label name where to start the delay
+         */
+        TimelineLite.prototype.addDelay = function (delay, position) {
+            var delayAttr;
+            if(typeof delay === 'undefined' || isNaN(delay)){
+                return this;//skip if invalid parameters
+            }
+            if (typeof position === 'undefined') {
+                delayAttr = '+=' + delay; //add delay at the end of the timeline
+            } else if (typeof position === 'string') {
+                delayAttr = position + '+=' + delay; //add delay after label
+            } else if(!isNaN(position)) {
+                delayAttr = delay + position; //if they're both numbers, assume absolute position
+            } else {
+                return this; //nothing done
+            }
+
+            return this.set({}, {}, delayAttr);
+        };
+
+        $(document).ready(function() {
+            $('#cta_trigger').mouseover(function() {
+                $('.cta_normal').stop(true).animate({'opacity':0},150)
+            })
+            $('#cta_trigger').mouseout(function() {
+                $('.cta_normal').stop(true).animate({'opacity':1},150)
+            })
+        })
+
+        function onComplete() {}
+        var easeIn=Power1.easeIn,easeOut=Power1.easeOut,timeline=new TimelineLite({onComplete:onComplete});timeline.add("frame1").add("start").to(".logo",0,{opacity:1},"start"),timeline.add("frame2").to(".masks .top",1,{width:86}).add("frame2-mask").to(".masks .left",1,{width:83},"frame2-mask-=0.1"),timeline.add("frame3").to(".copy1",1.5,{opacity:1,ease:easeOut},"frame3-=0.4").addDelay(3,"frame4"),timeline.add("frame4").to(".copy1",1,{opacity:0,ease:easeOut}).to(".copy2",1,{opacity:1,ease:easeOut}).addDelay(1,"frame4-cta").to(".cta",1,{opacity:1,ease:easeOut}).add("frame4-cta"),timeline.add("frame5").add("end");
+    </script>
+</body>
+
+</html>
