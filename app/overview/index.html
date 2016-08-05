@@ -15,13 +15,31 @@
 
 		$(document).ready(function() {
 			//init list of banners
+			var language
 			for (var i in data) {
+				if (language !== data[i].language) {
+					language = data[i].language
+					var output
+
+					switch(language.toLowerCase()) {
+						case 'en':
+						case 'eng':
+							output = "English"
+							break;
+						case 'fr':
+						case 'fre':
+							output = "French"
+							break;
+					}
+
+					$('.creative-list').append('<li class="header">'+output+'</li>')
+				}
 				var creative = data[i]
 				// $('.creative-list').append('<li><span class="indicator">> </span><a class="change" href="#" data-index="'+i+'">'+creative['size']+'</a><a href="'+creative['src']+'" target="_blank" class="open">^</a></li>')
 				$('.creative-list').append('<li data-index="'+i+'"><a class="change" href="#"><div>'+creative['size']+'</div></a><a href="'+creative['src']+'" target="_blank" class="open"><div><i class="material-icons">open_in_browser</i></div></a></li>')
 			}
 
-			$('.creative-list li').eq(0).addClass('active')
+			$('.creative-list li').eq(1).addClass('active')
 			insertIframe(data[0])
 			//end init list of banners
 
@@ -40,7 +58,7 @@
 			//init play controls
 			$(document).on('click', '.player .label', function(e) {
 				var index = Number($(e.target).index()) - 1
-				iframe.timeline.gotoAndPlay(index)
+				iframe.timeline.gotoAndPlay(labels[index].name)
 				currentFrame = index
 				movePlayerIndicator(index)
 				
@@ -100,7 +118,7 @@
 			resize()
 		})
 
-		$('body').on('click', '.creative-list li', function(e) {
+		$('body').on('click', '.creative-list li:not(".header")', function(e) {
 			var el = $(e.target).closest('li')
 			var index = Number(el.attr('data-index'))
 
@@ -143,6 +161,14 @@
 					})
 					times.push(value)
 				}
+			}
+
+			if (labels[labels.length-1].time !== iframe.timeline._duration) {
+				labels.push({
+					name: 'end',
+					altname: 'end',
+					time: iframe.timeline._duration
+				})
 			}
 
 			for (var i in labels) {
@@ -244,7 +270,7 @@
 		  border-spacing: 0; }
 		/*end reset css*/
 
-		a { color: inherit; } 
+		a { color: inherit; }
 
 		html,body {font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #424242;}
 		.container {overflow: hidden; position: relative; width: auto; background-color: #fff; border-left: 1px solid #ddd;}
@@ -254,8 +280,9 @@
 		.title h1 {font-size: 1.5em; padding-left: 50px; position: absolute; top: 50%; transform: translateY(-50%); color: white;}
 		iframe {overflow: hidden; margin: 0; padding: 0; display: block; margin:0 auto; border:0;}
 		.creative-list {list-style: none; float: left; width: 300px;}
-		.creative-list li {width: 100%; height:50px; transition: 0.7s; -webkit-transition: 0.7s;}
-		.creative-list li:hover {background-color: #ffcdd2;}
+		.creative-list li {width: 100%; height:50px; transition: 0.7s; -webkit-transition: 0.7s; border-bottom: 1px solid white;}
+		.creative-list li.header {line-height: 51px; padding: 5px 0 5px 50px;}
+		.creative-list li:not(.header):hover {background-color: #ffcdd2;}
 		.creative-list li a div {height: 100%; float:left; line-height: 49px; text-align: center; cursor: pointer;}
 		.creative-list li a:first-child div {width: 199px; border-right: 1px solid white;}
 		.creative-list li a:last-child div{width: 100px;}
