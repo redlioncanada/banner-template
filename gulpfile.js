@@ -15,6 +15,9 @@
 
     --save path
         param that copies the build output to a different directory, requires the name property in config.json
+
+    gulp validate
+        validates the folders in /build against adwords specs
 */
 
 require('events').EventEmitter.prototype._maxListeners = 100;
