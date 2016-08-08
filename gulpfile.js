@@ -15,9 +15,6 @@
 
     --save path
         param that copies the build output to a different directory, requires the name property in config.json
-
-    gulp validate
-        validates the folders in /build against adwords specs
 */
 
 require('events').EventEmitter.prototype._maxListeners = 100;
@@ -64,7 +61,8 @@ gulp.task('generateHtml', ['pre'], function() {
                 var height = size.split('x')[1];
                 var basePath = 'app/assets';
 
-                var src = generateSrcFolders(basePath,[language,size,clicktag]);
+                var src = generateSrcFolders(basePath, [], [language,size,clicktag], ['jpg','png','jpeg','gif','svg']);
+
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(flatten())
                     .pipe(imageMin({
@@ -155,8 +153,9 @@ gulp.task('pre', ['clean'], function() {
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
-                var basePath = 'app/templates/css/';
-                var src = generateSrcFolders(basePath, [clicktag,language,size]);
+                var basePath = 'app/templates/css';
+                var src = generateSrcFolders(basePath, [], [clicktag,language,size], ['css']);
+                // console.log(src)
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -169,8 +168,8 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(rename({'suffix':'.min'}))
                     .pipe(gulp.dest('build/temp/css')));
 
-                basePath = 'app/templates/html/';
-                src = generateSrcFolders(basePath, [clicktag,language,size]);
+                basePath = 'app/templates/html';
+                src = generateSrcFolders(basePath, [], [clicktag,language,size], ['html']);
                 var html = gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -190,9 +189,10 @@ gulp.task('pre', ['clean'], function() {
 
                 tasks.push(html);
 
-                basePath = 'app/templates/js/';
-                src = generateSrcFolders(basePath, [clicktag,language,size]);
-                src.push(basePath+'includes/**/*.js')
+                basePath = 'app/templates/js';
+                src = generateSrcFolders(basePath, ['animations', 'clickTags'], [clicktag,language,size], ['js']);
+
+                src.push(basePath+'animations/'+size+'.js')
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -333,16 +333,79 @@ gulp.task('version', function() {
     }
 })
 
-function generateSrcFolders(path,params) {
+function generateSrcFolders(path,subfolders,params,extensions) {
+    function allCombinationsOf (src, minLen, maxLen){
+        minLen = minLen-1 || 0;
+        maxLen = maxLen || src.length+1;
+        var Asource = src.slice(); // copy the original so we don't apply results to the original.
+
+        var Aout = [];
+
+        var minMax = function(arr){
+            var len = arr.length;
+            if(len > minLen && len <= maxLen){
+                Aout.push(arr);
+            }
+        }
+
+        var picker = function (arr, holder, collect) {
+            if (holder.length) {
+               collect.push(holder);
+            }
+            var len = arr.length;
+            for (var i=0; i<len; i++) {
+                var arrcopy = arr.slice();
+                var elem = arrcopy.splice(i, 1);
+                var result = holder.concat(elem);
+                minMax(result);
+                if (len) {
+                    picker(arrcopy, result, collect);
+                } else {
+                    collect.push(result);
+                }
+            }
+        }
+
+        picker(Asource, [], []);
+
+        return Aout;
+    }
+
+
     var src = [];
     if (typeof params === 'string') params = [params];
+    if (typeof extensions !== undefined) {
+        var extension = '{'
+        for (var i in extensions) {
+            extension = i == extensions.length-1 ? extension + extensions[i] : extension + extensions[i] + ','
+        }
+        extension += '}'
+    }
 
-    for (var i in params) {
-        src.push(path+'/**/'+params[i]+'/*');
-        src.push(path+'/**/'+params[i]+'.*');
-        src.push(path+'/'+params[i]+'.*');
-        src.push(path+'/'+params[i]+'/**/*');
-        src.push(path+'/'+params[i]+'/*');
+    var permutations = allCombinationsOf(params, 1, 3)
+
+    for (var i in permutations) {
+        var path1 = ''
+        for (var j in permutations[i]) {
+            path1 = j == permutations[i].length-1 ? path1 + permutations[i][j] : path1 + permutations[i][j] + '/'
+        }
+
+        if (extensions !== undefined && extension.length) {
+            src.push(path+'/'+path1+'/*.'+extension);
+        } else {
+            src.push(path+'/'+path1+'/*.*');
+        }
+        src.push(path+'/'+path1+'.*');
+
+        for (var h in subfolders) {
+            if (extensions !== undefined && extension.length) {
+                src.push(path+'/'+subfolders[h]+'/'+path1+'/*.'+extension);
+            } else {
+                src.push(path+'/'+subfolders[h]+'/'+path1+'/*.*');
+            }
+
+            src.push(path+'/'+subfolders[h]+'/'+path1+'.*')
+        }
     }
 
     src.push(path+'/global.*');
