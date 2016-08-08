@@ -15,6 +15,9 @@
 
     --save path
         param that copies the build output to a different directory, requires the name property in config.json
+
+    gulp validate
+        validates the folders in /build against adwords specs
 */
 
 require('events').EventEmitter.prototype._maxListeners = 100;
@@ -41,6 +44,7 @@ var mergeStream = require('merge-stream')
 var mergeStream = require('merge-stream');
 var jeditor     = require("gulp-json-editor");
 var argv        = require('yargs').argv;
+var adwords     = require('gulp-adwords');
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
@@ -213,8 +217,8 @@ gulp.task('default', ['save'], function() {
     gulp.watch('app/assets/**/*.*', ['save']);
 });
 
-gulp.task('package', ['packageTask']);
-gulp.task('publish', ['packageTask']);
+gulp.task('package', ['validate', 'packageTask']);
+gulp.task('publish', ['validate', 'packageTask']);
 gulp.task('packageTask', function() {
     var zip = require('gulp-zip');
     var tasks = [];
@@ -261,6 +265,28 @@ gulp.task('cleanSave', ['generateHtml'], function() {
 gulp.task('clean', function() {
     return del(['build']);
 });
+
+gulp.task('validate', function() {
+    var tasks = [];
+    for (var i in config.sizes) {
+        for (var k in config.text) {
+            for (var j in config.clicktags) {
+                var clicktag = config.clicktags[j];
+                var size = config.sizes[i];
+                var language = k;
+
+               tasks.push(
+                    gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
+                        .pipe(ignore.exclude(/index\.fat\.html/))
+                        .pipe(adwords({name:size+' '+language+' '+clicktag}))
+                        .pipe(ignore.exclude(/\./))
+                        .pipe(gulp.dest('.'))
+                )
+            }
+        }
+    }
+    return mergeStream(tasks)
+})
 
 gulp.task('version', function() {
     if (argv.reset) {
