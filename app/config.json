@@ -1,6 +1,6 @@
 {
-	"name": "072016-cad-CTS",
-	"packageName": "2016_CTS_CA_{language}_V{version}_{size}",
+	"name": "CTS",
+	"brand": "Cadillac",
 	"version": "2",
 	"sizes": [
 		"160x600",
