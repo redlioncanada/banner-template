@@ -133,6 +133,7 @@ gulp.task('generateHtml', ['pre'], function() {
     overview.pipe(replace('{data}', 'var data = '+JSON.stringify(overviewData)))
         .pipe(replace('{name}', config.name))
         .pipe(replace('{version}', config.version))
+        .pipe(replace('{brand}', config.brand))
         .pipe(gulp.dest('build/overview'));
 
     tasks.push(overview);
