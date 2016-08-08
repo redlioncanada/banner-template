@@ -1,7 +1,7 @@
 {
-	"name": "072016-cad-ATS",
-	"packageName": "2016_ATS_CA_{language}_V{version}_{size}",
-	"version": "1",
+	"name": "ATS",
+	"brand": "Cadillac",
+	"version": "2",
 	"sizes": [
 		"160x600",
 		"300x250",
