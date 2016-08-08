@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="ad.size" content="width=728,height=90">
+    <meta name="ad.size" content="width=320,height=50">
     <meta name="ad.language" content="en">
     <meta name="ad.network" content="doubleclick">
-    <title>728x90</title>
+    <title>320x50</title>
     <script type="text/javascript">
         function clickThrough() {
         	window.open(window.clickTag);
@@ -108,40 +108,47 @@
           border-spacing: 0; }
         
         html, body {
-          width: 728px;
-          height: 90px; }
+          width: 320px;
+          height: 50px; }
         
         .redlion-ec755b45 #ad {
-          width: 728px;
-          height: 90px; }
+          width: 320px;
+          height: 50px; }
           .redlion-ec755b45 #ad .masks .top {
-            width: 47px;
-            height: 35px;
-            top: 90px;
+            width: 0px;
+            height: 32px;
+            top: 389px;
             left: 0px; }
           .redlion-ec755b45 #ad .masks .left {
-            top: 56px;
-            height: 0px;
-            width: 4px;
-            left: 43px; }
-          .redlion-ec755b45 #ad .masks .bottom-right {
-            top: 0px;
-            height: 0px;
-            width: 49px;
-            left: 261px; }
-          .redlion-ec755b45 #ad .masks .bottom-bottom {
-            top: 54px;
-            height: 0px;
-            width: 4px;
-            left: 261px; }
+            top: 389px;
+            height: 4px;
+            width: 0px;
+            left: 78px; }
           .redlion-ec755b45 #ad #cta_trigger {
-            left: 609px;
-            top: 34px;
-            width: 98px;
-            height: 23px; }
+            left: 23px;
+            top: 531px;
+            width: 113px;
+            height: 25px; }
           .redlion-ec755b45 #ad #border {
-            width: 726px;
-            height: 88px; }
+            width: 318px;
+            height: 48px; }
+          .redlion-ec755b45 #ad .background1 {
+            width: 320px;
+            height: 50px; }
+          .redlion-ec755b45 #ad .logo {
+            width: 320px;
+            height: 50px; }
+          .redlion-ec755b45 #ad .copy1 {
+            width: 320px;
+            height: 50px; }
+          .redlion-ec755b45 #ad .copy2 {
+            width: 320px;
+            height: 50px; }
+          .redlion-ec755b45 #ad .cta_normal {
+            width: 320px;
+            height: 50px; }
+          .redlion-ec755b45 #ad .cta_hover {
+            display: none; }
         
     </style>
     <!--[if gte IE 9]>
@@ -215,26 +222,21 @@
         })
 
         function onComplete() {}
-        var easeIn = Power1.easeIn;
         var easeOut = Power1.easeOut;
         var timeline = new TimelineLite({onComplete: onComplete});
                 timeline.add('frame1').add('start')
-                    .to('.logo', 0, {opacity:1})
-                    .to('.masks .top', 0.5, {top:"-=35", ease:easeOut})
-                    .to('.masks .bottom-right', 0.5, {height:56, ease:easeOut}, 'start').add('frame1-mask')
-                    .to('.masks .bottom-bottom', 0.5, {height:37, ease:easeOut}, 'frame1-mask')
-                    .to('.masks .left', 0.5, {top:"-=56", height:56, ease:easeOut}, 'frame1-mask')
-                    .addDelay(0.5, 'frame2')
+                    .to('.copy1', 1.7, {opacity:1, ease:easeOut}, 'frame1-=0.4').add('frame1-animate')
+                    .to('.background1', 1, {left:-301}, 'frame1-animate+=2')
+                    .to('.copy1', 1, {left: "-=282", ease:easeOut}, 'frame1-animate+=2')
+                    .to('.bottom-bottom', 1, {width:301, ease:easeOut}, 'frame1-animate+=2')
+                    .to('.copy2', 0, {opacity:1, left:282}, 'frame1-animate+=2')
+                    .to('.copy2', 1, {left:0, ease:easeOut}, 'frame1-animate+=2')
+                    .addDelay(1.5, 'frame2')
                 timeline.add('frame2')
-                    .to('.copy1', 2, {opacity:1, ease:easeOut}, 'frame2-=0.7')
-                    .addDelay(2, 'frame3')
-                timeline.add('frame3')
-                    .to('.backgrounds,.copy1', 1, {opacity:0, ease:easeOut})
-                    .to('.copy2', 1.5, {opacity:1, ease:easeOut})
-                    .addDelay(1, 'frame4')
-                timeline.add('frame4')
-                    .to('.cta', 1.5, {opacity:1, ease:easeOut})
-                timeline.add('frame5').add('end')
+                .to('.logo,.cta', 2, {opacity:1, ease:easeOut}, 'frame2+=0.3')
+                timeline.add('frame3').add('end')
+        
+        
     </script>
 </body>
 
