@@ -4,7 +4,9 @@
 	"version": "1",
 	"sizes": [
 		"160x600",
-		"300x600"
+		"300x600",
+		"728x90",
+		"300x250"
 	],
 	"clicktags": [
 		"doubleclick"
