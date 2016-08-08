@@ -49,5 +49,28 @@ html, body {
             width: {width}-2px;
             height: {height}-2px;
         }
+ .cta_hover{
+            display:none;
+        }
+        .logo{
+            height:{height}px;
+            width:{width}px;
+        }
+        .copy1{
+            height:{height}px;
+            width:{width}px;
+        }
+        .copy2{
+            height:{height}px;
+            width:{width}px;
+        }
+        .background1{
+            height:{height}px;
+            width:{width}px;
+        }
+        .cta_normal{
+            height:{height}px;
+            width:{width}px;
+        }
     }
 }

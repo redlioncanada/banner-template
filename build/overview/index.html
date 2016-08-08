@@ -11,7 +11,9 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>
 		var zoom = 1, zoomMax = 1, zoomMin = 0.5, iframe, labels = [], hold = true, currentFrame;
-		var data = [{"width":"160","height":"600","src":"../160x600-doubleclick/en","language":"en","folderName":"160x600-doubleclick","size":"160x600","clicktag":"doubleclick"},{"width":"300","height":"250","src":"../300x250-doubleclick/en","language":"en","folderName":"300x250-doubleclick","size":"300x250","clicktag":"doubleclick"},{"width":"300","height":"600","src":"../300x600-doubleclick/en","language":"en","folderName":"300x600-doubleclick","size":"300x600","clicktag":"doubleclick"},{"width":"728","height":"90","src":"../728x90-doubleclick/en","language":"en","folderName":"728x90-doubleclick","size":"728x90","clicktag":"doubleclick"},{"width":"300","height":"50","src":"../300x50-doubleclick/en","language":"en","folderName":"300x50-doubleclick","size":"300x50","clicktag":"doubleclick"},{"width":"320","height":"50","src":"../320x50-doubleclick/en","language":"en","folderName":"320x50-doubleclick","size":"320x50","clicktag":"doubleclick"}]
+
+		var data = [{"width":"160","height":"600","src":"../160x600-doubleclick/en","language":"en","folderName":"160x600-doubleclick","size":"160x600","clicktag":"doubleclick"},{"width":"160","height":"600","src":"../160x600-doubleclick/fr","language":"fr","folderName":"160x600-doubleclick","size":"160x600","clicktag":"doubleclick"},{"width":"300","height":"250","src":"../300x250-doubleclick/en","language":"en","folderName":"300x250-doubleclick","size":"300x250","clicktag":"doubleclick"},{"width":"300","height":"250","src":"../300x250-doubleclick/fr","language":"fr","folderName":"300x250-doubleclick","size":"300x250","clicktag":"doubleclick"},{"width":"300","height":"600","src":"../300x600-doubleclick/en","language":"en","folderName":"300x600-doubleclick","size":"300x600","clicktag":"doubleclick"},{"width":"300","height":"600","src":"../300x600-doubleclick/fr","language":"fr","folderName":"300x600-doubleclick","size":"300x600","clicktag":"doubleclick"},{"width":"728","height":"90","src":"../728x90-doubleclick/en","language":"en","folderName":"728x90-doubleclick","size":"728x90","clicktag":"doubleclick"},{"width":"728","height":"90","src":"../728x90-doubleclick/fr","language":"fr","folderName":"728x90-doubleclick","size":"728x90","clicktag":"doubleclick"},{"width":"300","height":"50","src":"../300x50-doubleclick/en","language":"en","folderName":"300x50-doubleclick","size":"300x50","clicktag":"doubleclick"},{"width":"300","height":"50","src":"../300x50-doubleclick/fr","language":"fr","folderName":"300x50-doubleclick","size":"300x50","clicktag":"doubleclick"},{"width":"320","height":"50","src":"../320x50-doubleclick/en","language":"en","folderName":"320x50-doubleclick","size":"320x50","clicktag":"doubleclick"},{"width":"320","height":"50","src":"../320x50-doubleclick/fr","language":"fr","folderName":"320x50-doubleclick","size":"320x50","clicktag":"doubleclick"}]
+		data = groupBy(data, 'language');
 
 		printLogo()
 		$(window).resize(resize)
@@ -243,6 +245,28 @@
 			$('.player .play').find('i:first-child').stop(true).animate({opacity:0},300)
 			$('.player .play').removeClass('paused')
 
+		}
+
+		function groupBy(arr, key) {
+	        var newArr = [],
+	            types = {},
+	            newItem, i, j, cur;
+	        for (i = 0, j = arr.length; i < j; i++) {
+	            cur = arr[i];
+	            if (!(cur[key] in types)) {
+	                types[cur[key]] = { type: cur[key], data: [] };
+	                // newArr.push(types[cur[key]]);
+	            }
+	            types[cur[key]].data.push(cur);
+	        }
+	        for (i in types) {
+	        	for (j=0; j < types[i].data.length; j++) {
+	        		console.log(types[i].data[j])
+	        		newArr.push(types[i].data[j])
+	        	}
+	        }
+
+	        return newArr;
 		}
 
 		function printLogo() {
