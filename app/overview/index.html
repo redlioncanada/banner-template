@@ -11,7 +11,9 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>
 		var zoom = 1, zoomMax = 1, zoomMin = 0.5, iframe, labels = [], hold = true, currentFrame;
+
 		{data}
+		data = groupBy(data, 'language');
 
 		printLogo()
 		$(window).resize(resize)
@@ -243,6 +245,28 @@
 			$('.player .play').find('i:first-child').stop(true).animate({opacity:0},300)
 			$('.player .play').removeClass('paused')
 
+		}
+
+		function groupBy(arr, key) {
+	        var newArr = [],
+	            types = {},
+	            newItem, i, j, cur;
+	        for (i = 0, j = arr.length; i < j; i++) {
+	            cur = arr[i];
+	            if (!(cur[key] in types)) {
+	                types[cur[key]] = { type: cur[key], data: [] };
+	                // newArr.push(types[cur[key]]);
+	            }
+	            types[cur[key]].data.push(cur);
+	        }
+	        for (i in types) {
+	        	for (j=0; j < types[i].data.length; j++) {
+	        		console.log(types[i].data[j])
+	        		newArr.push(types[i].data[j])
+	        	}
+	        }
+
+	        return newArr;
 		}
 
 		function printLogo() {
