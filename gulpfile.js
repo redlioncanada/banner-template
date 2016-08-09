@@ -155,8 +155,8 @@ gulp.task('pre', ['clean'], function() {
                 var height = size.split('x')[1];
 
                 var basePath = 'app/templates/css';
-                // var src = generateSrcFolders(basePath, [], [clicktag,language,size], ['css']);
-                src = basePath + '/**/*.{scss,css}'
+                var src = generateSrcFolders(basePath, [], [clicktag,language,size], ['css']);
+                // src = basePath + '/**/*.{scss,css}'
 
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
@@ -171,8 +171,8 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(gulp.dest('build/temp/css')));
 
                 basePath = 'app/templates/html';
-                // src = generateSrcFolders(basePath, [], [clicktag,language,size], ['html']);
-                src = basePath + '/**/*.html'
+                src = generateSrcFolders(basePath, [], [clicktag,language,size], ['html']);
+                // src = basePath + '/**/*.html'
                 var html = gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -193,9 +193,9 @@ gulp.task('pre', ['clean'], function() {
                 tasks.push(html);
 
                 basePath = 'app/templates/js';
-                // src = generateSrcFolders(basePath, ['animations', 'clickTags'], [clicktag,language,size], ['js']);
-                src = basePath + '/**/*.js'
-                // src.push(basePath+'/includes/**/*')
+                src = generateSrcFolders(basePath, ['animations', 'clickTags'], [clicktag,language,size], ['js']);
+                // src = basePath + '/**/*.js'
+                src.push(basePath+'/includes/**/*')
 
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
