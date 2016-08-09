@@ -255,6 +255,11 @@ gulp.task('validate', ['cleanPackage'], function() {
                 var size = config.sizes[i];
                 var language = k;
 
+                if (shouldExcludeBanner([size, language, clicktag])) {
+                    console.log(`\tExcluding ${size} ${language} ${clicktag}`)
+                    continue
+                }
+
                tasks.push(
                     gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
                         .pipe(ignore.exclude(/index\.fat\.html/))
@@ -284,6 +289,9 @@ gulp.task('packageTask', ['validate'], function() {
                 var language = k;
                 var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
+                if (shouldExcludeBanner([size, language, clicktag])) {
+                    continue
+                }
                 var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_${size}`
 
                 tasks.push(gulp.src(path)
@@ -305,17 +313,21 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
     var version = config.version
     var name = config.name
 
-    for (var j in config.clicktags) {
-        for (var i in config.text) {
-            var clicktag = config.clicktags[j]
-            var language = i
-            var imageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_`
+    for (var h in config.sizes) {
+        for (var j in config.clicktags) {
+            for (var i in config.text) {
+                var size = config.sizes[h]
+                var clicktag = config.clicktags[j]
+                var language = i
+                var imageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_${size}`
 
-            tasks.push(gulp.src('build/temp/static/'+language+'/**/*')
-                .pipe(rename(function(path) {
-                    path.basename = imageName + path.basename
-                }))
-                .pipe(gulp.dest('build/package/'+clicktag)));
+                if (shouldExcludeBanner([size, language, clicktag])) {
+                    continue
+                }
+                tasks.push(gulp.src('build/temp/static/'+language+'/'+size+'.*')
+                    .pipe(rename({basename: imageName}))
+                    .pipe(gulp.dest('build/package/'+clicktag)));
+            }
         }
     }
 
