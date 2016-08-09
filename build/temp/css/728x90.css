@@ -1,62 +1,35 @@
 html, body {
-  width: 728px;
-  height: 90px; }
+  width: 320px;
+  height: 50px; }
 
-<<<<<<< HEAD
-.redlion-ec755b45 #ad {
-  width: 728px;
-  height: 90px; }
-  .redlion-ec755b45 #ad .masks .top {
-=======
-.redlion-73e8ac59 #ad {
-  width: 728px;
-  height: 90px; }
-  .redlion-73e8ac59 #ad .masks .top {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+.redlion-6328ea04 #ad {
+  width: 320px;
+  height: 50px; }
+  .redlion-6328ea04 #ad .masks .top {
     width: 47px;
     height: 35px;
-    top: 90px;
+    top: 50px;
     left: 0px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad .masks .left {
-=======
-  .redlion-73e8ac59 #ad .masks .left {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+  .redlion-6328ea04 #ad .masks .left {
     top: 56px;
     height: 0px;
     width: 4px;
     left: 43px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad .masks .bottom-right {
-=======
-  .redlion-73e8ac59 #ad .masks .bottom-right {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+  .redlion-6328ea04 #ad .masks .bottom-right {
     top: 0px;
     height: 0px;
     width: 104px;
     left: 261px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad .masks .bottom-bottom {
-=======
-  .redlion-73e8ac59 #ad .masks .bottom-bottom {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+  .redlion-6328ea04 #ad .masks .bottom-bottom {
     top: 54px;
     height: 0px;
     width: 4px;
     left: 261px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad #cta_trigger {
-=======
-  .redlion-73e8ac59 #ad #cta_trigger {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+  .redlion-6328ea04 #ad #cta_trigger {
     left: 609px;
     top: 34px;
     width: 98px;
     height: 23px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad #border {
-=======
-  .redlion-73e8ac59 #ad #border {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
-    width: 726px;
-    height: 88px; }
+  .redlion-6328ea04 #ad #border {
+    width: 318px;
+    height: 48px; }

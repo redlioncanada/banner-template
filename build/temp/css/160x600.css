@@ -1,44 +1,26 @@
 html, body {
-  width: 160px;
-  height: 600px; }
+  width: 320px;
+  height: 50px; }
 
-<<<<<<< HEAD
-.redlion-ec755b45 #ad {
-  width: 160px;
-  height: 600px; }
-  .redlion-ec755b45 #ad .masks .top {
-=======
-.redlion-73e8ac59 #ad {
-  width: 160px;
-  height: 600px; }
-  .redlion-73e8ac59 #ad .masks .top {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+.redlion-6328ea04 #ad {
+  width: 320px;
+  height: 50px; }
+  .redlion-6328ea04 #ad .masks .top {
     width: 0px;
     height: 33px;
     top: 389px;
     left: 0px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad .masks .left {
-=======
-  .redlion-73e8ac59 #ad .masks .left {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+  .redlion-6328ea04 #ad .masks .left {
     top: 389px;
     height: 4px;
     width: 0px;
     left: 78px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad #cta_trigger {
-=======
-  .redlion-73e8ac59 #ad #cta_trigger {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
+  .redlion-6328ea04 #ad #cta_trigger {
     left: 23px;
     top: 531px;
     width: 113px;
     height: 25px; }
-<<<<<<< HEAD
-  .redlion-ec755b45 #ad #border {
-=======
-  .redlion-73e8ac59 #ad #border {
->>>>>>> 0cfb51c88b7f32b636b2f8de6f3906ea8ae71059
-    width: 158px;
-    height: 598px; }
+  .redlion-6328ea04 #ad #border {
+    width: 318px;
+    height: 48px; }
+ }

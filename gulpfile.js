@@ -155,8 +155,9 @@ gulp.task('pre', ['clean'], function() {
                 var height = size.split('x')[1];
 
                 var basePath = 'app/templates/css';
-                var src = generateSrcFolders(basePath, [], [clicktag,language,size], ['css']);
-                // console.log(src)
+                // var src = generateSrcFolders(basePath, [], [clicktag,language,size], ['css']);
+                src = basePath + '/**/*.{scss,css}'
+
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -170,7 +171,8 @@ gulp.task('pre', ['clean'], function() {
                     .pipe(gulp.dest('build/temp/css')));
 
                 basePath = 'app/templates/html';
-                src = generateSrcFolders(basePath, [], [clicktag,language,size], ['html']);
+                // src = generateSrcFolders(basePath, [], [clicktag,language,size], ['html']);
+                src = basePath + '/**/*.html'
                 var html = gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -191,9 +193,10 @@ gulp.task('pre', ['clean'], function() {
                 tasks.push(html);
 
                 basePath = 'app/templates/js';
-                src = generateSrcFolders(basePath, ['animations', 'clickTags'], [clicktag,language,size], ['js']);
+                // src = generateSrcFolders(basePath, ['animations', 'clickTags'], [clicktag,language,size], ['js']);
+                src = basePath + '/**/*.js'
+                // src.push(basePath+'/includes/**/*')
 
-                src.push(basePath+'animations/'+size+'.js')
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
                     .pipe(replace('{height}', height))
@@ -297,6 +300,17 @@ gulp.task('clean', function() {
 
 gulp.task('validate', ['cleanPackage'], function() {
     var tasks = [];
+
+    var customTests = [
+        {
+            test: function(html, files) {
+                var regex = html.match(/\/\/=include |\/\*=include |<!--=include/g)
+                return !(regex && Array.isArray(regex) && regex.length)
+            },
+            message: 'Include syntax found. Template has not compiled properly.'
+        }
+    ]
+
     for (var i in config.sizes) {
         for (var k in config.text) {
             for (var j in config.clicktags) {
@@ -307,7 +321,7 @@ gulp.task('validate', ['cleanPackage'], function() {
                tasks.push(
                     gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
                         .pipe(ignore.exclude(/index\.fat\.html/))
-                        .pipe(adwords({name:size+' '+language+' '+clicktag}))
+                        .pipe(adwords({name:size+' '+language+' '+clicktag, customTests: customTests}))
                         .pipe(ignore.exclude(/\./))
                         .pipe(gulp.dest('.'))
                 )
