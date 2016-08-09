@@ -1,7 +1,7 @@
 {
 	"name": "XT5",
 	"brand": "Cadillac",
-	"version": "2",
+	"version": "3",
 	"sizes": [
 		"160x600",
 		"300x250",
@@ -16,5 +16,10 @@
 	"text": {
 		"en": {},
 		"fr": {}
-	}
+	},
+	"exclude": [
+		["300x50"],
+		["320x50"],
+		["fr"]
+	]
 }
