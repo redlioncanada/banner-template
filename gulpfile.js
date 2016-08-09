@@ -5,47 +5,121 @@
         combines files to their various sizes-clicktag folders
 
     gulp package
+        validates banners against AdWords specs
         zips build/size-clicktag and puts them in /build/package
 
     gulp version
-        --bump
             increases version number in config.json by 1
         --reset
             resets version number in config.json to 1
-
-    --save path
-        param that copies the build output to a different directory, requires the name property in config.json
 */
 
 require('events').EventEmitter.prototype._maxListeners = 100;
-var gulp        = require('gulp');
-var uglify      = require('gulp-uglify');
-var sass        = require('gulp-sass');
-var replace     = require('gulp-replace');
-var stripDebug  = require('gulp-strip-debug');
-var include     = require('gulp-include');
-var flatten     = require('gulp-flatten');
-var rename      = require('gulp-rename');
-var minifyCss   = require('gulp-cssnano');
-var minifyHtml  = require('gulp-htmlmin');
-var imageMin    = require('gulp-imagemin');
-var tar         = require('gulp-tar');
-var gzip        = require('gulp-gzip');
-var ignore      = require('gulp-ignore');
-var config      = require('./app/config.json');
-var fs          = require("fs");
-var del         = require('del');
-var path        = require('path');
-var uuid        = require('node-uuid');
-var mergeStream = require('merge-stream')
-var mergeStream = require('merge-stream');
-var jeditor     = require("gulp-json-editor");
-var argv        = require('yargs').argv;
-var adwords     = require('gulp-adwords');
+var gulp        = require('gulp'),
+    uglify      = require('gulp-uglify'),
+    sass        = require('gulp-sass'),
+    replace     = require('gulp-replace'),
+    stripDebug  = require('gulp-strip-debug'),
+    include     = require('gulp-include'),
+    flatten     = require('gulp-flatten'),
+    rename      = require('gulp-rename'),
+    minifyCss   = require('gulp-cssnano'),
+    minifyHtml  = require('gulp-htmlmin'),
+    imageMin    = require('gulp-imagemin'),
+    zip         = require('gulp-zip'),
+    ignore      = require('gulp-ignore'),
+    jeditor     = require("gulp-json-editor"),
+    adwords     = require('gulp-adwords'),
+    config      = require('./app/config.json'),
+    fs          = require("fs"),
+    del         = require('del'),
+    path        = require('path'),
+    uuid        = require('node-uuid'),
+    mergeStream = require('merge-stream'),
+    argv        = require('yargs').argv;
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
 
-gulp.task('generateHtml', ['pre'], function() {
+/* Start default workflow */
+gulp.task('default', ['generateHtml'], function() {
+    gulp.watch('app/**/*', ['generateHtml']);
+});
+
+gulp.task('clean', function() {
+    return del(['build']);
+});
+
+gulp.task('compile', ['clean'], function() {
+    var tasks = [];
+
+    for (var i in config.sizes) {
+        for (var k in config.text) {
+            for (var j in config.clicktags) {
+                var clicktag = config.clicktags[j];
+                var size = config.sizes[i];
+                var language = k;
+                var folderName = size+'-'+clicktag;
+                var width = size.split('x')[0];
+                var height = size.split('x')[1];
+
+                var basePath = 'app/templates/css';
+                var src = generateSrcFolders(basePath, ['**'], [clicktag,language,size], ['css']);
+                tasks.push(gulp.src(src, {base: basePath})
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
+                    .pipe(replace('{namespace}', id))
+                    .pipe(replace('{clicktag}', clicktag))
+                    .pipe(replace('{language}', language))
+                    .pipe(sass())
+                    .pipe(gulp.dest('build/temp/css'))
+                    .pipe(minifyCss())
+                    .pipe(rename({'suffix':'.min'}))
+                    .pipe(gulp.dest('build/temp/css')));
+
+
+                basePath = 'app/templates/html';
+                src = generateSrcFolders(basePath, ['**'], [clicktag,language,size], ['html']);
+                var html = gulp.src(src, {base: basePath})
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
+                    .pipe(replace('{language}', language))
+                    .pipe(replace('{clicktag}', clicktag))
+                for (var z in config.text[k]) {
+                    if (z == 'namespace' || z == 'size' || z == 'clicktag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
+                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
+                    }
+                    html.pipe(replace('{'+z+'}', config.text[k][z]));
+                }
+                html.pipe(gulp.dest('build/temp/html'))
+                    .pipe(minifyHtml())
+                    .pipe(rename({'suffix':'.min'}))
+                    .pipe(gulp.dest('build/temp/html'));
+
+                tasks.push(html);
+
+
+                basePath = 'app/templates/js';
+                src = generateSrcFolders(basePath, ['**'], [clicktag,language,size], ['js']);
+                src.push(basePath+'/includes/**/*.js')
+                tasks.push(gulp.src(src, {base: basePath})
+                    .pipe(replace('{width}', width))
+                    .pipe(replace('{height}', height))
+                    .pipe(replace('{size}', size))
+                    .pipe(replace('{language}', language))
+                    .pipe(replace('{clicktag}', clicktag))
+                    .pipe(gulp.dest('build/temp/js'))
+                    .pipe(stripDebug())
+                    .pipe(uglify({mangle:false}))
+                    .pipe(rename({suffix:'.min'}))
+                    .pipe(gulp.dest('build/temp/js')));
+            }
+        }
+    }
+
+    return mergeStream(tasks);
+});
+
+gulp.task('generateHtml', ['compile'], function() {
     var overviewData = [];
     var overview = gulp.src('app/overview/index.html');
     var tasks = [];
@@ -61,7 +135,7 @@ gulp.task('generateHtml', ['pre'], function() {
                 var height = size.split('x')[1];
                 var basePath = 'app/assets';
 
-                var src = generateSrcFolders(basePath, [], [language,size,clicktag], ['jpg','png','jpeg','gif','svg']);
+                var src = generateSrcFolders(basePath, ['**'], [language,size,clicktag], ['jpg','png','jpeg','gif','svg']);
 
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(flatten())
@@ -140,9 +214,28 @@ gulp.task('generateHtml', ['pre'], function() {
 
     return mergeStream(tasks);
 })
+/* End default workflow */
 
-gulp.task('pre', ['clean'], function() {
+/* Begin package workflow */
+gulp.task('package', ['packageContinueTask']);
+gulp.task('publish', ['packageContinueTask']);
+
+gulp.task('cleanPackage', function() {
+    return del(['build/package']);
+});
+
+gulp.task('validate', ['cleanPackage'], function() {
     var tasks = [];
+
+    var customTests = [
+        {
+            test: function(html, files) {
+                var regex = html.match(/\/\/=include |\/\*=include |<!--=include/g)
+                return !(regex && Array.isArray(regex) && regex.length)
+            },
+            message: 'Include syntax found. Template has not compiled properly.'
+        }
+    ]
 
     for (var i in config.sizes) {
         for (var k in config.text) {
@@ -150,81 +243,22 @@ gulp.task('pre', ['clean'], function() {
                 var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
-                var folderName = size+'-'+clicktag;
-                var width = size.split('x')[0];
-                var height = size.split('x')[1];
 
-                var basePath = 'app/templates/css';
-                var src = generateSrcFolders(basePath, [], [clicktag,language,size], ['css']);
-                // console.log(src)
-                tasks.push(gulp.src(src, {base: basePath})
-                    .pipe(replace('{width}', width))
-                    .pipe(replace('{height}', height))
-                    .pipe(replace('{namespace}', id))
-                    .pipe(replace('{clicktag}', clicktag))
-                    .pipe(replace('{language}', language))
-                    .pipe(sass())
-                    .pipe(gulp.dest('build/temp/css'))
-                    .pipe(minifyCss())
-                    .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/css')));
-
-                basePath = 'app/templates/html';
-                src = generateSrcFolders(basePath, [], [clicktag,language,size], ['html']);
-                var html = gulp.src(src, {base: basePath})
-                    .pipe(replace('{width}', width))
-                    .pipe(replace('{height}', height))
-                    .pipe(replace('{language}', language))
-                    .pipe(replace('{clicktag}', clicktag))
-
-                for (var z in config.text[k]) {
-                    if (z == 'namespace' || z == 'size' || z == 'clicktag' || z == 'url' || z == 'width' || z == 'height' || z == 'language') {
-                        throw new Error('when binding text, '+z+' is a reserved bind keyword.');
-                    }
-                    html.pipe(replace('{'+z+'}', config.text[k][z]));
-                }
-                html.pipe(gulp.dest('build/temp/html'))
-                    .pipe(minifyHtml())
-                    .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/html'));
-
-                tasks.push(html);
-
-                basePath = 'app/templates/js';
-                src = generateSrcFolders(basePath, ['animations', 'clickTags'], [clicktag,language,size], ['js']);
-
-                src.push(basePath+'animations/'+size+'.js')
-                tasks.push(gulp.src(src, {base: basePath})
-                    .pipe(replace('{width}', width))
-                    .pipe(replace('{height}', height))
-                    .pipe(replace('{size}', size))
-                    .pipe(replace('{language}', language))
-                    .pipe(replace('{clicktag}', clicktag))
-                    .pipe(gulp.dest('build/temp/js'))
-                    .pipe(stripDebug())
-                    .pipe(uglify({mangle:false}))
-                    .pipe(rename({suffix:'.min'}))
-                    .pipe(gulp.dest('build/temp/js')));
+               tasks.push(
+                    gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
+                        .pipe(ignore.exclude(/index\.fat\.html/))
+                        .pipe(adwords({name:size+' '+language+' '+clicktag, customTests: customTests}))
+                        .pipe(ignore.exclude(/\./))
+                        .pipe(gulp.dest('.'))
+                )
             }
         }
     }
-
-    return mergeStream(tasks);
-});
-
-
-gulp.task('default', ['save'], function() {
-    gulp.watch('app/templates/**/*.*', ['save']);
-    gulp.watch('app/assets/**/*.*', ['save']);
-});
-
-gulp.task('package', ['packageContinueTask']);
-gulp.task('publish', ['packageContinueTask']);
+    return mergeStream(tasks)
+})
 
 gulp.task('packageTask', ['validate'], function() {
-    var zip = require('gulp-zip');
     var tasks = [];
-
     var year = new Date().getFullYear()
     var month = getMonth(new Date().getMonth())
     var brand = config.brand
@@ -253,9 +287,7 @@ gulp.task('packageTask', ['validate'], function() {
 });
 
 gulp.task('packageContinueTask', ['packageTask'], function() {
-    var zip = require('gulp-zip');
     var tasks = [];
-
     var year = new Date().getFullYear()
     var month = getMonth(new Date().getMonth())
     var brand = config.brand
@@ -273,67 +305,26 @@ gulp.task('packageContinueTask', ['packageTask'], function() {
 
     return mergeStream(tasks);
 })
+/* End package workflow */
 
-gulp.task('save', ['cleanSave'], function() {
-    if (argv.save && config.name) {
-        return gulp.src('build/**/*')
-            .pipe(gulp.dest(argv.save+'/'+config.name));
-    }
-});
-
-gulp.task('cleanSave', ['generateHtml'], function() {
-    if (argv.save && config.name) {
-        return del([argv.save+'/'+config.name], {force: true});
-    }
-});
-
-gulp.task('cleanPackage', function() {
-    return del(['build/package']);
-});
-
-gulp.task('clean', function() {
-    return del(['build']);
-});
-
-gulp.task('validate', ['cleanPackage'], function() {
-    var tasks = [];
-    for (var i in config.sizes) {
-        for (var k in config.text) {
-            for (var j in config.clicktags) {
-                var clicktag = config.clicktags[j];
-                var size = config.sizes[i];
-                var language = k;
-
-               tasks.push(
-                    gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
-                        .pipe(ignore.exclude(/index\.fat\.html/))
-                        .pipe(adwords({name:size+' '+language+' '+clicktag}))
-                        .pipe(ignore.exclude(/\./))
-                        .pipe(gulp.dest('.'))
-                )
-            }
-        }
-    }
-    return mergeStream(tasks)
-})
-
+/* Start version workflow */
 gulp.task('version', function() {
     if (argv.reset) {
         gulp.src('./app/config.json')
             .pipe(jeditor({"version": "1"}))
             .pipe(gulp.dest('./app'))
-    } else if (argv.bump) {
+    } else {
         gulp.src('./app/config.json')
             .pipe(jeditor(function(json) {
                 json.version = String(Number(json.version) + 1)
                 return json
             }))
             .pipe(gulp.dest('./app'))
-    } else {
-        console.log('No params set!')
     }
 })
+/* End version workflow */
 
+/* Helper functions */
 function generateSrcFolders(path,subfolders,params,extensions) {
     function allCombinationsOf (src, minLen, maxLen){
         minLen = minLen-1 || 0;
