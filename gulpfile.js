@@ -192,7 +192,7 @@ gulp.task('generateHtml', ['compile'], function() {
                 tasks.push(indexMin);
             }
 
-            overviewData.push({
+            var bannerData = {
                 width: width,
                 height: height,
                 src: '../'+folderName+'/'+language,
@@ -200,7 +200,10 @@ gulp.task('generateHtml', ['compile'], function() {
                 folderName: folderName,
                 size: size,
                 clicktag: clicktag
-            })
+            }
+
+            if (!shouldExcludeBanner([size, language, width, height, clicktag])) overviewData.push(bannerData)
+            else console.log(`Excluding ${size} ${language} ${clicktag} from overview`)
         }
     }
 
@@ -468,4 +471,22 @@ function getMonth(month) {
         default:
             return false
     }
+}
+
+function shouldExcludeBanner(params) {
+    for (var i in config.exclude) {
+        var matched = 0
+        for (var j in config.exclude[i]) {
+            var val = config.exclude[i][j]
+
+            for (var h in params) {
+                if (val == params[h]) {
+
+                    if (++matched == config.exclude[i].length) return true
+                    break;
+                }
+            }
+        }
+    }
+    return false
 }
