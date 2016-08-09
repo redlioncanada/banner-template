@@ -11,66 +11,56 @@ html, body {
         .masks {
             .top {
                 width: 0px;
-                height: 56px;
-                top: 0px;
-                left: {width}px;
-            }
-
-            .left {
-                top: 0px;
-                height: 0px;
-                width: 35px;
-                left: 0px
-            }
-
-            .bottom-bottom {
-                top: 213px;
-                height: 38px;
-                width: 0px;
+                height: 32px;
+                top: 389px;
                 left: 0px;
             }
 
-            .bottom-right {
-                top: 213px;
+            .left {
+                top: 389px;
                 height: 4px;
                 width: 0px;
-                left: 207px;
+                left: 78px
             }
         }
 
         #cta_trigger {
-            left: 177px;
-            top: 197px;
-            width: 98px;
-            height: 22px;
+            left: 23px;
+            top: 531px;
+            width: 113px;
+            height: 25px;
         }
 
         #border {
             width: {width}-2px;
             height: {height}-2px;
         }
- .cta_hover{
-            display:none;
+        .background1{
+            width: {width}px;
+            height: {height}px;
+
         }
         .logo{
-            height:{height}px;
-            width:{width}px;
+            width: {width}px;
+            height: {height}px;
+            opacity: 1;
         }
         .copy1{
-            height:{height}px;
-            width:{width}px;
+            width: {width}px;
+            height: {height}px;
+            left: -150px;
+            opacity:1;
         }
         .copy2{
-            height:{height}px;
-            width:{width}px;
-        }
-        .background1{
-            height:{height}px;
-            width:{width}px;
+            width: {width}px;
+            height: {height}px;
         }
         .cta_normal{
-            height:{height}px;
-            width:{width}px;
+            width: {width}px;
+            height: {height}px;
+        }
+        .cta_hover{
+            display:none;
         }
     }
 }

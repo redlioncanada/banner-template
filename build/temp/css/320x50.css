@@ -2,51 +2,44 @@ html, body {
   width: 320px;
   height: 50px; }
 
-.redlion-7d91108f #ad {
+.redlion-b0093237 #ad {
   width: 320px;
   height: 50px; }
-  .redlion-7d91108f #ad .masks .top {
+  .redlion-b0093237 #ad .masks .top {
     width: 0px;
-    height: 56px;
-    top: 0px;
-    left: 320px; }
-  .redlion-7d91108f #ad .masks .left {
-    top: 0px;
-    height: 0px;
-    width: 35px;
+    height: 32px;
+    top: 389px;
     left: 0px; }
-  .redlion-7d91108f #ad .masks .bottom-bottom {
-    top: 213px;
-    height: 38px;
-    width: 0px;
-    left: 0px; }
-  .redlion-7d91108f #ad .masks .bottom-right {
-    top: 213px;
+  .redlion-b0093237 #ad .masks .left {
+    top: 389px;
     height: 4px;
     width: 0px;
-    left: 207px; }
-  .redlion-7d91108f #ad #cta_trigger {
-    left: 177px;
-    top: 197px;
-    width: 98px;
-    height: 22px; }
-  .redlion-7d91108f #ad #border {
+    left: 78px; }
+  .redlion-b0093237 #ad #cta_trigger {
+    left: 23px;
+    top: 531px;
+    width: 113px;
+    height: 25px; }
+  .redlion-b0093237 #ad #border {
     width: 318px;
     height: 48px; }
-  .redlion-7d91108f #ad .cta_hover {
+  .redlion-b0093237 #ad .background1 {
+    width: 320px;
+    height: 50px; }
+  .redlion-b0093237 #ad .logo {
+    width: 320px;
+    height: 50px;
+    opacity: 1; }
+  .redlion-b0093237 #ad .copy1 {
+    width: 320px;
+    height: 50px;
+    left: -150px;
+    opacity: 1; }
+  .redlion-b0093237 #ad .copy2 {
+    width: 320px;
+    height: 50px; }
+  .redlion-b0093237 #ad .cta_normal {
+    width: 320px;
+    height: 50px; }
+  .redlion-b0093237 #ad .cta_hover {
     display: none; }
-  .redlion-7d91108f #ad .logo {
-    height: 50px;
-    width: 320px; }
-  .redlion-7d91108f #ad .copy1 {
-    height: 50px;
-    width: 320px; }
-  .redlion-7d91108f #ad .copy2 {
-    height: 50px;
-    width: 320px; }
-  .redlion-7d91108f #ad .background1 {
-    height: 50px;
-    width: 320px; }
-  .redlion-7d91108f #ad .cta_normal {
-    height: 50px;
-    width: 320px; }
