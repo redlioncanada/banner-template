@@ -2,6 +2,10 @@
 	"name": "XT5",
 	"brand": "Cadillac",
 	"version": "4",
+	"filesize": {
+		"static": 40,
+		"rich": 150
+	},
 	"sizes": [
 		"160x600",
 		"300x250",
