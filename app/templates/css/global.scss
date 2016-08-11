@@ -4,13 +4,6 @@
     width: $width;
 }
 
-@font-face {
-    font-family: 'Avenir';
-    src: url('Avenir-Black.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html,body{
     margin: 0;
     padding: 0;
@@ -18,7 +11,7 @@ html,body{
 
 .{namespace} {
     * {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
         color: white;
         font-size: 12pt;
     }
