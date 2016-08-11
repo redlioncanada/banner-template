@@ -24,14 +24,16 @@ var gulp        = require('gulp'),
     flatten     = require('gulp-flatten'),
     rename      = require('gulp-rename'),
     minifyCss   = require('gulp-cssnano'),
+    util        = require('gulp-util'),
     minifyHtml  = require('gulp-htmlmin'),
     imageMin    = require('gulp-imagemin'),
     zip         = require('gulp-zip'),
     ignore      = require('gulp-ignore'),
     jeditor     = require("gulp-json-editor"),
     adwords     = require('gulp-adwords'),
-    config      = require('./app/config.json'),
+    imageSize  = require('image-size'),
     fs          = require("fs"),
+    through     = require('through2'),
     del         = require('del'),
     path        = require('path'),
     uuid        = require('node-uuid'),
@@ -39,6 +41,20 @@ var gulp        = require('gulp'),
     argv        = require('yargs').argv;
 
 var id = 'redlion-'+uuid.v4().replace(/-/g, '').substr(0,8);
+
+var directories = {
+    "rich": {
+        "assets": "app/rich/assets",
+        "templates": "app/rich/templates",
+        "overview": "app/rich/overview",
+        "temp": "build/temp/rich"
+    },
+    "static": {
+        "assets": "app/static",
+        "temp": "build/temp/static"
+    },
+    "package": "build/package"
+}
 
 /* Start default workflow */
 gulp.task('default', ['static'], function() {
@@ -51,6 +67,8 @@ gulp.task('clean', function() {
 
 gulp.task('compile', ['clean'], function() {
     var tasks = [];
+    delete require.cache[require.resolve('./app/config.json')]
+    var config = require('./app/config.json');
 
     for (var i in config.sizes) {
         for (var k in config.text) {
@@ -62,7 +80,7 @@ gulp.task('compile', ['clean'], function() {
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
 
-                var basePath = 'app/rich/templates/css';
+                var basePath = directories.rich.templates+'/css';
                 var src = generateSrcFolders(basePath, ['**'], [clicktag,language,size], ['css']);
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
@@ -71,13 +89,13 @@ gulp.task('compile', ['clean'], function() {
                     .pipe(replace('{clicktag}', clicktag))
                     .pipe(replace('{language}', language))
                     .pipe(sass())
-                    .pipe(gulp.dest('build/temp/rich/css'))
+                    .pipe(gulp.dest(directories.rich.temp+'/css'))
                     .pipe(minifyCss())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/rich/css')));
+                    .pipe(gulp.dest(directories.rich.temp+'/css')));
 
 
-                basePath = 'app/rich/templates/html';
+                basePath = directories.rich.templates+'/html';
                 src = generateSrcFolders(basePath, ['**'], [clicktag,language,size], ['html']);
                 var html = gulp.src(src, {base: basePath})
                     .pipe(replace('{width}', width))
@@ -90,15 +108,15 @@ gulp.task('compile', ['clean'], function() {
                     }
                     html.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
-                html.pipe(gulp.dest('build/temp/rich/html'))
+                html.pipe(gulp.dest(directories.rich.temp+'/html'))
                     .pipe(minifyHtml())
                     .pipe(rename({'suffix':'.min'}))
-                    .pipe(gulp.dest('build/temp/rich/html'));
+                    .pipe(gulp.dest(directories.rich.temp+'/html'));
 
                 tasks.push(html);
 
 
-                basePath = 'app/rich/templates/js';
+                basePath = directories.rich.templates+'/js';
                 src = generateSrcFolders(basePath, ['**'], [clicktag,language,size], ['js']);
                 src.push(basePath+'/includes/**/*.js')
                 tasks.push(gulp.src(src, {base: basePath})
@@ -107,11 +125,11 @@ gulp.task('compile', ['clean'], function() {
                     .pipe(replace('{size}', size))
                     .pipe(replace('{language}', language))
                     .pipe(replace('{clicktag}', clicktag))
-                    .pipe(gulp.dest('build/temp/rich/js'))
+                    .pipe(gulp.dest(directories.rich.temp+'/js'))
                     .pipe(stripDebug())
                     .pipe(uglify({mangle:false}))
                     .pipe(rename({suffix:'.min'}))
-                    .pipe(gulp.dest('build/temp/rich/js')));
+                    .pipe(gulp.dest(directories.rich.temp+'/js')));
             }
         }
     }
@@ -121,8 +139,9 @@ gulp.task('compile', ['clean'], function() {
 
 gulp.task('generateHtml', ['compile'], function() {
     var overviewData = [];
-    var overview = gulp.src('app/rich/overview/index.html');
+    var overview = gulp.src(directories.rich.overview+'/index.html');
     var tasks = [];
+    var config = require('./app/config.json');
 
     for (var i in config.sizes) {
         for (var k in config.text) {
@@ -133,9 +152,11 @@ gulp.task('generateHtml', ['compile'], function() {
                 var folderName = size+'-'+clicktag;
                 var width = size.split('x')[0];
                 var height = size.split('x')[1];
-                var basePath = 'app/rich/assets';
+                var basePath = directories.rich.assets;
 
-                var src = generateSrcFolders(basePath, ['**'], [language,size,clicktag], ['jpg','png','jpeg','gif','svg']);
+                var src = generateSrcFolders(basePath, [], [language,size,clicktag], ['jpg','png','jpeg','gif','svg']);
+                // console.log(src)
+                // process.exit()
 
                 tasks.push(gulp.src(src, {base: basePath})
                     .pipe(flatten())
@@ -145,7 +166,7 @@ gulp.task('generateHtml', ['compile'], function() {
                     .pipe(gulp.dest('build/'+folderName+'/'+language)));
 
                 //normal
-                var index = gulp.src('app/rich/templates/index.html')
+                var index = gulp.src(directories.rich.templates+'/index.html')
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
                     .pipe(replace('{clicktag}', clicktag))
@@ -161,7 +182,7 @@ gulp.task('generateHtml', ['compile'], function() {
                     index.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../../build/temp/rich/'))
+                index.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../../'+directories.rich.temp+'/'))
                     .pipe(include())
                     .pipe(rename({'suffix':'.fat'}))
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
@@ -170,7 +191,7 @@ gulp.task('generateHtml', ['compile'], function() {
 
 
                 //minified
-                var indexMin = gulp.src('app/rich/templates/index.html')
+                var indexMin = gulp.src(directories.rich.templates+'/index.html')
                     .pipe(replace('{namespace}', id))
                     .pipe(replace('{size}',size))
                     .pipe(replace(/(\/\/=.*|<!--=.*|\/\*=.*)(\.js|\.html|\.css)/g, '$1.min$2'))
@@ -184,7 +205,7 @@ gulp.task('generateHtml', ['compile'], function() {
                     indexMin.pipe(replace('{'+z+'}', config.text[k][z]));
                 }
 
-                indexMin.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../../build/temp/rich/'))
+                indexMin.pipe(replace(/(\/\/=include |\/\*=include |<!--=include )/g, '$1../../../'+directories.rich.temp+'/'))
                     .pipe(include())
                     .pipe(minifyHtml())
                     .pipe(gulp.dest('build/'+folderName+'/'+language));
@@ -202,7 +223,7 @@ gulp.task('generateHtml', ['compile'], function() {
                 clicktag: clicktag
             }
 
-            if (!shouldExcludeBanner([size, language, width, height, clicktag])) overviewData.push(bannerData)
+            if (!shouldExcludeBanner(config, [size, language, width, height, clicktag])) overviewData.push(bannerData)
             else console.log(`Excluding ${size} ${language} ${clicktag} from overview`)
         }
     }
@@ -219,11 +240,21 @@ gulp.task('generateHtml', ['compile'], function() {
 })
 
 gulp.task('static', ['generateHtml'], function() {
-    gulp.src('app/static/**/*')
-        .pipe(imageMin({
-            progressive: true
-        }))
-        .pipe(gulp.dest('build/temp/static'))
+    var tasks = []
+    var config = require('./app/config.json');
+
+    for (var language in config.text) {
+        tasks.push(
+            gulp.src('app/static/'+language+'/**/*')
+                .pipe(imageMin({
+                    progressive: true
+                }))
+                .pipe(gulp.dest(directories.static.temp+'/'+language))
+        )
+    }
+
+
+     return mergeStream(tasks);
 })
 /* End default workflow */
 
@@ -237,6 +268,7 @@ gulp.task('cleanPackage', function() {
 
 gulp.task('validate', ['cleanPackage'], function() {
     var tasks = [];
+    var config = require('./app/config.json');
 
     var customTests = [
         {
@@ -255,26 +287,63 @@ gulp.task('validate', ['cleanPackage'], function() {
                 var size = config.sizes[i];
                 var language = k;
 
-                if (shouldExcludeBanner([size, language, clicktag])) {
+                if (shouldExcludeBanner(config, [size, language, clicktag])) {
                     console.log(`\tExcluding ${size} ${language} ${clicktag}`)
                     continue
                 }
 
-               tasks.push(
-                    gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
-                        .pipe(ignore.exclude(/index\.fat\.html/))
-                        .pipe(adwords({name:size+' '+language+' '+clicktag, customTests: customTests}))
-                        .pipe(ignore.exclude(/\./))
-                        .pipe(gulp.dest('.'))
-                )
+                //validate rich banner
+                var task
+                switch(clicktag) {
+                    case "adwords":
+                        task = gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
+                            .pipe(ignore.exclude(/index\.fat\.html/))
+                            .pipe(adwords({size: config.filesize.rich, name:size+' '+language+' '+clicktag, customTests: customTests}))
+                            .pipe(ignore.exclude(/\./))
+                            .pipe(gulp.dest('.'))
+                        break
+                    case "doubleclick":
+                    case "adgear":
+                    default:
+                        console.log(`Warning: ${size} ${language} ${clicktag} was not validated. ${clicktag} validation has not yet been implmented.`)
+                        break
+                }
+
+               if (task) tasks.push(task)
+
+                //validate static banner
+                gulp.src('build/temp/static/'+language+'/'+size+'.{jpg,jpeg,png,gif}')
+                    .pipe(through.obj(function(file, enc, cb) {
+                        var name = file.path.match(/[^/]*$/g)[0]
+                        var requiredDimensions = name.match(/[0-9]*x[0-9]*/g)[0]
+                        var dimensions = imageSize(file.path)
+                        dimensions = dimensions.width+'x'+dimensions.height
+
+                        var size = file.stat.size
+                        var requiredSize = config.filesize.static
+
+                        //make sure the image dimensions match it's size
+                        if (requiredDimensions !== dimensions) util.log(util.colors.red.bold('WARNING: ')+util.colors.cyan(name)+' dimensions do not match '+requiredDimensions+': '+util.colors.red(dimensions) )
+
+                        //make sure the image size does not exceed the size specified in the config
+                        if (size > requiredSize*1000) util.log(util.colors.red.bold('WARNING: ')+util.colors.cyan(name)+' exceeds filesize limit of '+requiredSize+' KB: '+util.colors.red(size/1000+' KB') )
+
+                        cb(null, file)
+                    }))
+                    .pipe(ignore.exclude(/\./))
+                    .pipe(gulp.dest('.'))
             }
         }
     }
+
+    var noop = gulp.src('.').pipe(ignore.exclude(/\./)).pipe(gulp.dest('.'))
+    if (!tasks.length) tasks.push(noop)
     return mergeStream(tasks)
 })
 
 gulp.task('packageTask', ['validate'], function() {
     var tasks = [];
+    var config = require('./app/config.json');
     var year = new Date().getFullYear()
     var month = getMonth(new Date().getMonth())
     var brand = config.brand
@@ -289,7 +358,7 @@ gulp.task('packageTask', ['validate'], function() {
                 var language = k;
                 var path = 'build/'+size+'-'+clicktag+'/'+language+'/*';
 
-                if (shouldExcludeBanner([size, language, clicktag])) {
+                if (shouldExcludeBanner(config, [size, language, clicktag])) {
                     continue
                 }
                 var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_${size}`
@@ -307,6 +376,7 @@ gulp.task('packageTask', ['validate'], function() {
 
 gulp.task('packageStaticTask', ['packageTask'], function() {
     var tasks = [];
+    var config = require('./app/config.json');
     var year = new Date().getFullYear()
     var month = getMonth(new Date().getMonth())
     var brand = config.brand
@@ -321,12 +391,12 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
                 var language = i
                 var imageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_${size}`
 
-                if (shouldExcludeBanner([size, language, clicktag])) {
+                if (shouldExcludeBanner(config, [size, language, clicktag])) {
                     continue
                 }
-                tasks.push(gulp.src('build/temp/static/'+language+'/'+size+'.*')
+                tasks.push(gulp.src(directories.static.temp+'/'+language+'/'+size+'.*')
                     .pipe(rename({basename: imageName}))
-                    .pipe(gulp.dest('build/package/'+clicktag)));
+                    .pipe(gulp.dest(directories.package+'/'+clicktag)));
             }
         }
     }
@@ -336,6 +406,7 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
 
 gulp.task('packageContinueTask', ['packageStaticTask'], function() {
     var tasks = [];
+    var config = require('./app/config.json');
     var year = new Date().getFullYear()
     var month = getMonth(new Date().getMonth())
     var brand = config.brand
@@ -346,9 +417,9 @@ gulp.task('packageContinueTask', ['packageStaticTask'], function() {
         var clicktag = config.clicktags[j]
         var name = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${clicktag}_V${version}`
 
-        tasks.push(gulp.src('build/package/'+clicktag+'/**/*')
+        tasks.push(gulp.src(directories.package+'/'+clicktag+'/**/*')
             .pipe(zip(name+'.zip'))
-            .pipe(gulp.dest('build/package')));
+            .pipe(gulp.dest(directories.package)));
     }
 
     return mergeStream(tasks);
@@ -485,16 +556,18 @@ function getMonth(month) {
     }
 }
 
-function shouldExcludeBanner(params) {
+function shouldExcludeBanner(config, params) {
     for (var i in config.exclude) {
         var matched = 0
-        for (var j in config.exclude[i]) {
-            var val = config.exclude[i][j]
+        var exclusion = typeof config.exclude[i] === 'string' ? [config.exclude[i]] : config.exclude[i]
+
+        for (var j in exclusion) {
+            var val = exclusion[j]
 
             for (var h in params) {
                 if (val == params[h]) {
 
-                    if (++matched == config.exclude[i].length) return true
+                    if (++matched == exclusion.length) return true
                     break;
                 }
             }
