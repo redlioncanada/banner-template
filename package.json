@@ -52,5 +52,8 @@
     "bigbox",
     "skyscraper",
     "greensock"
-  ]
+  ],
+  "dependencies": {
+    "log-symbols": "^1.0.2"
+  }
 }
