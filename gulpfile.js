@@ -270,15 +270,32 @@ gulp.task('validate', ['cleanPackage'], function() {
     var tasks = [];
     var config = require('./app/config.json');
 
-    var customTests = [
-        {
-            test: function(html, files) {
-                var regex = html.match(/\/\/=include |\/\*=include |<!--=include/g)
-                return !(regex && Array.isArray(regex) && regex.length)
-            },
-            message: 'Include syntax found. Template has not compiled properly.'
-        }
-    ]
+    var includeTest = {
+        test: function(html, files) {
+            var regex = html.match(/\/\/=include |\/\*=include |<!--=include/g)
+            return !(regex && Array.isArray(regex) && regex.length)
+        },
+        message: 'Include syntax found. Template has not compiled properly.',
+        name: 'TEMPLATE_INCLUDE_TEST'
+    }
+
+    var doubleclickClicktagTest = {
+        test: function(html, files) {
+            var regex = html.match(/var click(TAG|Tag) = ('|")https{0,1}:\/\/.*\..+('|")/g)
+            return regex && Array.isArray(regex) && regex.length
+        },
+        message: 'Clicktag not found. Make sure it is defined.',
+        name: 'CLICKTAG_TEST'
+    }
+
+    var adgearClicktagTest = {
+        test: function(html, files) {
+            var regex = html.match(/ADGEAR\.html5\.clickThrough\(\"clickTAG\"\)/g)
+            return regex && Array.isArray(regex) && regex.length
+        },
+        message: 'Clicktag not found. Make sure it is defined.',
+        name: 'CLICKTAG_TEST'
+    }
 
     for (var i in config.sizes) {
         for (var k in config.text) {
@@ -292,24 +309,18 @@ gulp.task('validate', ['cleanPackage'], function() {
                     continue
                 }
 
-                //validate rich banner
-                var task
-                switch(clicktag) {
-                    case "adwords":
-                        task = gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
-                            .pipe(ignore.exclude(/index\.fat\.html/))
-                            .pipe(adwords({size: config.filesize.rich, name:size+' '+language+' '+clicktag, customTests: customTests}))
-                            .pipe(ignore.exclude(/\./))
-                            .pipe(gulp.dest('.'))
-                        break
-                    case "doubleclick":
-                    case "adgear":
-                    default:
-                        console.log(`Warning: ${size} ${language} ${clicktag} was not validated. ${clicktag} validation has not yet been implmented.`)
-                        break
-                }
+                var customTests = [includeTest]
+                if (clicktag == 'doubleclick') customTests.push(doubleclickClicktagTest)
+                else if (clicktag == 'adgear') customTests.push(adgearClicktagTest)
 
-               if (task) tasks.push(task)
+                //validate rich banner
+                tasks.push(
+                    gulp.src('build/'+size+'-'+clicktag+'/'+language+'/**/*')
+                        .pipe(ignore.exclude(/index\.fat\.html/))
+                        .pipe(adwords({size: config.filesize.rich, name:size+' '+language+' '+clicktag, customTests: customTests}))
+                        .pipe(ignore.exclude(/\./))
+                        .pipe(gulp.dest('.'))
+                )
 
                 //validate static banner
                 gulp.src('build/temp/static/'+language+'/'+size+'.{jpg,jpeg,png,gif}')
