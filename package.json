@@ -42,7 +42,9 @@
     "node-uuid": "^1.4.7",
     "yargs": "^3.32.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "log-symbols": "^1.0.2"
+  },
   "keywords": [
     "html5",
     "banner",

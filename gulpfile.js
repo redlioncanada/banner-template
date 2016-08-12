@@ -33,6 +33,7 @@ var gulp        = require('gulp'),
     adwords     = require('gulp-adwords'),
     imageSize  = require('image-size'),
     fs          = require("fs"),
+    symbols     = require('log-symbols'),
     through     = require('through2'),
     del         = require('del'),
     path        = require('path'),
@@ -224,7 +225,7 @@ gulp.task('generateHtml', ['compile'], function() {
             }
 
             if (!shouldExcludeBanner(config, [size, language, width, height, clicktag])) overviewData.push(bannerData)
-            else console.log(`Excluding ${size} ${language} ${clicktag} from overview`)
+            else util.log(util.colors.yellow(`Excluding ${size} ${language} ${clicktag}`))
         }
     }
 
@@ -281,8 +282,8 @@ gulp.task('validate', ['cleanPackage'], function() {
 
     var doubleclickClicktagTest = {
         test: function(html, files) {
-            var regex = html.match(/var click(TAG|Tag) = ('|")https{0,1}:\/\/.*\..+('|")/g)
-            return regex && Array.isArray(regex) && regex.length
+            var regex = html.match(/var click(TAG|Tag)\s{0,1}=\s{0,1}('|")https{0,1}:\/\/.*\..+('|")/g)
+            return (regex && Array.isArray(regex) && regex.length)
         },
         message: 'Clicktag not found. Make sure it is defined.',
         name: 'CLICKTAG_TEST'
@@ -305,7 +306,7 @@ gulp.task('validate', ['cleanPackage'], function() {
                 var language = k;
 
                 if (shouldExcludeBanner(config, [size, language, clicktag])) {
-                    console.log(`\tExcluding ${size} ${language} ${clicktag}`)
+                    util.log(util.colors.yellow(`Excluding ${size} ${language} ${clicktag}`))
                     continue
                 }
 
@@ -333,12 +334,22 @@ gulp.task('validate', ['cleanPackage'], function() {
                         var size = file.stat.size
                         var requiredSize = config.filesize.static
 
+                        var errors = 0
+                        util.log(name)
                         //make sure the image dimensions match it's size
-                        if (requiredDimensions !== dimensions) util.log(util.colors.red.bold('WARNING: ')+util.colors.cyan(name)+' dimensions do not match '+requiredDimensions+': '+util.colors.red(dimensions) )
+                        if (requiredDimensions !== dimensions) {
+                            util.log(util.colors.red.bold('WARNING: ')+util.colors.cyan(name)+' dimensions do not match '+requiredDimensions+': '+util.colors.red(dimensions) )
+                            errors++
+                        }
 
                         //make sure the image size does not exceed the size specified in the config
-                        if (size > requiredSize*1000) util.log(util.colors.red.bold('WARNING: ')+util.colors.cyan(name)+' exceeds filesize limit of '+requiredSize+' KB: '+util.colors.red(size/1000+' KB') )
+                        if (size > requiredSize*1000) {
+                            util.log(util.colors.red.bold('WARNING: ')+util.colors.cyan(name)+' exceeds filesize limit of '+requiredSize+' KB: '+util.colors.red(size/1000+' KB') )
+                            errors++
+                        }
 
+                        if (errors) {util.log(util.colors.red.bold(`${symbols.error} FAILED`))}
+                        else {util.log(util.colors.green.bold(`${symbols.success} PASSED`))}
                         cb(null, file)
                     }))
                     .pipe(ignore.exclude(/\./))
