@@ -38,6 +38,7 @@
     "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
     "image-size": "^0.5.0",
+    "log-symbols": "^1.0.2",
     "merge-stream": "^1.0.0",
     "node-uuid": "^1.4.7",
     "yargs": "^3.32.0"
