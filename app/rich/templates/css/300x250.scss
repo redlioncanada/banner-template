@@ -7,41 +7,16 @@ html, body {
     #ad {
         width: {width}px;
         height: {height}px;
-
-        .masks {
-            .top {
-                width: 0px;
-                height: 56px;
-                top: 0px;
-                left: {width}px;
-            }
-
-            .left {
-                top: 0px;
-                height: 0px;
-                width: 35px;
-                left: 0px
-            }
-
-            .bottom-bottom {
-                top: 213px;
-                height: 38px;
-                width: 0px;
-                left: 0px;
-            }
-
-            .bottom-right {
-                top: 213px;
-                height: 4px;
-                width: 0px;
-                left: 207px;
-            }
+        .dish{
+            z-index:5;
         }
 
+
+
         #cta_trigger {
-            left: 177px;
-            top: 197px;
-            width: 98px;
+            left: 9px;
+            top: 219px;
+            width: 79px;
             height: 22px;
         }
 

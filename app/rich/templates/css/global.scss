@@ -94,6 +94,13 @@
     .hide {
         opacity: 0;
     }
+            .badge{position: absolute;
+            z-index:5;
+        }
+        .legal{
+            position: absolute;
+            z-index:9;
+        }
 }
 
 

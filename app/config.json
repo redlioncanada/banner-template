@@ -1,14 +1,11 @@
 {
-	"name": "CTS",
-	"brand": "Cadillac",
-	"version": "3",
+	"name": "Dish",
+	"brand": "Maytag",
+	"version": "1",
 	"sizes": [
 		"160x600",
-		"300x600",
 		"728x90",
-		"300x250",
-		"300x50",
-		"320x50"
+		"300x250"
 	],
 	"clicktags": [
 		"doubleclick"
