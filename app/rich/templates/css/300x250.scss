@@ -5,49 +5,56 @@ html, body {
 
 .{namespace} {
     #ad {
-        width: {width}px;
-        height: {height}px;
+        .backgrounds {
+            .masks {
+                .m1 {
+                    width: 0px;
+                    height: 56px;
+                }
 
-        .masks {
-            .top {
-                width: 0px;
-                height: 56px;
-                top: 0px;
-                left: {width}px;
+                .m2 {
+                    top: 55px;
+                    height: 0px;
+                    width: 36px;
+                }
+
+                .m3 {
+                    top: 213px;
+                    width: 0px;
+                    height: 37px;
+                }
+
+                .m4 {
+                    left: 136px;
+                    top: 213px;
+                    width: 0px;
+                    height: 4px;
+                }
             }
 
-            .left {
-                top: 0px;
-                height: 0px;
-                width: 35px;
-                left: 0px
+            .background2,.background1 {
+                z-index: 2;
             }
 
-            .bottom-bottom {
-                top: 213px;
-                height: 38px;
-                width: 0px;
-                left: 0px;
+            .background2 {
+                width: initial;
             }
 
-            .bottom-right {
-                top: 213px;
-                height: 4px;
-                width: 0px;
-                left: 207px;
+            .background3 {
+                top: -58px;
+                z-index: 1;
             }
+        }
+
+        .copy2 {
+            left: -{width}px;
         }
 
         #cta_trigger {
-            left: 177px;
-            top: 197px;
-            width: 98px;
+            left: 157px;
+            top: 203px;
+            width: 115px;
             height: 22px;
-        }
-
-        #border {
-            width: {width}-2px;
-            height: {height}-2px;
         }
     }
 }

@@ -18,18 +18,15 @@
         padding: 0;
         overflow: hidden;
         cursor: pointer;
-
-        .backgrounds, .copy {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+        width: {width}px;
+        height: {height}px;
 
         .cta {
             z-index: 5;
             cursor: pointer;
 
             .cta_normal,.cta_hover {
+                width: {width}px;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -46,8 +43,22 @@
             z-index: 1;
         }
 
+        .backgrounds, .copy {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .backgrounds img {
+            width: {width}px;
+        }
+
         .copy {
             z-index: 3;
+
+            .item {
+                width: {width}px;
+            }
         }
 
         .logo {
@@ -66,6 +77,8 @@
             top: 0px;
             left: 0px;
             border: 1px solid #b9b9b9;
+            width: {width}-2px;
+            height: {height}-2px;
         }
 
         #cta_trigger {
@@ -73,10 +86,6 @@
             left: 0;
             top: 0;
             z-index: 10;
-        }
-        .bg-mobile{
-            position:absolute;
-            z-index:5;
         }
     }
 
