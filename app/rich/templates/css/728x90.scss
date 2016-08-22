@@ -21,42 +21,41 @@ html, body {
 
         .backgrounds {
             .masks {
+                z-index: 2;
+
+                > * {
+                    z-index: 2;
+                }
+
                 .m1 {
-                    width: 0px;
-                    height: 56px;
+                    width: 33px;
                 }
 
                 .m2 {
-                    top: 55px;
-                    height: 0px;
-                    width: 36px;
+                    top: 44px;
+                    left: 31px;
+                    width: 2px;
                 }
 
                 .m3 {
-                    top: 213px;
-                    width: 0px;
-                    height: 37px;
-                }
-
-                .m4 {
-                    left: 136px;
-                    top: 213px;
-                    width: 0px;
-                    height: 4px;
+                    left: 243px;
+                    height: 90px;
+                    width: 32px;
                 }
             }
 
-            .background2,.background1 {
-                z-index: 2;
-            }
-
-            .background2 {
-                width: initial;
-            }
-
-            .background3 {
-                top: -58px;
+            .background1 {
                 z-index: 1;
+                width: 243px;
+            }
+
+            .background-container {
+                left: 212px;
+                overflow: hidden;
+                width: {width}px;
+                height: {height}px;
+                z-index: 3;
+                position: absolute;
             }
 
             img {
@@ -79,13 +78,13 @@ html, body {
             }
         }
 
-        .copy2 {
-            left: -{width}px;
+        .copy2, .copy3 {
+            left: -500px;
         }
 
         #cta_trigger {
-            left: 157px;
-            top: 203px;
+            left: 462px;
+            top: 33px;
             width: 115px;
             height: 22px;
         }
