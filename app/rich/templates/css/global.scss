@@ -4,6 +4,10 @@
     width: $width;
 }
 
+html, body {
+    font-display: swap;
+}
+
 .{namespace} {
     img[src=""]{
         content: "";
