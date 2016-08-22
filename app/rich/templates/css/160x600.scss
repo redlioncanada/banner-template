@@ -1,3 +1,9 @@
+@mixin horizontal-center($width) {
+    left: 50%;
+    margin-left: -($width/2);
+    width: $width;
+}
+
 html, body {
     width: {width}px;
     height: {height}px;
@@ -5,44 +11,49 @@ html, body {
 
 .{namespace} {
     #ad {
+        width: {width}px;
+        height: {height}px;
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
         .backgrounds {
             .masks {
                 .m1 {
-                    width: 0px;
-                    height: 56px;
+                    height: 25px;
+                    top: 395px;
                 }
 
                 .m2 {
-                    top: 55px;
-                    height: 0px;
-                    width: 36px;
+                    top: 395px;
+                    height: 3px;
+                    left: 82px;
                 }
-
-                .m3 {
-                    top: 213px;
-                    width: 0px;
-                    height: 37px;
-                }
-
-                .m4 {
-                    left: 136px;
-                    top: 213px;
-                    width: 0px;
-                    height: 4px;
-                }
-            }
-
-            .background2,.background1 {
-                z-index: 2;
             }
 
             .background2 {
-                width: initial;
+                left: -{width}px;
             }
 
-            .background3 {
-                top: -58px;
-                z-index: 1;
+            img {
+                width: {width}px;
+            }
+        }
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        .copy {
+            .item {
+                width: {width}px;
             }
         }
 
@@ -51,8 +62,8 @@ html, body {
         }
 
         #cta_trigger {
-            left: 157px;
-            top: 203px;
+            left: 22px;
+            top: 541px;
             width: 115px;
             height: 22px;
         }

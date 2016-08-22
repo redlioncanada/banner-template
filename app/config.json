@@ -1,20 +1,25 @@
 {
-	"name": "ATS",
+	"name": "XT5",
 	"brand": "Cadillac",
-	"version": "1",
+	"version": "4",
 	"filesize": {
 		"static": 40,
 		"rich": 150
 	},
 	"sizes": [
+		"160x600",
 		"300x250",
-		"160x600"
+		"300x600",
+		"728x90",
+		"300x50",
+		"320x50"
 	],
 	"clicktags": [
 		"doubleclick"
 	],
 	"text": {
-		"en": {}
+		"en": {},
+		"fr": {}
 	},
 	"exclude": [
 	]

@@ -1,3 +1,9 @@
+@mixin horizontal-center($width) {
+    left: 50%;
+    margin-left: -($width/2);
+    width: $width;
+}
+
 html, body {
     width: {width}px;
     height: {height}px;
@@ -5,6 +11,14 @@ html, body {
 
 .{namespace} {
     #ad {
+        width: {width}px;
+        height: {height}px;
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
         .backgrounds {
             .masks {
                 .m1 {
@@ -43,6 +57,25 @@ html, body {
             .background3 {
                 top: -58px;
                 z-index: 1;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        .copy {
+            .item {
+                width: {width}px;
             }
         }
 
