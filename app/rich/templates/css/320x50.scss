@@ -1,0 +1,60 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        .backgrounds {
+            .masks {
+                .m1 {
+                    width: 0px;
+                    height: 56px;
+                }
+
+                .m2 {
+                    top: 55px;
+                    height: 0px;
+                    width: 36px;
+                }
+
+                .m3 {
+                    top: 213px;
+                    width: 0px;
+                    height: 37px;
+                }
+
+                .m4 {
+                    left: 136px;
+                    top: 213px;
+                    width: 0px;
+                    height: 4px;
+                }
+            }
+
+            .background2,.background1 {
+                z-index: 2;
+            }
+
+            .background2 {
+                width: initial;
+            }
+
+            .background3 {
+                top: -58px;
+                z-index: 1;
+            }
+        }
+
+        .copy2 {
+            left: -{width}px;
+        }
+
+        #cta_trigger {
+            left: 157px;
+            top: 203px;
+            width: 115px;
+            height: 22px;
+        }
+    }
+}
