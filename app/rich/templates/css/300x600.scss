@@ -22,41 +22,22 @@ html, body {
         .backgrounds {
             .masks {
                 .m1 {
-                    width: 0px;
-                    height: 56px;
+                    height: 38px;
+                    top: 408px;
+                    left: {width}px;
+                    width: 184px;
                 }
 
                 .m2 {
-                    top: 55px;
-                    height: 0px;
-                    width: 36px;
+                    top: 408px;
+                    left: {width}px;
+                    width: 118px;
+                    height: 3px;
                 }
-
-                .m3 {
-                    top: 213px;
-                    width: 0px;
-                    height: 37px;
-                }
-
-                .m4 {
-                    left: 136px;
-                    top: 213px;
-                    width: 0px;
-                    height: 4px;
-                }
-            }
-
-            .background2,.background1 {
-                z-index: 2;
             }
 
             .background2 {
-                width: initial;
-            }
-
-            .background3 {
-                top: -58px;
-                z-index: 1;
+                left: -{width}px;
             }
 
             img {
@@ -84,8 +65,8 @@ html, body {
         }
 
         #cta_trigger {
-            left: 157px;
-            top: 203px;
+            left: 148px;
+            top: 549px;
             width: 115px;
             height: 22px;
         }
