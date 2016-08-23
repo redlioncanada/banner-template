@@ -46,12 +46,30 @@ html, body {
                 }
             }
 
-            .background2,.background1 {
-                z-index: 2;
+            .background-container {
+                position: absolute;
+                left: -89px;
+                width: 460px;
+                height: {height}px;
+                overflow: hidden;
+
+                img {
+                    width: inherit;
+                }
             }
 
-            .background2 {
-                width: initial;
+            .background-container.frame3 {  //change the cropping of the background for frame3
+                left: 0;
+                width: 275px;
+                height: 111px;
+
+                img {
+                    top: -26px;
+                }
+            }
+
+            .background1 {
+                z-index: 2;
             }
 
             .background3 {
@@ -81,6 +99,10 @@ html, body {
 
         .copy2 {
             left: -{width}px;
+        }
+
+        .logo {
+            width: {width}px;
         }
 
         #cta_trigger {

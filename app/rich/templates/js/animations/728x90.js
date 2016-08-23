@@ -2,7 +2,7 @@ var easeIn = Power1.easeIn;
 var easeOut = Power1.easeOut;
 var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1')
-            .to('.copy1,.copy2,.copy3', 0, {opacity: 1})
+            .to('.copy1,.copy2,.copy3,.logo', 0, {opacity: 1})
             .to('.masks .m1', 0.8, {height:45})
             .to('.masks .m2', 0.8, {height:46})
             .to('.masks .m3', 0.8, {top:0}, 'frame1')
