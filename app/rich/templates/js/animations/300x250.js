@@ -14,6 +14,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('.masks', 0, {opacity:0})
         timeline.add('frame3')
             .to('.background-container', 0, {css:{className:'+=frame3'}})
+            .to('.background-container,.copy3', 0, {top: -13})  //correct for larger copy3 size
             .to('.background-container,.logo', 0.8, {opacity:1})
             .to('.copy3', 0, {opacity:1})
             .to('.background3', 0, {opacity:1})
