@@ -2,7 +2,7 @@ var easeIn = Power1.easeIn;
 var easeOut = Power1.easeOut;
 var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1').add('start')
-        .to('.copy1', 2, {opacity:1, ease:easeIn})
+        .to('.copy1', 1, {opacity:1, ease:easeIn})
         .addDelay(2)
         .to('.copy1', 1, {opacity:0, ease:easeOut})
         timeline.add('frame2')
