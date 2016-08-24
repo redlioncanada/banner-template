@@ -39,7 +39,7 @@ html, body {
                 }
 
                 .m4 {
-                    left: 136px;
+                    left: 174px;
                     top: 213px;
                     width: 0px;
                     height: 4px;
@@ -48,8 +48,7 @@ html, body {
 
             .background-container {
                 position: absolute;
-                left: -89px;
-                width: 460px;
+                width: 362px;
                 height: {height}px;
                 overflow: hidden;
 
@@ -61,10 +60,10 @@ html, body {
             .background-container.frame3 {  //change the cropping of the background for frame3
                 left: 0;
                 width: 275px;
-                height: 111px;
+                height: 125px;
 
                 img {
-                    top: -26px;
+                    top: -41px;
                 }
             }
 
