@@ -11,7 +11,7 @@
     gulp version
             increases version number in config.json by 1
         --reset
-            resets version number in config.json to <1></1>
+            resets version number in config.json to 1
 */
 
 require('events').EventEmitter.prototype._maxListeners = 100;
