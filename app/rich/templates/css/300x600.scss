@@ -65,10 +65,19 @@ html, body {
         }
 
         #cta_trigger {
-            left: 148px;
+            left: 159px;
             top: 549px;
             width: 115px;
             height: 22px;
+        }
+    }
+
+    #ad.revisionB {
+        #cta_trigger {
+            left: 156px;
+            top: 545px;
+            width: 107px;
+            height: 33px;
         }
     }
 }

@@ -88,10 +88,19 @@ html, body {
         }
 
         #cta_trigger {
-            left: 462px;
-            top: 33px;
-            width: 115px;
+            left: 466px;
+            top: 34px;
+            width: 102px;
             height: 22px;
+        }
+    }
+
+    #ad.revisionB {
+        #cta_trigger {
+            left: 463px;
+            top: 29px;
+            width: 107px;
+            height: 33px;
         }
     }
 }

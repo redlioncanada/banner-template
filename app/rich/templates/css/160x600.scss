@@ -60,12 +60,23 @@ html, body {
         .copy2 {
             left: -{width}px;
         }
+    }
 
+    #ad.revisionA {
         #cta_trigger {
             left: 22px;
             top: 541px;
             width: 115px;
             height: 22px;
+        }
+    }
+
+    #ad.revisionB {
+        #cta_trigger {
+            left: 26px;
+            top: 543px;
+            width: 107px;
+            height: 33px;
         }
     }
 }
