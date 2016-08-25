@@ -7,6 +7,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('.masks .m1', 0.8, {left:116})
             .to('.masks .m2', 0, {left:116})
             .to('.masks .m2', 0.8, {left:0})
+            .to('.masks .m3', 0.8, {height:196, top:213}, 'frame1')
             .to('.copy2', 0.8, {left:0})
             .addDelay(2, 'frame2')
         timeline.add('frame2')
