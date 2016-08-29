@@ -22,48 +22,46 @@ html, body {
         .backgrounds {
             .masks {
                 .m1 {
-                    width: 0px;
-                    height: 56px;
+                    left: {width}px;
+                    width: 0;
+                    height: 67px;
                 }
 
                 .m2 {
-                    top: 55px;
+                    top: 66px;
                     height: 0px;
-                    width: 36px;
+                    width: 26px;
+                    left: 275px;
                 }
 
-                .m3 {
-                    top: 213px;
+                .m3, .m5 {
+                    top: 197px;
                     width: 0px;
-                    height: 37px;
+                    height: 4px;
+                    left: 128px;
                 }
 
                 .m4 {
-                    left: 174px;
-                    top: 213px;
+                    left: {width}px;
+                    top: 197px;
                     width: 0px;
-                    height: 4px;
+                    height: 53px;
+                }
+
+                .m5 {
+                    top: 233px;
+                    height: 17px;
                 }
             }
 
             .background-container {
                 position: absolute;
-                width: 362px;
+                width: {width}px;
                 height: {height}px;
                 overflow: hidden;
 
                 img {
-                    width: inherit;
-                }
-            }
-
-            .background-container.frame3 {  //change the cropping of the background for frame3
-                left: 0;
-                width: 275px;
-                height: 125px;
-
-                img {
-                    top: -41px;
+                    width: {width}px;
                 }
             }
 
@@ -79,6 +77,15 @@ html, body {
             img {
                 width: {width}px;
             }
+        }
+
+        .mask.m5 {
+            position: absolute;
+            top: {height}px;
+            width: 161px;
+            height: 34px;
+            z-index: 3000;
+            background-color: white;
         }
 
         .cta {
