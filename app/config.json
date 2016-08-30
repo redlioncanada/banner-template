@@ -1,7 +1,8 @@
 {
 	"name": "XT5",
 	"brand": "Cadillac",
-	"version": "3",
+	"month": "Sept",
+	"version": "2",
 	"filesize": {
 		"static": 40,
 		"rich": 150
