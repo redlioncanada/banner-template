@@ -425,7 +425,7 @@ gulp.task('packageTask', ['validate'], function() {
     var tasks = [];
     var config = require('./app/config.json');
     var year = new Date().getFullYear()
-    var month = getMonth(new Date().getMonth())
+    var month = config.month
     var brand = config.brand
     var version = config.version
     var name = config.name
@@ -457,10 +457,12 @@ gulp.task('packageTask', ['validate'], function() {
             return
         }
 
-        var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_${size}`
+        var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_V${version}${!!revision?revision:''}_${size}`
 
         var srcPath = 'build/'+size+'-'+clicktag
-        if (!!revision) srcPath += '-'+revision
+        if (!!revision) {
+            srcPath += '-'+revision
+        }
         srcPath += '/'+language+'/*'
 
         var destPath = 'build/package/'+clicktag
@@ -479,7 +481,7 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
     var tasks = [];
     var config = require('./app/config.json');
     var year = new Date().getFullYear()
-    var month = getMonth(new Date().getMonth())
+    var month = config.month
     var brand = config.brand
     var version = config.version
     var name = config.name
@@ -491,14 +493,16 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
                 var size = config.sizes[h]
                 var clicktag = config.clicktags[j]
                 var language = i
-                var imageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_${size}`
+                var imageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}`
 
                 if (hasRevisions) {
                     for (var u in config.revisions) {
                         var revision = config.revisions[u]
-                        work(clicktag, size, language, imageName, revision)
+                        var suffix = `_V${version}${revision}_${size}`
+                        work(clicktag, size, language, imageName+suffix, revision)
                     }
                 } else {
+                    imageName += `_V${version}_${size}`
                     work(clicktag, size, language, imageName)
                 }
             }
@@ -530,22 +534,25 @@ gulp.task('packageContinueTask', ['packageStaticTask'], function() {
     var tasks = [];
     var config = require('./app/config.json');
     var year = new Date().getFullYear()
-    var month = getMonth(new Date().getMonth())
+    var month = config.month
     var brand = config.brand
     var version = config.version
     var name = config.name
+    // var language =
     var hasRevisions = 'revisions' in config && config.revisions.length
 
     for (var j in config.clicktags) {
         var clicktag = config.clicktags[j]
-        var name = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${clicktag}_V${version}`
+        var name = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${clicktag}`
 
         if (hasRevisions) {
             for (var u in config.revisions) {
                 var revision = config.revisions[u]
-                work(clicktag, name+revision, revision)
+                var suffix = `_V${version}${revision}`
+                work(clicktag, name+suffix, revision)
             }
         } else {
+            name += `_V${version}_${size}`
             work(clicktag, name)
         }
     }
@@ -659,37 +666,6 @@ function generateSrcFolders(path,subfolders,params,extensions) {
     src.push(path+'/global/**/*');
 
     return src;
-}
-
-function getMonth(month) {
-    switch(month) {
-        case 0:
-            return "January"
-        case 1:
-            return "February"
-        case 2:
-            return "March"
-        case 3:
-            return "April"
-        case 4:
-            return "May"
-        case 5:
-            return "June"
-        case 6:
-            return "July"
-        case 7:
-            return "August"
-        case 8:
-            return "September"
-        case 9:
-            return "October"
-        case 10:
-            return "November"
-        case 11:
-            return "December"
-        default:
-            return false
-    }
 }
 
 function shouldExcludeBanner(config, params) {
