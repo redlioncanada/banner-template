@@ -122,9 +122,16 @@ html, body {
     #ad.revisionB {
         #cta_trigger {
             left: 167px;
-            top: 198px;
+            top: 199px;
             width: 106px;
             height: 33px;
+        }
+    }
+
+    #ad.revisionB.fr {
+        #cta_trigger {
+            left: 146px;
+            width: 126px;
         }
     }
 }

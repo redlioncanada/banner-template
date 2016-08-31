@@ -95,12 +95,32 @@ html, body {
         }
     }
 
+    #ad.fr {
+        .copy2 {
+            left: -582px;
+        }
+    }
+
     #ad.revisionB {
         #cta_trigger {
             left: 463px;
             top: 29px;
             width: 107px;
             height: 33px;
+        }
+    }
+
+    #ad.revisionA.fr {
+        #cta_trigger {
+            left: 472px;
+            width: 110px;
+        }
+    }
+
+    #ad.revisionB.fr {
+        #cta_trigger {
+            top: 26px;
+            width: 125px;
         }
     }
 }
