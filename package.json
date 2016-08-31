@@ -1,3 +1,4 @@
+
 {
   "name": "banner-template",
   "version": "2.0.0",
@@ -20,7 +21,7 @@
     "del": "^2.2.0",
     "globule": "^1.0.0",
     "gulp": "^3.9.0",
-    "gulp-adwords": "0.0.9",
+    "gulp-adwords": "0.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.0",
     "gulp-flatten": "^0.2.0",
@@ -35,12 +36,13 @@
     "gulp-sass": "^2.1.1",
     "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
     "gulp-zip": "^3.2.0",
+    "image-size": "^0.5.0",
     "merge-stream": "^1.0.0",
     "node-uuid": "^1.4.7",
     "yargs": "^3.32.0"
   },
-  "dependencies": {},
   "keywords": [
     "html5",
     "banner",
@@ -51,5 +53,9 @@
     "bigbox",
     "skyscraper",
     "greensock"
-  ]
+  ],
+  "dependencies": {
+    "log-symbols": "^1.0.2"
+  }
 }
+
