@@ -8,7 +8,6 @@
 		"300x250"
 	],
 	"clicktags": [
-		"AdWords",
 		"AdGear"
 	],
 	"text": {
@@ -16,6 +15,5 @@
 		"fr":{}
 	},
 	"exclude": [
-		"AdWords"
 	]
 }
