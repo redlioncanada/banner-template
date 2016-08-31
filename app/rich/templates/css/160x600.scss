@@ -71,11 +71,20 @@ html, body {
         }
     }
 
-    #ad.revisionB {
+    #ad.revisionB.en {
         #cta_trigger {
             left: 26px;
             top: 543px;
             width: 107px;
+            height: 33px;
+        }
+    }
+
+    #ad.revisionB.fr {
+        #cta_trigger {
+            left: 18px;
+            top: 543px;
+            width: 125px;
             height: 33px;
         }
     }
