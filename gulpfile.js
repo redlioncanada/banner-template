@@ -314,13 +314,13 @@ gulp.task('validate', ['cleanPackage'], function() {
             var regex = html.match(/\/\/=include |\/\*=include |<!--=include/g)
             return !(regex && Array.isArray(regex) && regex.length)
         },
-        message: 'Include syntax found. Template has not compiled properly.',
+        message: 'Include syntax found.',
         name: 'TEMPLATE_INCLUDE_TEST'
     }
 
     var doubleclickClicktagTest = {
         test: function(html, files) {
-            var regex = html.match(/var click(TAG|Tag)\s{0,1}=\s{0,1}('|")https{0,1}:\/\/.*\..+('|")/g)
+            var regex = html.match(/var click(TAG|Tag)\s{0,1}=\s{0,1}('|").*('|")/g)
             return (regex && Array.isArray(regex) && regex.length)
         },
         message: 'Clicktag not found. Make sure it is defined.',
