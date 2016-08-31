@@ -329,7 +329,7 @@ gulp.task('validate', ['cleanPackage'], function() {
 
     var adgearClicktagTest = {
         test: function(html, files) {
-            var regex = html.match(/ADGEAR\.html5\.clickThrough\(\"clickTAG\"\)/g)
+            var regex = html.match(/ADGEAR\.html5\.clickThrough\((\"|\')clickTag(\"|\')\)|window\.open\(window.clickTag\)/g)
             return regex && Array.isArray(regex) && regex.length
         },
         message: 'Clicktag not found. Make sure it is defined.',
