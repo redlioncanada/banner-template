@@ -552,7 +552,7 @@ gulp.task('packageContinueTask', ['packageStaticTask'], function() {
                 work(clicktag, name+suffix, revision)
             }
         } else {
-            name += `_V${version}_${size}`
+            name += `_V${version}`
             work(clicktag, name)
         }
     }
