@@ -256,6 +256,7 @@ gulp.task('generateHtml', ['compile'], function() {
             language: language,
             folderName: folderName,
             size: size,
+            version: config.version[language],
             clicktag: clicktag
         }
         if (!!revision) bannerData.revision = revision
@@ -465,7 +466,7 @@ gulp.task('packageTask', ['validate'], function() {
         }
         srcPath += '/'+language+'/*'
 
-        var destPath = 'build/package/'+clicktag
+        var destPath = 'build/package/'+clicktag+'/'+language
         if (!!revision) destPath += '/'+revision
 
         tasks.push(gulp.src(srcPath)
@@ -515,7 +516,7 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
         if (shouldExcludeBanner(config, srcArr)) {
             return
         }
-        var destPath = directories.package+'/'+clicktag
+        var destPath = directories.package+'/'+clicktag+'/'+language
         if (!!revision) destPath += '/'+revision
 
         var srcPath = directories.static.temp+'/'+language
@@ -542,23 +543,27 @@ gulp.task('packageContinueTask', ['packageStaticTask'], function() {
     var hasRevisions = 'revisions' in config && config.revisions.length
 
     for (var j in config.clicktags) {
-        var clicktag = config.clicktags[j]
-        var name = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${clicktag}`
+        for (var i in config.text) {
+            var language = i
+            var clicktag = config.clicktags[j]
+            var v = version[i]
+            var n = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${clicktag}_${language.toUpperCase()}`
 
-        if (hasRevisions) {
-            for (var u in config.revisions) {
-                var revision = config.revisions[u]
-                var suffix = `_V${version}${revision}`
-                work(clicktag, name+suffix, revision)
+            if (hasRevisions) {
+                for (var u in config.revisions) {
+                    var revision = config.revisions[u]
+                    var suffix = `_V${v}${revision}`
+                    work(clicktag, n+suffix, language, revision)
+                }
+            } else {
+                name += `_V${v}`
+                work(clicktag, n, language)
             }
-        } else {
-            name += `_V${version}`
-            work(clicktag, name)
         }
     }
 
-    function work(clicktag, name, revision) {
-        var basePath = directories.package+'/'+clicktag
+    function work(clicktag, name, language, revision) {
+        var basePath = directories.package+'/'+clicktag+'/'+language
         if (!!revision) basePath += '/'+revision
         tasks.push(gulp.src(basePath+'/**/*')
             .pipe(zip(name+'.zip'))

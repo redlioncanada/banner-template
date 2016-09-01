@@ -2,7 +2,10 @@
 	"name": "XT5",
 	"brand": "Cadillac",
 	"month": "Sept",
-	"version": "3",
+	"version": {
+		"en": "3",
+		"fr": "1"
+	},
 	"filesize": {
 		"static": 40,
 		"rich": 150
