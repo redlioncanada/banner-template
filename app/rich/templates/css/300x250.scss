@@ -91,6 +91,7 @@ html, body {
         .cta {
             z-index: 5;
             cursor: pointer;
+            left: 4px;
 
             .cta_normal,.cta_hover {
                 width: {width}px;
@@ -112,7 +113,7 @@ html, body {
         }
 
         #cta_trigger {
-            left: 157px;
+            left: 161px;
             top: 203px;
             width: 115px;
             height: 22px;
