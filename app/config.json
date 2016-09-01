@@ -2,7 +2,7 @@
 	"name": "ATS",
 	"brand": "Cadillac",
 	"month": "Sept",
-	"version": "2",
+	"version": "3",
 	"filesize": {
 		"static": 40,
 		"rich": 150
@@ -20,8 +20,7 @@
 		"doubleclick"
 	],
 	"text": {
-		"en": {},
-		"fr": {}
+		"en": {}
 	},
 	"exclude": [
 	]
