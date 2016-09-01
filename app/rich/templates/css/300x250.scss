@@ -91,6 +91,7 @@ html, body {
         .cta {
             z-index: 5;
             cursor: pointer;
+            left: 4px;
 
             .cta_normal,.cta_hover {
                 width: {width}px;
@@ -112,7 +113,7 @@ html, body {
         }
 
         #cta_trigger {
-            left: 172px;
+            left: 176px;
             top: 203px;
             width: 100px;
             height: 23px;
@@ -121,7 +122,7 @@ html, body {
 
     #ad.revisionB {
         #cta_trigger {
-            left: 167px;
+            left: 168px;
             top: 198px;
             width: 106px;
             height: 33px;
@@ -130,14 +131,18 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 162px;
+            left: 166px;
             width: 110px;
+        }
+
+        .cta {
+            left: 5px;
         }
     }
 
     #ad.fr.revisionB {
         #cta_trigger {
-            left: 146px;
+            left: 150px;
             width: 126px;
         }
     }
