@@ -438,27 +438,28 @@ gulp.task('packageTask', ['validate'], function() {
                 var clicktag = config.clicktags[j];
                 var size = config.sizes[i];
                 var language = k;
+                var v = version[language]
 
                 if (hasRevisions) {
                     for (var u in config.revisions) {
                         var revision = config.revisions[u]
-                        work(clicktag, size, language, revision)
+                        work(clicktag, size, v, language, revision)
                     }
                 } else {
-                    work(clicktag, size, language)
+                    work(clicktag, size, v, language)
                 }
             }
         }
     }
 
-    function work(clicktag, size, language, revision) {
+    function work(clicktag, size, v, language, revision) {
         var srcArr = [size, language, clicktag]
         if (!!revision) srcArr.push(revision)
         if (shouldExcludeBanner(config, srcArr)) {
             return
         }
 
-        var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_V${version}${!!revision?revision:''}_${size}`
+        var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_V${v}${!!revision?revision:''}_${size}`
 
         var srcPath = 'build/'+size+'-'+clicktag
         if (!!revision) {
@@ -494,16 +495,17 @@ gulp.task('packageStaticTask', ['packageTask'], function() {
                 var size = config.sizes[h]
                 var clicktag = config.clicktags[j]
                 var language = i
+                var v = version[language]
                 var imageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}`
 
                 if (hasRevisions) {
                     for (var u in config.revisions) {
                         var revision = config.revisions[u]
-                        var suffix = `_V${version}${revision}_${size}`
+                        var suffix = `_V${v}${revision}_${size}`
                         work(clicktag, size, language, imageName+suffix, revision)
                     }
                 } else {
-                    imageName += `_V${version}_${size}`
+                    imageName += `_V${v}_${size}`
                     work(clicktag, size, language, imageName)
                 }
             }
