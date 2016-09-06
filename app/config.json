@@ -1,7 +1,15 @@
 {
-	"name": "072816-ka-testimonial-banner",
-	"packageName": "072816-ka-testimonial-banner_{language}_V{version}_{size}",
-	"version": "1",
+	"name": "Testimonial",
+	"brand": "KitchenAid",
+	"month": "Sept",
+	"version": {
+		"en": "1",
+		"fr": "1"
+	},
+	"filesize": {
+		"static": 40,
+		"rich": 150
+	},
 	"sizes": [
 		"160x600",
 		"300x250",
@@ -13,6 +21,10 @@
 		"doubleclick"
 	],
 	"text": {
-		"eng": {}
-	}
+		"en": {}
+	},
+	"exclude": [
+		["fr", "160x600"],
+		["fr", "300x250"]
+	]
 }
