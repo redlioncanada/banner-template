@@ -558,7 +558,7 @@ gulp.task('packageContinueTask', ['packageStaticTask'], function() {
                     work(clicktag, n+suffix, language, revision)
                 }
             } else {
-                name += `_V${v}`
+                n += `_V${v}`
                 work(clicktag, n, language)
             }
         }
