@@ -2,13 +2,17 @@
 	"name": "Dish",
 	"brand": "Maytag",
 	"version": "1",
+	"filesize":{
+		"static": 40,
+		"rich": 150
+	},
 	"sizes": [
 		"160x600",
 		"728x90",
 		"300x250"
 	],
 	"clicktags": [
-		"AdGear"
+		"adgear"
 	],
 	"text": {
 		"en": {},

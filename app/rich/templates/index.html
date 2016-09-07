@@ -6,9 +6,6 @@
     <meta name="ad.language" content="{language}">
     <meta name="ad.network" content="{clicktag}">
     <title>{size}</title>
-    <script type="text/javascript">
-        //=include js/clicktags/{clicktag}.js
-    </script>
     <style type="text/css">
         /*=include css/global.css*/
         /*=include css/{size}.css*/
@@ -82,6 +79,7 @@
         function onComplete() {}
         //=include js/animations/{size}.js
     </script>
+    <!--=include html/clicktags/{clicktag}.html -->
 </body>
 
 </html>
