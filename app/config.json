@@ -1,7 +1,11 @@
 {
 	"name": "Dish",
 	"brand": "Maytag",
-	"version": "1",
+	"month": "Sept",
+	"version": {
+		"en": "1",
+		"fr": "1"
+	},
 	"filesize":{
 		"static": 40,
 		"rich": 150
