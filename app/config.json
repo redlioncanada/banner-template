@@ -1,5 +1,15 @@
 {
-	"name": "032016-wp-cares-promo",
+	"name": "CaresPromo",
+	"brand": "Whirlpool",
+	"month": "Sept",
+	"version": {
+		"en": "1",
+		"fr": "2"
+	},
+	"filesize": {
+		"static": 40,
+		"rich": 150
+	},
 	"sizes": [
 		"160x600",
 		"300x250",
@@ -12,5 +22,7 @@
 	"text": {
 		"en": {},
 		"fr": {}
-	}
+	},
+	"exclude": [
+	]
 }
