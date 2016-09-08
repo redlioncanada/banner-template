@@ -139,7 +139,7 @@ gulp.task('compile', ['clean'], function() {
         basePath = directories.rich.templates+'/js';
         src = generateSrcFolders(basePath, ['**'], srcArr, ['js']);
         src.push(basePath+'/includes/**/*.js')
-        console.log(src)
+
         tasks.push(gulp.src(src, {base: basePath})
             .pipe(replace('{width}', width))
             .pipe(replace('{height}', height))

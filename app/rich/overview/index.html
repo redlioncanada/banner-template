@@ -13,7 +13,7 @@
 		var zoom = 1, zoomMax = 1, zoomMin = 0.5, iframe, labels = [], hold = true, currentFrame;
 
 		{data}
-		console.log(data)
+		// console.log(data)
 		data = groupBy(data, 'language');
 
 		printLogo()
@@ -21,7 +21,7 @@
 
 		$(document).ready(function() {
 			//init list of banners
-			var language
+			var language, wasDisabled = false
 
 			for (var i in data) {
 				if (language !== data[i].language) {
@@ -116,6 +116,10 @@
 
 			var tick = setInterval(function() {
 				if (iframe && 'timeline' in iframe && labels.length) {
+					if (wasDisabled) {
+						$('.player.ui').css('display', 'block')
+						wasDisabled = false
+					}
 					if (!currentFrame) currentFrame = 0
 						// console.log(iframe.timeline._time, labels[currentFrame].time, iframe.timeline._time > labels[currentFrame].time)
 					if (iframe.timeline._time > labels[currentFrame].time) {
@@ -126,6 +130,9 @@
 					if (iframe.timeline._time == iframe.timeline._duration && !$('.player .play').hasClass('paused')) {
 						pausePlayer()
 					}
+				} else {
+					$('.player.ui').css('display', 'none')
+					wasDisabled = true
 				}
 			},100)
 			//end play controls
@@ -156,13 +163,15 @@
 		function movePlayerIndicator(index, animate) {
 			if (typeof animate === 'undefined') animate = true
 			var label = $('.player .labels .label').eq(index)
-			var left = label.position().left + label.width() / 2
+			var left = !!label && label.length ? label.position().left + label.width() / 2 : undefined
 			if (animate) $('.player .indicator').stop(true).animate({'left': left}, 500)
 			else $('.player .indicator').css('left', left)
 		}
 
 		function insertPlayControls() {
 			// console.log(iframe.timeline._labels)
+
+			if (typeof timeline === 'undefined' || !!timeline || !('iframe' in timeline) || !('_labels' in iframe.timeline)) return
 
 			var keywords = ['start', 'label', 'end']
 			var times = []
