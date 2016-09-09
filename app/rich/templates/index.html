@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="ad.size" content="width={width},height={height}">
+    <meta name="ad.language" content="{language}">
+    <meta name="ad.network" content="{clicktag}">
+    <meta name="ad.agency" content="Red Lion Canada">
+    <title>{size}</title>
+    <script type="text/javascript">
+        //=include js/clicktags/{clicktag}.js
+    </script>
+     <!--=include html/clicktags/{clicktag}.html-->
+    <style type="text/css">
+        /*=include css/global.css*/
+        /*=include css/{size}.css*/
+    </style>
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+</head>
+
+<body>
+    <a onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
+        <div id="border" class="{language}">
+            <div id="myAd">
+                <div id="background-holder">
+<!--                     <img id="back01" class="banner-background" src="background1.jpg" /> -->
+                    <img id="back02" class="banner-background" src="background2.jpg" />
+                    <img id="back03" class="banner-background" src="background3.jpg" />
+                </div>
+                <div id="edc-logo"><img src="everydaycare.png"></div>
+                <div id="wp-logo"><img src="logo.png" /></div>
+                <div id="copy-container">
+                    <div id="copy-holder"><p>Care</p></div>
+                </div>
+                <div id="yellow-bar"></div>
+                <div id="cta"><img class="ctaUp" src="learn-up.png" /><img class="ctaDown" src="learn-over.png" /></div>
+            </div>
+        </div>
+    </a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
+
+    <script type="text/javascript">
+        //=include js/{language}.js
+        //=include js/animations/{size}.js
+        //=include js/clicktags/{clicktag}.js
+    </script>
+</body>
+
+</html>

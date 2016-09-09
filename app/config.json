@@ -1,5 +1,16 @@
+
 {
-	"name": "022016-wp-design",
+	"name": "Refer-design",
+	"brand": "WhirlPool",
+	"month": "Sept",
+	"version": {
+		"en": "2",
+		"fr": "2"
+	},
+	"filesize": {
+		"static": 40,
+		"rich": 150
+	},
 	"sizes": [
 		"160x600",
 		"300x250",
@@ -13,5 +24,9 @@
 	"text": {
 		"en": {},
 		"fr": {}
-	}
+	},
+	"exclude": [
+		"doubleclick",
+		"adwords"
+	]
 }
