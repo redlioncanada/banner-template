@@ -2,11 +2,11 @@ $(function() {
     var lang = $('#border').hasClass('en') ? 'en' : 'fr';
 
     if (lang == 'en') {
-        mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
+        // mainBannerCopy[1] = "Care comes in<br/>all shapes and sizes";
         endFrameCopy = "See our fully<br/>organized French Door Refrigerators";
     } else {
-        mainBannerCopy[0] = "Chaque geste<br/>compte";
-        mainBannerCopy[1] = "De toute forme ou taille,<br/>chaque geste compte";
+        // mainBannerCopy[0] = "Chaque geste<br/>compte";
+        // mainBannerCopy[1] = "De toute forme ou taille,<br/>chaque geste compte";
         endFrameCopy = "Découvrez nos réfrigérateurs à portes françaises à rangement bien pensé";
     }
 
@@ -73,7 +73,7 @@ $(function() {
         TweenMax.to(wpLogo, 1, {opacity:1, ease:Power1.easeInOut, delay:.5});
         TweenMax.to(copyContainer, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(yellowBar,.6, {opacity:1, ease:Power1.easeIn, delay:.5, onComplete:playText});
-        TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:9});
+        TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:4});
     }
 
     function showEndCopy(){
