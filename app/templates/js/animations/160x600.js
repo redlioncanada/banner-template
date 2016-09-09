@@ -8,7 +8,7 @@ $(function() {
         // mainBannerCopy[2] = "Un rangement polyvalent pour accueillir tous<br/>vos articles, petits ou grands";
     }
 
-    var back01 = $("#back01");
+    // var back01 = $("#back01");
     var back02 = $("#back02");
     var back03 = $("#back03");
 
@@ -69,11 +69,11 @@ $(function() {
 
     function showBack(){
         updateCopy();
-        TweenMax.to(back01, 1, {opacity:1, ease:Power1.easeInOut});
+        // TweenMax.to(back01, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(wpLogo, 1, {opacity:1, ease:Power1.easeInOut, delay:.5});
         TweenMax.to(copyContainer, 1, {opacity:1, ease:Power1.easeInOut});
         TweenMax.to(yellowBar,.6, {opacity:1, ease:Power1.easeIn, delay:.5, onComplete:playText});
-        TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn, delay:4});
+        TweenMax.to(back02, 1, {opacity:1, ease:Power1.easeIn});
     }
 
     function showEndCopy(){
