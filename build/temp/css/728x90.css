@@ -1,0 +1,59 @@
+.redlion-02162cbe #border, .redlion-02162cbe #myAd {
+  width: 728px;
+  height: 90px; }
+
+.redlion-02162cbe * {
+  font-size: 12pt; }
+
+.redlion-02162cbe #myAd #copy-holder {
+  width: 400px;
+  right: -20px; }
+
+.redlion-02162cbe #myAd #copy-container {
+  left: 15px;
+  width: 400px; }
+
+.redlion-02162cbe #myAd #copy-container, .redlion-02162cbe #myAd div#yellow-bar {
+  top: 15px; }
+
+.redlion-02162cbe #myAd #wp-logo {
+  top: 25px;
+  right: 30px;
+  width: 120px; }
+
+.redlion-02162cbe #myAd #edc-logo {
+  bottom: 3px;
+  left: 25px;
+  width: 230px; }
+
+.redlion-02162cbe #myAd #cta {
+  top: 28px;
+  left: 235px;
+  width: 120px; }
+
+.redlion-02162cbe #myAd #cta img {
+  top: 0px;
+  left: 0px;
+  width: 100%; }
+
+.redlion-02162cbe #myAd .banner-background {
+  width: 728px;
+  height: 90px; }
+
+.redlion-02162cbe #myAd #yellow-bar {
+  position: absolute;
+  top: 175px;
+  left: 15px;
+  height: 65px;
+  background-color: #eeb111;
+  opacity: 0; }
+
+.redlion-02162cbe #border.fr #copy-holder {
+  width: 410px; }
+
+.redlion-02162cbe #border.fr #copy-container {
+  width: 410px;
+  line-height: 18px; }
+
+.redlion-02162cbe #border.fr #edc-logo {
+  bottom: 10px; }

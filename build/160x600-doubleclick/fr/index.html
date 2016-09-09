@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="ad.size" content="width=160,height=600">
+    <title>160x600</title>
+    <script type="text/javascript">
+        function clickThrough(){window.open(window.clickTag)}var clickTag="http://google.com";
+    </script>
+    <style type="text/css">
+        body,html{margin:0;padding:0}.redlion-02162cbe *{font-family:Helvetica Neue,helvetica,arial,sans-serif;color:#fff;font-size:12pt}.redlion-02162cbe sup{vertical-align:baseline;position:relative;top:-.4em;font-size:10px;font-weight:400}.redlion-02162cbe #border,.redlion-02162cbe #myAd{background-color:#000;position:relative;top:0;left:0;margin:0;padding:0;overflow:hidden;cursor:pointer}.redlion-02162cbe #myAd #copy-holder p{display:table-cell;vertical-align:middle}.redlion-02162cbe #myAd #copy-holder{position:absolute;width:250px;right:-10px}.redlion-02162cbe #myAd #copy-container{position:absolute;top:175px;left:25px;width:240px;height:65px;overflow:hidden;opacity:0}.redlion-02162cbe #myAd #yellow-bar{position:absolute;width:5px;background-color:#eeb111;opacity:0}.redlion-02162cbe #myAd .banner-background{position:absolute;top:0;left:0;opacity:0}.redlion-02162cbe #myAd #cta img{position:absolute;width:100%}.redlion-02162cbe #myAd .ctaDown{opacity:0}.redlion-02162cbe #myAd #cta{position:absolute;cursor:pointer;opacity:0}.redlion-02162cbe #myAd #wp-logo{position:absolute;width:100px;opacity:0}.redlion-02162cbe #myAd #wp-logo img{width:inherit}.redlion-02162cbe #myAd #edc-logo{position:absolute;opacity:0}.redlion-02162cbe #myAd #edc-logo img{width:inherit}.redlion-02162cbe .abs{position:absolute}.redlion-02162cbe .hidden{opacity:0}.redlion-02162cbe .scale{-webkit-transition:transform .2s ease-in-out;transition:transform .2s ease-in-out;transform:scale(.9)}.redlion-02162cbe .scale:hover{transform:scale(1) translateZ(0)}.redlion-02162cbe .centered{text-align:center}
+        .redlion-02162cbe #border,.redlion-02162cbe #myAd{width:160px;height:600px}.redlion-02162cbe #myAd #copy-holder{width:134px;right:-5px}.redlion-02162cbe #myAd #copy-container{width:144px}.redlion-02162cbe #myAd #copy-container,.redlion-02162cbe #myAd div#yellow-bar{top:472px;height:115px;left:10px}.redlion-02162cbe #myAd #yellow-bar{width:6px}.redlion-02162cbe #myAd #wp-logo{top:24px;right:21px;width:120px}.redlion-02162cbe #myAd #edc-logo{bottom:20px;left:11px;width:144px}.redlion-02162cbe #myAd #cta{bottom:56px;left:26px;width:66%}.redlion-02162cbe #myAd #cta img{top:0;left:0;width:100%}.redlion-02162cbe #myAd .banner-background{width:160px;height:600px}.redlion-02162cbe #myAd #yellow-bar{position:absolute;top:175px;left:15px;height:65px;background-color:#eeb111;opacity:0}
+    </style>
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+</head>
+
+<body>
+    <a onclick="clickThrough()" id="clickThrough" class="redlion-02162cbe" target="_blank">
+        <div id="border" class="fr">
+            <div id="myAd">
+                <div id="background-holder">
+<!--                     <img id="back01" class="banner-background" src="background1.jpg" /> -->
+                    <img id="back02" class="banner-background" src="background2.jpg">
+                    <img id="back03" class="banner-background" src="background3.jpg">
+                </div>
+                <div id="edc-logo"><img src="everydaycare.png"></div>
+                <div id="wp-logo"><img src="logo.png"></div>
+                <div id="copy-container">
+                    <div id="copy-holder"><p>Care</p></div>
+                </div>
+                <div id="yellow-bar"></div>
+                <div id="cta"><img class="ctaUp" src="learn-up.png"><img class="ctaDown" src="learn-over.png"></div>
+            </div>
+        </div>
+    </a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
+
+    <script type="text/javascript">
+        var mainBannerCopy=["Chaque geste compte","Petit ou grand, de toute forme ou taille, chaque geste compte","Notre système PerfectPlaces<sup>&trade;</sup> offre 9 compartiments spécialisés"],endFrameCopy="Découvrez l’innovation de l'intérieur de notre réfrigérateur à double tiroir";
+        $(function(){function updateCopy(){copyDisplay.html(mainBannerCopy[copyNum]);var newTop=(containerHeight-copyDiv.height())/2;copyDiv.css("top",newTop)}function animateBack(){updateCopy(),TweenMax.to(copyContainer,.8,{left:copyContainerLeft,width:copyContainerWidth,ease:Power1.easeInOut,delay:.2}),TweenMax.to(yellowBar,.8,{left:copyContainerLeft,ease:Power1.easeInOut,delay:.2,onComplete:playText})}function playText(){if(copyNum+1<mainBannerCopy.length){var aniDelay=1.5*delayCount;TweenMax.to(copyContainer,.6,{left:copyContainerWidth,width:1,delay:aniDelay}),TweenMax.to(yellowBar,.6,{left:copyContainerWidth,ease:Power1.easeOut,delay:aniDelay,onComplete:animateBack}),copyNum++,delayCount++}else playEndFrame()}function showBack(){updateCopy(),TweenMax.to(wpLogo,1,{opacity:1,ease:Power1.easeInOut,delay:.5}),TweenMax.to(copyContainer,1,{opacity:1,ease:Power1.easeInOut}),TweenMax.to(yellowBar,.6,{opacity:1,ease:Power1.easeIn,delay:.5,onComplete:playText}),TweenMax.to(back02,1,{opacity:1,ease:Power1.easeIn})}function showEndCopy(){TweenMax.to(edcLogo,1,{opacity:0,ease:Power1.easeIn,delay:.5}),copyContainer.css("top",479),copyDisplay.html(endFrameCopy),"en"==lang?copyDiv.css("top","11px"):copyDiv.css("top","-2px"),copyDiv.css({right:2,width:144}),copyDisplay.addClass("centered"),copyDisplay.css({"font-size":12,width:170}),TweenMax.to(copyContainer,.8,{opacity:1,ease:Power1.easeOut,delay:1}),TweenMax.to(cta,.8,{opacity:1,ease:Power1.easeOut,delay:1.5})}function playEndFrame(){TweenMax.to(yellowBar,.6,{opacity:0,ease:Power1.easeIn,delay:3.5}),TweenMax.to(copyContainer,.6,{opacity:0,ease:Power1.easeIn,delay:3}),TweenMax.to(edcLogo,1,{opacity:1,ease:Power1.easeIn,delay:4}),TweenMax.to(back03,1,{opacity:1,ease:Power1.easeIn,delay:6,onComplete:showEndCopy})}var lang=$("#border").hasClass("en")?"en":"fr";"en"==lang?mainBannerCopy[2]="Our Perfect Places&trade; system<br/>delivers 9 dedicated storage zones":(mainBannerCopy[1]="Mettre chaque chose à sa place, c'est un geste<br/>qui compte",mainBannerCopy[2]="Notre système PerfectPlaces<sup>&trade;</sup> offre 9 compartiments spécialisés");var back02=$("#back02"),back03=$("#back03"),edcLogo=$("#edc-logo"),wpLogo=$("#wp-logo"),cta=$("#cta"),ctaOver=$("#cta > .ctaDown"),copyContainer=$("#copy-container"),copyDiv=$("#copy-holder"),copyDisplay=$("#copy-holder > p"),containerHeight=115,copyContainerWidth=144,copyContainerLeft=10,yellowBar=$("#yellow-bar"),copyNum=2,delayCount=1;cta.mouseenter(function(){TweenMax.to(ctaOver,.5,{opacity:1,ease:Power1.easeOut})}),cta.mouseout(function(){TweenMax.to(ctaOver,.5,{opacity:0,ease:Power1.easeOut})}),showBack()});
+    </script>
+</body>
+
+</html>
