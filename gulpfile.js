@@ -3,11 +3,9 @@
         removes /build
         compiles templates to /build/_temp
         combines files to their various sizes-clicktag folders
-
     gulp package
         validates banners against AdWords specs
         zips build/size-clicktag and puts them in /build/package
-
     gulp version
             increases version number in config.json by 1
         --reset
@@ -139,7 +137,6 @@ gulp.task('compile', ['clean'], function() {
         basePath = directories.rich.templates+'/js';
         src = generateSrcFolders(basePath, ['**'], srcArr, ['js']);
         src.push(basePath+'/includes/**/*.js')
-
         tasks.push(gulp.src(src, {base: basePath})
             .pipe(replace('{width}', width))
             .pipe(replace('{height}', height))
@@ -639,7 +636,7 @@ function generateSrcFolders(path,subfolders,params,extensions) {
     if (typeof extensions !== undefined) {
         var extension = '{'
         for (var i in extensions) {
-            extension += extensions[i] + ','
+            extension = i == extensions.length-1 ? extension + extensions[i] : extension + extensions[i] + ','
         }
         extension += '}'
     }
