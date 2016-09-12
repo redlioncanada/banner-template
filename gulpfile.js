@@ -636,7 +636,7 @@ function generateSrcFolders(path,subfolders,params,extensions) {
     if (typeof extensions !== undefined) {
         var extension = '{'
         for (var i in extensions) {
-            extension = i == extensions.length-1 ? extension + extensions[i] : extension + extensions[i] + ','
+            extension += extensions[i] + ','
         }
         extension += '}'
     }
