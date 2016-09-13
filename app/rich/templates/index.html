@@ -6,6 +6,8 @@
     <title>{size}</title>
     <script type="text/javascript">
         //=include js/clicktags/{clicktag}.js
+        //=include js/{language}.js
+
     </script>
     <style type="text/css">
         /*=include css/global.css*/
@@ -29,7 +31,8 @@
             </div>
             <div class="stars item" id="stars">
                 <img src="stars.png" alt="" class="stars show item">
-                 <div class="star_txt"><p class="a_txt">Rated</p><p>4.3/5 Average</p></div>
+                 <div class="star_txt" id="starStyle" ><p class="a_txt" id="s_txt"></p><p id="s_txt2"></p></div>
+                
             </div>
           
                 <div class="backgrounds">
@@ -37,27 +40,27 @@
                 </div>
                 <img class="logo item show" src="logo.png">
               <div class="cta item">
-                    <div class="cta_trigger">
-                    <div class="cta_normal">
-                <div class="cta_text"><p>LEARN MORE</p></div>
+                    <div class="cta_trigger" id="ctaTrigger">
+                    <div class="cta_normal" id="ctaNormal">
+                <div class="cta_text" id="cta_txt"><p id="ctaTxt"></p></div>
                 </div>
                 </div>
 
                 </div> 
                 <div class="test1 item" id="test1">
-                <img src="test1.png" alt="" class="test1 show item">
+                <img src="test1.png" alt="" class="test1 show item" id="test1_Img">
             </div>
             <div class="test3 item" id="test3">
-                <img src="test3.png" alt="" class="test3 show item">
+                <img src="test3.png" alt="" class="test3 show item" id="test3_Img">
             </div>
             <div class="legal item" id="legal">
-                <div class="legal_txt"><p class="txt_1">See full review on KitchenAid.ca. </p><p class="txt_2">Model KRFF302ESS </p><p class="txt_3">Review was submitted as a contest entry. </p></div>
+                <div class="legal_txt" id="legal_txt"><p class="txt_1" id="txt_1"></p><p class="txt_2" id="txt_2"></p><p class="txt_3" id= "txt_3"></p></div>
             </div>
             <div class="bg2 item" id="bg2">
                 <img src="background2.png" alt="" class="bg2 show item">
             </div>
             <div class="test2 item" id="test2">
-                <img src="test2.png" alt="" class="test2 show item">
+                <img src="test2.png" alt="" class="test2 show item" id="test2_Img">
             </div>
             </div>
         </div>

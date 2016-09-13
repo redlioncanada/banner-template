@@ -11,21 +11,18 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script>
 		var zoom = 1, zoomMax = 1, zoomMin = 0.5, iframe, labels = [], hold = true, currentFrame;
-
 		{data}
+		// console.log(data)
 		data = groupBy(data, 'language');
-
 		printLogo()
 		$(window).resize(resize)
-
 		$(document).ready(function() {
 			//init list of banners
-			var language
+			var language, wasDisabled = false
 			for (var i in data) {
 				if (language !== data[i].language) {
 					language = data[i].language
 					var output
-
 					switch(language.toLowerCase()) {
 						case 'en':
 						case 'eng':
@@ -36,11 +33,8 @@
 							output = "French"
 							break;
 					}
-
 					var outputVersion = 'v'+data[i].version+'.0'
-
 					$('.creative-list').append('<li class="header">'+output+'<span>'+outputVersion+'</span></li>')
-
 				}
 				var creative = data[i]
 				// $('.creative-list').append('<li><span class="indicator">> </span><a class="change" href="#" data-index="'+i+'">'+creative['size']+'</a><a href="'+creative['src']+'" target="_blank" class="open">^</a></li>')
@@ -48,37 +42,31 @@
 				if ('revision' in creative && creative['revision'].length) label += ' '+creative['revision']
 				$('.creative-list').append('<li data-index="'+i+'"><a class="change" href="#"><div>'+label+'</div></a>')
 			}
-
 			$('.creative-list li').eq(1).addClass('active')
 			insertIframe(data[0])
 			//end init list of banners
-
 			//init zoom
 			$('.zoom .in').click(function() {
 				if (zoom + 0.1 <= zoomMax) zoom += 0.1
 				zoomIframe(zoom)
 			})
-
 			$('.zoom .out').click(function() {
 				if (zoom - 0.1 >= zoomMin) zoom -= 0.1
 				zoomIframe(zoom)
 			})
 			//end init zoom
-
 			//init play controls
 			$(document).on('click', '.player .label', function(e) {
 				var index = Number($(e.target).index()) - 1
 				iframe.timeline.gotoAndPlay(labels[index].name)
 				currentFrame = index
 				movePlayerIndicator(index)
-
 				if (hold) {
 					pausePlayer()
 				} else {
 					playPlayer()
 				}
 			})
-
 			$(document).on('click', '.player .play', function(e) {
 				if ($(e.target).hasClass('paused')) {
 					playPlayer()
@@ -86,19 +74,16 @@
 					pausePlayer()
 				}
 			})
-
 			$(document).on('click', '.player .reset', function(e) {
 				iframe.timeline.restart()
 				currentFrame = 0
 				movePlayerIndicator(0)
-
 				if (hold) {
 					pausePlayer()
 				} else {
 					playPlayer()
 				}
 			})
-
 			$(document).on('click', '.player .hold', function(e) {
 				if ($(e.target).hasClass('held')) {
 					$(e.target).find('i:last-child').stop(true).animate({opacity:1},300)
@@ -112,63 +97,59 @@
 					hold = true
 				}
 			})
-
 			var tick = setInterval(function() {
 				if (iframe && 'timeline' in iframe && labels.length) {
+					if (wasDisabled) {
+						$('.player.ui').css('display', 'block')
+						wasDisabled = false
+					}
 					if (!currentFrame) currentFrame = 0
 						// console.log(iframe.timeline._time, labels[currentFrame].time, iframe.timeline._time > labels[currentFrame].time)
 					if (iframe.timeline._time > labels[currentFrame].time) {
 						currentFrame++
 						movePlayerIndicator(currentFrame)
 					}
-
 					if (iframe.timeline._time == iframe.timeline._duration && !$('.player .play').hasClass('paused')) {
 						pausePlayer()
 					}
+				} else {
+					$('.player.ui').css('display', 'none')
+					wasDisabled = true
 				}
 			},100)
 			//end play controls
-
 			resize()
 		})
-
 		$('body').on('click', '.creative-list li:not(".header")', function(e) {
 			var el = $(e.target).closest('li')
 			var index = Number(el.attr('data-index'))
-
 			$('.creative-list li').removeClass('active')
 			el.addClass('active')
-
 			reset()
 			insertIframe(data[index])
 		})
-
 		function insertIframe(creative) {
 			var frame = generateIframe(creative)
-
 			$('.iframe-container').html(frame)
 			iframe = window.frames[0]
 			iframe.onload = function() {insertPlayControls()}
 			zoomIframe(zoom)
 		}
-
 		function movePlayerIndicator(index, animate) {
 			if (typeof animate === 'undefined') animate = true
 			var label = $('.player .labels .label').eq(index)
-			var left = label.position().left + label.width() / 2
+			var left = !!label && label.length ? label.position().left + label.width() / 2 : undefined
 			if (animate) $('.player .indicator').stop(true).animate({'left': left}, 500)
 			else $('.player .indicator').css('left', left)
 		}
-
 		function insertPlayControls() {
 			// console.log(iframe.timeline._labels)
-
+			if (typeof timeline === 'undefined' || !!timeline || !('iframe' in timeline) || !('_labels' in iframe.timeline)) return
 			var keywords = ['start', 'label', 'end']
 			var times = []
 			for (var key in iframe.timeline._labels) {
 				var reg = key.match(/frame\d*$\d*/g)
 				var value = iframe.timeline._labels[key]
-
 				if ((key.indexOf('start') > -1 || key.indexOf('end') > -1 || (reg && 0 in reg && reg[0].length)) && times.indexOf(value) == -1) {
 					labels.push({
 						name: key,
@@ -178,7 +159,6 @@
 					times.push(value)
 				}
 			}
-
 			if (labels[labels.length-1].time !== iframe.timeline._duration) {
 				labels.push({
 					name: 'end',
@@ -186,20 +166,16 @@
 					time: iframe.timeline._duration
 				})
 			}
-
 			for (var i in labels) {
 				var button = generatePlayerButton(Number(i)+1)
 				$('.player .labels').append(button)
 			}
-
 			$('.player .indicator').css('opacity',1)
 		}
-
 		function resize() {
 			var windowHeight = window.innerHeight
 			$('.creative-list,.iframe-container').height(windowHeight-$('.title').height())
 		}
-
 		function generateIframe(creative) {
 			return $('<iframe/>', {
 				width: creative.width,
@@ -210,48 +186,38 @@
 				scrolling: "no"
 			})
 		}
-
 		function generatePlayerButton(label) {
 			return $('<div class="label">'+label+'</div>')
 		}
-
 		function pausePlayer() {
 			$('.player .play').find('i:last-child').stop(true).animate({opacity:0},300)
 			$('.player .play').find('i:first-child').stop(true).animate({opacity:1},300)
 			$('.player .play').addClass('paused')
 			iframe.timeline.pause()
 		}
-
 		function playPlayer() {
 			$('.player .play').find('i:last-child').stop(true).animate({opacity:1},300)
 			$('.player .play').find('i:first-child').stop(true).animate({opacity:0},300)
 			$('.player .play').removeClass('paused')
 			iframe.timeline.play()
 		}
-
 		function zoomIframe(scale) {
 			zoom = Math.round( zoom * 10) / 10
-
 			$('iframe').css('transform', 'translate(-50%, -50%) scale('+scale+')')
-
 			if (scale == zoomMax) $('.zoom .in').addClass('disabled')
 			else if (scale == zoomMin) $('.zoom .out').addClass('disabled')
 			else $('.zoom .in, .zoom .out').removeClass('disabled')
 		}
-
 		function reset() {
 			labels = []
 			currentFrame = 0
-
 			$('.player .indicator').css('opacity', 0)
 			movePlayerIndicator(0, false)
 			$('.labels .label').remove()
 			$('.player .play').find('i:last-child').stop(true).animate({opacity:1},300)
 			$('.player .play').find('i:first-child').stop(true).animate({opacity:0},300)
 			$('.player .play').removeClass('paused')
-
 		}
-
 		function groupBy(arr, key) {
 	        var newArr = [],
 	            types = {},
@@ -270,10 +236,8 @@
 	        		newArr.push(types[i].data[j])
 	        	}
 	        }
-
 	        return newArr;
 		}
-
 		function printLogo() {
 			var style = 'color: #e31d1a'
 			console.log("%c                                                       ,          ;:                                        \n                                                      ';        ''''                                       \n                                                      '',      :''''                                       \n                                                      '''      .''''                                       \n                                                     .'''       ;'',                                       \n                                           ,.        ''''`                                                 \n      :',                                  :'       .''''    :;                        .,,`                \n      '''''':;''     ;'''`        .'';`    '''      '''''    '''''     ,'''''':      ''''''',   ;'''''':   \n      .'''''''',   ,'''''',     .'''''''   '''     ,''''`   :''''`   `''''''''''   ;''''''''';,''''''''''  \n       ''''''';   .''''''''    ,''''''''' :'''.    '''''    '''''   `''''',`;'''' ''';   `''''''';..:''''; \n      :''''''.    '''''''''    ''''''''''`''''.   ,''''`   :''''`   '''''    .''''';      ,'''',      '''' \n      '''';      ;''''. '''   ;'''';   ;''''''    '''''    '''''   ,''''`     '''',      `'''''       '''':\n     :''''       '''';  '''   '''';     ''''';   :''''`   :''''    '''''      ''''      .''''''       '''''\n     '''';      ;''''   '''  ;''''      '''''    '''''    '''''   :''''`     ;''''     ,'''''''       '''':\n    :''''       '''';  ,''   '''';      '''';   :''''`   :''''    '''''      '''''    :''''''''      :'''' \n    '''';      ;''''   '';  ;''''      ;''''    '''''    '''''   :''''`     ,''''`   ,'':'''''`      ''''' \n   :''''       '''';  '''   '''';      '''';   :''''    ;''''    '''''      '''''   .'': '''''      :''''  \n   '''';      ;''''  ;''   ;''''      ;''''    '''''    '''';   :''''`     ,''''`  `'': ,''''`      '''''  \n  ;''''       ''''; ,''.   '''';      '''';   :''''    ;''''    '''''      '''''   '';  '''''      ,''''   \n  '''';      ;'''' ,'':   ;''''      ;''''    '''''    '''';   :''''      ,''''`  '''  ,''''`      '''''   \n ;''''       ''''','':    '''';      '''';   :''''    ;''''    '''''      '''''  :''   '''''      :''''    \n '''';      .''''''':    ,''''      ;''''    '''';    '''';   :'''',     :''''`  '';  :''''       '''''    \n ''''       :'''''':     ;''''      '''';   :''''    ;''''    '''''`     '''''  ,''   '''''      :''''     \n`''''       ;''''',      '''':     ;''''    '''';    '''';   :''''',    ;''''`  '''  :''''       '''';     \n ''''       .''''`      ,'''',     '''';   ;''''    ;''''    '''''''.  ;'''''   '''`.'''''      ,''''      \n '''':     :'''''      ;''''''    '''''    '''';    '''';    '''' ''''''''''`   '''''''''    ,'''''''      \n  ''''''''''''''''` .'''' `'''''''''''.   ;''''    ;''''     '''' `'''''''':    ;''''''':   ;''''''';      \n  `''''''''', ''''''''';   .'''''''''     '''';    '''';     '''`  `''''''.      '''''',   `'''''''''      \n    :'''''.    ;''''';       :'''''`     ..;''    ;''''      .''     `..          .''.     ';` `:'''';     \n                                             ;    '''';       ;'                                   ``      \n                                         .        ''''         ;                                           \n                                       .'''`      ''';                                                     \n                                       '''''      :''                                                      \n                                       '''''       ''                                                      \n                                       .'''.        '                                                      \n                                         `                                                                 ", style)
@@ -288,38 +252,28 @@
 		  font-size: 100%;
 		  font: inherit;
 		  vertical-align: baseline; }
-
 		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		  display: block; }
-
 		 i {cursor: pointer;}
-
 		body {
 		  line-height: 1; overflow:hidden; }
-
 		ol, ul {
 		  list-style: none; }
-
 		blockquote, q {
 		  quotes: none; }
-
 		blockquote {
 		  &:before, &:after {
 		    content: '';
 		    content: none; } }
-
 		q {
 		  &:before, &:after {
 		    content: '';
 		    content: none; } }
-
 		table {
 		  border-collapse: collapse;
 		  border-spacing: 0; }
 		/*end reset css*/
-
 		a { color: inherit; }
-
 		html,body {font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #424242;}
 		.container {overflow: hidden; position: relative; width: auto; background-color: #fff; border-left: 1px solid #ddd;}
 		.iframe-container {width:100%; height:100%; z-index: 1;}
@@ -339,13 +293,11 @@
 		/*.creative-list li a:last-child div{width: 100px;}*/
 		/*.creative-list li a:last-child div i {margin-top: 12px; transition: 0.2s; -webkit-transition: 0.2s;}*/
 		.logo {position: absolute; right: 22px; top: 30px; width: 123px;}
-
 		.zoom  {display: none; left: 9px;}
 		.zoom div {position: relative; width: 60px; height: 60px; background: white;}
 		.zoom .in {margin-bottom: 5px;}
 		.zoom .disabled, .zoom .disabled i {opacity: 0.3; cursor: default;}
 		.center {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
-
 		.player {right: 9px;}
 		.player > div {position: relative; float: left; background: white;}
 		.player i {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;}
@@ -354,9 +306,7 @@
 		.player .labels .label {float: left; text-transform: uppercase; font-size: 0.8em; padding: 0 10px; height: 35px; margin-left: 5px; min-width: 20px; line-height: 33px; text-align: center;}
 		.player .labels .indicator {top: -13px; transform: scale(0.4); position: absolute; left: 6px;}
 		.player .labels .indicator i {transform: scaleY(-1); margin-left: -2px; left: 28px;}
-
 		.ui {bottom: 7px; z-index: 5; position: absolute; cursor: pointer;}
-
 		.hide {opacity: 0;}
 		.active {background-color: #ffcdd2;}
 		.noselect {-webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none;   /* Chrome/Safari/Opera */ -khtml-user-select: none;    /* Konqueror */ -moz-user-select: none;      /* Firefox */ -ms-user-select: none;       /* Internet Explorer/Edge */ user-select: none;           /* Non-prefixed version, currently*/}

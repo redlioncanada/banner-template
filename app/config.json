@@ -21,10 +21,11 @@
 		"doubleclick"
 	],
 	"text": {
-		"en": {}
+		"en": {},
+		"fr": {}
 	},
 	"exclude": [
-		["fr", "160x600"],
-		["fr", "300x250"]
+		"adwords",
+		"adgear"
 	]
 }
