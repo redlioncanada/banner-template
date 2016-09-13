@@ -100,7 +100,7 @@ $(function() {
     function playEndFrame(){
         console.log('playendframe');
         TweenMax.to(yellowBar,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
-        TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3});
+        TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
         //
         TweenMax.to(edcLogo, 1, {opacity:1, ease:Power1.easeIn, delay:4});
         //
