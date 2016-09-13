@@ -3,51 +3,39 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="ad.size" content="width=160,height=600">
+    <meta name="ad.language" content="fr">
+    <meta name="ad.network" content="adgear">
+    <meta name="ad.agency" content="Red Lion Canada">
     <title>160x600</title>
     <script type="text/javascript">
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-        function getAdGearClickUrl(name) {
-            return getParameterByName("agclick_" + name) || getParameterByName(name);
-        }
-        function clickThrough(name) {
-            var click_url = clickTag;
-            if (name) {
-                click_url = getAdGearClickUrl(name);
-            }
-            if (click_url !== null) {
-                window.open(click_url, "_blank");
-                if (oobClickTrack !== null) {
-                    var img = new Image();
-                    img.src = oobClickTrack;
-                }
-            }
-        }
-        var clickTag = getAdGearClickUrl("clickTAG") || getAdGearClickUrl("clickTag") || getAdGearClickUrl("clicktag");
-        var oobClickTrack = getAdGearClickUrl("oobclicktrack");
+        
     </script>
+     
+     <script type="text/javascript" src="https://h5.adgear.com/v1/js/html5.min.js"></script>
+     <script type="text/javascript">
+     		function clickThrough() {
+     		//console.log('did this work?');
+             ADGEAR.html5.clickThrough("clickTAG");
+          }
+         </script>
     <style type="text/css">
         html, body {
           margin: 0;
           padding: 0; }
         
-        .redlion-02162cbe * {
+        .redlion-761e7995 * {
           font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
           color: white;
           font-size: 12pt; }
         
-        .redlion-02162cbe sup {
+        .redlion-761e7995 sup {
           vertical-align: baseline;
           position: relative;
           top: -0.4em;
           font-size: 10px;
           font-weight: 400; }
         
-        .redlion-02162cbe #border, .redlion-02162cbe #myAd {
+        .redlion-761e7995 #border, .redlion-761e7995 #myAd {
           background-color: black;
           position: relative;
           top: 0px;
@@ -57,16 +45,16 @@
           overflow: hidden;
           cursor: pointer; }
         
-        .redlion-02162cbe #myAd #copy-holder p {
+        .redlion-761e7995 #myAd #copy-holder p {
           display: table-cell;
           vertical-align: middle; }
         
-        .redlion-02162cbe #myAd #copy-holder {
+        .redlion-761e7995 #myAd #copy-holder {
           position: absolute;
           width: 250px;
           right: -10px; }
         
-        .redlion-02162cbe #myAd #copy-container {
+        .redlion-761e7995 #myAd #copy-container {
           position: absolute;
           top: 175px;
           left: 25px;
@@ -75,105 +63,105 @@
           overflow: hidden;
           opacity: 0; }
         
-        .redlion-02162cbe #myAd #yellow-bar {
+        .redlion-761e7995 #myAd #yellow-bar {
           position: absolute;
           width: 5px;
           background-color: #eeb111;
           opacity: 0; }
         
-        .redlion-02162cbe #myAd .banner-background {
+        .redlion-761e7995 #myAd .banner-background {
           position: absolute;
           top: 0px;
           left: 0px;
           opacity: 0; }
         
-        .redlion-02162cbe #myAd #cta img {
+        .redlion-761e7995 #myAd #cta img {
           position: absolute;
           width: 100%; }
         
-        .redlion-02162cbe #myAd .ctaDown {
+        .redlion-761e7995 #myAd .ctaDown {
           opacity: 0; }
         
-        .redlion-02162cbe #myAd #cta {
+        .redlion-761e7995 #myAd #cta {
           position: absolute;
           cursor: pointer;
           opacity: 0; }
         
-        .redlion-02162cbe #myAd #wp-logo {
+        .redlion-761e7995 #myAd #wp-logo {
           position: absolute;
           width: 100px;
           opacity: 0; }
         
-        .redlion-02162cbe #myAd #wp-logo img {
+        .redlion-761e7995 #myAd #wp-logo img {
           width: inherit; }
         
-        .redlion-02162cbe #myAd #edc-logo {
+        .redlion-761e7995 #myAd #edc-logo {
           position: absolute;
           opacity: 0; }
         
-        .redlion-02162cbe #myAd #edc-logo img {
+        .redlion-761e7995 #myAd #edc-logo img {
           width: inherit; }
         
-        .redlion-02162cbe .abs {
+        .redlion-761e7995 .abs {
           position: absolute; }
         
-        .redlion-02162cbe .hidden {
+        .redlion-761e7995 .hidden {
           opacity: 0; }
         
-        .redlion-02162cbe .scale {
+        .redlion-761e7995 .scale {
           -webkit-transition: transform .2s ease-in-out;
           transition: transform .2s ease-in-out;
           transform: scale(0.9); }
-          .redlion-02162cbe .scale:hover {
+          .redlion-761e7995 .scale:hover {
             transform: scale(1) translateZ(0); }
         
-        .redlion-02162cbe .centered {
+        .redlion-761e7995 .centered {
           text-align: center; }
         
-        .redlion-02162cbe #border, .redlion-02162cbe #myAd {
+        .redlion-761e7995 #border, .redlion-761e7995 #myAd {
           width: 160px;
           height: 600px; }
         
-        .redlion-02162cbe #myAd #copy-holder {
+        .redlion-761e7995 #myAd #copy-holder {
           width: 134px;
           right: -5px; }
         
-        .redlion-02162cbe #myAd #copy-container {
+        .redlion-761e7995 #myAd #copy-container {
           width: 144px; }
         
-        .redlion-02162cbe #myAd #copy-container, .redlion-02162cbe #myAd div#yellow-bar {
+        .redlion-761e7995 #myAd #copy-container, .redlion-761e7995 #myAd div#yellow-bar {
           top: 472px;
           height: 115px;
           left: 10px; }
         
-        .redlion-02162cbe #myAd #yellow-bar {
+        .redlion-761e7995 #myAd #yellow-bar {
           width: 6px; }
         
-        .redlion-02162cbe #myAd #wp-logo {
+        .redlion-761e7995 #myAd #wp-logo {
           top: 24px;
           right: 21px;
           width: 120px; }
         
-        .redlion-02162cbe #myAd #edc-logo {
+        .redlion-761e7995 #myAd #edc-logo {
           bottom: 20px;
           left: 11px;
           width: 144px; }
         
-        .redlion-02162cbe #myAd #cta {
+        .redlion-761e7995 #myAd #cta {
           bottom: 56px;
           left: 26px;
           width: 66%; }
         
-        .redlion-02162cbe #myAd #cta img {
+        .redlion-761e7995 #myAd #cta img {
           top: 0px;
           left: 0px;
           width: 100%; }
         
-        .redlion-02162cbe #myAd .banner-background {
+        .redlion-761e7995 #myAd .banner-background {
           width: 160px;
           height: 600px; }
         
-        .redlion-02162cbe #myAd #yellow-bar {
+        .redlion-761e7995 #myAd #yellow-bar {
           position: absolute;
           top: 175px;
           left: 15px;
@@ -192,7 +180,7 @@
 </head>
 
 <body>
-    <a onclick="clickThrough()" id="clickThrough" class="redlion-02162cbe" target="_blank">
+    <a onclick="clickThrough()" id="clickThrough" class="redlion-761e7995" target="_blank">
         <div id="border" class="fr">
             <div id="myAd">
                 <div id="background-holder">
@@ -314,12 +302,13 @@
             function playEndFrame(){
                 console.log('playendframe');
                 TweenMax.to(yellowBar,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
-                TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3});
+                TweenMax.to(copyContainer,.6, {opacity:0, ease:Power1.easeIn, delay:3.5});
                 TweenMax.to(edcLogo, 1, {opacity:1, ease:Power1.easeIn, delay:4});
                 TweenMax.to(back03, 1, {opacity:1, ease:Power1.easeIn, delay:6, onComplete:showEndCopy});
             }
             showBack();
         });
+        
     </script>
 </body>
 
