@@ -459,7 +459,7 @@ gulp.task('packageTask', ['validate'], function() {
             return
         }
 
-        var packageName = `${year}_${brand}Brand_RL_Other_${name}_Retail${month}_HTML5_CA_${language.toUpperCase()}_V${v}${!!revision?revision:''}_${size}`
+        var packageName = `${year}_${brand}Brand_RL_Other_${name}${month}_HTML5_CA_${language.toUpperCase()}_V${v}${!!revision?revision:''}_${size}`
 
         var srcPath = 'build/'+size+'-'+clicktag
         if (!!revision) {

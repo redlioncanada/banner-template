@@ -1,8 +1,8 @@
 
 {
 	"name": "Refer-design",
-	"brand": "WhirlPool",
-	"month": "Sept",
+	"brand": "Whirlpool",
+	"month": "",
 	"version": {
 		"en": "2",
 		"fr": "2"
@@ -26,7 +26,5 @@
 		"fr": {}
 	},
 	"exclude": [
-		"doubleclick",
-		"adwords"
 	]
 }
