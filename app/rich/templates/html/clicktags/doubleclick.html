@@ -1,23 +1,7 @@
-<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 <script type="text/javascript">
-	var clickTag = "";	//needs to be here to validate, but we don't actually want it to be set to anything
-	$(function() {
-	  if (Enabler.isInitialized()) {
-	    enablerInit();
-	  } else {
-	    Enabler.addEventListener(studio.events.StudioEvent.INIT, enablerInit);
-	  }
-	})
-
-	function enablerInit() {
-		document.getElementById('clickThrough').addEventListener('click', enablerExit, false);
-	}
-
-	function enablerExit() {
-		Enabler.exit('Exit');
-	}
-
 	function clickThrough() {
-
+		var clickTag = window.clickTag || window.clicktag || window.clickTAG;
+		window.open(clickTag);
 	}
+	function() {var clickTag = "http://google.ca";}  //included to pass validation
 </script>
