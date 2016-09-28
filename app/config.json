@@ -1,5 +1,5 @@
 {
-	"name": "XT5",
+	"name": "ATS",
 	"brand": "Cadillac",
 	"month": "Oct",
 	"version": {
@@ -10,7 +10,7 @@
 		"static": 40,
 		"rich": 150
 	},
-	"revisions": ["B"],
+	"revisions": [],
 	"sizes": [
 		"160x600",
 		"300x250",

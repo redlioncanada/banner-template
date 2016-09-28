@@ -67,10 +67,6 @@ html, body {
             }
         }
 
-        .copy1 {
-            top: 32px;
-        }
-
         .copy2 {
             left: -{width}px;
         }
@@ -80,38 +76,10 @@ html, body {
         }
 
         #cta_trigger {
-            left: 159px;
-            top: 550px;
-            width: 102px;
-            height: 22px;
-        }
-    }
-
-    #ad.fr {
-        .copy1 {
-            top: 0;
-        }
-
-        #cta_trigger {
-            left: 152px;
-            top: 546px;
-            width: 110px;
-        }
-    }
-
-    #ad.revisionB {
-        #cta_trigger {
             left: 157px;
             top: 546px;
             width: 106px;
             height: 33px;
-        }
-    }
-
-    #ad.revisionB.fr {
-        #cta_trigger {
-            left: 138px;
-            width: 125px;
         }
     }
 }

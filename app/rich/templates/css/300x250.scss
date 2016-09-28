@@ -38,7 +38,7 @@ html, body {
                     top: 197px;
                     width: 0px;
                     height: 4px;
-                    left: 128px;
+                    left: 162px;
                 }
 
                 .m4 {
@@ -113,37 +113,10 @@ html, body {
         }
 
         #cta_trigger {
-            left: 176px;
-            top: 203px;
-            width: 100px;
-            height: 23px;
-        }
-    }
-
-    #ad.revisionB {
-        #cta_trigger {
             left: 168px;
             top: 198px;
             width: 106px;
             height: 33px;
-        }
-    }
-
-    #ad.fr {
-        #cta_trigger {
-            left: 166px;
-            width: 110px;
-        }
-
-        .cta {
-            left: 5px;
-        }
-    }
-
-    #ad.fr.revisionB {
-        #cta_trigger {
-            left: 150px;
-            width: 126px;
         }
     }
 }
