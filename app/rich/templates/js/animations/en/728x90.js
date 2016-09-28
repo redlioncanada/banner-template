@@ -11,7 +11,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame2')
             .to('.copy2', 0.8, {left:"-=288"}).add('frame2-backgrounds')
             .to('.copy3', 0.8, {left:"+=322"}, 'frame2-backgrounds')
-            .to('.backgrounds,.copy', 0.65, {left:-33}, 'frame2-backgrounds')
+            .to('.backgrounds,.copy', 0.65, {left:-29}, 'frame2-backgrounds')
             .addDelay(1, 'frame3')
         timeline.add('frame3')
             .to('.cta', 0.8, {opacity:1})
