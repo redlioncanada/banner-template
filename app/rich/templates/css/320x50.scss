@@ -20,7 +20,7 @@ html, body {
         }
 
         .backgrounds {
-            z-index: 2;
+            z-index: 1;
 
             img {
                 width: {width}px;
@@ -28,8 +28,7 @@ html, body {
         }
 
         .copy {
-            z-index: 1;
-            left: -{width}px;
+            z-index: 2;
 
             .item {
                 width: {width}px;
