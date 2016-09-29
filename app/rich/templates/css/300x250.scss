@@ -70,6 +70,7 @@ html, body {
             }
 
             .background3 {
+                left: 2px;
                 top: -58px;
                 z-index: 1;
             }
@@ -91,7 +92,7 @@ html, body {
         .cta {
             z-index: 5;
             cursor: pointer;
-            left: 4px;
+            left: 1px;
 
             .cta_normal,.cta_hover {
                 width: {width}px;

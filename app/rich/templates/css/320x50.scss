@@ -29,11 +29,19 @@ html, body {
 
         .copy {
             z-index: 1;
-            left: -{width}px;
 
             .item {
                 width: {width}px;
             }
+        }
+
+        .copy1,.copy2 {
+            left: -{width}px;
+        }
+
+        .cta {
+            left: 1px;
+            top: 1px;
         }
 
         .cta img, .logo {

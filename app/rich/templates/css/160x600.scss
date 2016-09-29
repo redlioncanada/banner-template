@@ -37,6 +37,10 @@ html, body {
                 left: -{width}px;
             }
 
+            .background3 {
+                left: 3px;
+            }
+
             img {
                 width: {width}px;
             }
@@ -45,6 +49,7 @@ html, body {
         .cta {
             z-index: 5;
             cursor: pointer;
+            left: 1px;
 
             .cta_normal,.cta_hover {
                 width: {width}px;
