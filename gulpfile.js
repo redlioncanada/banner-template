@@ -106,7 +106,7 @@ gulp.task('compile', ['clean'], function() {
             .pipe(replace('{namespace}', id))
             .pipe(replace('{clicktag}', clicktag))
             .pipe(replace('{language}', language))
-            .pipe(replace('{revision}', function(str) {return !!revision ? revision : str}))
+            .pipe(replace('{revision}', function(str) {return !!revision ? revision : ""}))
             .pipe(sass())
             .pipe(gulp.dest(directories.rich.temp+'/css'))
             .pipe(minifyCss())
@@ -121,7 +121,7 @@ gulp.task('compile', ['clean'], function() {
             .pipe(replace('{height}', height))
             .pipe(replace('{language}', language))
             .pipe(replace('{clicktag}', clicktag))
-            .pipe(replace('{revision}', function(str) {return !!revision ? revision : str}))
+            .pipe(replace('{revision}', function(str) {return !!revision ? revision : ''}))
         for (var z in config.text[k]) {
             if (z == 'namespace' || z == 'size' || z == 'clicktag' || z == 'url' || z == 'width' || z == 'height' || z == 'language' || z == 'revision') {
                 throw new Error('when binding text, '+z+' is a reserved bind keyword.');
@@ -145,7 +145,7 @@ gulp.task('compile', ['clean'], function() {
             .pipe(replace('{size}', size))
             .pipe(replace('{language}', language))
             .pipe(replace('{clicktag}', clicktag))
-            .pipe(replace('{revision}', function(str) {return !!revision ? revision : str}))
+            .pipe(replace('{revision}', function(str) {return !!revision ? revision : ''}))
             .pipe(gulp.dest(directories.rich.temp+'/js'))
             .pipe(stripDebug())
             .pipe(uglify({mangle:false}))
@@ -208,7 +208,7 @@ gulp.task('generateHtml', ['compile'], function() {
             .pipe(replace('{size}', size))
             .pipe(replace('{width}', width))
             .pipe(replace('{height}', height))
-            .pipe(replace('{revision}', function(str) {return !!revision ? revision : str}))
+            .pipe(replace('{revision}', function(str) {return !!revision ? revision : ''}))
             .pipe(replace('{language}', language));
 
         for (var z in config.text[k]) {
@@ -235,7 +235,7 @@ gulp.task('generateHtml', ['compile'], function() {
             .pipe(replace('{size}', size))
             .pipe(replace('{width}', width))
             .pipe(replace('{height}', height))
-            .pipe(replace('{revision}', function(str) {return !!revision ? revision : str}))
+            .pipe(replace('{revision}', function(str) {return !!revision ? revision : ''}))
             .pipe(replace('{language}', language));
 
         for (var z in config.text[k]) {
