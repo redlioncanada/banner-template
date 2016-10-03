@@ -83,7 +83,7 @@ html, body {
         .mask.m5 {
             position: absolute;
             top: {height}px;
-            width: 161px;
+            width: 215px;
             height: 34px;
             z-index: 3000;
             background-color: white;
@@ -118,6 +118,14 @@ html, body {
             top: 198px;
             width: 106px;
             height: 33px;
+        }
+    }
+
+    #ad.fr {
+        .backgrounds .masks {
+            .m3, .m5 {
+                left: 178px;
+            }
         }
     }
 }
