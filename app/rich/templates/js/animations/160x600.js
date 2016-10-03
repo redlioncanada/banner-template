@@ -63,7 +63,7 @@ function updateCopy(){
     ctaTriggercss.css({"left": "18px", "width":"121px"});
     ctaNormalcss.css({"left": "-1px", "width":"121px"});
     ctaTxtcss.css({"left": "6px"});
-    test2Img.css({"left": "12px", "height": "85px", "width": "126px", "top": "30px"});
+    test2Img.css({"left": "12px", "height": "88px", "width": "126px", "top": "30px"});
 
 
   };
