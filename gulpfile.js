@@ -364,7 +364,7 @@ gulp.task('validate', ['cleanPackage'], function() {
             return
         }
 
-        var customTests = [includeTest]
+        var customTests = []
         if (clicktag == 'doubleclick') customTests.push(doubleclickClicktagTest)
         else if (clicktag == 'adgear') customTests.push(adgearClicktagTest)
 
