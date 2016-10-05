@@ -5,10 +5,10 @@
     <meta name="ad.size" content="width={width},height={height}">
     <title>{size}</title>
     <script type="text/javascript">
-        //=include js/clicktags/{clicktag}.js
         //=include js/{language}.js
 
     </script>
+    <!--=include html/clickTag/{clicktag}.html -->
     <style type="text/css">
         /*=include css/global.css*/
         /*=include css/{size}.css*/
@@ -23,7 +23,8 @@
 </head>
 
 <body>
-    <a onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
+
+    <div onclick="clickThrough()" id="clickThrough" class="{namespace}" target="_blank">
         <div id="border" class="{language}">
             <div id="myAd">
             <div class="bg1 item" id="bg1">
@@ -64,7 +65,7 @@
             </div>
             </div>
         </div>
-    </a>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://s0.2mdn.net/ads/studio/cached_libs/cssplugin_1.18.0_71489205621d46cbe88348eeb8fe493f_min.js"></script>
     <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
@@ -104,6 +105,7 @@
             })
         })
     </script>
+
 </body>
 
 </html>

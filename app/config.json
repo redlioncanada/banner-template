@@ -17,15 +17,12 @@
 	],
 	"clicktags": [
 		"adwords",
-		"adgear",
-		"doubleclick"
+		"adgear"
 	],
 	"text": {
 		"en": {},
 		"fr": {}
 	},
 	"exclude": [
-		"adwords",
-		"adgear"
 	]
 }
