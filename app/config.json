@@ -1,10 +1,9 @@
 {
 	"name": "ATS",
 	"brand": "Cadillac",
-	"month": "Nov",
+	"month": "Dec",
 	"version": {
-		"en": "2",
-		"fr": "1"
+		"en": "1"
 	},
 	"filesize": {
 		"static": 40,
@@ -18,13 +17,12 @@
 		"728x90",
 		"300x50",
 		"320x50"
-	],   
+	],
 	"clicktags": [
 		"doubleclick"
 	],
 	"text": {
-		"en": {},
-		"fr": {}
+		"en": {}
 	},
 	"exclude": [
 	]
