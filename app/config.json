@@ -3,7 +3,8 @@
 	"brand": "Cadillac",
 	"month": "Dec",
 	"version": {
-		"en": "1"
+		"en": "1",
+		"fr": "1"
 	},
 	"filesize": {
 		"static": 40,
@@ -22,7 +23,8 @@
 		"doubleclick"
 	],
 	"text": {
-		"en": {}
+		"en": {},
+		"fr": {}
 	},
 	"exclude": [
 	]
