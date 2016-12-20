@@ -8,7 +8,7 @@
 	},
 	"filesize": {
 		"static": 40,
-		"rich": 150
+		"rich": 100
 	},
 	"revisions": [],
 	"sizes": [
@@ -27,6 +27,6 @@
 		"fr": {}
 	},
 	"exclude": [
-		"fr"
+		""
 	]
 }

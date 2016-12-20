@@ -6,7 +6,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('.masks .m2', 0.8, {height:183}, 'start').add('frame1-m2')
             .to('.masks .m4', 0.8, {width:123,left:178}, 'frame1-m2').add('frame1-m4')
             .to('.masks .m3, .masks .m5', 0.85, {width:213,left:0}, 'frame1-m4')
-            .to('.copy2', 0.8, {left:4})
+            .to('.copy2', 0.8, {left:2})
             .addDelay(2, 'frame2')
         timeline.add('f2-transition')
             .to('.background-container', 0, {height:"-=20"})
