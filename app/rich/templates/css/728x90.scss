@@ -1,9 +1,3 @@
-@mixin horizontal-center($width) {
-    left: 50%;
-    margin-left: -($width/2);
-    width: $width;
-}
-
 html, body {
     width: {width}px;
     height: {height}px;
@@ -20,42 +14,8 @@ html, body {
         }
 
         .backgrounds {
-            .masks {
-                z-index: 2;
-
-                > * {
-                    z-index: 2;
-                }
-
-                .m1 {
-                    width: 35px;
-                }
-
-                .m2 {
-                    top: 44px;
-                    left: 32px;
-                    width: 3px;
-                }
-
-                .m3 {
-                    left: 212px;
-                    height: 90px;
-                    width: 38px;
-                    top: {height}px;
-                }
-            }
-
             .background1 {
                 z-index: 1;
-            }
-
-            .background-container {
-                left: 212px;
-                overflow: hidden;
-                width: {width}px;
-                height: {height}px;
-                z-index: 3;
-                position: absolute;
             }
 
             img {
@@ -79,26 +39,47 @@ html, body {
         .copy {
             .item {
                 width: {width}px;
+                height: {height}px;
             }
         }
 
-        .copy2, .copy3 {
-            left: -600px;
+        .copy1 {
+            top: -{height}px;
+        }
+
+        $copy-event-width: 246px;
+        .copy-event {
+            width: $copy-event-width;
+            top: 14px;
+            height: 62px;
+            left: 171px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                top: 3px;
+            }
+
+            .copy-event-2 {
+                top: 20px;
+            }
+
+            .copy-event-3 {
+                top: 44px;
+            }
         }
 
         #cta_trigger {
-            left: 497px;
-            top: 27px;
-            width: 106px;
-            height: 34px;
+            left: 485px;
+            top: 28px;
+            width: 107px;
+            height: 33px;
         }
     }
 
     #ad.fr {
-        .copy2, .copy3 {
-            left: -595px;
-        }
-
         #cta_trigger {
             left: 481px;
             top: 29px;

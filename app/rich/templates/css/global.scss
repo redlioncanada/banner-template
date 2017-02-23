@@ -70,28 +70,32 @@ table {
             }
         }
 
+        .copy-event {
+            position: absolute;
+            overflow: hidden;
+
+            .vertical-line {
+                position: absolute;
+                height: 100%;
+                width: 2px;
+                background: #8a1529;
+                z-index: 2;
+            }
+
+            .copy-event-img {
+                position: absolute;
+                width: 100%;
+                z-index: 1;
+            }
+        }
+
         .backgrounds {
             z-index: 1;
         }
 
-        .backgrounds, .copy {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
         .copy {
-            z-index: 3;
-        }
-
-        .logo {
-            z-index: 5;
-        }
-
-        .masks > * {
-            z-index: 10;
             position: absolute;
-            background-color: white;
+            z-index: 3;
         }
 
         #border {
@@ -125,4 +129,14 @@ table {
         opacity: 0;
     }
 
+    /* development */
+    .overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        opacity: 0.6;
+        width: 100%;
+    }
+    /* end development */
 }
