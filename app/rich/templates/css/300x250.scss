@@ -1,0 +1,102 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        width: {width}px;
+        height: {height}px;
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
+        .backgrounds {
+            .background1 {
+                z-index: 2;
+            }
+            .background2{
+                z-index: 1;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        .logo {
+            width: {width}px;
+        }
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        .copy {
+            .item {
+                width: {width}px;
+                height: {height}px;
+            }
+        }
+
+        .copy1 {
+            // top: -{height}px;
+            opacity: 0;
+        }
+
+        $copy-event-width: 300px;
+        .copy-event {
+            width: 216px;
+            top: 10px;
+            height: 49px;
+            left: 23px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+
+            }
+
+            .vertical-line{
+
+            }
+
+            .copy-event-1 {
+                width: $copy-event-width;
+                top: -10px;
+            }
+
+            .copy-event-2 {
+                width: $copy-event-width;
+                top: -10px;
+            }
+
+            .copy-event-3 {
+                width: $copy-event-width;
+                top: -10px;
+            }
+        }
+
+        #cta_trigger {
+            left: 171px;
+            top: 189px;
+            width: 107px;
+            height: 33px;
+        }
+    }
+
+    #ad.fr {
+        #cta_trigger {
+            left: 171px;
+            top: 189px;
+            width: 132px;
+            height: 33px;
+        }
+    }
+}

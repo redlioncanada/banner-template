@@ -1,0 +1,99 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        width: {width}px;
+        height: {height}px;
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
+        .backgrounds {
+            .background1 {
+                z-index: 1;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        .logo {
+            width: {width}px;
+        }
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        .copy {
+            .item {
+                width: {width}px;
+                height: {height}px;
+            }
+        }
+
+        .copy1 {
+            // top: -{height}px;
+            opacity: 0;
+        }
+
+        $copy-event-width: 160px;
+        .copy-event {
+            width: 119px;
+            top: 101px;
+            height: 84px;
+            left: 11px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+
+            }
+
+            .vertical-line{
+            }
+
+            .copy-event-1 {
+                top: -101px;
+                width:$copy-event-width;
+
+            }
+
+            .copy-event-2 {
+                top: -101px;
+                width: $copy-event-width;
+            }
+
+            .copy-event-3 {
+                top: -101px;
+                width: $copy-event-width;
+            }
+        }
+
+        #cta_trigger {
+            left: 26px;
+            top: 543px;
+            width: 107px;
+            height: 33px;
+        }
+    }
+
+    #ad.fr {
+        #cta_trigger {
+            left: 26px;
+            top: 543px;
+            width: 132px;
+            height: 33px;
+        }
+    }
+}
