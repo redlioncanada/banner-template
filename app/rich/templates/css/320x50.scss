@@ -44,15 +44,15 @@ html, body {
         }
 
         .copy1 {
-            // top: -{height}px;
+            top: -{height}px;
         }
 
-        $copy-event-width: 300px;
+        $copy-event-width: 320px;
         .copy-event {
-            width: 286px;
-            top: 121px;
-            height: 63px;
-            left: 15px;
+                width: 143px;
+                top: 8px;
+                height: 35px;
+                left: 87px;
 
             .copy-event-img {
                 left: -$copy-event-width;
@@ -60,21 +60,22 @@ html, body {
             }
 
             .vertical-line{
+                width: 1px !important;
             }
 
             .copy-event-1 {
-                top: -121px;
+                top: -8px;
                 width:$copy-event-width;
 
             }
 
             .copy-event-2 {
-                top: -121px;
+                top: -8px;
                 width: $copy-event-width;
             }
 
             .copy-event-3 {
-                top: -121px;
+                top: -8px;
                 width: $copy-event-width;
             }
         }
