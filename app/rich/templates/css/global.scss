@@ -98,6 +98,18 @@ table {
             z-index: 3;
         }
 
+        .masks {
+            position: absolute;
+            width: {width}px;
+
+            > div {
+                height: inherit;
+                opacity: 0.8;
+                float: left;
+                background: white;
+            }
+        }
+
         #border {
             z-index: 9;
             position: absolute;

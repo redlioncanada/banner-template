@@ -44,14 +44,27 @@ html, body {
         }
 
         .copy1 {
-            // top: -{height}px;
             opacity: 0;
+        }
+
+        .masks {
+            height: 88px;
+            top: 327px;
+            z-index: 2;
+
+            .mask1 {
+                width: 60%;
+            }
+
+            .mask2 {
+                width: 40%;
+            }
         }
 
         $copy-event-width: 160px;
         .copy-event {
             width: 119px;
-            top: 101px;
+            top: 74px;
             height: 84px;
             left: 11px;
 
@@ -81,10 +94,10 @@ html, body {
         }
 
         #cta_trigger {
-            left: 26px;
+            left: 31px;
             top: 543px;
-            width: 107px;
-            height: 33px;
+            width: 96px;
+            height: 23px;
         }
     }
 
