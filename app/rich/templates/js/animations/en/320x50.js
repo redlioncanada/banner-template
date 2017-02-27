@@ -2,9 +2,9 @@ var easeIn = Power1.easeIn;
 var easeOut = Power1.easeOut;
 var timeline = new TimelineLite({onComplete: onComplete});
         timeline.add('frame1')
-            .to('.copy-event-1', 1, {left: -87})
-            .to('.copy-event-2', 0.5, {left: -87}, '-=0.3')
-            .to('.copy-event-3', 0.5, {left: -87}, '-=0.3')
+            .to('.copy-event-1', 1, {left: -85})
+            .to('.copy-event-2', 0.5, {left: -85}, '-=0.3')
+            .to('.copy-event-3', 0.5, {left: -85}, '-=0.3')
             .addDelay(2.7, 'frame2')
         timeline.add('frame2')
             .to('.copy-event', 1, {opacity: 0})

@@ -1,5 +1,5 @@
 {
-	"name": "XT5",
+	"name": "ATS - Monthly",
 	"brand": "Cadillac",
 	"month": "Mar",
 	"version": {
@@ -27,6 +27,10 @@
 		"fr": {}
 	},
 	"exclude": [
+		"160x600",
+		"300x250",
+		"300x600",
+		"728x90",
 		"fr"
 	]
 }

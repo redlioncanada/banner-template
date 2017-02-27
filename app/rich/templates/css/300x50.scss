@@ -25,6 +25,7 @@ html, body {
 
         .logo {
             width: {width}px;
+            z-index: 5;
         }
 
         .cta {
@@ -52,7 +53,7 @@ html, body {
                 width: 143px;
                 top: 8px;
                 height: 35px;
-                left: 72px;
+                left: 70px;
 
             .copy-event-img {
                 left: -$copy-event-width;
