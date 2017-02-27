@@ -100,7 +100,7 @@ table {
 
         .masks {
             position: absolute;
-            width: {width}px;
+            z-index: 3;
 
             > div {
                 height: inherit;

@@ -48,9 +48,9 @@ html, body {
         }
 
         .masks {
+            width: {width}px;
             height: 88px;
             top: 327px;
-            z-index: 2;
 
             .mask1 {
                 width: 60%;

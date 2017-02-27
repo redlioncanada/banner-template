@@ -18,6 +18,10 @@ html, body {
                 z-index: 1;
             }
 
+            .background2 {
+                z-index: 2;
+            }
+
             img {
                 width: {width}px;
             }
@@ -43,8 +47,22 @@ html, body {
             }
         }
 
-        .copy1 {
+        .masks {
+            height: 69px;
+            top: 22px;
+            width: 80px;
+            left: 178px;
+
+            .mask1 {
+                opacity: 1;
+                width: inherit;
+                height: inherit;
+            }
+        }
+
+        .nameplate {
             top: -{height}px;
+            z-index: 3;
         }
 
         $copy-event-width: 246px;
@@ -52,7 +70,7 @@ html, body {
             width: $copy-event-width;
             top: 14px;
             height: 62px;
-            left: 171px;
+            left: 193px;
 
             .copy-event-img {
                 left: -$copy-event-width;
@@ -72,10 +90,10 @@ html, body {
         }
 
         #cta_trigger {
-            left: 485px;
-            top: 28px;
-            width: 107px;
-            height: 33px;
+            left: 496px;
+            top: 33px;
+            width: 97px;
+            height: 23px;
         }
     }
 

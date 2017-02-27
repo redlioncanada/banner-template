@@ -18,6 +18,10 @@ html, body {
                 z-index: 1;
             }
 
+            .background2 {
+                z-index: 2;
+            }
+
             img {
                 width: {width}px;
             }
@@ -42,21 +46,33 @@ html, body {
                 height: {height}px;
             }
         }
+        .masks {
+            height: 39px;
+            top: 14px;
+            width: 50px;
+            left: 74px;
 
-        .copy1 {
-            top: -{height}px;
+            .mask1 {
+                opacity: 1;
+                width: inherit;
+                height: inherit;
+            }
         }
 
-        $copy-event-width: 300px;
+        .nameplate {
+            top: -{height}px;
+            z-index: 3;
+        }
+
+        $copy-event-width: 142px;
         .copy-event {
-                width: 143px;
-                top: 8px;
-                height: 35px;
-                left: 72px;
+            width: 143px;
+            top: 8px;
+            height: 35px;
+            left: 80px;
 
             .copy-event-img {
                 left: -$copy-event-width;
-
             }
 
             .vertical-line{
@@ -64,18 +80,18 @@ html, body {
             }
 
             .copy-event-1 {
-                top: -8px;
+                top: 2px;
                 width:$copy-event-width;
 
             }
 
             .copy-event-2 {
-                top: -8px;
+                top: 11px;
                 width: $copy-event-width;
             }
 
             .copy-event-3 {
-                top: -8px;
+                top: 24px;
                 width: $copy-event-width;
             }
         }

@@ -39,6 +39,23 @@ html, body {
             }
         }
 
+        .masks {
+            top: 67px;
+            left: 194px;
+            width: 110px;
+            height: 137px;
+
+            .mask1 {
+                width: 100%;
+                height: 40%;
+            }
+
+            .mask2 {
+                width: 100%;
+                height: 60%;
+            }
+        }
+
         .copy {
             .item {
                 width: {width}px;
@@ -47,7 +64,6 @@ html, body {
         }
 
         .copy1 {
-            // top: -{height}px;
             opacity: 0;
         }
 
