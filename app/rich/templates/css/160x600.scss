@@ -80,6 +80,7 @@ html, body {
             }
         }
 
+
         #cta_trigger {
             left: 26px;
             top: 543px;
@@ -90,10 +91,42 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 26px;
+            left: 12px;
             top: 543px;
-            width: 132px;
+            width: 136px;
             height: 33px;
+        }
+        
+        $copy-event-width: 160px;
+        .copy-event {
+            width: 141px;
+            top: 125px;
+            height: 61px;
+            left: 11px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+
+            }
+
+            .vertical-line{
+            }
+
+            .copy-event-1 {
+                top: -125px;
+                width:$copy-event-width;
+
+            }
+
+            .copy-event-2 {
+                top: -125px;
+                width: $copy-event-width;
+            }
+
+            .copy-event-3 {
+                top: -125px;
+                width: $copy-event-width;
+            }
         }
     }
 }

@@ -86,5 +86,31 @@ html, body {
             width: 132px;
             height: 33px;
         }
+         $copy-event-width: 728px;
+        .copy-event {
+            width: 300px;
+            top: 20px;
+            height: 53px;
+            left: 170px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                width:  $copy-event-width;
+                top: -20px;
+            }
+
+            .copy-event-2 {
+                width:  $copy-event-width;
+                top: -20px;
+            }
+
+            .copy-event-3 {
+                width:  $copy-event-width;
+                top: -20px;
+            }
+        }
     }
 }
