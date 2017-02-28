@@ -47,27 +47,32 @@ html, body {
             top: -{height}px;
         }
 
-        $copy-event-width: 246px;
+        $copy-event-width: 273px;
         .copy-event {
             width: $copy-event-width;
-            top: 14px;
+            top: 17px;
             height: 62px;
-            left: 171px;
+            left: 170px;
 
             .copy-event-img {
                 left: -$copy-event-width;
             }
 
             .copy-event-1 {
-                top: 3px;
+                width: 728px;
+                top: -17px;
+
             }
 
             .copy-event-2 {
-                top: 20px;
+                width: 728px;
+                top: -17px;
+
             }
 
             .copy-event-3 {
-                top: 44px;
+                width: 728px;
+                top: -17px;
             }
         }
 
