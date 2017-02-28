@@ -81,10 +81,36 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 481px;
-            top: 29px;
-            width: 132px;
+            left: 472px;
+            top: 28px;
+            width: 136px;
             height: 33px;
+        }
+         $copy-event-width: 728px;
+        .copy-event {
+            width: 300px;
+            top: 20px;
+            height: 53px;
+            left: 170px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                width:  $copy-event-width;
+                top: -20px;
+            }
+
+            .copy-event-2 {
+                width:  $copy-event-width;
+                top: -20px;
+            }
+
+            .copy-event-3 {
+                width:  $copy-event-width;
+                top: -20px;
+            }
         }
     }
 }

@@ -693,8 +693,5 @@ function shouldExcludeBanner(config, params) {
         }
     }
     return false
-}     }
-        }
-    }
-    return false
-}
+}     
+    

@@ -90,10 +90,41 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 26px;
+            left: 11px;
             top: 543px;
-            width: 132px;
+            width: 137px;
             height: 33px;
+        }
+        $copy-event-width: 160px;
+        .copy-event {
+            width: 140px;
+            top: 124px;
+            height: 62px;
+            left: 11px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+
+            }
+
+            .vertical-line{
+            }
+
+            .copy-event-1 {
+                top: -124px;
+                width:$copy-event-width;
+
+            }
+
+            .copy-event-2 {
+                top: -124px;
+                width: $copy-event-width;
+            }
+
+            .copy-event-3 {
+                top: -124px;
+                width: $copy-event-width;
+            }
         }
     }
 }
