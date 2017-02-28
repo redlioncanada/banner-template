@@ -83,7 +83,6 @@ html, body {
             .copy-event-1 {
                 top: 2px;
                 width:$copy-event-width;
-
             }
 
             .copy-event-2 {
@@ -100,6 +99,26 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 151px;
+        .copy-event {
+            width: 152px;
+            top: 12px;
+            height: 27px;
+            left: 90px;
 
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                top: 1px;
+                width:$copy-event-width;
+            }
+
+            .copy-event-2 {
+                top: 14px;
+                width: $copy-event-width;
+            }
+        }
     }
 }
