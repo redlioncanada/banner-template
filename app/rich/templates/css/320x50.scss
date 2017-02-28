@@ -100,6 +100,31 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 146px;
+        .copy-event {
+            width: 150px;
+            top: 11px;
+            height: 28px;
+            left: 90px;
 
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .vertical-line{
+                width: 1px;
+            }
+
+            .copy-event-1 {
+                top: 2px;
+                width:$copy-event-width;
+
+            }
+
+            .copy-event-2 {
+                top: 14px;
+                width: $copy-event-width;
+            }
+        }
     }
 }

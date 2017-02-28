@@ -98,11 +98,28 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 286px;
+        .copy-event {
+            width: $copy-event-width;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                top: 9px;
+            }
+
+            .copy-event-2 {
+                top: 34px;
+            }
+        }
+
         #cta_trigger {
-            left: 481px;
-            top: 29px;
-            width: 132px;
-            height: 33px;
+            left: 487px;
+            top: 33px;
+            width: 119px;
+            height: 23px;
         }
     }
 }

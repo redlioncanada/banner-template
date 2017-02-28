@@ -103,10 +103,20 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 26px;
+            left: 20px;
             top: 543px;
-            width: 132px;
-            height: 33px;
+            width: 119px;
+            height: 24px;
+        }
+
+        .copy-event {
+            height: 60px;
+            width: 140px;
+            top: 97px;
+
+            .copy-event-1, .copy-event-2, .copy-event-3 {
+                top: -96px;
+            }
         }
     }
 }

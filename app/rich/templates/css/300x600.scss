@@ -102,11 +102,22 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 300px;
+        .copy-event {
+            top: 74px;
+            height: 48px;
+
+            .copy-event-1, .copy-event-2, .copy-event-3 {
+                top: -74px;
+                width:$copy-event-width;
+            }
+        }
+
         #cta_trigger {
-            left: 156px;
+            left: 163px;
             top: 545px;
-            width: 132px;
-            height: 33px;
+            width: 118px;
+            height: 23px;
         }
     }
 }
