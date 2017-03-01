@@ -89,10 +89,28 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 160px;
+        .copy-event {
+            width: 141px;
+            top: 124px;
+            height: 62px;
+            left: 11px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1, .copy-event-2, .copy-event-3 {
+                top: -124px;
+                width: $copy-event-width;
+
+            }
+        }
+
         #cta_trigger {
-            left: 26px;
+            left: 11px;
             top: 543px;
-            width: 132px;
+            width: 137px;
             height: 33px;
         }
     }

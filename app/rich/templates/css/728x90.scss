@@ -80,10 +80,30 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 286px;
+        .copy-event {
+            width: $copy-event-width;
+            top: 21px;
+            height: 54px;
+            left: 170px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                top: 2px;
+            }
+
+            .copy-event-2 {
+                top: 30px;
+            }
+        }
+
         #cta_trigger {
-            left: 481px;
-            top: 29px;
-            width: 132px;
+            left: 471px;
+            top: 28px;
+            width: 137px;
             height: 33px;
         }
     }
