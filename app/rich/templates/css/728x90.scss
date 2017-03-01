@@ -91,5 +91,33 @@ html, body {
             width: 132px;
             height: 33px;
         }
+        $copy-event-width: 728px;
+        .copy-event {
+            width: $copy-event-width;
+            top: 21px;
+            height: 54px;
+            left: 170px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+            }
+
+            .copy-event-1 {
+                width: 728px;
+                top: -21px;
+
+            }
+
+            .copy-event-2 {
+                width: 728px;
+                top: -21px;
+
+            }
+
+            .copy-event-3 {
+                width: 728px;
+                top: -21px;
+            }
+        }
     }
 }

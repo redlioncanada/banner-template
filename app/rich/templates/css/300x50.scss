@@ -84,6 +84,38 @@ html, body {
     }
 
     #ad.fr {
+        $copy-event-width: 300px;
+        .copy-event {
+                width: 162px;
+                top: 10px;
+                height: 30px;
+                left: 66px;
+
+            .copy-event-img {
+                left: -$copy-event-width;
+
+            }
+
+            .vertical-line{
+                width: 1px;
+            }
+
+            .copy-event-1 {
+                top: -10px;
+                width:$copy-event-width;
+
+            }
+
+            .copy-event-2 {
+                top: -10px;
+                width: $copy-event-width;
+            }
+
+            .copy-event-3 {
+                top: -10px;
+                width: $copy-event-width;
+            }
+        }
 
     }
 }
