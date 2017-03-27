@@ -1,7 +1,7 @@
 {
 	"name": "ATS",
 	"brand": "Cadillac",
-	"month": "RetailMarBiWeekly",
+	"month": "RetailAprBiWeekly",
 	"version": {
 		"en": "1",
 		"fr": "1"
@@ -27,5 +27,8 @@
 		"fr": {}
 	},
 	"exclude": [
+		"fr",
+		"300x50",
+		"320x50"
 	]
 }
