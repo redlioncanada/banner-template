@@ -7,7 +7,6 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .addDelay(2.7, 'frame2')
         timeline.add('frame2')
             .to('.copy-event', 1, {opacity: 0})
-            // .to('.copy1', 1, {top: 0})
             .to('.copy1', 1, {opacity: 1})
             .addDelay(2, 'frame3')
         timeline.add('frame3')
