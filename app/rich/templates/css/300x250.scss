@@ -14,13 +14,6 @@ html, body {
         }
 
         .backgrounds {
-            .background1 {
-                z-index: 2;
-            }
-            .background2{
-                z-index: 1;
-            }
-
             img {
                 width: {width}px;
             }
@@ -46,48 +39,11 @@ html, body {
             }
         }
 
-        .copy1 {
-            // top: -{height}px;
-            opacity: 0;
-        }
-
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 216px;
-            top: 10px;
-            height: 49px;
-            left: 23px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-
-            }
-
-            .copy-event-1 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-
-            .copy-event-2 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-
-            .copy-event-3 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-        }
-
         #cta_trigger {
-            left: 171px;
-            top: 189px;
-            width: 107px;
-            height: 33px;
+            left: 124px;
+            top: 93px;
+            width: 97px;
+            height: 22px;
         }
     }
 
@@ -97,33 +53,6 @@ html, body {
             top: 189px;
             width: 132px;
             height: 33px;
-        }
-         $copy-event-width: 300px;
-        .copy-event {
-            width: 216px;
-            top: 14px;
-            height: 43px;
-            left: 23px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-
-            }
-
-            .copy-event-1 {
-                width: $copy-event-width;
-                top: -14px;
-            }
-
-            .copy-event-2 {
-                width: $copy-event-width;
-                top: -14px;
-            }
-
         }
     }
 }

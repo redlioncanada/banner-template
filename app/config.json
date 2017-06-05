@@ -1,10 +1,10 @@
 {
-	"name": "XT5",
+	"name": "GoS-Alt",
 	"brand": "Cadillac",
-	"month": "RetailMayBiWeekly",
+	"month": "June",
 	"version": {
-		"en": "2",
-		"fr": "2"
+		"en": "1",
+		"fr": "1"
 	},
 	"filesize": {
 		"static": 40,
@@ -12,12 +12,7 @@
 	},
 	"revisions": [],
 	"sizes": [
-		"160x600",
-		"300x250",
-		"300x600",
-		"728x90",
-		"300x50",
-		"320x50"
+		"300x250"
 	],
 	"clicktags": [
 		"doubleclick"
@@ -27,5 +22,6 @@
 		"fr": {}
 	},
 	"exclude": [
+		"fr"
 	]
 }

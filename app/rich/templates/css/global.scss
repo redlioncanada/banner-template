@@ -70,32 +70,21 @@ table {
             }
         }
 
-        .copy-event {
-            position: absolute;
-            overflow: hidden;
-
-            .vertical-line {
-                position: absolute;
-                height: 100%;
-                width: 2px;
-                background: #8a1529;
-                z-index: 2;
-            }
-
-            .copy-event-img {
-                position: absolute;
-                width: 100%;
-                z-index: 1;
-            }
-        }
-
         .backgrounds {
             z-index: 1;
+        }
+
+        .line {
+            z-index: 10;
         }
 
         .copy {
             position: absolute;
             z-index: 3;
+        }
+
+        .logo {
+            z-index: 5;
         }
 
         #border {
