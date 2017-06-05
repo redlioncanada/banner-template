@@ -14,10 +14,6 @@ html, body {
         }
 
         .backgrounds {
-            .background1 {
-                z-index: 1;
-            }
-
             img {
                 width: {width}px;
             }
@@ -43,89 +39,20 @@ html, body {
             }
         }
 
-        .copy1 {
-            // top: -{height}px;
-            opacity: 0;
-        }
-
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 286px;
-            top: 121px;
-            height: 63px;
-            left: 15px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-            }
-
-            .copy-event-1 {
-                top: -121px;
-                width:$copy-event-width;
-
-            }
-
-            .copy-event-2 {
-                top: -121px;
-                width: $copy-event-width;
-            }
-
-            .copy-event-3 {
-                top: -121px;
-                width: $copy-event-width;
-            }
-        }
-
         #cta_trigger {
-            left: 156px;
-            top: 545px;
-            width: 107px;
-            height: 33px;
+            left: 26px;
+            top: 346px;
+            width: 124px;
+            height: 28px;
         }
     }
 
-    #ad.fr {
-        #cta_trigger {
-            left: 126px;
-            top: 545px;
-            width: 137px;
-            height: 33px;
-        }
-        
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 286px;
-            top: 138px;
-            height: 48px;
-            left: 15px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-            }
-
-            .copy-event-1 {
-                top: -138px;
-                width:$copy-event-width;
-
-            }
-
-            .copy-event-2 {
-                top: -138px;
-                width: $copy-event-width;
-            }
-
-            .copy-event-3 {
-                top: -138px;
-                width: $copy-event-width;
-            }
-        }
-    }
+    // #ad.fr {
+    //     #cta_trigger {
+    //         left: 171px;
+    //         top: 189px;
+    //         width: 132px;
+    //         height: 33px;
+    //     }
+    // }
 }
