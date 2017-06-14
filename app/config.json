@@ -1,7 +1,7 @@
 {
 	"name": "XT5",
 	"brand": "Cadillac",
-	"month": "BrandMay",
+	"month": "BrandJune",
 	"version": {
 		"en": "1",
 		"fr": "1"
@@ -27,5 +27,6 @@
 		"fr": {}
 	},
 	"exclude": [
+		"fr"
 	]
 }
