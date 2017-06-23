@@ -161,7 +161,10 @@
 		}
 
 		function insertPlayControls() {
-			if (!('timeline' in iframe) || !('_labels' in iframe.timeline)) return;
+			if (!('timeline' in iframe) || !('_labels' in iframe.timeline)) {
+				$('.player').css('display', 'none');
+				return;
+			}
 			var keywords = ['start', 'label', 'end']
 			var times = []
 			for (var key in iframe.timeline._labels) {
