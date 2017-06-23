@@ -26,7 +26,6 @@ var gulp        = require('gulp'),
     minifyCss   = require('gulp-cssnano'),
     util        = require('gulp-util'),
     minifyHtml  = require('gulp-htmlmin'),
-    imageMin    = require('gulp-imagemin'),
     zip         = require('gulp-zip'),
     ignore      = require('gulp-ignore'),
     jeditor     = require("gulp-json-editor"),
@@ -195,9 +194,6 @@ gulp.task('generateHtml', ['compile'], function() {
 
         tasks.push(gulp.src(src, {base: basePath})
             .pipe(flatten())
-            .pipe(imageMin({
-                progressive: true
-            }))
             .pipe(gulp.dest('build/'+folderName+'/'+language)));
 
         //normal
@@ -285,9 +281,6 @@ gulp.task('static', ['generateHtml'], function() {
     for (var language in config.text) {
         tasks.push(
             gulp.src('app/static/'+language+'/**/*')
-                .pipe(imageMin({
-                    progressive: true
-                }))
                 .pipe(gulp.dest(directories.static.temp+'/'+language))
         )
     }

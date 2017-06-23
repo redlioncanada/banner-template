@@ -21,29 +21,168 @@
 </head>
 
 <body>
-    <div id="clickThrough" class="{namespace}">
+    <div class="{namespace}">
         <div id="ad" class="{language} revision{revision}">
-            <!--=include html/{language}/{size}.html-->
+            <!-- Collapsed Conent -->
+            <div id="invitation-state">
+                <div class="border"></div>
+                <div id="invitation-feature" class="feature-invitation">
+                    <img src="hover_cta.png" id="invitation-hover-cta" />
+                    <img src="tap_cta.png" id="invitation-tap-cta" />
+                    <img src="background.jpg" id="invitation-background" />
+                </div>
+            </div>
+
+            <!-- Expand Content -->
+            <div id="lightbox-state">
+                <div id="lightbox-exit"></div>
+                <div id="lightbox-feature" class="feature-lightbox">
+                    <img class="unsupported" src="unsupported.png" />
+                    <div class="top">
+                        <img class="logo" data-aload="logo.jpg" />
+                        <div class="cta">
+                            <img class="ats model active" data-aload="ats-cta.jpg" />
+                            <img class="xt5 model" data-aload="xt5-cta.jpg" />
+                            <img class="escalade model" data-aload="escalade-cta.jpg" />
+                        </div>
+                        <div class="copy">
+                            <div class="ats model active">
+                                <img class="landing gallery-1 feature active" data-aload="ats-landing-copy.png" />
+                                <img class="technology gallery-1 feature" data-aload="ats-technology-1-copy.png" />
+                                <img class="technology gallery-2 feature" data-aload="ats-technology-2-copy.png" />
+                                <img class="technology gallery-3 feature" data-aload="ats-technology-3-copy.png" />
+                                <img class="interior gallery-1 feature" data-aload="ats-interior-1-copy.png" />
+                                <img class="interior gallery-2 feature" data-aload="ats-interior-2-copy.png" />
+                                <img class="interior gallery-3 feature" data-aload="ats-interior-3-copy.png" />
+                                <img class="exterior gallery-1 feature" data-aload="ats-exterior-1-copy.png" />
+                                <img class="exterior gallery-2 feature" data-aload="ats-exterior-2-copy.png" />
+                                <img class="exterior gallery-3 feature" data-aload="ats-exterior-3-copy.png" />
+                            </div>
+                            <div class="xt5 model">
+                                <img class="landing gallery-1 feature active" data-aload="xt5-landing-copy.png" />
+                                <img class="technology gallery-1 feature" data-aload="xt5-technology-1-copy.png" />
+                                <img class="technology gallery-2 feature" data-aload="xt5-technology-2-copy.png" />
+                                <img class="technology gallery-3 feature" data-aload="xt5-technology-3-copy.png" />
+                                <img class="interior gallery-1 feature" data-aload="xt5-interior-1-copy.png" />
+                                <img class="interior gallery-2 feature" data-aload="xt5-interior-2-copy.png" />
+                                <img class="interior gallery-3 feature" data-aload="xt5-interior-3-copy.png" />
+                                <img class="exterior gallery-1 feature" data-aload="xt5-exterior-1-copy.png" />
+                                <img class="exterior gallery-2 feature" data-aload="xt5-exterior-2-copy.png" />
+                                <img class="exterior gallery-3 feature" data-aload="xt5-exterior-3-copy.png" />
+                            </div>
+                            <div class="escalade model">
+                                <img class="landing gallery-1 feature active" data-aload="escalade-landing-copy.png" />
+                                <img class="technology gallery-1 feature" data-aload="escalade-technology-1-copy.png" />
+                                <img class="technology gallery-2 feature" data-aload="escalade-technology-2-copy.png" />
+                                <img class="technology gallery-3 feature" data-aload="escalade-technology-3-copy.png" />
+                                <img class="interior gallery-1 feature" data-aload="escalade-interior-1-copy.png" />
+                                <img class="interior gallery-2 feature" data-aload="escalade-interior-2-copy.png" />
+                                <img class="interior gallery-3 feature" data-aload="escalade-interior-3-copy.png" />
+                                <img class="exterior gallery-1 feature" data-aload="escalade-exterior-1-copy.png" />
+                                <img class="exterior gallery-2 feature" data-aload="escalade-exterior-2-copy.png" />
+                                <img class="exterior gallery-3 feature" data-aload="escalade-exterior-3-copy.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle">
+                        <div class="hero-images">
+                            <div class="ats model active">
+                                <img class="landing gallery-1 feature active" data-aload="ats-landing.jpg" />
+                                <img class="technology gallery-1 feature" data-aload="ats-technology-1.jpg" />
+                                <img class="technology gallery-2 feature" data-aload="ats-technology-2.jpg" />
+                                <img class="technology gallery-3 feature" data-aload="ats-technology-3.jpg" />
+                                <img class="interior gallery-1 feature" data-aload="ats-interior-1.jpg" />
+                                <img class="interior gallery-2 feature" data-aload="ats-interior-2.jpg" />
+                                <img class="interior gallery-3 feature" data-aload="ats-interior-3.jpg" />
+                                <img class="exterior gallery-1 feature" data-aload="ats-exterior-1.jpg" />
+                                <img class="exterior gallery-2 feature" data-aload="ats-exterior-2.jpg" />
+                                <img class="exterior gallery-3 feature" data-aload="ats-exterior-3.jpg" />
+                            </div>
+                            <div class="xt5 model">
+                                <img class="landing gallery-1 feature active" data-aload="xt5-landing.jpg" />
+                                <img class="technology gallery-1 feature" data-aload="xt5-technology-1.jpg" />
+                                <img class="technology gallery-2 feature" data-aload="xt5-technology-2.jpg" />
+                                <img class="technology gallery-3 feature" data-aload="xt5-technology-3.jpg" />
+                                <img class="interior gallery-1 feature" data-aload="xt5-interior-1.jpg" />
+                                <img class="interior gallery-2 feature" data-aload="xt5-interior-2.jpg" />
+                                <img class="interior gallery-3 feature" data-aload="xt5-interior-3.jpg" />
+                                <img class="exterior gallery-1 feature" data-aload="xt5-exterior-1.jpg" />
+                                <img class="exterior gallery-2 feature" data-aload="xt5-exterior-2.jpg" />
+                                <img class="exterior gallery-3 feature" data-aload="xt5-exterior-3.jpg" />
+                            </div>
+                            <div class="escalade model">
+                                <img class="landing gallery-1 feature active" data-aload="escalade-landing.jpg" />
+                                <img class="technology gallery-1 feature" data-aload="escalade-technology-1.jpg" />
+                                <img class="technology gallery-2 feature" data-aload="escalade-technology-2.jpg" />
+                                <img class="technology gallery-3 feature" data-aload="escalade-technology-3.jpg" />
+                                <img class="interior gallery-1 feature" data-aload="escalade-interior-1.jpg" />
+                                <img class="interior gallery-2 feature" data-aload="escalade-interior-2.jpg" />
+                                <img class="interior gallery-3 feature" data-aload="escalade-interior-3.jpg" />
+                                <img class="exterior gallery-1 feature" data-aload="escalade-exterior-1.jpg" />
+                                <img class="exterior gallery-2 feature" data-aload="escalade-exterior-2.jpg" />
+                                <img class="exterior gallery-3 feature" data-aload="escalade-exterior-3.jpg" />
+                            </div>
+                        </div>
+                        <div class="gallery-controls hide">
+                            <div class="arrow-left arrow">
+                                <img src="arrow.png" />
+                            </div>
+                            <div class="arrow-right arrow">
+                                <img src="arrow.png" />
+                            </div>
+                            <div class="dots">
+                                <div class="dot active" data-index="1"></div>
+                                <div class="dot" data-index="2"></div>
+                                <div class="dot" data-index="3"></div>
+                            </div>
+                        </div>
+                        <div class="selectors">
+                            <div class="selectors-inner">
+                                <div class="ats selector active" data-model="ats">
+                                    <img class="car" data-aload="selector-ats.png" />
+                                    <img class="copy" data-aload="ats.png" />
+                                </div>
+                                <div class="xt5 selector" data-model="xt5">
+                                    <img class="car" data-aload="selector-xt5.png" />
+                                    <img class="copy" data-aload="xt5.png" />
+                                </div>
+                                <div class="escalade selector" data-model="escalade">
+                                    <img class="car" data-aload="selector-escalade.png" />
+                                    <img class="copy" data-aload="escalade.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="selectors">
+                            <div class="technology selector" data-feature="technology">
+                                <img class="normal" data-aload="technology.png" />
+                                <img class="hover hide" data-aload="technology_hover.png" />
+                            </div>
+                            <div class="interior selector" data-feature="interior">
+                                <img class="normal" data-aload="interior.png" />
+                                <img class="hover hide" data-aload="interior_hover.png" />
+                            </div>
+                            <div class="exterior selector" data-feature="exterior">
+                                <img class="normal" data-aload="exterior.png" />
+                                <img class="hover hide" data-aload="exterior_hover.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
+    <!-- For Studio to detect this is a Lightbox creative. -->
+    <script>Enabler.setHint('expansionMode', 'lightbox');</script>
+    <script>Enabler.setHint('expansionTrigger', 'onHover');</script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#cta_trigger').mouseover(function() {
-                $('.cta_normal').stop(true).animate({'opacity':0},150)
-            })
-            $('#cta_trigger').mouseout(function() {
-                $('.cta_normal').stop(true).animate({'opacity':1},150)
-            })
-        })
-
-        function onComplete() {}
-        //=include js/global/TimelineLite.addDelay.js
-        //=include js/animations/{size}.js
-        //=include js/animations/{language}/{size}.js
+        //=include js/global/aload.js
+        //=include js/global/logic.js
+        //=include js/global/interaction.js
     </script>
-    <!--=include html/clicktags/{clicktag}.html-->
 </body>
 
 </html>
