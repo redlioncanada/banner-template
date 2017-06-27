@@ -48,7 +48,17 @@
 			currentGalleryIndex = 1,
 			controlsHidden = true;
 
-		function model(model) {
+		var toggleControls = function(show) {
+			if (show) {
+				controlsHidden = false;
+				parent.galleryControls.show();
+			} else {
+				controlsHidden = true;
+				parent.galleryControls.hide();
+			}
+		}
+
+		var model = function(model) {
 			var modelSelector = model.substring(0, 1) !== '.' ? '.' + model : model;
 
 			//show copy at the top for this model
@@ -65,14 +75,52 @@
 
 			//show the cta for this model
 			parent.cta.hide('.model');
-			parent.cta.show(modelSelector)
+			parent.cta.show(modelSelector);
 
 			//toggle car selector to the correct model
 			parent.carSelector.element.find('.active').removeClass('active');
 			parent.carSelector.element.find(modelSelector).addClass('active');
 		}
 
-		function feature(feature, index) {
+		var landing = function(model) {
+			var modelSelector = model.substring(0, 1) !== '.' ? '.' + model : model,
+				featureSelector = '.feature.landing';
+
+			//show copy for landing for this model
+			parent.staticCopy.hide('.model');
+			parent.staticCopy.show(modelSelector);
+			parent.staticCopy.hide('.feature');
+			parent.staticCopy.show(featureSelector);
+			parent.staticCopy.element.find('.feature.active,.model.active').removeClass('active');
+			parent.staticCopy.element.find(featureSelector + ',' + modelSelector).addClass('active');
+
+			//show hero image for landing for this model
+			parent.hero.hide('.model');
+			parent.hero.show(modelSelector);
+			parent.hero.hide('.feature');
+			parent.hero.show(featureSelector);
+			parent.hero.element.find('.feature.active,.model.active').removeClass('active');
+			parent.hero.element.find(featureSelector + ',' + modelSelector).addClass('active');
+
+			//show the cta for this model
+			parent.cta.hide('.model');
+			parent.cta.show(modelSelector);
+
+			//toggle car selector to the correct model
+			parent.carSelector.element.find('.active').removeClass('active');
+			parent.carSelector.element.find(modelSelector).addClass('active');
+
+			//unhighlight features at bottom
+			parent.copySelector.element.find('.active').removeClass('active');
+
+			//reset dots
+			currentGalleryIndex = 1;
+			parent.galleryControls.element.find('.dots .active').removeClass('active');
+			parent.galleryControls.element.find('.dot').eq(0).addClass('active');
+			toggleControls(false);
+		}
+
+		var feature = function(feature, index) {
 			var featureDidChange = false,
 				galleryIndexDidChange = false;
 
@@ -92,8 +140,7 @@
 
 			//show gallery controls on first feature interaction
 			if (controlsHidden) {
-				controlsHidden = false;
-				parent.galleryControls.show();
+				toggleControls(true);
 			}
 
 			var featureSelector = currentFeature.substring(0, 1) !== '.' ? '.' + feature : currentFeature,
@@ -129,6 +176,7 @@
 			parentElements: parent,
 			model: model,
 			feature: feature,
+			landing: landing,
 			nextFeatureImage: function() {
 				var index = currentGalleryIndex + 1 > 3 ? 1 : currentGalleryIndex + 1;
 				feature(currentFeature, index);
@@ -149,7 +197,7 @@
 				model = target.attr('data-model');
 
 			if (target.hasClass('active')) return;
-			toggle.model(model);
+			toggle.landing(model);
 		});
 
 		parentElements.copySelector.element.find('.selector').click(function(event) {
