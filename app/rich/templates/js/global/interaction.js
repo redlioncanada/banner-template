@@ -205,7 +205,7 @@
 				feature = target.attr('data-feature');
 
 			if (target.hasClass('active')) return;
-			toggle.feature(feature);
+			toggle.feature(feature, 1);
 		});
 
 		parentElements.galleryControls.element.find('.arrow-left').click(function(event) {

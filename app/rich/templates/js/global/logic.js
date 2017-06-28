@@ -41,6 +41,9 @@ function setupDom() {
   creative.dom.invitationState = document.getElementById('invitation-state');
   creative.dom.expandHoverCta = document.getElementById('invitation-hover-cta');
   creative.dom.expandTapCta = document.getElementById('invitation-tap-cta');
+  creative.dom.xt5Exit = document.getElementById('xt5-exit');
+  creative.dom.atsExit = document.getElementById('ats-exit');
+  creative.dom.escaladeExit = document.getElementById('escalade-exit');
 
   // It is not safe to use other creative.* fields until after the init()
   // method has been called which indicates the Enabler has initialized
@@ -78,7 +81,10 @@ function addListeners() {
   }, false);
 
   // Add more listeners to the expanded state elements.
-  creative.dom.lightboxExit.addEventListener('click', exitClickHandler);
+  // creative.dom.lightboxExit.addEventListener('click', function() {exitClickHandler('Background');});
+  creative.dom.xt5Exit.addEventListener('click', function(){exitClickHandler('XT5');});
+  creative.dom.atsExit.addEventListener('click', function(){exitClickHandler('ATS');});
+  creative.dom.escaladeExit.addEventListener('click', function(){exitClickHandler('Escalade');});
 
   if (creative.isFullscreenSupported) {
     if (creative.isTouchable) {
@@ -211,7 +217,7 @@ function renderCollapsedView() {
 /**
  * Handle exit clicks.
  */
-function exitClickHandler() {
+function exitClickHandler(keyword) {
   // In-app iOS environments known issue: calling collapse on an exit
   // causes the landing page to close immediately so we leave it expanded
   // on exit.
@@ -221,7 +227,12 @@ function exitClickHandler() {
     Enabler.requestFullscreenCollapse();
   }
   Enabler.stopTimer('Panel Expansion');
-  Enabler.exit('Background Exit');
+
+  if (typeof keyword !== 'undefined') {
+    Enabler.exit(keyword + ' Exit');
+  } else {
+    Enabler.exit('Exit');
+  }
 }
 
 // Add any custom functions here.

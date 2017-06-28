@@ -80,10 +80,13 @@ html, body {
 			$bottomHeight: percentage(114 / 720);
 
 			#lightbox-exit {
+				display: none;
 				position: absolute;
 				right: percentage(45 / 1280);
-				width: percentage(166 / 1280);
-				height: $topHeight;
+				// width: percentage(166 / 1280);
+				// height: $topHeight;
+				width: 0;
+				height: 0;
 				z-index: 5;
 				cursor: pointer;
 			}
@@ -119,10 +122,12 @@ html, body {
 
 					.model {
 						opacity: 0;
+						visibility: hidden;
 						width: 100%;
 						left: 0;
+						cursor: pointer;
 
-						&.active {opacity: 1;}
+						&.active {opacity: 1; visibility: visible;}
 					}
 
 					right: percentage(45 / 1280);

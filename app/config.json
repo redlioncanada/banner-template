@@ -12,7 +12,10 @@
 	},
 	"revisions": [],
 	"sizes": [
-		"300x250"
+		"300x250",
+		"160x600",
+		"728x90",
+		"300x600"
 	],
 	"clicktags": [
 		"doubleclick"
