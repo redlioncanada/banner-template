@@ -472,3 +472,11 @@ html, body {
 		}
 	}
 }
+
+@media(max-width: 500px) {
+	.{namespace} #ad #lightbox-state {
+		.top .copy {
+			width: 60%;
+		}
+	}
+}
