@@ -48,10 +48,10 @@ html, body {
             }
         }
         .masks {
-            height: 39px;
-            top: 14px;
-            width: 61px;
-            left: 84px;
+            height: {height}px;
+            top: 0px;
+            width: 4px;
+            left: 124px;
 
             .mask1 {
                 opacity: 1;
@@ -60,40 +60,27 @@ html, body {
             }
         }
 
-        .nameplate {
-            top: -{height}px;
-            z-index: 3;
+     
+
+        .background2{
+            width: (253px/2)!important;
+            height: (100px/2)!important;
+            left:-(253px/2);
+            z-index: 2;
         }
-
-        $copy-event-width: 142px;
-        .copy-event {
-            width: 143px;
-            top: 8px;
-            height: 35px;
-            left: 90px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-            }
-
-            .vertical-line{
-                width: 1px;
-            }
-
-            .copy-event-1 {
-                top: 2px;
-                width:$copy-event-width;
-            }
-
-            .copy-event-2 {
-                top: 11px;
-                width: $copy-event-width;
-            }
-
-            .copy-event-3 {
-                top: 24px;
-                width: $copy-event-width;
-            }
+        .background3{
+            width: (253px/2)!important;
+            height: (100px/2)!important;
+            left:-(253px/2);
+            z-index: 2;
+        }
+        .background4{
+            opacity: 0;
+            z-index: 1;
+        }
+         .logo {
+            width: {width}px;
+            z-index: 9;
         }
 
     }

@@ -44,87 +44,54 @@ html, body {
         }
 
         .copy1 {
+        }
+
+        .background2{
+            left:-{width}px;
+            z-index: 2;
+        }
+        .background3{
+            left:-{width}px;
+            z-index: 2;
+        }
+        .background4{
             opacity: 0;
+            z-index: 1;
         }
 
         .masks {
             width: {width}px;
-            height:98px;
-            top: 327px;
-
+            height:12px;
+            top: 249px;
             .mask1 {
-                width: 50%;
+                width: 100%;
             }
 
             .mask2 {
                 width: 50%;
             }
         }
-
-        $copy-event-width: 160px;
-        .copy-event {
-            width: 119px;
-            top: 74px;
-            height: 84px;
-            left: 11px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-            }
-
-            .copy-event-1 {
-                top: -101px;
-                width:$copy-event-width;
-
-            }
-
-            .copy-event-2 {
-                top: -101px;
-                width: $copy-event-width;
-            }
-
-            .copy-event-3 {
-                top: -101px;
-                width: $copy-event-width;
-            }
+        .logo{
+            z-index: 9;
         }
 
+
+
         #cta_trigger {
-            left: 13px;
-            top: 543px;
-            width: 132px;
-            height: 23px;
+            top: 383px;
+            height: 22px;
+            width: 82px;
+            left: 17px;
         }
     }
 
     #ad.fr {
-        $copy-event-width: 159px;
-        .copy-event {
-            width: 139px;
-            top: 96px;
-            height: 62px;
-            left: 11px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-            }
-
-            .copy-event-1, .copy-event-2, .copy-event-3 {
-                top: -96px;
-                width:$copy-event-width;
-
-            }
-        }
-
         #cta_trigger {
-            left: 11px;
-            top: 542px;
-            width: 139px;
+            top: 352px;
             height: 34px;
+            width: 107px;
+            left: 11px;
         }
+
     }
 }
