@@ -82,9 +82,9 @@ function addListeners() {
 
   // Add more listeners to the expanded state elements.
   // creative.dom.lightboxExit.addEventListener('click', function() {exitClickHandler('Background');});
-  creative.dom.xt5Exit.addEventListener('click', function(){exitClickHandler('XT5');});
-  creative.dom.atsExit.addEventListener('click', function(){exitClickHandler('ATS');});
-  creative.dom.escaladeExit.addEventListener('click', function(){exitClickHandler('Escalade');});
+  creative.dom.xt5Exit.addEventListener('click', exitClickHandler.bind(this, 'XT5'));
+  creative.dom.atsExit.addEventListener('click', exitClickHandler.bind(this, 'ATS'));
+  creative.dom.escaladeExit.addEventListener('click', exitClickHandler.bind(this, 'Escalade'));
 
   if (creative.isFullscreenSupported) {
     if (creative.isTouchable) {
@@ -223,6 +223,7 @@ function exitClickHandler(keyword) {
   // on exit.
   // In other environments it is required that the ad collapses on exit
   // click per policy.
+
   if (!(creative.isInApp && isMobile.iOS())) {
     Enabler.requestFullscreenCollapse();
   }
