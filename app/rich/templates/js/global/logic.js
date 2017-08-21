@@ -230,7 +230,7 @@ function exitClickHandler(keyword) {
   Enabler.stopTimer('Panel Expansion');
 
   if (typeof keyword !== 'undefined') {
-    Enabler.exit(keyword + ' Exit');
+    Enabler.exit('FIND MY '+keyword.toUpperCase());
   } else {
     Enabler.exit('Exit');
   }

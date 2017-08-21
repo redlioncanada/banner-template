@@ -1,26 +1,29 @@
 (function() {
 	var element = function(selector) {
-		var el = $(selector);
+		var el = $(selector),
+			hidden = false;
 
 		return {
 			element: el,
 			hide: function(needle) {
+				hidden = true;
 				if (typeof needle !== 'undefined') {
 					var target = el.find(needle);
 					target.stop(true).animate({
 						opacity: 0
 					}, 400, function() {
-						if (target.css('opacity') === 0) target.css('visibility', 'hidden');
+						if (hidden) target.css('visibility', 'hidden');
 					});
 				} else {
 					el.stop(true).animate({
 						opacity: 0
 					}, 400, function() {
-						if (el.css('opacity') === 0) el.css('visibility', 'hidden');
+						if (hidden) el.css('visibility', 'hidden');
 					});
 				}
 			},
 			show: function(needle) {
+				hidden = false;
 				if (typeof needle !== 'undefined') {
 					var target = el.find(needle);
 					target.css('visibility', 'visible').stop(true).animate({
@@ -74,8 +77,10 @@
 			parent.hero.element.find(modelSelector).addClass('active');
 
 			//show the cta for this model
-			parent.cta.hide('.model');
-			parent.cta.show(modelSelector);
+			// parent.cta.hide('.model:not(' + modelSelector + ')');
+			parent.cta.element.find('.active').removeClass('active');
+			// parent.cta.show(modelSelector);
+			parent.cta.element.find(modelSelector).addClass('active');
 
 			//toggle car selector to the correct model
 			parent.carSelector.element.find('.active').removeClass('active');
@@ -103,8 +108,10 @@
 			parent.hero.element.find(featureSelector + ',' + modelSelector).addClass('active');
 
 			//show the cta for this model
-			parent.cta.hide('.model');
-			parent.cta.show(modelSelector);
+			// parent.cta.hide('.model:not(' + modelSelector + ')');
+			parent.cta.element.find('.active').removeClass('active');
+			// parent.cta.show(modelSelector);
+			parent.cta.element.find(modelSelector).addClass('active');
 
 			//toggle car selector to the correct model
 			parent.carSelector.element.find('.active').removeClass('active');
