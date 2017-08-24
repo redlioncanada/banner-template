@@ -10,7 +10,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .addDelay(0.5, 'frame2-copy1')
             .to('.copy2', 1, {opacity: 1}).add('frame2-copy1')
             .to('.masks', 1, {opacity: 0}, '-=1')
-            .addDelay(2, 'frame3')
+            .addDelay(1, 'frame3')
         timeline.add('frame3')
             .to('.copy2', 1, {opacity: 0})
             .to('.copy3', 1, {opacity: 1})
