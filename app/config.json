@@ -1,7 +1,7 @@
 {
 	"name": "ATS",
 	"brand": "Cadillac",
-	"month": "LightboxJuly",
+	"month": "MastheadNovember",
 	"version": {
 		"en": "1",
 		"fr": "1"
@@ -12,10 +12,7 @@
 	},
 	"revisions": [],
 	"sizes": [
-		"300x250",
-		"160x600",
-		"728x90",
-		"300x600"
+		"970x250"
 	],
 	"clicktags": [
 		"doubleclick"

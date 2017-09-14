@@ -1,233 +1,243 @@
-(function() {
-	var element = function(selector) {
-		var el = $(selector),
-			hidden = false;
+var AnimatedElement = Class.extend({
+	constructor: function(target) {
+		this.parent = target
+	},
 
-		return {
-			element: el,
-			hide: function(needle) {
-				hidden = true;
-				if (typeof needle !== 'undefined') {
-					var target = el.find(needle);
-					target.stop(true).animate({
-						opacity: 0
-					}, 400, function() {
-						if (hidden) target.css('visibility', 'hidden');
-					});
-				} else {
-					el.stop(true).animate({
-						opacity: 0
-					}, 400, function() {
-						if (hidden) el.css('visibility', 'hidden');
-					});
-				}
+	hide: function(callback, animate) {
+		if (typeof animate === 'undefined') {
+			animate = true
+		}
+
+		var timeout = !!animate ? 400 : 0
+		this.parent.stop(true).animate({ opacity: 0 }, timeout, function() {
+			this.parent.css('display', 'none')
+			if (typeof callback === 'function') {
+				callback.call()
+			}
+		}.bind(this))
+	},
+
+	show: function(callback, animate) {
+		if (typeof animate === 'undefined') {
+			animate = true
+		}
+
+		var timeout = !!animate ? 400 : 0
+		this.parent.css('display', 'block')
+		this.parent.stop(true).animate({ opacity: 1 }, timeout)
+		if (typeof callback === 'function') {
+			callback.call()
+		}
+	}
+})
+
+var Slide = Class.extend({
+	constructor: function(id, target) {
+		target = $(target)
+		this.id = id
+		this.active = false
+		this.hidden = true
+		this.elements = {
+			base: new AnimatedElement(target),
+			layers: {
+				normal: new AnimatedElement(target.find('.layer.normal')),
+				activated: new AnimatedElement(target.find('.layer.activated'))
 			},
-			show: function(needle) {
-				hidden = false;
-				if (typeof needle !== 'undefined') {
-					var target = el.find(needle);
-					target.css('visibility', 'visible').stop(true).animate({
-						opacity: 1
-					}, 400);
-				} else {
-					el.css('visibility', 'visible').stop(true).animate({
-						opacity: 1
-					}, 400);
+			slider: {
+				base: new AnimatedElement(target.find('.slider .slider-control')),
+				hitbox: new AnimatedElement(target.find('.slider .slider-control-hitbox')),
+				indicator: new AnimatedElement(target.find('.slider .slider-indicator')),
+				background: new AnimatedElement(target.find('.slider .slider-background'))
+			}
+		}
+
+		var domElement = this.elements.slider.hitbox.parent[0],
+			domElement1 = this.elements.slider.base.parent[0],
+			zt = new ZingTouch.Region(document.body)
+
+		zt.bind(domElement, new ZingTouch.Pan(), this.onSliderSwipe.bind(this))
+		zt.bind(domElement1, new ZingTouch.Pan(), this.onSliderSwipe.bind(this))
+		this.elements.slider.base.parent.click(this.onSliderClick.bind(this))
+	},
+
+	activate: function() {
+		this.elements.layers.activated.parent.addClass('active')
+		this.elements.layers.normal.parent.removeClass('active')
+		this.elements.slider.indicator.parent.css({
+			left: 'initial',
+			right: '2px'
+		})
+		this.active = true
+	},
+
+	deactivate: function() {
+		this.elements.layers.normal.parent.addClass('active')
+		this.elements.layers.activated.parent.removeClass('active')
+		this.elements.slider.indicator.parent.css({
+			left: '2px',
+			right: 'initial'
+		})
+		this.active = false
+	},
+
+	hide: function() {
+		this.elements.base.hide()
+		this.hidden = true
+	},
+
+	show: function() {
+		this.elements.base.show()
+		this.hidden = false
+	},
+
+	onSliderClick: function(event) {
+		if (this.active) {
+			this.deactivate()
+		} else {
+			this.activate()
+		}
+	},
+
+	onSliderSwipe: function(event) {
+		var directionData = event.detail.data[0]
+		if (directionData.distanceFromOrigin >= 30) {
+			if ((directionData.currentDirection >= 0 && directionData.currentDirection <= 90) || (directionData.currentDirection >= 270 && directionData.currentDirection <= 360)) {
+				if (!this.active) {	//swiped right
+					this.activate()
+				}
+			} else {
+				if (this.active) { //swiped left
+					this.deactivate()
 				}
 			}
-		};
-	};
+		}
+	},
 
-	var toggler = function() {
-		var parent = {
-			staticCopy: element('.top .copy'),
-			hero: element('.middle .hero-images'),
-			carSelector: element('.middle .selectors .selectors-inner'),
-			copySelector: element('.bottom .selectors'),
-			cta: element('.top .cta'),
-			galleryControls: element('.gallery-controls')
-		};
-		var currentFeature = 'technology',
-			currentGalleryIndex = 1,
-			controlsHidden = true;
+	reset: function() {
 
-		var toggleControls = function(show) {
-			if (show) {
-				controlsHidden = false;
-				parent.galleryControls.show();
+	}
+})
+
+var Gallery = Class.extend({
+	constructor: function(target) {
+		this.parent = $(target)
+		this.slides = []
+
+		$.each(this.parent.find('.slide'), function(key, value) {
+			var slide = new Slide(key, value)
+			if (key === 0) {
+				slide.show()
 			} else {
-				controlsHidden = true;
-				parent.galleryControls.hide();
+				slide.hide()
 			}
+			this.slides.push(slide)
+		}.bind(this))
+
+		this.slideCount = this.slides.length
+		this.currentSlide = 0
+	},
+
+	forEach: function(callback) {
+		if (typeof callback !== 'function') {
+			return
+		}
+		for (var index in this.slides) {
+			var value = this.slides[index]
+			callback.call(callback, Number(index), value, this)
+		}
+	},
+
+	goTo: function(index) {
+		if (index < 0) {
+			index = this.slideCount - 1
+		} else if (index > this.slideCount - 1) {
+			index = 0
 		}
 
-		var model = function(model) {
-			var modelSelector = model.substring(0, 1) !== '.' ? '.' + model : model;
+		for (var index1 = 0; index1 < this.slides.length; index1++) {
+			var slide = this.slides[index1]
 
-			//show copy at the top for this model
-			parent.staticCopy.hide('.model');
-			parent.staticCopy.show(modelSelector);
-			parent.staticCopy.element.find('.model.active').removeClass('active');
-			parent.staticCopy.element.find(modelSelector).addClass('active');
-
-			//show hero image for this model
-			parent.hero.hide('.model');
-			parent.hero.show(modelSelector);
-			parent.hero.element.find('.model.active').removeClass('active');
-			parent.hero.element.find(modelSelector).addClass('active');
-
-			//show the cta for this model
-			// parent.cta.hide('.model:not(' + modelSelector + ')');
-			parent.cta.element.find('.active').removeClass('active');
-			// parent.cta.show(modelSelector);
-			parent.cta.element.find(modelSelector).addClass('active');
-
-			//toggle car selector to the correct model
-			parent.carSelector.element.find('.active').removeClass('active');
-			parent.carSelector.element.find(modelSelector).addClass('active');
-		}
-
-		var landing = function(model) {
-			var modelSelector = model.substring(0, 1) !== '.' ? '.' + model : model,
-				featureSelector = '.feature.landing';
-
-			//show copy for landing for this model
-			parent.staticCopy.hide('.model');
-			parent.staticCopy.show(modelSelector);
-			parent.staticCopy.hide('.feature');
-			parent.staticCopy.show(featureSelector);
-			parent.staticCopy.element.find('.feature.active,.model.active').removeClass('active');
-			parent.staticCopy.element.find(featureSelector + ',' + modelSelector).addClass('active');
-
-			//show hero image for landing for this model
-			parent.hero.hide('.model');
-			parent.hero.show(modelSelector);
-			parent.hero.hide('.feature');
-			parent.hero.show(featureSelector);
-			parent.hero.element.find('.feature.active,.model.active').removeClass('active');
-			parent.hero.element.find(featureSelector + ',' + modelSelector).addClass('active');
-
-			//show the cta for this model
-			// parent.cta.hide('.model:not(' + modelSelector + ')');
-			parent.cta.element.find('.active').removeClass('active');
-			// parent.cta.show(modelSelector);
-			parent.cta.element.find(modelSelector).addClass('active');
-
-			//toggle car selector to the correct model
-			parent.carSelector.element.find('.active').removeClass('active');
-			parent.carSelector.element.find(modelSelector).addClass('active');
-
-			//unhighlight features at bottom
-			parent.copySelector.element.find('.active').removeClass('active');
-
-			//reset dots
-			currentGalleryIndex = 1;
-			parent.galleryControls.element.find('.dots .active').removeClass('active');
-			parent.galleryControls.element.find('.dot').eq(0).addClass('active');
-			toggleControls(false);
-		}
-
-		var feature = function(feature, index) {
-			var featureDidChange = false,
-				galleryIndexDidChange = false;
-
-			if (typeof index === 'undefined' && typeof feature === 'undefined') return;
-			if (typeof index !== 'undefined') {
-				currentGalleryIndex = index;
-				galleryIndexDidChange = true;
+			if (index1 === index) {
+				slide.show()
 			} else {
-				index = currentGalleryIndex;
-			}
-			if (typeof feature !== 'undefined') {
-				currentFeature = feature;
-				featureDidChange = true;
-			} else {
-				feature = currentFeature;
-			}
-
-			//show gallery controls on first feature interaction
-			if (controlsHidden) {
-				toggleControls(true);
-			}
-
-			var featureSelector = currentFeature.substring(0, 1) !== '.' ? '.' + feature : currentFeature,
-				galleryImageSelector = '.gallery-' + currentGalleryIndex,
-				imageSelector = featureSelector + galleryImageSelector;
-
-			//show copy at the top for this feature
-			parent.staticCopy.hide('.feature');
-			parent.staticCopy.show(imageSelector);
-			parent.staticCopy.element.find('.feature.active').removeClass('active');
-			parent.staticCopy.element.find(imageSelector).addClass('active');
-
-			//show hero image for this feature
-			parent.hero.hide('.feature');
-			parent.hero.show(imageSelector);
-			parent.hero.element.find('.feature.active').removeClass('active');
-			parent.hero.element.find(imageSelector).addClass('active');
-
-			//toggle active copy class at the bottom for this feature
-			if (featureDidChange) {
-				parent.copySelector.element.find('.active').removeClass('active');
-				parent.copySelector.element.find(featureSelector).addClass('active');
-			}
-
-			//set gallery dots for this index
-			if (galleryIndexDidChange) {
-				parent.galleryControls.element.find('.dots .active').removeClass('active');
-				parent.galleryControls.element.find('.dot').eq(currentGalleryIndex - 1).addClass('active');
+				slide.hide()
 			}
 		}
+		this.currentSlide = index
+	},
 
-		return {
-			parentElements: parent,
-			model: model,
-			feature: feature,
-			landing: landing,
-			nextFeatureImage: function() {
-				var index = currentGalleryIndex + 1 > 3 ? 1 : currentGalleryIndex + 1;
-				feature(currentFeature, index);
+	previous: function() {
+		this.goTo(--this.currentSlide)
+	},
+
+	next: function() {
+		this.goTo(++this.currentSlide)
+	}
+})
+
+var GalleryControls = Class.extend({
+	constructor: function(target, gallery) {
+		target = $(target)
+		this.gallery = gallery
+		this.elements = {
+			base: new AnimatedElement(target),
+			arrows: {
+				left: new AnimatedElement(target.find('.arrow-left')),
+				right: new AnimatedElement(target.find('.arrow-right'))
 			},
-			previousFeatureImage: function() {
-				var index = currentGalleryIndex - 1 < 1 ? 3 : currentGalleryIndex - 1;
-				feature(currentFeature, index);
+			dots: []
+		}
+		this.enum = {
+			ARROWS: {
+				LEFT: 0,
+				RIGHT: 1
 			}
 		}
-	};
 
-	$(function() {
-		var toggle = toggler(),
-			parentElements = toggle.parentElements;
+		gallery.forEach(function(index) {
+			var element = new AnimatedElement(target.find('.dots .dot').eq(index))
 
-		parentElements.carSelector.element.find('.selector').click(function(event) {
-			var target = $(event.currentTarget),
-				model = target.attr('data-model');
+			element.parent.click(function(event) {
+				this.onDotClick(index, event)
+			}.bind(this))
 
-			if (target.hasClass('active')) return;
-			toggle.landing(model);
-		});
+			this.elements.dots.push(element)
+		}.bind(this))
 
-		parentElements.copySelector.element.find('.selector').click(function(event) {
-			var target = $(event.currentTarget),
-				feature = target.attr('data-feature');
+		this.elements.arrows.left.parent.click(function(event) {
+			this.onArrowClick(this.enum.ARROWS.LEFT, event)
+		}.bind(this))
 
-			if (target.hasClass('active')) return;
-			toggle.feature(feature, 1);
-		});
+		this.elements.arrows.right.parent.click(function(event) {
+			this.onArrowClick(this.enum.ARROWS.RIGHT, event)
+		}.bind(this))
+	},
 
-		parentElements.galleryControls.element.find('.arrow-left').click(function(event) {
-			toggle.previousFeatureImage();
-		});
+	onDotClick: function(index, event) {
+		this.gallery.goTo(index)
+		this.activateDot(this.gallery.currentSlide)
+	},
 
-		parentElements.galleryControls.element.find('.arrow-right').click(function(event) {
-			toggle.nextFeatureImage();
-		});
+	onArrowClick: function(direction, event) {
+		if (direction === this.enum.ARROWS.LEFT) {
+			this.gallery.previous()
+		} else if (direction === this.enum.ARROWS.RIGHT) {
+			this.gallery.next()
+		}
+		this.activateDot(this.gallery.currentSlide)
+	},
 
-		parentElements.galleryControls.element.find('.dots .dot').click(function(event) {
-			var target = $(event.currentTarget),
-				index = Number(target.attr('data-index'));
+	activateDot: function(index) {
+		for (var index1 = 0; index1 < this.elements.dots.length; index1++) {
+			var dot = this.elements.dots[index1]
+			if (index1 === index) {
+				dot.parent.addClass('active')
+			} else {
+				dot.parent.removeClass('active')
+			}
+		}
+	}
+})
 
-			toggle.feature(undefined, index);
-		});
-	});
-})();
+var gallery = new Gallery('.gallery'),
+	controls = new GalleryControls('.gallery-controls', gallery)

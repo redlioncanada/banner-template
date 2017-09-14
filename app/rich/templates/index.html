@@ -1,188 +1,108 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="ad.size" content="width={width},height={height}">
-    <meta name="ad.language" content="{language}">
-    <meta name="ad.network" content="{clicktag}">
-    <meta name="ad.agency" content="Red Lion Canada">
-    <title>{size}</title>
-    <style type="text/css">
-        /*=include css/global.css*/
-        /*=include css/{size}.css*/
-    </style>
-    <!--[if gte IE 9]>
-      <style type="text/css">
-        .gradient {
-           filter: none;
-        }
-      </style>
-    <![endif]-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="ad.size" content="width={width},height={height}">
+	<meta name="ad.language" content="{language}">
+	<meta name="ad.network" content="{clicktag}">
+	<meta name="ad.agency" content="Red Lion Canada">
+	<title>{size}</title>
+	<style type="text/css">
+		/*=include css/global.css*/
+		/*=include css/{size}.css*/
+	</style>
 </head>
 
 <body>
-    <div class="{namespace}">
-        <div id="ad" class="{language} revision{revision}">
-            <!-- Collapsed Conent -->
-            <div id="invitation-state">
-                <div class="border"></div>
-                <div id="invitation-feature" class="feature-invitation">
-                    <img src="hover_cta.png" id="invitation-hover-cta" />
-                    <img src="tap_cta.png" id="invitation-tap-cta" />
-                    <img src="background.jpg" id="invitation-background" />
-                </div>
-            </div>
+	<div class="{namespace}">
+		<div id="main-container" class="{language} revision{revision}">
+			<div id="exit"></div>
+			<ci-ytclosebutton class="yt-close" id="yt-close" theme="white" shadow="false"></ci-ytclosebutton>
+			<div class="border"></div>
+			<img class="logo" src="logo.png" />
+			<div class="gallery">
+				<div class="slide1 slide active">
+					<div class="normal layer">
+						<img class="background background1" src="slide1_1.jpg" />
+						<img class="text text1" src="text1_1.png" />
+					</div>
+					<div class="activated layer">
+						<img class="background background2" src="slide1_2.jpg" />
+						<img class="text text2" src="text1_2.png" />
+					</div>
+					<div class="slider slider1">
+						<img class="slider-text" src="slider_text1.png" />
+						<div class="slider-control-hitbox"></div>
+						<div class="slider-control">
+							<img class="slider-indicator" src="slider_indicator.png" />
+							<img class="slider-background" src="slider_background.png" />
+						</div>
+					</div>
+				</div>
+				<div class="slide2 slide">
+					<div class="normal layer">
+						<img class="background background1" src="slide2_1.jpg" />
+						<img class="text text1" src="text2_1.png" />
+					</div>
+					<div class="activated layer">
+						<img class="background background2" src="slide2_2.jpg" />
+						<img class="text text2" src="text2_2.png" />
+					</div>
+					<div class="slider slider2">
+						<img class="slider-text" src="slider_text2.png" />
+						<div class="slider-control-hitbox"></div>
+						<div class="slider-control">
+							<img class="slider-indicator" src="slider_indicator.png" />
+							<img class="slider-background" src="slider_background.png" />
+						</div>
+					</div>
+				</div>
+				<div class="slide3 slide">
+					<div class="normal layer">
+						<img class="background background1" src="slide3_1.jpg" />
+						<img class="text text1" src="text3_1.png" />
+					</div>
+					<div class="activated layer">
+						<img class="background background2" src="slide3_2.jpg" />
+						<img class="text text2" src="text3_2.png" />
+					</div>
+					<div class="slider slider3">
+						<img class="slider-text" src="slider_text3.png" />
+						<div class="slider-control-hitbox"></div>
+						<div class="slider-control">
+							<img class="slider-indicator" src="slider_indicator.png" />
+							<img class="slider-background" src="slider_background.png" />
+						</div>
+					</div>
+				</div>
+			</div>
 
-            <!-- Expand Content -->
-            <div id="lightbox-state">
-                <div id="lightbox-exit"></div>
-                <div id="lightbox-feature" class="feature-lightbox">
-                    <img class="unsupported" src="unsupported.png" />
-                    <div class="top">
-                        <img class="logo" data-aload="logo.jpg" />
-                        <div class="cta">
-                            <img id="ats-exit" class="ats model active" data-aload="ats-cta.jpg" />
-                            <img id="xt5-exit" class="xt5 model" data-aload="xt5-cta.jpg" />
-                            <img id="escalade-exit" class="escalade model" data-aload="escalade-cta.jpg" />
-                        </div>
-                        <div class="copy">
-                            <div class="ats model active">
-                                <img class="landing gallery-1 feature active" data-aload="ats-landing-copy.png" />
-                                <img class="technology gallery-1 feature" data-aload="ats-technology-1-copy.png" />
-                                <img class="technology gallery-2 feature" data-aload="ats-technology-2-copy.png" />
-                                <img class="technology gallery-3 feature" data-aload="ats-technology-3-copy.png" />
-                                <img class="interior gallery-1 feature" data-aload="ats-interior-1-copy.png" />
-                                <img class="interior gallery-2 feature" data-aload="ats-interior-2-copy.png" />
-                                <img class="interior gallery-3 feature" data-aload="ats-interior-3-copy.png" />
-                                <img class="exterior gallery-1 feature" data-aload="ats-exterior-1-copy.png" />
-                                <img class="exterior gallery-2 feature" data-aload="ats-exterior-2-copy.png" />
-                                <img class="exterior gallery-3 feature" data-aload="ats-exterior-3-copy.png" />
-                            </div>
-                            <div class="xt5 model">
-                                <img class="landing gallery-1 feature active" data-aload="xt5-landing-copy.png" />
-                                <img class="technology gallery-1 feature" data-aload="xt5-technology-1-copy.png" />
-                                <img class="technology gallery-2 feature" data-aload="xt5-technology-2-copy.png" />
-                                <img class="technology gallery-3 feature" data-aload="xt5-technology-3-copy.png" />
-                                <img class="interior gallery-1 feature" data-aload="xt5-interior-1-copy.png" />
-                                <img class="interior gallery-2 feature" data-aload="xt5-interior-2-copy.png" />
-                                <img class="interior gallery-3 feature" data-aload="xt5-interior-3-copy.png" />
-                                <img class="exterior gallery-1 feature" data-aload="xt5-exterior-1-copy.png" />
-                                <img class="exterior gallery-2 feature" data-aload="xt5-exterior-2-copy.png" />
-                                <img class="exterior gallery-3 feature" data-aload="xt5-exterior-3-copy.png" />
-                            </div>
-                            <div class="escalade model">
-                                <img class="landing gallery-1 feature active" data-aload="escalade-landing-copy.png" />
-                                <img class="technology gallery-1 feature" data-aload="escalade-technology-1-copy.png" />
-                                <img class="technology gallery-2 feature" data-aload="escalade-technology-2-copy.png" />
-                                <img class="technology gallery-3 feature" data-aload="escalade-technology-3-copy.png" />
-                                <img class="interior gallery-1 feature" data-aload="escalade-interior-1-copy.png" />
-                                <img class="interior gallery-2 feature" data-aload="escalade-interior-2-copy.png" />
-                                <img class="interior gallery-3 feature" data-aload="escalade-interior-3-copy.png" />
-                                <img class="exterior gallery-1 feature" data-aload="escalade-exterior-1-copy.png" />
-                                <img class="exterior gallery-2 feature" data-aload="escalade-exterior-2-copy.png" />
-                                <img class="exterior gallery-3 feature" data-aload="escalade-exterior-3-copy.png" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="middle">
-                        <div class="hero-images">
-                            <div class="ats model active">
-                                <img class="landing gallery-1 feature active" data-aload="ats-landing.jpg" />
-                                <img class="technology gallery-1 feature" data-aload="ats-technology-1.jpg" />
-                                <img class="technology gallery-2 feature" data-aload="ats-technology-2.jpg" />
-                                <img class="technology gallery-3 feature" data-aload="ats-technology-3.jpg" />
-                                <img class="interior gallery-1 feature" data-aload="ats-interior-1.jpg" />
-                                <img class="interior gallery-2 feature" data-aload="ats-interior-2.jpg" />
-                                <img class="interior gallery-3 feature" data-aload="ats-interior-3.jpg" />
-                                <img class="exterior gallery-1 feature" data-aload="ats-exterior-1.jpg" />
-                                <img class="exterior gallery-2 feature" data-aload="ats-exterior-2.jpg" />
-                                <img class="exterior gallery-3 feature" data-aload="ats-exterior-3.jpg" />
-                            </div>
-                            <div class="xt5 model">
-                                <img class="landing gallery-1 feature active" data-aload="xt5-landing.jpg" />
-                                <img class="technology gallery-1 feature" data-aload="xt5-technology-1.jpg" />
-                                <img class="technology gallery-2 feature" data-aload="xt5-technology-2.jpg" />
-                                <img class="technology gallery-3 feature" data-aload="xt5-technology-3.jpg" />
-                                <img class="interior gallery-1 feature" data-aload="xt5-interior-1.jpg" />
-                                <img class="interior gallery-2 feature" data-aload="xt5-interior-2.jpg" />
-                                <img class="interior gallery-3 feature" data-aload="xt5-interior-3.jpg" />
-                                <img class="exterior gallery-1 feature" data-aload="xt5-exterior-1.jpg" />
-                                <img class="exterior gallery-2 feature" data-aload="xt5-exterior-2.jpg" />
-                                <img class="exterior gallery-3 feature" data-aload="xt5-exterior-3.jpg" />
-                            </div>
-                            <div class="escalade model">
-                                <img class="landing gallery-1 feature active" data-aload="escalade-landing.jpg" />
-                                <img class="technology gallery-1 feature" data-aload="escalade-technology-1.jpg" />
-                                <img class="technology gallery-2 feature" data-aload="escalade-technology-2.jpg" />
-                                <img class="technology gallery-3 feature" data-aload="escalade-technology-3.jpg" />
-                                <img class="interior gallery-1 feature" data-aload="escalade-interior-1.jpg" />
-                                <img class="interior gallery-2 feature" data-aload="escalade-interior-2.jpg" />
-                                <img class="interior gallery-3 feature" data-aload="escalade-interior-3.jpg" />
-                                <img class="exterior gallery-1 feature" data-aload="escalade-exterior-1.jpg" />
-                                <img class="exterior gallery-2 feature" data-aload="escalade-exterior-2.jpg" />
-                                <img class="exterior gallery-3 feature" data-aload="escalade-exterior-3.jpg" />
-                            </div>
-                        </div>
-                        <div class="gallery-controls hide">
-                            <div class="arrow-left arrow">
-                                <img src="arrow.png" />
-                            </div>
-                            <div class="arrow-right arrow">
-                                <img src="arrow.png" />
-                            </div>
-                            <div class="dots">
-                                <div class="dot active" data-index="1"></div>
-                                <div class="dot" data-index="2"></div>
-                                <div class="dot" data-index="3"></div>
-                            </div>
-                        </div>
-                        <div class="selectors">
-                            <div class="selectors-inner">
-                                <div class="ats selector active" data-model="ats">
-                                    <img class="car" data-aload="selector-ats.png" />
-                                    <img class="copy" data-aload="ats.png" />
-                                </div>
-                                <div class="xt5 selector" data-model="xt5">
-                                    <img class="car" data-aload="selector-xt5.png" />
-                                    <img class="copy" data-aload="xt5.png" />
-                                </div>
-                                <div class="escalade selector" data-model="escalade">
-                                    <img class="car" data-aload="selector-escalade.png" />
-                                    <img class="copy" data-aload="escalade.png" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="selectors">
-                            <div class="technology selector" data-feature="technology">
-                                <img class="normal" data-aload="technology.png" />
-                                <img class="hover hide" data-aload="technology_hover.png" />
-                            </div>
-                            <div class="interior selector" data-feature="interior">
-                                <img class="normal" data-aload="interior.png" />
-                                <img class="hover hide" data-aload="interior_hover.png" />
-                            </div>
-                            <div class="exterior selector" data-feature="exterior">
-                                <img class="normal" data-aload="exterior.png" />
-                                <img class="hover hide" data-aload="exterior_hover.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <!-- For Studio to detect this is a Lightbox creative. -->
-    <script>Enabler.setHint('expansionMode', 'lightbox');</script>
-    <script>Enabler.setHint('expansionTrigger', 'onHover');</script>
-    <script type="text/javascript">
-        //=include js/global/aload.js
-        //=include js/global/logic.js
-        //=include js/global/interaction.js
-    </script>
+			<div class="gallery-controls">
+				<div class="arrow arrow-left">
+					<img src="arrow.png" />
+				</div>
+				<div class="dots">
+					<div class="dot active" data-slide="1"><div></div></div>
+					<div class="dot" data-slide="2"><div></div></div>
+					<div class="dot"  data-slide="3"><div></div></div>
+				</div>
+				<div class="arrow arrow-right">
+					<img src="arrow.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/external_hosted/polymer/custom.elements.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/ads/ci/ytclosebutton/1/ytclosebutton_min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+	//=include js/global/zingtouch.min.js
+	//=include js/global/class-polyfill.js
+	//=include js/global/enabler.js
+	//=include js/global/interaction.js
+	</script>
 </body>
 
 </html>

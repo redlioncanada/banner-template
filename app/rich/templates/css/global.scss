@@ -41,9 +41,10 @@ html, body {
 	height: 100%;
 }
 
-.{namespace}, #ad, #lightbox-state, #lightbox-feature {
-	width: inherit;
-	height: inherit;
+@mixin absolute() {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .{namespace} {
@@ -51,361 +52,179 @@ html, body {
 		content: "";
 	}
 
-	#ad {
-		background-color: white;
+	#yt-close {
+	  z-index: 999 !important;
+	}
+
+	#main-container {
+		background-color: black;
 		position: relative;
 		top:0px;
 		left:0px;
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
+		cursor: pointer;
 
 		.border {
 			z-index: 9;
-			position: absolute;
-			top: 0px;
-			left: 0px;
+			@include absolute();
 			border: 1px solid #c8c8c8;
 		}
 
-		#lightbox-state {
-			display: none;
+		.logo {
+			z-index: 5;
+			@include absolute();
+			pointer-events: none;
+		}
 
-			.top, .middle, .bottom {
-				width: 100%;
+		.gallery {
+			z-index: 1;
+			width: inherit;
+			height: inherit;
+
+			.slide1 {
+				z-index: 3;
 			}
 
-			$topHeight: percentage(114 / 720);
-			$middleHeight: percentage(492 / 720);
-			$bottomHeight: percentage(114 / 720);
-
-			#lightbox-exit {
-				display: none;
-				position: absolute;
-				right: percentage(45 / 1280);
-				// width: percentage(166 / 1280);
-				// height: $topHeight;
-				width: 0;
-				height: 0;
-				z-index: 5;
-				cursor: pointer;
+			.slide2 {
+				z-index: 2;
 			}
 
-			.unsupported {
-				display: none;
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
+			.slide3 {
+				z-index: 1;
 			}
 
-			.top {
-				top: 0;
-				height: $topHeight;
-				width: 100%;
-				position: absolute;
+			.slide {
+				width: inherit;
+				height: inherit;
+				@include absolute();
 
-				.cta .model, .logo {
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
+				.normal {
+					z-index: 1;
 				}
 
-				.logo {
-					left: percentage(100 / 1280);
-					width: percentage(90 / 1280);
+				.activated {
+					z-index: 2;
 				}
 
-				.cta {
-					position: absolute;
-					height: 100%;
-
-					.model {
-						opacity: 0;
-						visibility: hidden;
-						width: 100%;
-						left: 0;
-						cursor: pointer;
-
-						&.active {opacity: 1; visibility: visible;}
-					}
-
-					right: percentage(45 / 1280);
-					width: percentage(166 / 1280);
+				.slider {
+					z-index: 3;
 				}
 
-				.copy {
-					position: absolute;
-					height: 100%;
-					width: percentage(750 / 1280);
-					display: inline-block;
-					left: 50%;
-					transform: translateX(-50%);
-
-					.model {
-						opacity: 0;
-						width: 100%;
-						height: 100%;
-						position: absolute;
-						left: 50%;
-						transform: translateX(-50%);
-
-						&.active {opacity: 1;}
-					}
-
-					.feature {
-						opacity: 0;
-						position: absolute;
-						top: 50%;
-						transform: translateY(-50%);
-						left: 0;
-						width: 100%;
-
-						&.active {opacity: 1;}
-					}
-				}
-			}
-
-			.middle {
-				top: $topHeight;
-				height: $middleHeight;
-				width: 100%;
-				position: absolute;
-
-				.hero-images {
-					width: 100%;
-					height: 100%;
-
-					.model {
-						opacity: 0;
-						width: 100%;
-						height: 100%;
-						position: absolute;
-						top: 0;
-						left: 0;
-
-						&.active {opacity: 1;}
-					}
-
-					.feature {
-						opacity: 0;
-						position: absolute;
-						width: 100%;
-
-						&.active {opacity: 1;}
-					}
+				.background {
+					z-index: 1;
 				}
 
-				.selectors {
-					width: percentage(133 / 1280);
-					height: 60%;
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
-					background-color: white;
-					border: 1px solid white;
-					border-top-right-radius: 8px;
-					border-bottom-right-radius: 8px;
-
-					.selectors-inner {
-						position: absolute;
-						height: percentage(256 / 295);
-						top: percentage(25 / 295);
-						width: 100%;
-					}
-
-					.selector {
-						height: 33.3333333333%;
-						position: relative;
-						cursor: pointer;
-						transition: opacity 0.4s;
-
-						.car, .copy {
-							width: 100%;
-						}
-
-						.copy {
-							position: absolute;
-							bottom: 5px;
-							left: 0;
-						}
-					}
-
-					.selector.active {
-						cursor: initial;
-
-						.normal {
-							opacity: 0;
-						}
-
-						.hover {
-							opacity: 1;
-						}
-					}
-
-					.selector:not(.active) {
-						opacity: 0.25;
-					}
-
-					.selector:not(.active):hover {
-						opacity: 1;
-					}
-
-					.escalade .car {
-						transform: scaleX(-1);
-					}
+				.layer {
+					@include absolute();
+					width: inherit;
+					height: inherit;
+					transition: opacity 0.4s;
 				}
 
-				.gallery-controls {
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					top: 0;
-
-					.arrow {
-					    width: 23px;
-					    position: absolute;
-					    top: 50%;
-					    transform: translateY(-50%);
-					    cursor: pointer;
-
-					    img {
-					    	width: 100%;
-					    }
-					}
-
-					.arrow-left {
-						left: calc(10% + 10px);
-						transform: translateY(-50%) scaleX(-1);
-					}
-
-					.arrow-right {
-						right: 10px;
-					}
-
-					.dots {
-						position: absolute;
-					    bottom: 11px;
-					    left: 50%;
-					    transform: translateX(-50%);
-
-					    .dot {
-					    	width: 9px;
-						    height: 9px;
-						    background: white;
-						    float: left;
-						    opacity: 0.7;
-						    border-radius: 9px;
-						    cursor: pointer;
-					    }
-
-					    .dot:not(:first-child) {
-					    	margin-left: 2px;
-					    }
-
-					    .dot:not(:last-child) {
-					    	margin-right: 2px;
-					    }
-
-					    .dot.active {
-					    	opacity: 1;
-					    }
-					}
-				}
-			}
-
-			.bottom {
-				top: $topHeight + $middleHeight;
-				height: $bottomHeight;
-				width: 100%;
-				position: absolute;
-
-				.selectors {
-					width: percentage(750 / 1280);
-				    height: 10px;
-				    margin: 0 auto;
-				    position: relative;
-				    top: 50%;
-				    transform: translateY(-50%);
-
-					.selector {
-						width: 33.3333333333%;
-					    height: 100%;
-					    position: absolute;
-					    cursor: pointer;
-
-					    .hover {
-					    	visibility: visible;
-					    }
-
-					    &.active .hover {opacity: 1; visibility: visible;}
-					    &.active .normal {opacity: 0;}
-					}
-
-					img {
-						width: 100%;
-					    top: 50%;
-					    transform: translateY(-50%);
-					    position: absolute;
-					}
-				}
-
-				.selector:not(:first-child) {
-					border-left: 1px solid #4b4b4b;
-				}
-
-				.selector:nth-child(2) {
-					left: 33.333333333%;
-				}
-
-				.selector:nth-child(3) {
-					left: 66.666666666%;
-				}
-
-				.selector:hover .normal {
+				.layer.activated:not(.active) {
 					opacity: 0;
 				}
 
-				.selector:hover .hover {
-					opacity: 1;
-					visibility: visible;
-				}
-
-				img {
-					width: 100%;
-					transition: opacity 0.4s;
+				.text {
+					z-index: 2;
+					@include absolute();
 				}
 			}
 		}
 
-		#invitation-state {
-			width: {width}px;
-			height: {height}px;
-			top: 0px;
-			left: 0px;
-			z-index: 100;
-			cursor: pointer;
-			text-align: center;
-			box-sizing: border-box;
+		.slider {
+			@include absolute();
+			width: inherit;
+			height: inherit;
 
-			img {
-				width: 100%;
+			.slider-control {
+				@include absolute();
+				top: 170px;
+				left: 528px;
+				z-index: 10;
+
+				.slider-indicator {
+					position: absolute;
+					z-index: 2;
+					top: 1px;
+					left: 2px;
+				}
+
+				.slider-background, .slider-indicator {
+					cursor: pointer;
+				}
+
+				.slider-text {
+					position: relative;
+					z-index: 1;
+				}
 			}
 
-			.border {
-				width: #{{width}-2}px;
-				height: #{{height}-2}px;
-			}
-
-			#invitation-background {
-				z-index: 1;
-			}
-
-			#invitation-hover-cta, #invitation-tap-cta {
+			.slider-control-hitbox {
+				cursor: pointer;
 				position: absolute;
-				top: 0;
-				left: 0;
-				z-index: 2;
+				width: 58px;
+				height: 40px;
+				top: 160px;
+				left: 518px;
+				z-index: 9;
+			}
+		}
+
+		.gallery-controls {
+			z-index: 5;
+			position: absolute;
+			right: 38px;
+			bottom: 20px;
+
+			.arrow, .dots {
+				float: left;
+			}
+
+			.arrow {
+				width: 6px;
+				cursor: pointer;
+
+				&.arrow-left img {
+					transform: scaleX(-1);
+				}
+
+				&.arrow-left {
+					padding-right: 5px;
+				}
+
+				&.arrow-right {
+					padding-left: 5px;
+				}
+			}
+
+			.dots {
+				position: relative;
+				height: 16px;
+
+				.dot {
+					$size: 7px;
+					float: left;
+					cursor: pointer;
+					height: inherit;
+					padding: 0 2px;
+
+					> div {
+						margin-top: 4px;
+						width: #{$size - 2};
+						height: #{$size - 2};
+						border-radius: 20px;
+						border: 1px solid white;
+					}
+				}
+
+				.dot.active {
+					> div {
+						background-color: white;
+					}
+				}
 			}
 		}
 	}
@@ -413,70 +232,5 @@ html, body {
 	.hide {
 		opacity: 0;
 		visibility: hidden;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	.{namespace} #ad #lightbox-state {
-		.top {
-			.copy {
-				width: 70%;
-			}
-
-			.cta {
-				width: 17%;
-			}
-
-			.logo {
-				width: 9%;
-			}
-		}
-
-		.middle {
-			.selectors {
-				width: 17%;
-				height: 85%;
-
-				.selectors-inner {
-					height: 90%;
-					top: 5%;
-				}
-
-				.selector .car, .selector .copy {
-					opacity: 1;
-				}
-			}
-
-			.gallery-controls {
-				.arrow.arrow-left {
-					left: calc(17% + 10px);
-				}
-			}
-		}
-		.bottom {
-			.selectors {
-				width: 90%;
-			}
-		}
-	}
-}
-
-@media screen and (orientation:portrait) {
-	.{namespace} #ad #lightbox-state {
-		.top, .middle, .bottom {
-			display: none;
-		}
-
-		.unsupported {
-			display: block;
-		}
-	}
-}
-
-@media(max-width: 500px) {
-	.{namespace} #ad #lightbox-state {
-		.top .copy {
-			width: 60%;
-		}
 	}
 }

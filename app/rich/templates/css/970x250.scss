@@ -1,0 +1,12 @@
+.{namespace} {
+#main-container {
+	width: {width}px;
+	height: {height}px;
+
+	.border {
+		width: #{{width}-2}px;
+		height: #{{height}-2}px;
+		pointer-events: none;
+	}
+}
+}
