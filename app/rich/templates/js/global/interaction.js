@@ -100,7 +100,7 @@ var Slide = Class.extend({
 
 	onSliderSwipe: function(event) {
 		var directionData = event.detail.data[0]
-		if (directionData.distanceFromOrigin >= 30) {
+		if (directionData.distanceFromOrigin >= 20) {
 			if ((directionData.currentDirection >= 0 && directionData.currentDirection <= 90) || (directionData.currentDirection >= 270 && directionData.currentDirection <= 360)) {
 				if (!this.active) {	//swiped right
 					this.activate()
@@ -131,6 +131,13 @@ var Gallery = Class.extend({
 
 		this.slideCount = this.slides.length
 		this.currentSlide = 0
+		this.enum = {
+			CAR_MODELS: {
+				ATS: 0,
+				XT5: 1,
+				ESCALADE: 2
+			}
+		}
 	},
 
 	forEach: function(callback) {
@@ -168,6 +175,14 @@ var Gallery = Class.extend({
 
 	next: function() {
 		this.goTo(++this.currentSlide)
+	},
+
+	isModel: function(index) {
+		return this.currentSlide === index
+	},
+
+	currentCarModel: function() {
+		return this.currentSlide
 	}
 })
 

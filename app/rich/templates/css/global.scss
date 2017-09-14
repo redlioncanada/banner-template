@@ -108,12 +108,26 @@ html, body {
 					z-index: 2;
 				}
 
-				.slider {
-					z-index: 3;
-				}
-
 				.background {
 					z-index: 1;
+				}
+
+				.slider1 {
+					.slider-control {
+						left: 551px;
+					}
+				}
+
+				.slider2 {
+					.slider-control {
+						left: 554px;
+					}
+				}
+
+				.slider3 {
+					.slider-control {
+						left: 559px;
+					}
 				}
 
 				.layer {
@@ -138,11 +152,11 @@ html, body {
 			@include absolute();
 			width: inherit;
 			height: inherit;
+			z-index: 3;
 
 			.slider-control {
 				@include absolute();
 				top: 170px;
-				left: 528px;
 				z-index: 10;
 
 				.slider-indicator {
