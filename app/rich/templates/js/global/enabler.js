@@ -39,9 +39,7 @@ function addListeners() {
 function exitClickHandler(event) {
   	var exclude = ['yt-close', 'slider-control-hitbox', 'slider-control', 'gallery-controls', 'slider-indicator']
   	if (!shouldExit(exclude, event.target)) {
-		// Enabler.exit('BackgroundExit');
-		console.log(event.target)
-		console.log('EXIT')
+		Enabler.exit('BackgroundExit');
   	}
 }
 

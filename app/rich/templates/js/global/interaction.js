@@ -111,10 +111,6 @@ var Slide = Class.extend({
 				}
 			}
 		}
-	},
-
-	reset: function() {
-
 	}
 })
 
