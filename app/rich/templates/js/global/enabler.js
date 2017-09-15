@@ -1,35 +1,30 @@
-
-// Reference to the creative's various properties and elements.
-var creative = {};
-
-
 /**
  * Called on the window load event.
  */
 function preInit() {
-  if (Enabler.isInitialized()) {
-    init();
-  } else {
-    Enabler.addEventListener(
-      studio.events.StudioEvent.INIT,
-      init
-    );
-  }
+	if (Enabler.isInitialized()) {
+			init()
+	} else {
+		Enabler.addEventListener(
+			studio.events.StudioEvent.INIT,
+			init
+		)
+	}
 }
 
 /**
  * The Enabler is now initialized and any extra modules have been loaded.
  */
 function init() {
-  addListeners();
+	addListeners()
 }
 
 /**
  * Add appropriate listeners after the creative's DOM has been set up.
  */
 function addListeners() {
-  $(document).mousedown(mousedownHandler);
-  $(document).mouseup(mouseupHandler);
+	$('.main-container').mousedown(mousedownHandler)
+	$('.main-container').mouseup(mouseupHandler)
 }
 
 

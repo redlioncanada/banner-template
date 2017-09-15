@@ -112,24 +112,6 @@ html, body {
 					z-index: 1;
 				}
 
-				.slider1 {
-					.slider-control {
-						left: 551px;
-					}
-				}
-
-				.slider2 {
-					.slider-control {
-						left: 554px;
-					}
-				}
-
-				.slider3 {
-					.slider-control {
-						left: 559px;
-					}
-				}
-
 				.layer {
 					@include absolute();
 					width: inherit;
@@ -156,14 +138,22 @@ html, body {
 
 			.slider-control {
 				@include absolute();
-				top: 170px;
+				top: 169px;
+				left: 549px;
 				z-index: 10;
 
 				.slider-indicator {
 					position: absolute;
+					height: 18px;
+					width: 18px;
 					z-index: 2;
-					top: 1px;
-					left: 2px;
+					top: 2px;
+					left: 7px;
+				}
+
+				.slider-background {
+					width: 52px;
+					height: 22px;
 				}
 
 				.slider-background, .slider-indicator {
@@ -190,7 +180,7 @@ html, body {
 		.gallery-controls {
 			z-index: 5;
 			position: absolute;
-			right: 38px;
+			right: 52px;
 			bottom: 20px;
 
 			.arrow, .dots {

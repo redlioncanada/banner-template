@@ -24,10 +24,11 @@ var AnimatedElement = Class.extend({
 
 		var timeout = !!animate ? 400 : 0
 		this.parent.css('display', 'block')
-		this.parent.stop(true).animate({ opacity: 1 }, timeout)
-		if (typeof callback === 'function') {
-			callback.call()
-		}
+		this.parent.stop(true).animate({ opacity: 1 }, timeout, function() {
+			if (typeof callback === 'function') {
+				callback.call()
+			}
+		}.bind(this))
 	}
 })
 
@@ -60,34 +61,54 @@ var Slide = Class.extend({
 		this.elements.slider.base.parent.click(this.onSliderClick.bind(this))
 	},
 
-	activate: function() {
+	activate: function(callback) {
 		this.elements.layers.activated.parent.addClass('active')
 		this.elements.layers.normal.parent.removeClass('active')
 		this.elements.slider.indicator.parent.css({
 			left: 'initial',
-			right: '2px'
+			right: '7px'
 		})
-		this.active = true
+
+		setTimeout(function() {	//animation time defined in css
+			this.active = true
+			if (typeof callback === 'function') {
+				callback.call(this)
+			}
+		}.bind(this), 400)
 	},
 
 	deactivate: function() {
 		this.elements.layers.normal.parent.addClass('active')
 		this.elements.layers.activated.parent.removeClass('active')
 		this.elements.slider.indicator.parent.css({
-			left: '2px',
+			left: '7px',
 			right: 'initial'
 		})
-		this.active = false
+
+		setTimeout(function() {	//animation time defined in css
+			this.active = false
+			if (typeof callback === 'function') {
+				callback.call(this)
+			}
+		}.bind(this), 400)
 	},
 
-	hide: function() {
-		this.elements.base.hide()
-		this.hidden = true
+	hide: function(callback, animate) {
+		this.elements.base.hide(function() {
+			this.hidden = true
+			if (typeof callback === 'function') {
+				callback.call(this)
+			}
+		}.bind(this), animate)
 	},
 
-	show: function() {
-		this.elements.base.show()
-		this.hidden = false
+	show: function(callback, animate) {
+		this.elements.base.show(function() {
+			this.hidden = false
+			if (typeof callback === 'function') {
+				callback.call(this)
+			}
+		}.bind(this), animate)
 	},
 
 	onSliderClick: function(event) {
@@ -118,6 +139,7 @@ var Gallery = Class.extend({
 	constructor: function(target) {
 		this.parent = $(target)
 		this.slides = []
+		this.subjects = {}
 
 		$.each(this.parent.find('.slide'), function(key, value) {
 			var slide = new Slide(key, value)
@@ -131,11 +153,60 @@ var Gallery = Class.extend({
 
 		this.slideCount = this.slides.length
 		this.currentSlide = 0
+		this.autoplayTime = 0
+		this.animating = false
+		this.interval = undefined
+		this.autoplayInterval = undefined
 		this.enum = {
 			CAR_MODELS: {
 				ATS: 0,
 				XT5: 1,
 				ESCALADE: 2
+			},
+			EVENTS: {
+				BEFORE_NAVIGATION: 0,
+				AFTER_NAVIGATION: 1,
+				AFTER_AUTOPLAY: 2
+			},
+			MAX_AUTOPLAY_TIME: 30000
+		}
+	},
+
+	on: function(event, callback) {
+		if (typeof callback !== 'function') {
+			return
+		}
+
+		if (!(event in this.subjects)) {
+			this.subjects[event] = []
+		}
+
+		this.subjects[event].push({
+			callback: callback
+		})
+	},
+
+	emit: function(event, args) {
+		if (event in this.subjects) {
+			for (var index in this.subjects[event]) {
+				var subject = this.subjects[event][index]
+				subject.callback.apply(this, args)
+			}
+		}
+	},
+
+	off: function(event, callback) {
+		if (event in this.subjects) {
+			if (typeof callback === 'function') {
+				for (var index in this.subjects[event]) {
+					var subject = this.subjects[event][index]
+					if (subject.callback === callback) {
+						this.subjects[event].splice(index, 1)
+						index--
+					}
+				}
+			} else {
+				delete this.subjects[event]
 			}
 		}
 	},
@@ -150,35 +221,88 @@ var Gallery = Class.extend({
 		}
 	},
 
-	goTo: function(index) {
-		if (index < 0) {
-			index = this.slideCount - 1
-		} else if (index > this.slideCount - 1) {
-			index = 0
+	goTo: function(nextIndex, userInteracted) {
+		if (this.animating) {
+			return
+		}
+		this.animating = true
+		var slide = this.slides[this.currentSlide]
+
+		if (nextIndex < 0) {
+			nextIndex = this.slideCount - 1
+		} else if (nextIndex > this.slideCount - 1) {
+			nextIndex = 0
 		}
 
-		for (var index1 = 0; index1 < this.slides.length; index1++) {
-			var slide = this.slides[index1]
+		if (!!userInteracted) {
+			this.stopAutoplay()
+		}
 
-			if (index1 === index) {
-				slide.show()
-			} else {
-				slide.hide()
+		this.emit(this.enum.EVENTS.BEFORE_NAVIGATION, [this.currentSlide, nextIndex, slide])
+
+		for (var index = 0; index < this.slides.length; index++) {
+			var slide1 = this.slides[index]
+
+			if (index !== nextIndex) {
+				slide1.hide()
 			}
 		}
-		this.currentSlide = index
+
+		this.slides[nextIndex].show(function() {
+			for (var index = 0; index < this.slides.length; index++) {
+				var slide1 = this.slides[index]
+
+				if (index !== nextIndex) {
+					slide1.deactivate()
+				}
+			}
+
+			this.animating = false
+			var previousIndex = this.currentSlide
+			this.currentSlide = nextIndex
+			slide = this.slides[nextIndex]
+			this.emit(this.enum.EVENTS.AFTER_NAVIGATION, [previousIndex, this.currentSlide, slide])
+		}.bind(this))
 	},
 
-	previous: function() {
-		this.goTo(--this.currentSlide)
+	previous: function(userInteracted) {
+		this.goTo(--this.currentSlide, userInteracted)
 	},
 
-	next: function() {
-		this.goTo(++this.currentSlide)
+	next: function(userInteracted) {
+		this.goTo(++this.currentSlide, userInteracted)
 	},
 
-	isModel: function(index) {
-		return this.currentSlide === index
+	autoplay: function(interval, callback) {
+		this.stopAutoplay()
+
+		if (typeof interval === 'undefined' && typeof this.interval !== 'undefined') {
+			interval = this.interval
+		}
+
+		this.autoplayInterval = setInterval(this.onAutoplay.bind(this), interval)
+		this.interval = interval
+	},
+
+	stopAutoplay: function() {
+		if (typeof this.autoplayInterval !== 'undefined') {
+			clearInterval(this.autoplayInterval)
+			this.autoplayInterval = undefined
+		}
+		this.autoplayTime = 0
+	},
+
+	onAutoplay: function() {
+		var slide = this.slides[this.currentSlide]
+
+		if (slide.active) {
+			this.next()
+		} else {
+			slide.activate()
+		}
+
+		this.autoplayTime += this.interval
+		this.emit(this.enum.EVENTS.AFTER_AUTOPLAY)
 	},
 
 	currentCarModel: function() {
@@ -225,17 +349,15 @@ var GalleryControls = Class.extend({
 	},
 
 	onDotClick: function(index, event) {
-		this.gallery.goTo(index)
-		this.activateDot(this.gallery.currentSlide)
+		this.gallery.goTo.call(gallery, index, true)
 	},
 
 	onArrowClick: function(direction, event) {
 		if (direction === this.enum.ARROWS.LEFT) {
-			this.gallery.previous()
+			this.gallery.previous(true)
 		} else if (direction === this.enum.ARROWS.RIGHT) {
-			this.gallery.next()
+			this.gallery.next(true)
 		}
-		this.activateDot(this.gallery.currentSlide)
 	},
 
 	activateDot: function(index) {
@@ -252,3 +374,15 @@ var GalleryControls = Class.extend({
 
 var gallery = new Gallery('.gallery'),
 	controls = new GalleryControls('.gallery-controls', gallery)
+
+gallery.autoplay(5000)
+
+gallery.on(gallery.enum.EVENTS.BEFORE_NAVIGATION, function(previousIndex, currentIndex, slide) {
+	controls.activateDot(currentIndex)
+})
+
+gallery.on(gallery.enum.EVENTS.AFTER_AUTOPLAY, function() {
+	if (this.autoplayTime + this.interval >= this.enum.MAX_AUTOPLAY_TIME) {
+		this.stopAutoplay()
+	}
+})
