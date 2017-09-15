@@ -1,3 +1,48 @@
+var Observer = Class.extend({
+	constructor: function() {
+		this.subjects = {}
+	},
+
+	on: function(event, callback) {
+		if (typeof callback !== 'function') {
+			return
+		}
+
+		if (!(event in this.subjects)) {
+			this.subjects[event] = []
+		}
+
+		this.subjects[event].push({
+			callback: callback
+		})
+	},
+
+	emit: function(event, args) {
+		if (event in this.subjects) {
+			for (var index in this.subjects[event]) {
+				var subject = this.subjects[event][index]
+				subject.callback.apply(this, args)
+			}
+		}
+	},
+
+	off: function(event, callback) {
+		if (event in this.subjects) {
+			if (typeof callback === 'function') {
+				for (var index in this.subjects[event]) {
+					var subject = this.subjects[event][index]
+					if (subject.callback === callback) {
+						this.subjects[event].splice(index, 1)
+						index--
+					}
+				}
+			} else {
+				delete this.subjects[event]
+			}
+		}
+	},
+})
+
 var AnimatedElement = Class.extend({
 	constructor: function(target) {
 		this.parent = target
@@ -135,7 +180,7 @@ var Slide = Class.extend({
 	}
 })
 
-var Gallery = Class.extend({
+var Gallery = Observer.extend({
 	constructor: function(target) {
 		this.parent = $(target)
 		this.slides = []
@@ -169,45 +214,6 @@ var Gallery = Class.extend({
 				AFTER_AUTOPLAY: 2
 			},
 			MAX_AUTOPLAY_TIME: 30000
-		}
-	},
-
-	on: function(event, callback) {
-		if (typeof callback !== 'function') {
-			return
-		}
-
-		if (!(event in this.subjects)) {
-			this.subjects[event] = []
-		}
-
-		this.subjects[event].push({
-			callback: callback
-		})
-	},
-
-	emit: function(event, args) {
-		if (event in this.subjects) {
-			for (var index in this.subjects[event]) {
-				var subject = this.subjects[event][index]
-				subject.callback.apply(this, args)
-			}
-		}
-	},
-
-	off: function(event, callback) {
-		if (event in this.subjects) {
-			if (typeof callback === 'function') {
-				for (var index in this.subjects[event]) {
-					var subject = this.subjects[event][index]
-					if (subject.callback === callback) {
-						this.subjects[event].splice(index, 1)
-						index--
-					}
-				}
-			} else {
-				delete this.subjects[event]
-			}
 		}
 	},
 
