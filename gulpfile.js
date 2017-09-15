@@ -147,7 +147,7 @@ gulp.task('compile', ['clean'], function() {
             .pipe(replace('{revision}', function(str) {return !!revision ? revision : ''}))
             .pipe(gulp.dest(directories.rich.temp+'/js'))
             .pipe(stripDebug())
-            .pipe(uglify({mangle:false}))
+            .pipe(uglify({mangle:false}).on('error', util.log))
             .pipe(rename({suffix:'.min'}))
             .pipe(gulp.dest(directories.rich.temp+'/js')));
     }

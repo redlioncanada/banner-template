@@ -77,8 +77,9 @@ var AnimatedElement = Class.extend({
 	}
 })
 
-var Slide = Class.extend({
+var Slide = Observer.extend({
 	constructor: function(id, target) {
+		this._super()
 		target = $(target)
 		this.id = id
 		this.active = false
@@ -96,6 +97,14 @@ var Slide = Class.extend({
 				background: new AnimatedElement(target.find('.slider .slider-background'))
 			}
 		}
+		this.enum = {
+			EVENTS: {
+				ACTIVATE: 0,
+				DEACTIVATE: 1,
+				SHOW: 2,
+				HIDE: 3
+			}
+		}
 
 		var domElement = this.elements.slider.hitbox.parent[0],
 			domElement1 = this.elements.slider.base.parent[0],
@@ -106,7 +115,11 @@ var Slide = Class.extend({
 		this.elements.slider.base.parent.click(this.onSliderClick.bind(this))
 	},
 
-	activate: function(callback) {
+	activate: function(callback, bubble) {
+		if (typeof bubble === 'undefined') {
+			bubble = true
+		}
+
 		this.elements.layers.activated.parent.addClass('active')
 		this.elements.layers.normal.parent.removeClass('active')
 		this.elements.slider.indicator.parent.css({
@@ -116,13 +129,22 @@ var Slide = Class.extend({
 
 		setTimeout(function() {	//animation time defined in css
 			this.active = true
+
+			if (!!bubble) {
+				this.emit(this.enum.EVENTS.ACTIVATE)
+			}
+
 			if (typeof callback === 'function') {
 				callback.call(this)
 			}
 		}.bind(this), 400)
 	},
 
-	deactivate: function() {
+	deactivate: function(callback, bubble) {
+		if (typeof bubble === 'undefined') {
+			bubble = true
+		}
+
 		this.elements.layers.normal.parent.addClass('active')
 		this.elements.layers.activated.parent.removeClass('active')
 		this.elements.slider.indicator.parent.css({
@@ -132,6 +154,11 @@ var Slide = Class.extend({
 
 		setTimeout(function() {	//animation time defined in css
 			this.active = false
+
+			if (!!bubble) {
+				this.emit(this.enum.EVENTS.DEACTIVATE)
+			}
+
 			if (typeof callback === 'function') {
 				callback.call(this)
 			}
@@ -141,6 +168,7 @@ var Slide = Class.extend({
 	hide: function(callback, animate) {
 		this.elements.base.hide(function() {
 			this.hidden = true
+			this.emit(this.enum.EVENTS.HIDE)
 			if (typeof callback === 'function') {
 				callback.call(this)
 			}
@@ -150,6 +178,7 @@ var Slide = Class.extend({
 	show: function(callback, animate) {
 		this.elements.base.show(function() {
 			this.hidden = false
+			this.emit(this.enum.EVENTS.SHOW)
 			if (typeof callback === 'function') {
 				callback.call(this)
 			}
@@ -182,9 +211,9 @@ var Slide = Class.extend({
 
 var Gallery = Observer.extend({
 	constructor: function(target) {
+		this._super()
 		this.parent = $(target)
 		this.slides = []
-		this.subjects = {}
 
 		$.each(this.parent.find('.slide'), function(key, value) {
 			var slide = new Slide(key, value)
@@ -193,6 +222,8 @@ var Gallery = Observer.extend({
 			} else {
 				slide.hide()
 			}
+
+			slide.on(slide.enum.EVENTS.ACTIVATE, this.onActivate.bind(this))
 			this.slides.push(slide)
 		}.bind(this))
 
@@ -211,7 +242,9 @@ var Gallery = Observer.extend({
 			EVENTS: {
 				BEFORE_NAVIGATION: 0,
 				AFTER_NAVIGATION: 1,
-				AFTER_AUTOPLAY: 2
+				AFTER_USER_NAVIGATION: 2,
+				ACTIVATION: 3,
+				AFTER_AUTOPLAY: 4
 			},
 			MAX_AUTOPLAY_TIME: 30000
 		}
@@ -268,6 +301,10 @@ var Gallery = Observer.extend({
 			this.currentSlide = nextIndex
 			slide = this.slides[nextIndex]
 			this.emit(this.enum.EVENTS.AFTER_NAVIGATION, [previousIndex, this.currentSlide, slide])
+
+			if (!!userInteracted) {
+				this.emit(this.enum.EVENTS.AFTER_USER_NAVIGATION, [previousIndex, this.currentSlide, slide])
+			}
 		}.bind(this))
 	},
 
@@ -304,11 +341,16 @@ var Gallery = Observer.extend({
 		if (slide.active) {
 			this.next()
 		} else {
-			slide.activate()
+			slide.activate(undefined, false)
 		}
 
 		this.autoplayTime += this.interval
-		this.emit(this.enum.EVENTS.AFTER_AUTOPLAY)
+		this.emit(this.enum.EVENTS.AFTER_AUTOPLAY, [this.currentSlide, slide])
+	},
+
+	onActivate: function() {
+		var slide = this.slides[this.currentSlide]
+		this.emit(this.enum.EVENTS.ACTIVATION, [this.currentSlide, slide])
 	},
 
 	currentCarModel: function() {
@@ -385,6 +427,42 @@ gallery.autoplay(5000)
 
 gallery.on(gallery.enum.EVENTS.BEFORE_NAVIGATION, function(previousIndex, currentIndex, slide) {
 	controls.activateDot(currentIndex)
+})
+
+gallery.on(gallery.enum.EVENTS.ACTIVATION, function(currentIndex, slide) {
+	var event = 'ATSActivated'
+
+	switch(gallery.currentCarModel()) {
+		case gallery.enum.CAR_MODELS.ATS:
+			event = 'ATSActivated'
+			break
+		case gallery.enum.CAR_MODELS.XT5:
+			event = 'XT5Activated'
+			break
+		case gallery.enum.CAR_MODELS.ESCALADE:
+			event = 'EscaladeActivated'
+			break
+	}
+
+	Enabler.counter(event)
+})
+
+gallery.on(gallery.enum.EVENTS.AFTER_USER_NAVIGATION, function(previousIndex, currentIndex, slide) {
+	var event = 'ATSClicked'
+
+	switch(gallery.currentCarModel()) {
+		case gallery.enum.CAR_MODELS.ATS:
+			event = 'ATSClicked'
+			break
+		case gallery.enum.CAR_MODELS.XT5:
+			event = 'XT5Clicked'
+			break
+		case gallery.enum.CAR_MODELS.ESCALADE:
+			event = 'EscaladeClicked'
+			break
+	}
+
+	Enabler.counter(event)
 })
 
 gallery.on(gallery.enum.EVENTS.AFTER_AUTOPLAY, function() {
