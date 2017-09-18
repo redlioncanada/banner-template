@@ -115,9 +115,13 @@ var Slide = Observer.extend({
 		this.elements.slider.base.parent.click(this.onSliderClick.bind(this))
 	},
 
-	activate: function(callback, bubble) {
+	activate: function(callback, bubble, userInteracted) {
 		if (typeof bubble === 'undefined') {
 			bubble = true
+		}
+
+		if (typeof userInteracted === 'undefined') {
+			userInteracted = false
 		}
 
 		this.elements.layers.activated.parent.addClass('active')
@@ -131,7 +135,7 @@ var Slide = Observer.extend({
 			this.active = true
 
 			if (!!bubble) {
-				this.emit(this.enum.EVENTS.ACTIVATE)
+				this.emit(this.enum.EVENTS.ACTIVATE, [userInteracted])
 			}
 
 			if (typeof callback === 'function') {
@@ -140,9 +144,13 @@ var Slide = Observer.extend({
 		}.bind(this), 400)
 	},
 
-	deactivate: function(callback, bubble) {
+	deactivate: function(callback, bubble, userInteracted) {
 		if (typeof bubble === 'undefined') {
 			bubble = true
+		}
+
+		if (typeof userInteracted === 'undefined') {
+			userInteracted = false
 		}
 
 		this.elements.layers.normal.parent.addClass('active')
@@ -156,7 +164,7 @@ var Slide = Observer.extend({
 			this.active = false
 
 			if (!!bubble) {
-				this.emit(this.enum.EVENTS.DEACTIVATE)
+				this.emit(this.enum.EVENTS.DEACTIVATE, [userInteracted])
 			}
 
 			if (typeof callback === 'function') {
@@ -187,9 +195,9 @@ var Slide = Observer.extend({
 
 	onSliderClick: function(event) {
 		if (this.active) {
-			this.deactivate()
+			this.deactivate(undefined, undefined, true)
 		} else {
-			this.activate()
+			this.activate(undefined, undefined, true)
 		}
 	},
 
@@ -198,11 +206,11 @@ var Slide = Observer.extend({
 		if (directionData.distanceFromOrigin >= 20) {
 			if ((directionData.currentDirection >= 0 && directionData.currentDirection <= 90) || (directionData.currentDirection >= 270 && directionData.currentDirection <= 360)) {
 				if (!this.active) {	//swiped right
-					this.activate()
+					this.activate(undefined, undefined, true)
 				}
 			} else {
 				if (this.active) { //swiped left
-					this.deactivate()
+					this.deactivate(undefined, undefined, true)
 				}
 			}
 		}
@@ -341,16 +349,20 @@ var Gallery = Observer.extend({
 		if (slide.active) {
 			this.next()
 		} else {
-			slide.activate(undefined, false)
+			slide.activate(undefined, false, false)
 		}
 
 		this.autoplayTime += this.interval
 		this.emit(this.enum.EVENTS.AFTER_AUTOPLAY, [this.currentSlide, slide])
 	},
 
-	onActivate: function() {
+	onActivate: function(userInteracted) {
 		var slide = this.slides[this.currentSlide]
 		this.emit(this.enum.EVENTS.ACTIVATION, [this.currentSlide, slide])
+
+		if (userInteracted) {
+			this.stopAutoplay()
+		}
 	},
 
 	currentCarModel: function() {

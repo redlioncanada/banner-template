@@ -124,17 +124,27 @@ html, body {
 				}
 
 				.text {
+					z-index: 3;
+					@include absolute();
+				}
+
+				.slider-text {
 					z-index: 2;
 					@include absolute();
 				}
 			}
 		}
 
+		.nameplate {
+			z-index: 3;
+			@include absolute();
+		}
+
 		.slider {
 			@include absolute();
 			width: inherit;
 			height: inherit;
-			z-index: 3;
+			z-index: 4;
 
 			.slider-control {
 				@include absolute();
@@ -158,11 +168,6 @@ html, body {
 
 				.slider-background, .slider-indicator {
 					cursor: pointer;
-				}
-
-				.slider-text {
-					position: relative;
-					z-index: 1;
 				}
 			}
 
