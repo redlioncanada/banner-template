@@ -23,8 +23,8 @@ function init() {
  * Add appropriate listeners after the creative's DOM has been set up.
  */
 function addListeners() {
-	$('.main-container').mousedown(mousedownHandler)
-	$('.main-container').mouseup(mouseupHandler)
+	$('#main-container').mousedown(mousedownHandler)
+	$('#main-container').mouseup(mouseupHandler)
 }
 
 
@@ -58,6 +58,7 @@ function mouseupHandler(event) {
 }
 
 function mousedownHandler(event) {
+	console.log(event.target)
 	mousedownShouldExit = shouldExit(exclude, event.target)
 }
 
