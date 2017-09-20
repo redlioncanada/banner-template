@@ -52,7 +52,9 @@ function mouseupHandler(event) {
 			case gallery.enum.CAR_MODELS.ESCALADE:
 				exitName = 'EscaladeExit'
 				break
-  		}
+		  }
+		  
+		gallery.stopAutoplay()
 		Enabler.exit(exitName);
   	}
 }
