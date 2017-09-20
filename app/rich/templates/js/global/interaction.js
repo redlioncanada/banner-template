@@ -127,7 +127,7 @@ var Slide = Observer.extend({
 		this.elements.layers.activated.parent.addClass('active')
 		this.elements.layers.normal.parent.removeClass('active')
 		this.elements.slider.indicator.parent.css({
-			left: 'initial',
+			left: 'auto',
 			right: '7px'
 		})
 
@@ -157,7 +157,7 @@ var Slide = Observer.extend({
 		this.elements.layers.activated.parent.removeClass('active')
 		this.elements.slider.indicator.parent.css({
 			left: '7px',
-			right: 'initial'
+			right: 'auto'
 		})
 
 		setTimeout(function() {	//animation time defined in css
