@@ -9,4 +9,17 @@
 			pointer-events: none;
 		}
 	}
+
+	#main-container.fr {
+		.slider {
+			.slider-control {
+				top: 178px;
+				left: 521px;
+			}
+
+			.slider-control-hitbox {
+				top: 168px;
+			}
+		}
+	}
 }

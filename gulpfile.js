@@ -629,11 +629,11 @@ function generateSrcFolders(path,subfolders,params,extensions) {
     var src = [];
     if (typeof params === 'string') params = [params];
     if (typeof extensions !== undefined) {
-        var extension = '{'
+        var extension = extensions.length > 1 ? '{' : ''
         for (var i in extensions) {
             extension = i == extensions.length-1 ? extension + extensions[i] : extension + extensions[i] + ','
         }
-        extension += '}'
+        if (extensions.length > 1) extension += '}'
     }
 
     var permutations = allCombinationsOf(params, 1, 3)
