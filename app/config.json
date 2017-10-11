@@ -1,14 +1,14 @@
 {
-	"name": "Escalade",
-	"brand": "Cadillac",
-	"month": "Brand-Sept-Oct",
+	"name": "Prenatal",
+	"brand": "DynaCare",
+	"month": "",
 	"version": {
 		"en": "2",
 		"fr": "1"
 	},
 	"filesize": {
 		"static": 40,
-		"rich": 100
+		"rich": 150
 	},
 	"revisions": [],
 	"sizes": [
@@ -20,12 +20,18 @@
 		"320x50"
 	],
 	"clicktags": [
-		"doubleclick"
+		"adwords"
 	],
 	"text": {
 		"en": {},
 		"fr": {}
 	},
 	"exclude": [
+		"160x600",
+		"300x600",
+		"728x90",
+		"300x50",
+		"320x50",
+		"fr"
 	]
 }

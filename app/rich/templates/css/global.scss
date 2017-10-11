@@ -95,7 +95,7 @@ table {
 
         .copy {
             position: absolute;
-            z-index: 3;
+            z-index: 2;
         }
 
         .masks {
@@ -104,8 +104,7 @@ table {
 
             > div {
                 height: inherit;
-                opacity: 0.8;
-                float: left;
+                opacity: 0;
                 background: white;
             }
         }
