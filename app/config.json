@@ -1,7 +1,7 @@
 {
 	"name": "Escalade",
 	"brand": "Cadillac",
-	"month": "Brand",
+	"month": "November-Brand",
 	"version": {
 		"en": "1",
 		"fr": "1"
@@ -27,5 +27,6 @@
 		"fr": {}
 	},
 	"exclude": [
+		"fr"
 	]
 }
