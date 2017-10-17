@@ -19,7 +19,7 @@ html, body {
             }
 
             .background2 {
-                z-index: 2;
+                z-index: 4;
             }
 
             img {
@@ -47,82 +47,16 @@ html, body {
             }
         }
 
-        .masks {
-            height: 69px;
-            top: 22px;
-            width: 113px;
-            left: 178px;
 
-            .mask1 {
-                opacity: 1;
-                width: inherit;
-                height: inherit;
-            }
-        }
-
-        .nameplate {
-            top: -{height}px;
-            z-index: 3;
-        }
-
-        $copy-event-width: 246px;
-        .copy-event {
-            width: $copy-event-width;
-            top: 14px;
-            height: 62px;
-            left: 193px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-            }
-
-            .copy-event-1 {
-                top: 3px;
-            }
-
-            .copy-event-2 {
-                top: 20px;
-            }
-
-            .copy-event-3 {
-                top: 44px;
-            }
-        }
 
         #cta_trigger {
-            left: 442px;
+            left: 459px;
             top: 33px;
-            width: 132px;
+            width: 99px;
             height: 23px;
         }
     }
 
     #ad.fr {
-        $copy-event-width: 296px;
-        .copy-event {
-            width: $copy-event-width;
-            top: 14px;
-            height: 62px;
-            left: 193px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-            }
-
-            .copy-event-1 {
-                top: 9px;
-            }
-
-            .copy-event-2 {
-                top: 37px;
-            }
-        }
-
-        #cta_trigger {
-            left: 428px;
-            top: 33px;
-            width: 169px;
-            height: 23px;
-        }
     }
 }
