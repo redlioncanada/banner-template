@@ -43,6 +43,10 @@ table {
         content: "";
     }
 
+    img {
+        width: 100%;
+    }
+
     #ad {
         background-color: white;
         position: relative;
@@ -52,6 +56,55 @@ table {
         padding: 0;
         overflow: hidden;
         cursor: pointer;
+
+        .sprites {
+            .sprite {
+                position: relative;
+                float: left;
+                background-image: url("spritesheet.jpg");
+                height: inherit;
+                margin-left: 6px;
+            }
+
+            .sprite:first-child {
+                margin-left: 0px;
+            }
+
+            .sprite4 {
+                margin-left: 7px;
+            }
+        }
+
+        .wipe {
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            z-index: 3;
+            overflow: hidden;
+
+            .wipe-line {
+                position: absolute;
+                background: #b5a36a;
+                z-index: 4;
+            }
+
+            .wipe-line::before {
+                position: absolute;
+                content: ' ';
+                $gradientWidth: 9px;
+                left: -$gradientWidth;
+                width: $gradientWidth;
+                height: 148px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
 
         .cta {
             z-index: 5;
@@ -70,44 +123,8 @@ table {
             }
         }
 
-        .copy-event {
-            position: absolute;
-            overflow: hidden;
-
-            .vertical-line {
-                position: absolute;
-                height: 100%;
-                width: 2px;
-                background: #8a1529;
-                z-index: 2;
-            }
-
-            .copy-event-img {
-                position: absolute;
-                width: 100%;
-                z-index: 1;
-            }
-        }
-
         .backgrounds {
             z-index: 1;
-        }
-
-        .copy {
-            position: absolute;
-            z-index: 3;
-        }
-
-        .masks {
-            position: absolute;
-            z-index: 3;
-
-            > div {
-                height: inherit;
-                opacity: 0.8;
-                float: left;
-                background: white;
-            }
         }
 
         #border {
@@ -131,6 +148,8 @@ table {
         left: 0;
         top: 0;
         opacity: 0;
+        width: inherit;
+        height: inherit;
     }
 
     .show {
@@ -140,15 +159,4 @@ table {
     .hide {
         opacity: 0;
     }
-
-    /* development */
-    .overlay {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 100;
-        opacity: 0.6;
-        width: 100%;
-    }
-    /* end development */
 }

@@ -8,6 +8,45 @@ html, body {
         width: {width}px;
         height: {height}px;
 
+        .sprites {
+            $spriteHeight: 134px;
+            height: $spriteHeight;
+            width: {width}px;
+
+            .sprite {
+                background-size: 300px;
+                width: 70px;
+                top: -$spriteHeight;
+            }
+
+            .sprite2 {
+                background-position-x: -73px;
+            }
+
+            .sprite3 {
+                background-position-x: -150px;
+            }
+
+            .sprite4 {
+                background-position-x: -226px;
+            }
+        }
+
+        .wipe {
+            width: 22px;
+
+            .wipe-line {
+                top: 39px;
+                left: 22px;
+                width: 2px;
+                height: 148px;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
         #border {
             width: {width}-2px;
             height: {height}-2px;
@@ -26,10 +65,6 @@ html, body {
             }
         }
 
-        .logo {
-            width: {width}px;
-        }
-
         .cta {
             z-index: 5;
             cursor: pointer;
@@ -39,70 +74,10 @@ html, body {
             }
         }
 
-        .masks {
-            top: 67px;
-            left: 194px;
-            width: 110px;
-            height: 137px;
-
-            .mask1 {
-                width: 100%;
-                height: 40%;
-            }
-
-            .mask2 {
-                width: 100%;
-                height: 60%;
-            }
-        }
-
-        .copy {
-            .item {
-                width: {width}px;
-                height: {height}px;
-            }
-        }
-
-        .copy1 {
-            opacity: 0;
-        }
-
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 216px;
-            top: 10px;
-            height: 49px;
-            left: 23px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-
-            }
-
-            .copy-event-1 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-
-            .copy-event-2 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-
-            .copy-event-3 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-        }
-
         #cta_trigger {
-            left: 145px;
-            top: 194px;
-            width: 133px;
+            left: 195px;
+            top: 185px;
+            width: 81px;
             height: 23px;
         }
     }

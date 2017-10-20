@@ -1,7 +1,7 @@
 {
-	"name": "ATS",
+	"name": "SuperCruise_H2_Brand",
 	"brand": "Cadillac",
-	"month": "NovemberDecember_Brand",
+	"month": "",
 	"version": {
 		"en": "1",
 		"fr": "1"
@@ -12,12 +12,7 @@
 	},
 	"revisions": [],
 	"sizes": [
-		"160x600",
-		"300x250",
-		"300x600",
-		"728x90",
-		"300x50",
-		"320x50"
+		"300x250"
 	],
 	"clicktags": [
 		"doubleclick"
