@@ -10,12 +10,13 @@ html, body {
 
         .sprites {
             $spriteHeight: 134px;
+            $spriteWidth: 70px;
             height: $spriteHeight;
             width: {width}px;
 
             .sprite {
                 background-size: 300px;
-                width: 70px;
+                width: $spriteWidth;
                 top: -$spriteHeight;
             }
 
@@ -28,6 +29,7 @@ html, body {
             }
 
             .sprite4 {
+                width: #{$spriteWidth + 2};
                 background-position-x: -226px;
             }
         }
