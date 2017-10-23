@@ -119,6 +119,15 @@ table {
             }
         }
 
+        .masks {
+            z-index: 5;
+
+            div {
+                position: absolute;
+                background: white;
+            }
+        }
+
         .logo {
             z-index: 1;
         }
