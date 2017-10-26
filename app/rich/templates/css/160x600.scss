@@ -9,48 +9,57 @@ html, body {
         height: {height}px;
 
         .sprites {
-            $spriteHeight: 134px;
-            $spriteWidth: 70px;
-            height: $spriteHeight;
-            width: {width}px;
+			position: absolute;
+			height: 588px;
+			top: 114px;
+			width: {width}px;
 
             .sprite {
-                background-size: 300px;
-                width: $spriteWidth;
-                top: -$spriteHeight;
-            }
+				background-size: 160px;
+				width: {width}px;
+				height: 69px;
+				left: -{width}px;
+				margin-left: 0px;
+				margin-top: 6px;
+			}
+
+			.sprite:first-child {
+				margin-top: 0px;
+			}
+			
+			.sprite1 {
+				background-position-y: -113px;
+			}
 
             .sprite2 {
-                background-position-x: -73px;
+                background-position-y: -187px;
             }
 
             .sprite3 {
-                background-position-x: -150px;
+                background-position-y: -261px;
             }
 
             .sprite4 {
-                width: #{$spriteWidth + 2};
-                background-position-x: -226px;
+                background-position-y: -335px;
             }
         }
 
         .wipe {
-            width: 22px;
+			width: 0;
 
             .wipe-line {
-                top: 39px;
-                left: 22px;
+				top: 113px;
+				height: 260px;
                 width: 2px;
-                height: 148px;
-            }
-
-            .wipe-line::before {
+			}
+			
+			.wipe-line::before {
                 position: absolute;
                 content: ' ';
                 $gradientWidth: 9px;
                 left: -$gradientWidth;
                 width: $gradientWidth;
-                height: 148px;
+                height: 260px;
                 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
                 background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
             }
@@ -88,15 +97,15 @@ html, body {
         }
 
         #cta_trigger {
-            left: 195px;
-            top: 185px;
-            width: 81px;
-            height: 23px;
-        }
-
-        .logo {
-            display: none;
-        }
+            left: 33px;
+			top: 542px;
+			width: 93px;
+			height: 26px;
+		}
+		
+		.logo {
+			z-index: 10;
+		}
     }
 
     #ad.fr {
