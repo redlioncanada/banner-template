@@ -1,0 +1,119 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        width: {width}px;
+        height: {height}px;
+
+        .sprites {
+			position: absolute;
+			height: 588px;
+			top: 114px;
+			width: {width}px;
+
+            .sprite {
+				background-size: 160px;
+				width: {width}px;
+				height: 69px;
+				left: -{width}px;
+				margin-left: 0px;
+				margin-top: 6px;
+			}
+
+			.sprite:first-child {
+				margin-top: 0px;
+			}
+			
+			.sprite1 {
+				background-position-y: -113px;
+			}
+
+            .sprite2 {
+                background-position-y: -187px;
+            }
+
+            .sprite3 {
+                background-position-y: -261px;
+            }
+
+            .sprite4 {
+                background-position-y: -335px;
+            }
+        }
+
+        .wipe {
+			width: 0;
+
+            .wipe-line {
+				top: 113px;
+				height: 260px;
+                width: 2px;
+			}
+			
+			.wipe-line::before {
+                position: absolute;
+                content: ' ';
+                $gradientWidth: 9px;
+                left: -$gradientWidth;
+                width: $gradientWidth;
+                height: 260px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
+        .backgrounds {
+            .background1 {
+                z-index: 2;
+            }
+            .background2{
+                z-index: 1;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        #cta_trigger {
+            left: 33px;
+			top: 542px;
+			width: 93px;
+			height: 26px;
+		}
+		
+		.logo {
+			z-index: 10;
+		}
+    }
+
+    #ad.fr {
+        #cta_trigger {
+            left: 119px;
+            top: 194px;
+            width: 156px;
+            height: 23px;
+        }
+    }
+}
