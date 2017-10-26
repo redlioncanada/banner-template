@@ -84,5 +84,27 @@ html, body {
     }
 
     #ad.fr {
+         .masks {
+            top: 134px;
+            left: 14px;
+            width: 257px;
+            height: 48px;
+
+            .mask1 {
+                position: absolute;
+                left: 32px;
+                width: 82%;
+                height: 33%;
+            }
+
+            .mask2 {
+                position: absolute;
+                top: 44%;
+                width: 100%;
+                height: 30%;
+            }
+
+
+        }
     }
 }
