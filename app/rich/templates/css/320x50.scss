@@ -1,0 +1,95 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        width: {width}px;
+        height: {height}px;
+
+        .sprites {
+            display: none;
+        }
+
+        .wipe {
+            width: 0px;
+
+            .wipe-line {
+                left: 0px;
+                width: 2px;
+                height: {height}px;
+            }
+
+            .wipe-line::before {
+                position: absolute;
+                content: ' ';
+                $gradientWidth: 9px;
+                left: -$gradientWidth;
+                width: $gradientWidth;
+                height: 148px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
+        .backgrounds {
+            .background1 {
+                z-index: 2;
+            }
+            .background2{
+                z-index: 1;
+            }
+
+            img {
+                width: {width}px;
+            }
+		}
+		
+		.logo {
+			z-index: 6;
+		}
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+			}
+			
+			.cta_hover {
+				display: none;
+			}
+		}
+		
+		.spring {
+			display: none;
+		}
+
+        #cta_trigger {
+			left: 482px;
+			top: 32px;
+			width: 93px;
+			height: 26px;
+        }
+    }
+
+    #ad.fr {
+        #cta_trigger {
+            left: 119px;
+            top: 194px;
+            width: 156px;
+            height: 23px;
+        }
+    }
+}
