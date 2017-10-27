@@ -9,45 +9,68 @@ html, body {
         height: {height}px;
 
         .sprites {
-            $spriteWidth: 84px;
-            height: {height}px;
-            width: {width}px;
+			position: absolute;
+			height: {height}px;
+			top: 0px;
+			width: 370px;
 
             .sprite {
-                background-size: 728px;
-                width: $spriteWidth;
-                top: -{height}px;
-            }
+				background-size: 970px;
+				width: {width}px;
+				height: 143px;
+				margin-left: 0px;
+				position: absolute;
+			}
+			
+			.sprite1 {
+				background-position-y: -749px;
+				top: -138px;
+				width: 185px;
+				height: 138px;
+			}
 
             .sprite2 {
-                background-position-x: -88px;
+				background-position-y: 0px;
+				background-position-x: -184px;
+				top: -113px;
+				width: 185px;
+				height: 113px;
+				left: 184px;
             }
 
             .sprite3 {
-                background-position-x: -176px;
-            }
-
-            .sprite4 {
-                display: none;
-            }
+				background-position-y: -137px;
+				bottom: -113px;
+				width: 185px;
+				height: 113px;
+			}
+			
+			.sprite4 {
+				background-position-y: -118px;
+				background-position-x: -184px;
+				width: 185px;
+				left: 184px;
+				height: 133px;
+				bottom: -143px;
+			}
         }
 
         .wipe {
-            width: 0px;
+			width: 0;
 
             .wipe-line {
-                left: 0px;
+				top: 0px;
+				height: {height}px;
                 width: 2px;
-                height: {height}px;
-            }
-
-            .wipe-line::before {
+			}
+			
+			.wipe-line::before {
                 position: absolute;
                 content: ' ';
                 $gradientWidth: 9px;
                 left: -$gradientWidth;
                 width: $gradientWidth;
-                height: 148px;
+                height: {height}px;
                 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
                 background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
             }
@@ -85,11 +108,15 @@ html, body {
         }
 
         #cta_trigger {
-			left: 482px;
-			top: 32px;
-			width: 93px;
-			height: 26px;
-        }
+			left: 821px;
+			top: 188px;
+			width: 112px;
+			height: 31px;
+		}
+		
+		.logo {
+			z-index: 10;
+		}
     }
 
     #ad.fr {
