@@ -1,6 +1,5 @@
 var timeline = new TimelineLite();
 	timeline.add('frame1')
-		.addDelay(2, 'frame2')
 	timeline.add('frame2')
 		.to('.spring', 0.3, { height: '-=10', top: '+=5' })
 		.to('.spring', 0.3, { height: '+=10', top: '-=5' })
