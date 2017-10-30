@@ -84,5 +84,39 @@ html, body {
     }
 
     #ad.fr {
+        #cta_trigger{
+            left: 53px;
+            top: 157px;
+            width: 194px;
+            height: 43px;
+        }
+         .masks {
+            top: 124px;
+            left: 9px;
+            width: 283px;
+            height: 48px;
+
+            .mask1 {
+                position: absolute;
+                left: 21%;
+                width: 57%;
+                height: 32%;
+            }
+
+            .mask2 {
+                position: absolute;
+                top: 35%;
+                left: 11%;
+                width: 78%;
+                height: 32%;
+            }
+            .mask3 {
+                position: absolute;
+                top: 70%;
+                left: 31%;
+                width: 37%;
+                height: 32%;
+            }
+        }
     }
 }
