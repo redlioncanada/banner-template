@@ -85,22 +85,30 @@ html, body {
 
     #ad.fr {
          .masks {
-            top: 134px;
+            top: 119px;
             left: 14px;
             width: 257px;
-            height: 48px;
-
+            height: 59px;
+            
             .mask1 {
                 position: absolute;
-                left: 32px;
-                width: 82%;
+                left: 25%;
+                width: 55%;
                 height: 33%;
             }
 
             .mask2 {
                 position: absolute;
-                top: 44%;
-                width: 100%;
+                top: 36%;
+                left: 13%;
+                width: 80%;
+                height: 30%;
+            }
+            .mask3 {
+                position: absolute;
+                left: 23%;
+                top: 66%;
+                width: 60%;
                 height: 30%;
             }
 
