@@ -16,7 +16,7 @@ var timeline = new TimelineLite({onComplete: onComplete});
             .to('.logo', 1, {opacity: 1})
             .addDelay(2, 'frame4')
         timeline.add('frame4')     
-            .to('.logo', 1, {top: -25})
+            .to('.logo', 1, {top: -21})
             .to('.copy2', 1, {top: -21},'-=1')
             .addDelay(0.7, 'frame5')
         timeline.add('frame5')
