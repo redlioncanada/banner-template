@@ -549,7 +549,8 @@ gulp.task('packageContinueTask', ['packageStaticTask'], function() {
             var language = i
             var clicktag = config.clicktags[j]
             var v = version[i]
-            var n = `${year}_${brand}Brand_RL_Other_${name}_${month}_HTML5_CA_${clicktag}_${language.toUpperCase()}`
+            var m = month.length ? '_' + month : ''
+            var n = `${year}_${brand}Brand_RL_Other_${name}${m}_HTML5_CA_${clicktag}_${language.toUpperCase()}`
 
             if (hasRevisions) {
                 for (var u in config.revisions) {
