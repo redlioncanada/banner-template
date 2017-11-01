@@ -85,6 +85,11 @@ html, body {
     }
 
     #ad.fr {
+        .sprites {
+            position: absolute;
+            top: -20px;
+        }
+
         #cta_trigger {
             left: 119px;
             top: 194px;
