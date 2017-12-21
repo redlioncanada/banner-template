@@ -67,37 +67,6 @@ html, body {
             opacity: 0;
         }
 
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 216px;
-            top: 10px;
-            height: 49px;
-            left: 23px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-
-            }
-
-            .copy-event-1 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-
-            .copy-event-2 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-
-            .copy-event-3 {
-                width: $copy-event-width;
-                top: -10px;
-            }
-        }
 
         #cta_trigger {
             left: 182px;
@@ -111,7 +80,7 @@ html, body {
         #cta_trigger {
             left: 154px;
             top: 194px;
-            width: 132px;
+            width: 124px;
             height: 23px;
         }
     }
