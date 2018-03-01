@@ -29,8 +29,8 @@ html, body {
 
         .logo {
             width: {width}px;
+            z-index: 3;
         }
-
         .cta {
             z-index: 5;
             cursor: pointer;
@@ -67,9 +67,9 @@ html, body {
 
 
         #cta_trigger {
-            left: 479px;
+            left: 463px;
             top: 33px;
-            width: 95px;
+            width: 149px;
             height: 23px;
         }
     }

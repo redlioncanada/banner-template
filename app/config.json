@@ -1,7 +1,7 @@
 {
-	"name": "XT5",
+	"name": "XT4",
 	"brand": "Cadillac",
-	"month": "MarApr",
+	"month": "Oscars",
 	"version": {
 		"en": "1",
 		"fr": "1"
@@ -12,9 +12,6 @@
 	},
 	"revisions": [],
 	"sizes": [
-		"160x600",
-		"300x250",
-		"300x600",
 		"728x90",
 		"320x50"
 	],
@@ -26,5 +23,6 @@
 		"fr": {}
 	},
 	"exclude": [
+		"fr"
 	]
 }
