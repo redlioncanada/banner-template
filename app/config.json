@@ -1,5 +1,5 @@
 {
-	"name": "XT4",
+	"name": "CT6",
 	"brand": "Cadillac",
 	"month": "Oscars",
 	"version": {
@@ -12,7 +12,10 @@
 	},
 	"revisions": [],
 	"sizes": [
+		"970x250",
 		"728x90",
+		"300x600",
+		"300x250",
 		"320x50"
 	],
 	"clicktags": [

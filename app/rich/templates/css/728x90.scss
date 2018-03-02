@@ -20,6 +20,13 @@ html, body {
 
             .background2 {
                 z-index: 2;
+                opacity: 0;
+            }
+
+
+            .background3 {
+                z-index: 3;
+                opacity: 0;
             }
 
             img {
@@ -29,7 +36,7 @@ html, body {
 
         .logo {
             width: {width}px;
-            z-index: 3;
+            z-index: 5;
         }
         .cta {
             z-index: 5;
@@ -47,30 +54,12 @@ html, body {
             }
         }
 
-        .masks {
-            height: 69px;
-            top: 22px;
-            width: 113px;
-            left: 178px;
-
-            .mask1 {
-                opacity: 1;
-                width: inherit;
-                height: inherit;
-            }
-        }
-
-        .nameplate {
-            top: -{height}px;
-            z-index: 3;
-        }
-
 
         #cta_trigger {
-            left: 463px;
-            top: 33px;
-            width: 149px;
-            height: 23px;
+            left: 510px;
+            top: 25px;
+            width: 100px;
+            height: 26px;
         }
     }
 

@@ -17,6 +17,14 @@ html, body {
             .background1 {
                 z-index: 1;
             }
+            .background2 {
+                z-index: 2;
+                opacity: 0;
+            }
+            .background3 {
+                z-index: 3;
+                opacity: 0;
+            }
 
             img {
                 width: {width}px;
@@ -43,61 +51,14 @@ html, body {
             }
         }
 
-        .masks {
-            width: {width}px;
-            height: 100px;
-            top: 330px;
 
-            .mask1 {
-                width: 50%;
-            }
 
-            .mask2 {
-                width: 50%;
-            }
-        }
-
-        .copy1 {
-            opacity: 0;
-        }
-
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 286px;
-            top: 61px;
-            height: 63px;
-            left: 15px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-            }
-
-            .copy-event-1 {
-                top: -121px;
-                width:$copy-event-width;
-
-            }
-
-            .copy-event-2 {
-                top: -121px;
-                width: $copy-event-width;
-            }
-
-            .copy-event-3 {
-                top: -121px;
-                width: $copy-event-width;
-            }
-        }
 
         #cta_trigger {
-            left: 174px;
-            top: 545px;
-            width: 95px;
-            height: 24px;
+            left: 30px;
+            top: 431px;
+            width: 111px;
+            height: 28px;
         }
     }
 

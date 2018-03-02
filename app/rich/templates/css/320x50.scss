@@ -21,6 +21,9 @@ html, body {
             .background2 {
                 z-index: 2;
             }
+            .background3 {
+                z-index: 3;
+            }
 
             img {
                 width: {width}px;
@@ -29,7 +32,7 @@ html, body {
 
         .logo {
             width: {width}px;
-            z-index: 3;
+            z-index: 4;
         }
 
         .cta {
