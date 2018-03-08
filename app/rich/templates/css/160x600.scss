@@ -1,0 +1,86 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        width: {width}px;
+        height: {height}px;
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
+        .backgrounds {
+            .background1 {
+                z-index: 1;
+            }
+
+            .background2 {
+                z-index: 2;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        .logo {
+            width: {width}px;
+            z-index: 3;
+        }
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        .copy {
+            .item {
+                width: {width}px;
+                height: {height}px;
+            }
+        }
+
+        .masks {
+            height: 69px;
+            top: 22px;
+            width: 113px;
+            left: 178px;
+
+            .mask1 {
+                opacity: 1;
+                width: inherit;
+                height: inherit;
+            }
+        }
+
+        .nameplate {
+            top: -{height}px;
+            z-index: 3;
+        }
+
+
+        #cta_trigger {
+            left: 36px;
+            top: 453px;
+            width: 88px;
+            height: 31px;
+        }
+    }
+
+    #ad.fr {
+
+        #cta_trigger {
+            left: 452px;
+            top: 33px;
+            width: 124px;
+            height: 23px;
+        }
+    }
+}
