@@ -1,0 +1,71 @@
+html, body {
+    width: {width}px;
+    height: {height}px;
+}
+
+.{namespace} {
+    #ad {
+        width: {width}px;
+        height: {height}px;
+
+        #border {
+            width: {width}-2px;
+            height: {height}-2px;
+        }
+
+        .backgrounds {
+            .background1 {
+                z-index: 1;
+            }
+            .background2{
+                z-index: 2;
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
+
+        .logo {
+            width: {width}px;
+        }
+
+        .cta {
+            z-index: 5;
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+
+        .copy {
+            .item {
+                width: {width}px;
+                height: {height}px;
+            }
+        }
+
+        .copy1 {
+            opacity: 0;
+        }
+
+
+        #cta_trigger {
+            left: 182px;
+            top: 194px;
+            width: 96px;
+            height: 23px;
+        }
+    }
+
+    #ad.fr {
+        #cta_trigger {
+            left: 427px;
+            top: 194px;
+            width: 124px;
+            height: 34px;
+        }
+    }
+}

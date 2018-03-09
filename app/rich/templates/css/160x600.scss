@@ -47,40 +47,23 @@ html, body {
             }
         }
 
-        .masks {
-            height: 69px;
-            top: 22px;
-            width: 113px;
-            left: 178px;
-
-            .mask1 {
-                opacity: 1;
-                width: inherit;
-                height: inherit;
-            }
-        }
-
-        .nameplate {
-            top: -{height}px;
-            z-index: 3;
-        }
 
 
         #cta_trigger {
-            left: 36px;
-            top: 453px;
-            width: 88px;
-            height: 31px;
+            left: 463px;
+            top: 33px;
+            width: 149px;
+            height: 23px;
         }
     }
 
     #ad.fr {
 
         #cta_trigger {
-            left: 452px;
-            top: 33px;
-            width: 124px;
-            height: 23px;
+            left: 20px;
+            top: 455px;
+            width: 118px;
+            height: 29px;
         }
     }
 }
