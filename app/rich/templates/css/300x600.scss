@@ -33,6 +33,7 @@ html, body {
 
         .logo {
             width: {width}px;
+            z-index: 5;
         }
 
         .cta {
@@ -64,10 +65,10 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 160px;
-            top: 545px;
+            left: 30px;
+            top: 431px;
             width: 123px;
-            height: 24px;
+            height: 28px;
         }
     }
 }
