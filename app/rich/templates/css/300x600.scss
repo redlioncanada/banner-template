@@ -61,38 +61,6 @@ html, body {
             opacity: 0;
         }
 
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 286px;
-            top: 61px;
-            height: 63px;
-            left: 15px;
-
-            .copy-event-img {
-                left: -$copy-event-width;
-
-            }
-
-            .vertical-line{
-            }
-
-            .copy-event-1 {
-                top: -121px;
-                width:$copy-event-width;
-
-            }
-
-            .copy-event-2 {
-                top: -121px;
-                width: $copy-event-width;
-            }
-
-            .copy-event-3 {
-                top: -121px;
-                width: $copy-event-width;
-            }
-        }
-
         #cta_trigger {
             left: 155px;
             top: 545px;
@@ -102,24 +70,11 @@ html, body {
     }
 
     #ad.fr {
-        $copy-event-width: 300px;
-        .copy-event {
-            width: 286px;
-            top: 61px;
-            height: 63px;
-            left: 15px;
-
-            .copy-event-1, .copy-event-2 {
-                top: -67px;
-                width:$copy-event-width;
-            }
-        }
-
         #cta_trigger {
             left: 154px;
             top: 545px;
-            width: 138px;
-            height: 33px;
+            width: 136px;
+            height: 24px;
         }
     }
 }
