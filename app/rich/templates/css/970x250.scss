@@ -50,38 +50,21 @@ html, body {
             }
         }
 
-        .masks {
-            width: {width}px;
-            height: 100px;
-            top: 330px;
-
-            .mask1 {
-                width: 50%;
-            }
-
-            .mask2 {
-                width: 50%;
-            }
-        }
-
-        .copy1 {
-            opacity: 0;
-        }
 
         #cta_trigger {
-            left: 174px;
-            top: 524px;
-            width: 97px;
-            height: 24px;
+            left: 387px;
+            top: 190px;
+            width: 129px;
+            height: 31px;
         }
     }
 
     #ad.fr {
         #cta_trigger {
-            left: 154px;
-            top: 545px;
-            width: 136px;
-            height: 24px;
+            left: 457px;
+            top: 33px;
+            width: 123px;
+            height: 23px;
         }
     }
 }
