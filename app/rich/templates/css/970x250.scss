@@ -14,16 +14,45 @@ html, body {
         }
 
         .backgrounds {
+
             .background1 {
                 z-index: 1;
             }
             .background2 {
                 z-index: 2;
             }
-            .background3 {
-                z-index: 3;
-            }
 
+            img {
+                width: {width}px;
+            }
+        }
+        .cta {
+            cursor: pointer;
+
+            .cta_normal,.cta_hover {
+                width: {width}px;
+            }
+        }
+
+        .wipe {
+			width: 0;
+
+            .wipe-line {
+				top: 0px;
+				height: {height}px;
+                width: 2px;
+			}
+			
+			.wipe-line::before {
+                position: absolute;
+                content: ' ';
+                $gradientWidth: 9px;
+                left: -$gradientWidth;
+                width: $gradientWidth;
+                height: {height}px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            }
             img {
                 width: {width}px;
             }
@@ -34,14 +63,6 @@ html, body {
             width: {width}px;
         }
 
-        .cta {
-            z-index: 5;
-            cursor: pointer;
-
-            .cta_normal,.cta_hover {
-                width: {width}px;
-            }
-        }
 
         .copy {
             .item {

@@ -70,24 +70,28 @@ table {
             }
         }
 
-        .copy-event {
+
+        .wipe {
+            width: inherit;
+            height: inherit;
             position: absolute;
+            z-index: 4;
             overflow: hidden;
 
-            .vertical-line {
+            .wipe-line {
                 position: absolute;
-                height: 100%;
-                width: 2px;
-                background: #8a1529;
-                z-index: 2;
+                background: #b5a36a;
+                z-index: 3;
             }
 
-            .copy-event-img {
+            img {
                 position: absolute;
-                width: 100%;
-                z-index: 1;
+                top: 0;
+                left: 0;
             }
         }
+
+       
 
         .backgrounds {
             z-index: 1;
@@ -98,17 +102,7 @@ table {
             z-index: 3;
         }
 
-        .masks {
-            position: absolute;
-            z-index: 3;
-
-            > div {
-                height: inherit;
-                opacity: 0.8;
-                float: left;
-                background: white;
-            }
-        }
+        
 
         #border {
             z-index: 9;
