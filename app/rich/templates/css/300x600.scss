@@ -20,9 +20,6 @@ html, body {
             .background2 {
                 z-index: 2;
             }
-            .background3 {
-                z-index: 3;
-            }
 
             img {
                 width: {width}px;
@@ -49,6 +46,32 @@ html, body {
                 height: {height}px;
             }
         }
+        .wipe {
+            width: 0;
+            z-index: 4;
+
+            .wipe-line {
+				top: 113px;
+				height: 260px;
+                width: 2px;
+                z-index: 3;
+			}
+			
+			.wipe-line::before {
+                position: absolute;
+                content: ' ';
+                $gradientWidth: 9px;
+                left: -$gradientWidth;
+                width: $gradientWidth;
+                height: 260px;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+                background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            }
+
+            img {
+                width: {width}px;
+            }
+        }
 
         .masks {
             width: {width}px;
@@ -73,6 +96,8 @@ html, body {
             top: 524px;
             width: 97px;
             height: 24px;
+
+
         }
     }
 
