@@ -11,5 +11,5 @@ var timeline = new TimelineLite({onComplete: onComplete});
 			.to('.copy3', 1, {opacity: 1 }, '-=5')
 		timeline.add('frame2')
 			.to('.copy4, .vertical-bar', 0.5, {opacity: 0}, '-=3')
-			.to('.cta', 0.5, {opacity: 1})
+			.to('.cta', 0.5, {opacity: 1}, '-=2')
 		timeline.add('frame3')
