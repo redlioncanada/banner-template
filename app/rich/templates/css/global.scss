@@ -69,26 +69,13 @@ table {
                 z-index: 1;
             }
         }
-
-        .wipe {
-            width: inherit;
-            height: inherit;
-            position: absolute;
-            z-index: 4;
-            overflow: hidden;
-
-            .wipe-line {
-                position: absolute;
-                background: #b5a36a;
+		.vertical-bar {
+				position: absolute;
+				background: #b5a36a;
+				opacity: 0.5;
                 z-index: 3;
-            }
-
-            img {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-        }
+		}
+     
 
 
         .backgrounds {
@@ -97,7 +84,7 @@ table {
 
         .copy {
             position: absolute;
-            z-index: 2;
+            z-index: 4;
         }
 
         .masks {

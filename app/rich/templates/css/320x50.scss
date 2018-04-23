@@ -22,26 +22,24 @@ html, body {
                 width: {width}px;
             }
         }
-
         .gradient {
             z-index: 2;
             width: {width}px;
-		}
+        }
+
 		.vertical-bar {
-			left: 26px;
-			top: 119px;
-			height: 2px;
-			width: 53px;
+			width: 33px;
+			height: 1px;
+			left: 9px;
+			top: 33px;
 		}
-
-
+      
         .logo {
             z-index: 5;
             width: {width}px;
         }
 
         .cta {
-            z-index: 5;
             cursor: pointer;
 
             .cta_normal,.cta_hover {
@@ -56,20 +54,21 @@ html, body {
             }
         }
 
+
         #cta_trigger {
-			left: 26px;
-			top: 119px;
-			width: 142px;
-			height: 24px;
+            left: 387px;
+            top: 190px;
+            width: 178px;
+            height: 31px;
         }
     }
 
     #ad.fr {
         #cta_trigger {
-            left: 154px;
-            top: 545px;
-            width: 136px;
-            height: 24px;
+            left: 457px;
+            top: 33px;
+            width: 123px;
+            height: 23px;
         }
     }
 }

@@ -26,15 +26,14 @@ html, body {
         .gradient {
             z-index: 2;
             width: {width}px;
-		}
+        }
+
 		.vertical-bar {
-			left: 26px;
-			top: 119px;
-			height: 2px;
-			width: 53px;
+			width: 34px;
+			height: 1px;
+			left: 27px;
+			top: 76px;
 		}
-
-
         .logo {
             z-index: 5;
             width: {width}px;
@@ -57,19 +56,19 @@ html, body {
         }
 
         #cta_trigger {
-			left: 26px;
-			top: 119px;
-			width: 142px;
+			left: 21px;
+			width: 133px;
 			height: 24px;
+			top: 79px;
         }
     }
 
     #ad.fr {
         #cta_trigger {
-            left: 154px;
-            top: 545px;
-            width: 136px;
-            height: 24px;
-        }
+			left: 21px;
+			width: 133px;
+			height: 24px;
+			top: 79px;
+		}
     }
 }

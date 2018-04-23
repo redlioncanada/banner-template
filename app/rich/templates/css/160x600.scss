@@ -15,7 +15,9 @@ html, body {
 
         .backgrounds {
             .background1 {
-                z-index: 1;
+				width: 184px;
+				z-index: 1;
+				left: -24px;
             }
 
             img {
@@ -23,25 +25,23 @@ html, body {
             }
         }
 
-        .gradient {
-            z-index: 2;
-            width: {width}px;
+		.gradient {
+			z-index: 2;
+			width: {width}px;
 		}
+
 		.vertical-bar {
-			left: 26px;
-			top: 119px;
 			height: 2px;
-			width: 53px;
+			width: 36px;
+			top: 133px;
+			left: 20px;
 		}
-
-
         .logo {
             z-index: 5;
             width: {width}px;
         }
 
         .cta {
-            z-index: 5;
             cursor: pointer;
 
             .cta_normal,.cta_hover {
@@ -56,20 +56,21 @@ html, body {
             }
         }
 
+
         #cta_trigger {
-			left: 26px;
-			top: 119px;
-			width: 142px;
-			height: 24px;
+			left: 19px;
+			top: 134px;
+			width: 122px;
+			height: 19px;
         }
     }
 
     #ad.fr {
         #cta_trigger {
-            left: 154px;
-            top: 545px;
-            width: 136px;
-            height: 24px;
+            left: 457px;
+            top: 33px;
+            width: 123px;
+            height: 23px;
         }
     }
 }

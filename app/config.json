@@ -1,5 +1,5 @@
 {
-	"name": "Wireless",
+	"name": "ATS",
 	"brand": "Cadillac",
 	"month": "AprMay",
 	"version": {
@@ -12,8 +12,11 @@
 	},
 	"revisions": [],
 	"sizes": [
+		"160x600",
 		"300x600",
-		"970x250"
+		"300x250",
+		"728x90",
+		"320x50"
 
 	],
 	"clicktags": [
