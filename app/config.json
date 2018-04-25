@@ -17,7 +17,6 @@
 		"300x250",
 		"728x90",
 		"320x50"
-
 	],
 	"clicktags": [
 		"doubleclick"
@@ -27,6 +26,5 @@
 		"fr": {}
 	},
 	"exclude": [
-		"fr"
 	]
 }
