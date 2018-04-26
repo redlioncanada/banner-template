@@ -66,10 +66,13 @@ html, body {
 
     #ad.fr {
         #cta_trigger {
-            left: 154px;
-            top: 545px;
-            width: 136px;
-            height: 24px;
-        }
+            left: 26px;
+			top: 119px;
+			width: 142px;
+			height: 24px;
+		}
+		.vertical-bar {	
+			display: none;
+		}
     }
 }
